@@ -1,0 +1,174 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - Audit (0.1.1):
+    - Alamofire (~> 4.8.2)
+    - AlamofireObjectMapper
+  - DeviceKit (2.0.0)
+  - IQKeyboardManagerSwift (6.4.1)
+  - MaterialComponents/AnimationTiming (87.1.1)
+  - MaterialComponents/BottomNavigation (87.1.1):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - "MaterialComponents/BottomNavigation+ColorThemer (87.1.1)":
+    - MaterialComponents/BottomNavigation
+    - MaterialComponents/schemes/Color
+  - "MaterialComponents/BottomNavigation+TypographyThemer (87.1.1)":
+    - MaterialComponents/BottomNavigation
+    - MaterialComponents/schemes/Typography
+  - MaterialComponents/Buttons (87.1.1):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - "MaterialComponents/Buttons+ButtonThemer (87.1.1)":
+    - MaterialComponents/Buttons
+    - "MaterialComponents/Buttons+ColorThemer"
+    - "MaterialComponents/Buttons+ShapeThemer"
+    - "MaterialComponents/Buttons+TypographyThemer"
+    - MaterialComponents/Palettes
+  - "MaterialComponents/Buttons+ColorThemer (87.1.1)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Color
+  - "MaterialComponents/Buttons+ShapeThemer (87.1.1)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Shape
+  - "MaterialComponents/Buttons+TypographyThemer (87.1.1)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Typography
+  - MaterialComponents/Elevation (87.1.1):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (87.1.1):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/OverlayWindow (87.1.1):
+    - MaterialComponents/private/Application
+  - MaterialComponents/Palettes (87.1.1)
+  - MaterialComponents/private/Application (87.1.1)
+  - MaterialComponents/private/Color (87.1.1)
+  - MaterialComponents/private/KeyboardWatcher (87.1.1):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (87.1.1)
+  - MaterialComponents/private/Overlay (87.1.1)
+  - MaterialComponents/Ripple (87.1.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/schemes/Color (87.1.1):
+    - MaterialComponents/private/Color
+  - MaterialComponents/schemes/Shape (87.1.1):
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - MaterialComponents/schemes/Typography (87.1.1):
+    - MaterialComponents/Typography
+  - MaterialComponents/ShadowElevations (87.1.1)
+  - MaterialComponents/ShadowLayer (87.1.1):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (87.1.1):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (87.1.1):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Snackbar (87.1.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - "MaterialComponents/Snackbar+TypographyThemer (87.1.1)":
+    - MaterialComponents/schemes/Typography
+    - MaterialComponents/Snackbar
+  - MaterialComponents/TextFields (87.1.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Elevation
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (87.1.1):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
+  - ObjectMapper (3.5.1)
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
+  - TrustDeviceInfo (1.0.1):
+    - Alamofire (~> 4.8.2)
+    - AlamofireObjectMapper
+    - DeviceKit
+
+DEPENDENCIES:
+  - Audit
+  - IQKeyboardManagerSwift
+  - MaterialComponents/BottomNavigation
+  - "MaterialComponents/BottomNavigation+ColorThemer"
+  - "MaterialComponents/BottomNavigation+TypographyThemer"
+  - MaterialComponents/Buttons
+  - "MaterialComponents/Buttons+ButtonThemer"
+  - "MaterialComponents/Snackbar+TypographyThemer"
+  - MaterialComponents/TextFields
+  - RealmSwift
+  - TrustDeviceInfo
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - DeviceKit
+    - IQKeyboardManagerSwift
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+  https://github.com/trusttechnologies/auditpodspecs.git:
+    - Audit
+  https://github.com/trusttechnologies/TrustDeviceInfoPodSpecs.git:
+    - TrustDeviceInfo
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  Audit: b842f1b65904024b0942dc46b9b9daa92ab94379
+  DeviceKit: 72d36709552d4b3582abd76a53949148acad9811
+  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
+  MaterialComponents: 5a7610b21224bebf35427f39c6fa058e9bfdd10c
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
+  TrustDeviceInfo: bca32888b22967f0a29853ed28da06cbcf20a299
+
+PODFILE CHECKSUM: 2101c1d1a2224692e1d1f1c0e965fb66249f3ef8
+
+COCOAPODS: 1.7.5
