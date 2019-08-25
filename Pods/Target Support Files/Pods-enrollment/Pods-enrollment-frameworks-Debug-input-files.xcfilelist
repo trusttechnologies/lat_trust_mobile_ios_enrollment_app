@@ -11,3 +11,4 @@ ${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/TrustDeviceInfo/TrustDeviceInfo.framework
+${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework

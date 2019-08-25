@@ -115,6 +115,7 @@ PODS:
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
   - ObjectMapper (3.5.1)
+  - p2.OAuth2 (5.0.0)
   - Realm (3.17.3):
     - Realm/Headers (= 3.17.3)
   - Realm/Headers (3.17.3)
@@ -135,6 +136,7 @@ DEPENDENCIES:
   - "MaterialComponents/Buttons+ButtonThemer"
   - "MaterialComponents/Snackbar+TypographyThemer"
   - MaterialComponents/TextFields
+  - p2.OAuth2
   - RealmSwift
   - TrustDeviceInfo
 
@@ -148,6 +150,7 @@ SPEC REPOS:
     - MDFInternationalization
     - MDFTextAccessibility
     - ObjectMapper
+    - p2.OAuth2
     - Realm
     - RealmSwift
   https://github.com/trusttechnologies/auditpodspecs.git:
@@ -165,10 +168,11 @@ SPEC CHECKSUMS:
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  p2.OAuth2: 5d203b46c2857b4bbcca3e521089959e7b3b5a5c
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   TrustDeviceInfo: bca32888b22967f0a29853ed28da06cbcf20a299
 
-PODFILE CHECKSUM: 2101c1d1a2224692e1d1f1c0e965fb66249f3ef8
+PODFILE CHECKSUM: e558298bb062947c34b93b521f3b6d41541fb855
 
 COCOAPODS: 1.7.5
