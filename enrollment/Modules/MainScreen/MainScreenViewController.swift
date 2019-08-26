@@ -49,7 +49,7 @@ class MainScreenViewController: UIViewController {
     
     @IBOutlet weak var logoutButton: MDCButton! {
         didSet {
-            logoutButton.setupButtonWithType(type: .btnPrimary, mdcType: .contained)
+            logoutButton.setupButtonWithType(type: .btnSecondary, mdcType: .contained)
         }
     }
     

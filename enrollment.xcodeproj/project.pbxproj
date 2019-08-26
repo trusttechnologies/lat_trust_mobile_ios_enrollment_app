@@ -183,11 +183,11 @@
 		FE1BF3C7230C518D004EEFEB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				FEEA7F8D2311E23700FE93F7 /* WelcomeScreen */,
-				FE7796B4230DDCEE00FFFEAC /* MainScreen */,
 				FE1BF3E1230C8FBC004EEFEB /* LaunchScreen */,
-				FE1BF3D6230C5D59004EEFEB /* SesionMenu */,
 				FE1BF3C8230C51BA004EEFEB /* Splash */,
+				FE1BF3D6230C5D59004EEFEB /* SesionMenu */,
+				FE7796B4230DDCEE00FFFEAC /* MainScreen */,
+				FEEA7F8D2311E23700FE93F7 /* WelcomeScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

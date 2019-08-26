@@ -23,6 +23,7 @@ class SesionMenuViewController: UIViewController {
     }
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorBackground: UIView!
     
     var presenter: SesionMenuPresenterProtocol?
 }
@@ -31,6 +32,7 @@ class SesionMenuViewController: UIViewController {
 extension SesionMenuViewController: SesionMenuViewProtocol {
     func startActivityIndicator() {
         activityIndicator.startAnimating()
+        activityIndicatorBackground.show()
     }
     
     func stopActivityIndicator() {

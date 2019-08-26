@@ -13,13 +13,13 @@ class SesionMenuPresenter: SesionMenuPresenterProtocol {
     var router: SesionMenuRouterProtocol?
     
     func onLoginButtonPressed(from context: AnyObject) {
+        view?.startActivityIndicator()
         interactor?.authorizeUser(from: context)
     }
 }
 
 extension SesionMenuPresenter: SesionMenuInteractorOutput {
     func onAuthorizeSuccess() {
-        view?.startActivityIndicator()
         interactor?.getUserProfile()
     }
     
@@ -32,7 +32,8 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     }
     
     func onGetUserProfileSuccess() {
-        router?.goToWelcomeScreen()
+        router?.goToMainScreen()
+//        router?.goToWelcomeScreen()
     }
     
     func onGetUserProfileFailure(with errorMessage: String) {

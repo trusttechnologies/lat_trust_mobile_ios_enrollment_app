@@ -47,14 +47,14 @@ class SesionMenuRouter: SesionMenuRouterProtocol {
         viewController?.present(mainScreenVC, animated: true)
     }
     
-    func presentAlertView(with errorMessage: String) {
-        viewController?.presentAlertView(type: .customMessage(message: errorMessage))
-    }
-    
     func goToWelcomeScreen() {
         let welcomeScreenVC = WelcomeScreenRouter.createModule(delegate: self)
         
         viewController?.present(welcomeScreenVC, animated: true)
+    }
+    
+    func presentAlertView(with errorMessage: String) {
+        viewController?.presentAlertView(type: .customMessage(message: errorMessage))
     }
 }
 
