@@ -60,6 +60,7 @@
 		FEEA7F952311E2A000FE93F7 /* WelcomeScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */; };
 		FEEA7F972311E2AE00FE93F7 /* WelcomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */; };
 		FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */; };
+		FEEA7F9B23132B7C00FE93F7 /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenProtocols.swift; sourceTree = "<group>"; };
 		FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenRouter.swift; sourceTree = "<group>"; };
 		FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 		FE1BF3C8230C51BA004EEFEB /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */,
 				FE1BF3CF230C5212004EEFEB /* SplashPresenter.swift */,
 				FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */,
 				FE1BF3C9230C51DA004EEFEB /* SplashRouter.swift */,
@@ -323,12 +326,12 @@
 		FEEA7F8D2311E23700FE93F7 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FEEA7F8E2311E25600FE93F7 /* WelcomeScreen.storyboard */,
 				FEEA7F902311E27100FE93F7 /* WelcomeScreenInteractor.swift */,
 				FEEA7F922311E28100FE93F7 /* WelcomeScreenPresenter.swift */,
 				FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */,
 				FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */,
 				FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */,
+				FEEA7F8E2311E25600FE93F7 /* WelcomeScreen.storyboard */,
 			);
 			path = WelcomeScreen;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */,
 				FE1BF3FD230DADCD004EEFEB /* Responses.swift in Sources */,
 				FE1BF3FF230DCB82004EEFEB /* RealmRepo.swift in Sources */,
+				FEEA7F9B23132B7C00FE93F7 /* SplashInteractor.swift in Sources */,
 				FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */,
 				FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */,
 				FE1BF3D0230C5212004EEFEB /* SplashPresenter.swift in Sources */,

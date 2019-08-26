@@ -8,6 +8,30 @@
 
 import UIKit
 
+// MARK: - Interactor
+protocol SplashInteractorProtocol: AnyObject {
+    var interactorOutput: SplashInteractorOutput? {get set}
+    
+    var oauth2Manager: OAuth2ManagerProtocol? {get set}
+    var userDataManager: UserDataManagerProtocol? {get set}
+    
+    func checkIfUserHasLoggedIn()
+    func authorize(from context: AnyObject)
+//    func updateFirebaseToken()
+    func cleanData()
+}
+
+// MARK: - InteractorOutput
+protocol SplashInteractorOutput: AnyObject {
+    func onUserHasLoggedInSuccess()
+    func onUserHasLoggedInFailure()
+    
+    func onAuthorizeSuccess()
+    func onAuthorizeFailure()
+    
+    func onDataCleaned()
+}
+
 // MARK: - View
 protocol SplashViewProtocol: AnyObject {}
 

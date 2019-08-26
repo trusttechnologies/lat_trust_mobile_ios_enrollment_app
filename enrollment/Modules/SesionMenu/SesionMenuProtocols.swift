@@ -9,7 +9,10 @@
 import UIKit
 
 // MARK: - View
-protocol SesionMenuViewProtocol: AnyObject {}
+protocol SesionMenuViewProtocol: AnyObject {
+    func startActivityIndicator()
+    func stopActivityIndicator()
+}
 
 // MARK: - Interactor
 protocol SesionMenuInteractorProtocol: AnyObject {
@@ -50,5 +53,6 @@ protocol SesionMenuRouterProtocol: AnyObject {
     static func createModule() -> SesionMenuViewController
     
     func goToMainScreen()
+    func goToWelcomeScreen()
     func presentAlertView(with errorMessage: String)
 }

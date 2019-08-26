@@ -22,11 +22,21 @@ class SesionMenuViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var presenter: SesionMenuPresenterProtocol?
 }
 
 // MARK: - View
-extension SesionMenuViewController: SesionMenuViewProtocol {}
+extension SesionMenuViewController: SesionMenuViewProtocol {
+    func startActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+    }
+}
 
 // MARK: - Buttons targets
 extension SesionMenuViewController {

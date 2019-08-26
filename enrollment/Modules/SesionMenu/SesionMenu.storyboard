@@ -80,6 +80,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zqO-h4-DGA" userLabel="activityIndicator">
+                                <rect key="frame" x="167.66666666666666" y="386" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="S8c-im-i3r"/>
+                                    <constraint firstAttribute="height" constant="40" id="xgd-g4-IsW"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -89,12 +96,15 @@
                             <constraint firstItem="HZH-eN-XVI" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="YQ2-39-8cr"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="V7F-Sw-gz7" secondAttribute="trailing" constant="16" id="bYY-cm-jO0"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="104" id="cy1-l9-tXS"/>
+                            <constraint firstItem="zqO-h4-DGA" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="pmY-Jf-DPf"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="bottom" secondItem="HZH-eN-XVI" secondAttribute="bottom" constant="24" id="qJ2-jD-y8c"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="srV-g7-W1m"/>
+                            <constraint firstItem="zqO-h4-DGA" firstAttribute="centerY" secondItem="RpP-e3-LDv" secondAttribute="centerY" id="w2i-eW-4wI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jex-U0-h2k"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="zqO-h4-DGA" id="VEG-nY-qSK"/>
                         <outlet property="loginButton" destination="foQ-iD-JlR" id="7n5-i6-jbX"/>
                     </connections>
                 </viewController>

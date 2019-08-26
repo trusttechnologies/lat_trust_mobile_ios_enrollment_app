@@ -19,7 +19,7 @@ class SesionMenuPresenter: SesionMenuPresenterProtocol {
 
 extension SesionMenuPresenter: SesionMenuInteractorOutput {
     func onAuthorizeSuccess() {
-//        view?.startActivityIndicator()
+        view?.startActivityIndicator()
         interactor?.getUserProfile()
     }
     
@@ -28,11 +28,11 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     }
     
     func onGetUserProfileResponse() {
-//        view?.stopActivityIndicator()
+        view?.stopActivityIndicator()
     }
     
     func onGetUserProfileSuccess() {
-//        router?.goToWelcomeScreen()
+        router?.goToWelcomeScreen()
     }
     
     func onGetUserProfileFailure(with errorMessage: String) {
@@ -46,6 +46,4 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     func onMissingInfoFromRetrievedProfile() {
 //        router?.goToUserDataRequestScreen()
     }
-    
-    
 }
