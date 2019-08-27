@@ -16,6 +16,7 @@ protocol ProfileDataSource {
     var gender: Gender? {get}
 }
 
+/*
 // MARK: AuditDetailDataSource
 protocol AuditDetailDataSource {
     var id: String? {get}
@@ -29,15 +30,14 @@ protocol AuditDetailDataSource {
     var operatorName: String? {get}
     var operatorDNI: String? {get}
 }
+*/
 
 class MainScreenViewController: UIViewController {
-
-    // MARK: - ProfileBottomSheetView
-    var isProfileBottomSheetOpened = false
     
     var presenter: MainScreenPresenterProtocol?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rutLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var profileDataSource: ProfileDataSource? {
         didSet {
@@ -50,13 +50,26 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var logoutButton: MDCButton! {
         didSet {
             logoutButton.setupButtonWithType(type: .btnSecondary, mdcType: .contained)
+            
+            logoutButton.addTarget(
+                self,
+                action: #selector(onLogoutButtonPressed(sender:)),
+                for: .touchUpInside
+            )
         }
     }
-    
 }
 
 // MARK: - View
 extension MainScreenViewController: MainScreenViewProtocol {
+    func startActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+    }
+    
     func set(profileDataSource: ProfileDataSource?) {
         self.profileDataSource = profileDataSource
     }
@@ -65,23 +78,20 @@ extension MainScreenViewController: MainScreenViewProtocol {
 // MARK: - Buttons targets
 extension MainScreenViewController {
     @objc func onLogoutButtonPressed(sender: UIButton) {
-        closeProfileBottomSheet() {
-            [weak self] in
-            
-            guard let self = self else {
-                return
-            }
-            
-            self.presenter?.onLogoutButtonPressed()
-        }
+        self.presenter?.onLogoutButtonPressed()
     }
 }
 
-// MARK: - Profile Bottom Sheet Methods
+
+// MARK: - Lifecycle
 extension MainScreenViewController {
-    func closeProfileBottomSheet(completion: CompletionHandler = nil) {
-        guard isProfileBottomSheetOpened else {
-            return
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter?.onViewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.onViewWillAppear()
     }
 }

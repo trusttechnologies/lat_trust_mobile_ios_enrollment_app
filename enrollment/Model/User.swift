@@ -110,7 +110,9 @@ extension User: WelcomeScreenDataSource {
 // MARK: - ProfileDataSource
 extension User: ProfileDataSource {
     var name: String? {
+//        return "\(givenName ?? .empty) \(familyName ?? .empty) \(middleName ?? .empty)"
         return "\(givenName ?? .empty) \(familyName ?? .empty) \(middleName ?? .empty)"
+
     }
     
     var rut: String? {
@@ -125,7 +127,8 @@ extension User: ProfileDataSource {
         return Gender(rawValue: genderAsString)
     }
 }
-/*
+
+/* Create user
 // MARK: - UserDataRequestDataSource
 extension User: UserDataRequestViewModel {
     var names: String? {

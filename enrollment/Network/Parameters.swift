@@ -38,7 +38,7 @@ struct LogoutParameters: Parameterizable {
         return [
             "session_id": sessionID,
             "session_state": sessionState,
-            "post_logout_redirect_uri": "trust.app://logout.id"
+            "post_logout_redirect_uri": "trust.enrollment.app://logout.id"
         ]
     }
 }

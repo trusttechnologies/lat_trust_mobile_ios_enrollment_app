@@ -23,40 +23,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoEnrollment" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-12-mSZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoEnrollment" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-12-mSZ" userLabel="{headerEnrollmentLogoImage}">
                                 <rect key="frame" x="115.66666666666669" y="148" width="144" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="34o-hI-piF"/>
                                     <constraint firstAttribute="width" constant="144" id="a4v-QI-dfV"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-eN-XVI">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-eN-XVI" userLabel="{inTopItemsStackView}">
                                 <rect key="frame" x="156.66666666666666" y="711" width="62" height="43"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powerd by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dW-ey-xHH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powerd by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dW-ey-xHH" userLabel="{poweredByLabel}">
                                         <rect key="frame" x="0.0" y="0.0" width="62" height="12"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                                         <color key="textColor" red="0.58039215690000001" green="0.61176470589999998" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trustLogo" translatesAutoresizingMaskIntoConstraints="NO" id="v1f-r1-Gnd">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trustLogo" translatesAutoresizingMaskIntoConstraints="NO" id="v1f-r1-Gnd" userLabel="{bottomTrustLogoImage}">
                                         <rect key="frame" x="0.0" y="20" width="62" height="23"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="V7F-Sw-gz7">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="V7F-Sw-gz7" userLabel="{inCenterItemsStackView}">
                                 <rect key="frame" x="16" y="364" width="343" height="169.66666666666663"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LOf-t2-dKc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LOf-t2-dKc" userLabel="{inCenterLabelStackView}">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="57.666666666666664"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APW-SB-yk8" userLabel="welcomeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APW-SB-yk8" userLabel="{welcomeLabel}">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="33"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="28"/>
                                                 <color key="textColor" red="0.58039215686274503" green="0.61176470588235299" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingresa a Enrollment utilizando itrust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-4m-O2D">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingresa a Enrollment utilizando itrust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-4m-O2D" userLabel="{useEnrollmentLabel}">
                                                 <rect key="frame" x="0.0" y="41" width="343" height="16.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" red="0.58039215690000001" green="0.61176470589999998" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,10 +64,10 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84Z-0o-kP0">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84Z-0o-kP0" userLabel="{inCenterButtonsStackView}">
                                         <rect key="frame" x="0.0" y="113.66666666666669" width="343" height="56"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foQ-iD-JlR" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foQ-iD-JlR" userLabel="{loginUseItrustButton}" customClass="MDCButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
                                                 <color key="backgroundColor" red="0.28680321574211121" green="0.57901984453201294" blue="0.92552894353866577" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -80,16 +80,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3U-2B-thZ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3U-2B-thZ" userLabel="{grayScreenActivityIndicatorView}">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zqO-h4-DGA" userLabel="activityIndicator">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zqO-h4-DGA" userLabel="{activityIndicator}">
                                         <rect key="frame" x="177.66666666666666" y="374" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zqO-h4-DGA" firstAttribute="centerY" secondItem="i3U-2B-thZ" secondAttribute="centerY" id="19z-FN-iYl"/>
+                                    <constraint firstItem="zqO-h4-DGA" firstAttribute="centerY" secondItem="i3U-2B-thZ" secondAttribute="centerY" constant="-22" id="19z-FN-iYl"/>
                                     <constraint firstItem="zqO-h4-DGA" firstAttribute="centerX" secondItem="i3U-2B-thZ" secondAttribute="centerX" id="KVH-xL-jZL"/>
                                 </constraints>
                             </view>
@@ -108,7 +108,7 @@
                             <constraint firstAttribute="bottom" secondItem="i3U-2B-thZ" secondAttribute="bottom" id="k1S-g0-Kl7"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="bottom" secondItem="HZH-eN-XVI" secondAttribute="bottom" constant="24" id="qJ2-jD-y8c"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="srV-g7-W1m"/>
-                            <constraint firstItem="i3U-2B-thZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" id="yFH-IC-rkp"/>
+                            <constraint firstItem="i3U-2B-thZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="-44" id="yFH-IC-rkp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jex-U0-h2k"/>
                     </view>

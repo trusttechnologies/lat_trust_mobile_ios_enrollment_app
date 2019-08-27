@@ -10,51 +10,31 @@ import UIKit
 
 // MARK: - View
 protocol MainScreenViewProtocol: AnyObject {
-//    func openTransactionDetailBottomSheet(with receivedAuditID: String)
-//    func closeTransactionDetailBottomSheet(completion: CompletionHandler)
-//    func startActivityIndicator()
-//    func stopActivityIndicator()
-//    func stopRefresher()
+    func startActivityIndicator()
+    func stopActivityIndicator()
     
     func set(profileDataSource: ProfileDataSource?)
-//    func set(auditsDataSource: [AuditCellDataSource & AuditDetailDataSource]?)
 }
 
 // MARK: - Interactor
 protocol MainScreenInteractorProtocol: AnyObject {
     var interactorOutput: MainScreenInteractorOutput? {get set}
     
-//    var firebaseTokenManager: FirebaseTokenManagerProtocol? {get set}
     var userDataManager: UserDataManagerProtocol? {get set}
     
     func getProfileDataSource()
-//    func getAuditsDataSource()
     
-//    func getAudits()
-//    func reportAuditUsing(auditID: String)
     func performLogout()
     func cleanData()
-//    func clearFirebaseToken()
 }
 
 // MARK: - InteractorOutput
 protocol MainScreenInteractorOutput: AnyObject {
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?)
-//    func onGetAuditsDataSourceOutput(dataSource: [AuditCellDataSource & AuditDetailDataSource]?)
-    
-//    func onGetAuditsResponse()
-//    func onGetAuditsSuccess()
-//    func onGetAuditsFailure()
-    
-//    func onReportAuditResponse()
-//    func onReportAuditSuccess()
-//    func onReportAuditFailure(with errorMessage: String)
     
     func onLogoutPerformed()
     
     func onCleanedData()
-    
-//    func onClearedFirebaseToken()
 }
 
 // MARK: - Presenter
@@ -69,7 +49,6 @@ protocol MainScreenPresenterProtocol: AnyObject {
     func onRefreshControlPulled()
     
     func onLogoutButtonPressed()
-//    func onReportActivityButtonPressed(with auditID: String)
     
     func onNotificationReceived(with auditID: String)
 }

@@ -23,11 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1O-ye-Fqk">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1O-ye-Fqk" userLabel="{topBarView}">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L89-Om-zHl" userLabel="{nameLabel}">
-                                        <rect key="frame" x="8" y="126" width="158" height="38"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L89-Om-zHl" userLabel="{nameLabel}">
+                                        <rect key="frame" x="16" y="118.5" width="390" height="37.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -35,9 +35,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="V1O-ye-Fqk" secondAttribute="height" multiplier="207:64" constant="-142.3125" id="4AD-Jv-gLx"/>
-                                    <constraint firstAttribute="bottom" secondItem="L89-Om-zHl" secondAttribute="bottom" constant="8" id="msV-n2-QAW"/>
-                                    <constraint firstItem="L89-Om-zHl" firstAttribute="leading" secondItem="V1O-ye-Fqk" secondAttribute="leading" constant="8" id="wn6-WN-NeD"/>
+                                    <constraint firstAttribute="width" secondItem="V1O-ye-Fqk" secondAttribute="height" multiplier="207:64" constant="-142.31" id="4AD-Jv-gLx"/>
+                                    <constraint firstAttribute="trailing" secondItem="L89-Om-zHl" secondAttribute="trailing" constant="8" id="BdX-az-QXQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="L89-Om-zHl" secondAttribute="bottom" constant="16" id="msV-n2-QAW"/>
+                                    <constraint firstItem="L89-Om-zHl" firstAttribute="leading" secondItem="V1O-ye-Fqk" secondAttribute="leading" constant="16" id="wn6-WN-NeD"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPI-mZ-hUs" userLabel="{logoutButton}" customClass="MDCButton">
@@ -47,26 +48,87 @@
                                 </constraints>
                                 <state key="normal" title="Cerrar Sesion"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoEnrollment2" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-E4-os1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoEnrollment2" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-E4-os1" userLabel="{bottomEnrollmentLogoImage}">
                                 <rect key="frame" x="87" y="847" width="240" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feX-3a-mev">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feX-3a-mev" userLabel="{userInfoContentView}">
                                 <rect key="frame" x="16" y="188" width="382" height="373"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rutLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjN-nn-fIh" userLabel="{rutLabel}">
-                                        <rect key="frame" x="66" y="65" width="63" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="kza-MT-gIm" userLabel="{trustIdDataStackView}">
+                                        <rect key="frame" x="24" y="111.5" width="334" height="39.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trustIdIcon" translatesAutoresizingMaskIntoConstraints="NO" id="TPk-5P-IXb" userLabel="{trustIdIcon}">
+                                                <rect key="frame" x="0.0" y="8" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="Kbm-ih-ySQ"/>
+                                                    <constraint firstAttribute="height" constant="24" id="gHY-Nd-0nE"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rSq-bA-QEE" userLabel="{trustIdTextsStackView}">
+                                                <rect key="frame" x="48" y="0.0" width="286" height="39.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrustID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvt-Uz-Epx" userLabel="{trustIdLabel}">
+                                                        <rect key="frame" x="0.0" y="0.0" width="286" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-oO-lc3" userLabel="{trustIdTextLabel}">
+                                                        <rect key="frame" x="0.0" y="23" width="286" height="16.5"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" white="0.54000000000000004" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="75F-d7-9FP" userLabel="{rutDataStackView}">
+                                        <rect key="frame" x="24" y="24" width="334" height="39.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-iv-dEL" userLabel="{personIcon}">
+                                                <rect key="frame" x="0.0" y="8" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="cEZ-za-2gJ"/>
+                                                    <constraint firstAttribute="height" constant="24" id="oOv-jV-Yjs"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gBd-KY-vXJ" userLabel="rutStackView">
+                                                <rect key="frame" x="48" y="0.0" width="286" height="39.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rutLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjN-nn-fIh" userLabel="{rutNumberLabel}">
+                                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYk-cT-UN9" userLabel="{rutTextLabel}">
+                                                        <rect key="frame" x="0.0" y="23" width="22" height="16.5"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" white="0.54000000000000004" alpha="0.84705882352941175" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="kza-MT-gIm" firstAttribute="leading" secondItem="feX-3a-mev" secondAttribute="leading" constant="24" id="336-QT-zE8"/>
+                                    <constraint firstAttribute="trailing" secondItem="kza-MT-gIm" secondAttribute="trailing" constant="24" id="Anf-l2-7l1"/>
                                     <constraint firstAttribute="width" secondItem="feX-3a-mev" secondAttribute="height" multiplier="382:575" constant="134.19826086956522" id="PEI-rc-pAS"/>
+                                    <constraint firstItem="kza-MT-gIm" firstAttribute="top" secondItem="75F-d7-9FP" secondAttribute="bottom" constant="48" id="Rl8-XE-Aqc"/>
+                                    <constraint firstItem="75F-d7-9FP" firstAttribute="top" secondItem="feX-3a-mev" secondAttribute="top" constant="24" id="VaG-ou-Cwx"/>
+                                    <constraint firstItem="75F-d7-9FP" firstAttribute="leading" secondItem="feX-3a-mev" secondAttribute="leading" constant="24" id="fio-IU-pjd"/>
+                                    <constraint firstAttribute="trailing" secondItem="75F-d7-9FP" secondAttribute="trailing" constant="24" id="yg5-pz-0ca"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mY3-g1-lDg" userLabel="{activityIndicatorMain}">
+                                <rect key="frame" x="197" y="674" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686918497085571" green="0.9568513035774231" blue="0.95686346292495728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -83,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="k0J-VM-UcK"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="mY3-g1-lDg" id="rHQ-DR-m76"/>
                         <outlet property="logoutButton" destination="yPI-mZ-hUs" id="hUa-hy-02a"/>
                         <outlet property="nameLabel" destination="L89-Om-zHl" id="PuH-un-God"/>
                         <outlet property="rutLabel" destination="FjN-nn-fIh" id="xSd-Ix-Js9"/>
@@ -95,5 +158,7 @@
     </scenes>
     <resources>
         <image name="logoEnrollment2" width="72" height="15"/>
+        <image name="personIcon" width="32" height="32"/>
+        <image name="trustIdIcon" width="40" height="36"/>
     </resources>
 </document>

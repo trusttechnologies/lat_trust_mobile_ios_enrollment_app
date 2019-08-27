@@ -20,7 +20,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     }
     
     func onViewWillAppear() {
-//        view?.startActivityIndicator()
+        view?.startActivityIndicator()
 //        interactor?.getAudits()
     }
     
@@ -29,33 +29,9 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     }
     
     func onLogoutButtonPressed() {
-//        view?.startActivityIndicator()
+        view?.startActivityIndicator()
         interactor?.performLogout()
     }
-    
-   /* func onReportActivityButtonPressed(with auditID: String) {
-        router?.presentAlertView(
-            with: .reportActivityQuestion,
-            acceptAction: {
-                [weak self] _ in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                self.view?.startActivityIndicator()
-                self.interactor?.reportAuditUsing(auditID: auditID)
-            }, cancelAction: {
-                [weak self] _ in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                self.view?.closeTransactionDetailBottomSheet(completion: nil)
-            }
-        )
-    }*/
     
     func onNotificationReceived(with auditID: String) {
 //        receivedAuditID = auditID
@@ -68,89 +44,15 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 // MARK: - InteractorOutput
 extension MainScreenPresenter: MainScreenInteractorOutput {
     func onLogoutPerformed() {
-        //TODO
+        //NOTHING
     }
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {
         view?.set(profileDataSource: datasource)
     }
     
-    /*func onGetAuditsDataSourceOutput(dataSource: [AuditCellDataSource & AuditDetailDataSource]?) {
-        view?.set(auditsDataSource: dataSource)
-        
-        guard let receivedAuditID = receivedAuditID else {
-            return
-        }
-        
-        view?.openTransactionDetailBottomSheet(with: receivedAuditID)
-        
-        self.receivedAuditID = nil
-    }
-    
-    func onReportAuditResponse() {
-        view?.stopActivityIndicator()
-    }
-    
-    func onReportAuditSuccess() {
-        interactor?.getAudits()
-        
-        router?.presentAlertView(
-            with: .successfulReport,
-            acceptAction: {
-                [weak self] _ in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                self.view?.closeTransactionDetailBottomSheet(completion: nil)
-            }, cancelAction: nil
-        )
-    }
-    
-    func onReportAuditFailure(with errorMessage: String) {
-        router?.presentAlertView(
-            with: errorMessage,
-            acceptAction: {
-                [weak self] _ in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                self.view?.closeTransactionDetailBottomSheet(completion: nil)
-                
-            }, cancelAction: nil
-        )
-    }
-    
-    func onGetAuditsResponse() {
-        view?.stopRefresher()
-        view?.stopActivityIndicator()
-    }
-    
-    func onGetAuditsSuccess() {
-        interactor?.getAuditsDataSource()
-    }
-    
-    func onGetAuditsFailure() {
-        router?.presentAlertView(
-            with: .defaultAlertMessage,
-            acceptAction: nil,
-            cancelAction: nil
-        )
-    }
-    
-    func onLogoutPerformed() {
-        interactor?.clearFirebaseToken()
-    }
-    
-    func onClearedFirebaseToken() {
-        interactor?.cleanData()
-    }*/
-    
     func onCleanedData() {
-//        view?.stopActivityIndicator()
+        view?.stopActivityIndicator()
         router?.goToMainScreen()
     }
 }
