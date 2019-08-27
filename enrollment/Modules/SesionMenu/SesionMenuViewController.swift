@@ -37,6 +37,7 @@ extension SesionMenuViewController: SesionMenuViewProtocol {
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
+        activityIndicatorBackground.hide()
     }
 }
 

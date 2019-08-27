@@ -16,6 +16,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     
     func onViewDidLoad() {
         interactor?.getProfileDataSource()
+//        interactor?.getTrustIdDataSource()
 //        interactor?.getAuditsDataSource()
     }
     
@@ -44,7 +45,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 // MARK: - InteractorOutput
 extension MainScreenPresenter: MainScreenInteractorOutput {
     func onLogoutPerformed() {
-        //NOTHING
+        router?.dismiss()
     }
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {

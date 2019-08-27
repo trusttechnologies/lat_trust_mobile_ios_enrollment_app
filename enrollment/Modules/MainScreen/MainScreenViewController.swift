@@ -42,7 +42,7 @@ class MainScreenViewController: UIViewController {
     var profileDataSource: ProfileDataSource? {
         didSet {
             guard let dataSource = profileDataSource else { return }
-            nameLabel.text = dataSource.name
+            nameLabel.text = dataSource.name?.capitalized
             rutLabel.text = dataSource.rut
         }
     }

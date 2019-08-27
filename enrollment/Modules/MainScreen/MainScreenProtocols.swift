@@ -24,6 +24,8 @@ protocol MainScreenInteractorProtocol: AnyObject {
     
     func getProfileDataSource()
     
+    func getTrustIdDataSource()
+    
     func performLogout()
     func cleanData()
 }
@@ -56,7 +58,9 @@ protocol MainScreenPresenterProtocol: AnyObject {
 // MARK: - Router
 protocol MainScreenRouterProtocol: AnyObject {
     var viewController: UIViewController? {get set}
-    
+    var delegate: MainScreenRouterDelegate? {get set}
+    func dismiss()
+
     static func createModule() -> MainScreenViewController
     func goToMainScreen()
     func presentAlertView(with message: String, acceptAction: ((UIAlertAction) -> Void)?, cancelAction: ((UIAlertAction) -> Void)?)

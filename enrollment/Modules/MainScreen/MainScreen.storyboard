@@ -40,20 +40,21 @@
                                     <constraint firstAttribute="bottom" secondItem="L89-Om-zHl" secondAttribute="bottom" constant="16" id="msV-n2-QAW"/>
                                     <constraint firstItem="L89-Om-zHl" firstAttribute="leading" secondItem="V1O-ye-Fqk" secondAttribute="leading" constant="16" id="wn6-WN-NeD"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPI-mZ-hUs" userLabel="{logoutButton}" customClass="MDCButton">
-                                <rect key="frame" x="16" y="577" width="382" height="56"/>
+                                <rect key="frame" x="16" y="759" width="382" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="hnZ-NZ-ut8"/>
                                 </constraints>
                                 <state key="normal" title="Cerrar Sesion"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoEnrollment2" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-E4-os1" userLabel="{bottomEnrollmentLogoImage}">
-                                <rect key="frame" x="87" y="847" width="240" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feX-3a-mev" userLabel="{userInfoContentView}">
-                                <rect key="frame" x="16" y="188" width="382" height="373"/>
+                                <rect key="frame" x="16" y="188" width="382" height="185"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="kza-MT-gIm" userLabel="{trustIdDataStackView}">
                                         <rect key="frame" x="24" y="111.5" width="334" height="39.5"/>
@@ -118,28 +119,39 @@
                                 <constraints>
                                     <constraint firstItem="kza-MT-gIm" firstAttribute="leading" secondItem="feX-3a-mev" secondAttribute="leading" constant="24" id="336-QT-zE8"/>
                                     <constraint firstAttribute="trailing" secondItem="kza-MT-gIm" secondAttribute="trailing" constant="24" id="Anf-l2-7l1"/>
-                                    <constraint firstAttribute="width" secondItem="feX-3a-mev" secondAttribute="height" multiplier="382:575" constant="134.19826086956522" id="PEI-rc-pAS"/>
+                                    <constraint firstAttribute="width" secondItem="feX-3a-mev" secondAttribute="height" multiplier="382:575" constant="259.09565217391304" id="PEI-rc-pAS"/>
                                     <constraint firstItem="kza-MT-gIm" firstAttribute="top" secondItem="75F-d7-9FP" secondAttribute="bottom" constant="48" id="Rl8-XE-Aqc"/>
                                     <constraint firstItem="75F-d7-9FP" firstAttribute="top" secondItem="feX-3a-mev" secondAttribute="top" constant="24" id="VaG-ou-Cwx"/>
                                     <constraint firstItem="75F-d7-9FP" firstAttribute="leading" secondItem="feX-3a-mev" secondAttribute="leading" constant="24" id="fio-IU-pjd"/>
                                     <constraint firstAttribute="trailing" secondItem="75F-d7-9FP" secondAttribute="trailing" constant="24" id="yg5-pz-0ca"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mY3-g1-lDg" userLabel="{activityIndicatorMain}">
                                 <rect key="frame" x="197" y="674" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoEnrollment2" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-E4-os1" userLabel="{bottomEnrollmentLogoImage}">
+                                <rect key="frame" x="87" y="831" width="240" height="15"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686918497085571" green="0.9568513035774231" blue="0.95686346292495728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" id="1nz-aB-zbr"/>
+                            <constraint firstItem="k0J-VM-UcK" firstAttribute="bottom" secondItem="fmt-E4-os1" secondAttribute="bottom" constant="16" id="5sd-kV-GcA"/>
                             <constraint firstItem="k0J-VM-UcK" firstAttribute="trailing" secondItem="feX-3a-mev" secondAttribute="trailing" constant="16" id="8qv-oE-WaA"/>
                             <constraint firstItem="yPI-mZ-hUs" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" constant="16" id="CW0-L4-Zli"/>
+                            <constraint firstItem="fmt-E4-os1" firstAttribute="top" secondItem="yPI-mZ-hUs" secondAttribute="bottom" constant="16" id="FrM-gJ-sPe"/>
                             <constraint firstItem="feX-3a-mev" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" constant="16" id="Wih-gV-9m7"/>
-                            <constraint firstItem="yPI-mZ-hUs" firstAttribute="top" secondItem="feX-3a-mev" secondAttribute="bottom" constant="16" id="XJs-xd-e7m"/>
+                            <constraint firstItem="fmt-E4-os1" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" constant="87" id="Wjv-VA-Jq2"/>
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="top" secondItem="k0J-VM-UcK" secondAttribute="top" constant="-44" id="Xi8-wK-TD5"/>
                             <constraint firstItem="k0J-VM-UcK" firstAttribute="trailing" secondItem="yPI-mZ-hUs" secondAttribute="trailing" constant="16" id="YGD-sf-VHM"/>
                             <constraint firstItem="feX-3a-mev" firstAttribute="top" secondItem="V1O-ye-Fqk" secondAttribute="bottom" constant="16" id="jYL-ew-9l8"/>
+                            <constraint firstItem="k0J-VM-UcK" firstAttribute="trailing" secondItem="fmt-E4-os1" secondAttribute="trailing" constant="87" id="kke-89-5Vw"/>
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="trailing" secondItem="k0J-VM-UcK" secondAttribute="trailing" id="zzH-QZ-hgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k0J-VM-UcK"/>

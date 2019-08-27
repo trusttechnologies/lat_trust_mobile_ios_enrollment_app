@@ -42,11 +42,18 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
 
 //    var firebaseTokenManager: FirebaseTokenManagerProtocol?
     var userDataManager: UserDataManagerProtocol?
+    var trustIdDataManager: TrustIdDataManagerProtocol?
     
     func getProfileDataSource() {
         let profileDataSource = userDataManager?.getUser()
         
         interactorOutput?.onGetProfileDataSourceOutput(datasource: profileDataSource)
+    }
+    
+    func getTrustIdDataSource() {
+//        let trustIdDataSource = TrustIdDataManager?.getTrustID()
+        
+        
     }
     
     func cleanData() {

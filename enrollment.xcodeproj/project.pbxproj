@@ -61,6 +61,7 @@
 		FEEA7F972311E2AE00FE93F7 /* WelcomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */; };
 		FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */; };
 		FEEA7F9B23132B7C00FE93F7 /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */; };
+		FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,8 @@
 		FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenRouter.swift; sourceTree = "<group>"; };
 		FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
+		FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustIdDataManager.swift; sourceTree = "<group>"; };
+		FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = enrollment.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,7 @@
 			children = (
 				FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */,
 				FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */,
+				FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -309,6 +313,7 @@
 		FEE29946230C40ED006DE4D5 /* enrollment */ = {
 			isa = PBXGroup;
 			children = (
+				FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */,
 				FE1BF3F3230DACE6004EEFEB /* OAuth2 */,
 				FE1BF3F0230DAC5D004EEFEB /* Network */,
 				FE1BF3ED230DABEE004EEFEB /* Model */,
@@ -370,6 +375,11 @@
 				TargetAttributes = {
 					FEE29943230C40ED006DE4D5 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -497,6 +507,7 @@
 				FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */,
 				FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */,
 				FE1BF3DA230C5D9B004EEFEB /* SesionMenuViewController.swift in Sources */,
+				FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */,
 				FE1BF3F9230DAD73004EEFEB /* OAuth2RetryHandler.swift in Sources */,
 				FE1BF3F7230DAD2B004EEFEB /* API.swift in Sources */,
 				FE1BF403230DCBFC004EEFEB /* Credential.swift in Sources */,
@@ -628,6 +639,7 @@
 			baseConfigurationReference = 8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
@@ -648,6 +660,7 @@
 			baseConfigurationReference = 6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;

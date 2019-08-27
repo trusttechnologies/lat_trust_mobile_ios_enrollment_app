@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol MainScreenRouterDelegate: AnyObject {
+    func onMainScreenDismissed()
+}
+
 // MARK: - Router
 class MainScreenRouter: MainScreenRouterProtocol {
     var viewController: UIViewController?
+    var delegate: MainScreenRouterDelegate?
     
     static func createModule() -> MainScreenViewController {
         
@@ -45,5 +50,17 @@ class MainScreenRouter: MainScreenRouterProtocol {
             acceptAction: acceptAction,
             cancelAction: cancelAction
         )
+    }
+    
+    func dismiss() {
+        viewController?.dismiss(animated: true) {
+            [weak self] in
+            
+            guard let self = self else {
+                return
+            }
+            
+            self.delegate?.onMainScreenDismissed()
+        }
     }
 }

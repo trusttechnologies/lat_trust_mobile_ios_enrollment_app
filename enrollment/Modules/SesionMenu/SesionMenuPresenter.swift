@@ -25,6 +25,8 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     
     func onAuthorizeFailure(with errorMessage: String) {
         router?.presentAlertView(with: errorMessage)
+        view?.stopActivityIndicator()
+
     }
     
     func onGetUserProfileResponse() {

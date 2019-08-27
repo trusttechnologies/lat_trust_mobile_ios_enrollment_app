@@ -8,19 +8,39 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import TrustDeviceInfo
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 }
 
-extension AppDelegate {
+extension AppDelegate: TrustDeviceInfoDelegate {
+    func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
+        //TODO
+    }
+    
+    func onTrustIDSaved(savedTrustID: String) {
+        print("Saved trust id was: \(savedTrustID)")
+    }
+    
+    func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {
+        //TODO
+    }
+    
+    func onSendDeviceInfoResponse(status: ResponseStatus) {
+        //TODO
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
         setInitialVC()
-
+        
+//        Identify.shared.trustDeviceInfoDelegate = self
+        Identify.shared.set(serviceName: "defaultServiceName", accessGroup: "P896AB2AMC.trustID.appLib")
+        Identify.shared.enable()
         return true
     }
     
