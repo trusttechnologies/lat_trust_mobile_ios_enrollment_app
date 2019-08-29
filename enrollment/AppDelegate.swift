@@ -71,18 +71,7 @@ extension AppDelegate: OAuth2ManagerOutputProtocol {
     
     func onAuthorizeFailure(with errorMessage: String) {}
     
-    func onSilentAuthorizeSuccess() {
-    /* guard UserDefaults.standard.bool(forKey: .hasBeenOpenedFromRemoteNotificationKey) else {
-     UserDefaults.standard.removeObject(forKey: .hasBeenOpenedFromRemoteNotificationKey)
-     UserDefaults.standard.removeObject(forKey: .auditIDKey)
-     return
-     }
-     
-     if let receivedAuditID = UserDefaults.standard.string(forKey: .auditIDKey) {
-     handleNotification(with: receivedAuditID)
-     UserDefaults.standard.removeObject(forKey: .auditIDKey)
-     }*/
-     }
+    func onSilentAuthorizeSuccess() {}
      
      func onSilentAuthorizeFailure() {}
 }

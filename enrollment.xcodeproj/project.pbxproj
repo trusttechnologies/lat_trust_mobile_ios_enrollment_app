@@ -55,12 +55,6 @@
 		FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */; };
 		FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE29947230C40ED006DE4D5 /* AppDelegate.swift */; };
 		FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE2994E230C40EE006DE4D5 /* Assets.xcassets */; };
-		FEEA7F8F2311E25600FE93F7 /* WelcomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA7F8E2311E25600FE93F7 /* WelcomeScreen.storyboard */; };
-		FEEA7F912311E27100FE93F7 /* WelcomeScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F902311E27100FE93F7 /* WelcomeScreenInteractor.swift */; };
-		FEEA7F932311E28100FE93F7 /* WelcomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F922311E28100FE93F7 /* WelcomeScreenPresenter.swift */; };
-		FEEA7F952311E2A000FE93F7 /* WelcomeScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */; };
-		FEEA7F972311E2AE00FE93F7 /* WelcomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */; };
-		FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */; };
 		FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,12 +111,6 @@
 		FEE29947230C40ED006DE4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEE2994E230C40EE006DE4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEE29953230C40EE006DE4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FEEA7F8E2311E25600FE93F7 /* WelcomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeScreen.storyboard; sourceTree = "<group>"; };
-		FEEA7F902311E27100FE93F7 /* WelcomeScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenInteractor.swift; sourceTree = "<group>"; };
-		FEEA7F922311E28100FE93F7 /* WelcomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenPresenter.swift; sourceTree = "<group>"; };
-		FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenProtocols.swift; sourceTree = "<group>"; };
-		FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenRouter.swift; sourceTree = "<group>"; };
-		FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustIdDataManager.swift; sourceTree = "<group>"; };
 		FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = enrollment.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +178,6 @@
 				FE1BF3C8230C51BA004EEFEB /* Splash */,
 				FE1BF3D6230C5D59004EEFEB /* SesionMenu */,
 				FE7796B4230DDCEE00FFFEAC /* MainScreen */,
-				FEEA7F8D2311E23700FE93F7 /* WelcomeScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -314,31 +301,18 @@
 			isa = PBXGroup;
 			children = (
 				FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */,
-				FE1BF3F3230DACE6004EEFEB /* OAuth2 */,
-				FE1BF3F0230DAC5D004EEFEB /* Network */,
-				FE1BF3ED230DABEE004EEFEB /* Model */,
-				FE1BF3E8230DABA2004EEFEB /* DataManagers */,
-				FEE2994E230C40EE006DE4D5 /* Assets.xcassets */,
 				FEE29953230C40EE006DE4D5 /* Info.plist */,
 				FEE29947230C40ED006DE4D5 /* AppDelegate.swift */,
+				FEE2994E230C40EE006DE4D5 /* Assets.xcassets */,
+				FE1BF3E8230DABA2004EEFEB /* DataManagers */,
 				FE1BF3AD230C4CCA004EEFEB /* Fonts */,
+				FE1BF3ED230DABEE004EEFEB /* Model */,
 				FE1BF3C7230C518D004EEFEB /* Modules */,
+				FE1BF3F0230DAC5D004EEFEB /* Network */,
+				FE1BF3F3230DACE6004EEFEB /* OAuth2 */,
 				FE1BF3D3230C55A6004EEFEB /* Utils */,
 			);
 			path = enrollment;
-			sourceTree = "<group>";
-		};
-		FEEA7F8D2311E23700FE93F7 /* WelcomeScreen */ = {
-			isa = PBXGroup;
-			children = (
-				FEEA7F902311E27100FE93F7 /* WelcomeScreenInteractor.swift */,
-				FEEA7F922311E28100FE93F7 /* WelcomeScreenPresenter.swift */,
-				FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */,
-				FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */,
-				FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */,
-				FEEA7F8E2311E25600FE93F7 /* WelcomeScreen.storyboard */,
-			);
-			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,7 +387,6 @@
 				FE1BF3C1230C4D1A004EEFEB /* Roboto-Regular.ttf in Resources */,
 				FE1BF3C2230C4D1A004EEFEB /* Roboto-Light.ttf in Resources */,
 				FE1BF3BF230C4D1A004EEFEB /* Roboto-BoldItalic.ttf in Resources */,
-				FEEA7F8F2311E25600FE93F7 /* WelcomeScreen.storyboard in Resources */,
 				FE1BF3D8230C5D82004EEFEB /* SesionMenu.storyboard in Resources */,
 				FE1BF3BE230C4D1A004EEFEB /* Roboto-LightItalic.ttf in Resources */,
 				FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */,
@@ -485,23 +458,18 @@
 				FE1BF401230DCBDE004EEFEB /* Profile.swift in Sources */,
 				FE1BF3DC230C5DBA004EEFEB /* SesionMenuRouter.swift in Sources */,
 				FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */,
-				FEEA7F952311E2A000FE93F7 /* WelcomeScreenProtocols.swift in Sources */,
 				FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */,
 				FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */,
 				FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */,
-				FEEA7F932311E28100FE93F7 /* WelcomeScreenPresenter.swift in Sources */,
 				FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */,
 				FE1BF3CA230C51DA004EEFEB /* SplashRouter.swift in Sources */,
 				FE1BF3E7230DA497004EEFEB /* SesionMenuInteractor.swift in Sources */,
-				FEEA7F972311E2AE00FE93F7 /* WelcomeScreenRouter.swift in Sources */,
 				FE1BF3EF230DABFB004EEFEB /* User.swift in Sources */,
 				FE1BF3F5230DAD00004EEFEB /* OAuth2ClientHandler.swift in Sources */,
 				FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */,
 				FE1BF3FD230DADCD004EEFEB /* Responses.swift in Sources */,
 				FE1BF3FF230DCB82004EEFEB /* RealmRepo.swift in Sources */,
 				FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */,
-				FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */,
-				FEEA7F912311E27100FE93F7 /* WelcomeScreenInteractor.swift in Sources */,
 				FE1BF3EA230DABAF004EEFEB /* OAuth2Manager.swift in Sources */,
 				FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */,
 				FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */,

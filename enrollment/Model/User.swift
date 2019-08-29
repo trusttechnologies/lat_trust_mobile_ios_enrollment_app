@@ -86,27 +86,6 @@ extension User {
     }
 }
 
-
-// MARK: - WelcomeScreenDataSource
-extension User: WelcomeScreenDataSource {
-    var welcomeMessage: String? {
-        guard let gender = gender else {
-            return .empty
-        }
-        
-        switch gender {
-        case .male:
-            return "Bienvenido"
-        case .female:
-            return "Bienvenida"
-        }
-    }
-    
-    var username: String? {
-        return "\(givenName ?? .empty) \(familyName ?? .empty) \(middleName ?? .empty)"
-    }
-}
-
 // MARK: - ProfileDataSource
 extension User: ProfileDataSource {
     var name: String? {
@@ -127,23 +106,3 @@ extension User: ProfileDataSource {
         return Gender(rawValue: genderAsString)
     }
 }
-
-/* Create user
-// MARK: - UserDataRequestDataSource
-extension User: UserDataRequestViewModel {
-    var names: String? {
-        return givenName
-    }
-    
-    var lastname: String? {
-        return familyName
-    }
-    
-    var surname: String? {
-        return middleName
-    }
-    
-    var nationality: String? {
-        return country?.lowercased()
-    }
-}*/

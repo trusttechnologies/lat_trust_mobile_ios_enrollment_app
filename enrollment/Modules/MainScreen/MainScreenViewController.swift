@@ -13,24 +13,7 @@ import MaterialComponents
 protocol ProfileDataSource {
     var name: String? {get}
     var rut: String? {get}
-    var gender: Gender? {get}
 }
-
-/*
-// MARK: AuditDetailDataSource
-protocol AuditDetailDataSource {
-    var id: String? {get}
-    var reported: Bool {get}
-    var title: String? {get}
-    var strategyIcon: UIImage? {get}
-    var strategyAsString: String? {get}
-    var date: Date? {get}
-    var personName: String? {get}
-    var personDNI: String? {get}
-    var operatorName: String? {get}
-    var operatorDNI: String? {get}
-}
-*/
 
 class MainScreenViewController: UIViewController {
     
@@ -62,14 +45,6 @@ class MainScreenViewController: UIViewController {
 
 // MARK: - View
 extension MainScreenViewController: MainScreenViewProtocol {
-    /*func startActivityIndicator() {
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-    }*/
-    
     func set(profileDataSource: ProfileDataSource?) {
         self.profileDataSource = profileDataSource
     }

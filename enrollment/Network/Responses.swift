@@ -37,20 +37,6 @@ class EmptyResponse: CustomMappable {
     func mapping(map: Map) {}
 }
 
-// MARK: - AuditsResponse
-/*
-class AuditsResponse: CustomMappable {
-    var audits: [Audit]?
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        audits <- map["data"]
-    }
-}*/
-
 // MARK: - ReportAuditResponse
 class ReportAuditResponse: CustomMappable {
     var errors: [ReportAuditError]?

@@ -10,9 +10,6 @@ import UIKit
 
 // MARK: - View
 protocol MainScreenViewProtocol: AnyObject {
-//    func startActivityIndicator()
-//    func stopActivityIndicator()
-    
     func set(profileDataSource: ProfileDataSource?)
 }
 

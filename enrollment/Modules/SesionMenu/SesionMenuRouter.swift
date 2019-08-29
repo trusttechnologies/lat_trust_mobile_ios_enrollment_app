@@ -47,30 +47,7 @@ class SesionMenuRouter: SesionMenuRouterProtocol {
         viewController?.present(mainScreenVC, animated: true)
     }
     
-    func goToWelcomeScreen() {
-        let welcomeScreenVC = WelcomeScreenRouter.createModule(delegate: self)
-        
-        viewController?.present(welcomeScreenVC, animated: true)
-    }
-    
     func presentAlertView(with errorMessage: String) {
         viewController?.presentAlertView(type: .customMessage(message: errorMessage))
     }
 }
-
-// MARK: - WelcomeScreenDelegate
-extension SesionMenuRouter: WelcomeScreenRouterDelegate {
-    func onWelcomeScreenDismissed() {
-        goToMainScreen()
-    }
-}
-
-
-/*
-// MARK: - WelcomeScreenDelegate
-extension SesionMenuRouter: UserDataRequestScreenRouterDelegate {
-    func onUserDataRequestScreenDismissed() {
-        goToWelcomeScreen()
-    }
-}
-*/

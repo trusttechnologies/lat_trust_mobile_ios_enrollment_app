@@ -40,7 +40,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         )
     }
 
-//    var firebaseTokenManager: FirebaseTokenManagerProtocol?
     var userDataManager: UserDataManagerProtocol?
     var trustIdDataManager: TrustIdDataManagerProtocol?
     
@@ -52,7 +51,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     
     func getTrustIdDataSource() {
 //        let trustIdDataSource = TrustIdDataManager?.getTrustID()
-        
     }
     
     func cleanThings() {

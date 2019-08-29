@@ -53,6 +53,5 @@ protocol SesionMenuRouterProtocol: AnyObject {
     static func createModule() -> SesionMenuViewController
     
     func goToMainScreen()
-    func goToWelcomeScreen()
     func presentAlertView(with errorMessage: String)
 }

@@ -35,7 +35,6 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     
     func onGetUserProfileSuccess() {
         router?.goToMainScreen()
-//        router?.goToWelcomeScreen()
     }
     
     func onGetUserProfileFailure(with errorMessage: String) {
@@ -43,10 +42,10 @@ extension SesionMenuPresenter: SesionMenuInteractorOutput {
     }
     
     func onUserDataSaved() {
-//        interactor?.updateFirebaseToken()
+        //TODO
     }
     
     func onMissingInfoFromRetrievedProfile() {
-//        router?.goToUserDataRequestScreen()
+        //TODO
     }
 }

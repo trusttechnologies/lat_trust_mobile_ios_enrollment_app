@@ -11,7 +11,6 @@ class SesionMenuInteractor: SesionMenuInteractorProtocol {
     
     weak var interactorOutput: SesionMenuInteractorOutput?
     
-//    var firebaseTokenManager: FirebaseTokenManagerProtocol?
     var oauth2Manager: OAuth2ManagerProtocol?
     var userDataManager: UserDataManagerProtocol?
     
@@ -63,16 +62,6 @@ class SesionMenuInteractor: SesionMenuInteractorProtocol {
             }
         )
     }
-    
-    /*func updateFirebaseToken() {
-        guard
-            let user = userDataManager?.getUser(),
-            let profileID = user.profile?.credentials.first?.profileID else {
-                return
-        }
-        
-        firebaseTokenManager?.updateFirebaseToken(using: profileID)
-    }*/
 }
 
 // MARK: - OAuth2ManagerOutputProtocol
