@@ -37,7 +37,7 @@ class MainScreenViewController: UIViewController {
     var presenter: MainScreenPresenterProtocol?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rutLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var profileDataSource: ProfileDataSource? {
         didSet {
@@ -62,13 +62,13 @@ class MainScreenViewController: UIViewController {
 
 // MARK: - View
 extension MainScreenViewController: MainScreenViewProtocol {
-    func startActivityIndicator() {
+    /*func startActivityIndicator() {
         activityIndicator.startAnimating()
     }
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
-    }
+    }*/
     
     func set(profileDataSource: ProfileDataSource?) {
         self.profileDataSource = profileDataSource

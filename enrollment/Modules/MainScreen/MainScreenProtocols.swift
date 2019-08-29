@@ -10,8 +10,8 @@ import UIKit
 
 // MARK: - View
 protocol MainScreenViewProtocol: AnyObject {
-    func startActivityIndicator()
-    func stopActivityIndicator()
+//    func startActivityIndicator()
+//    func stopActivityIndicator()
     
     func set(profileDataSource: ProfileDataSource?)
 }
@@ -28,6 +28,7 @@ protocol MainScreenInteractorProtocol: AnyObject {
     
     func performLogout()
     func cleanData()
+    func cleanThings()
 }
 
 // MARK: - InteractorOutput
@@ -37,6 +38,7 @@ protocol MainScreenInteractorOutput: AnyObject {
     func onLogoutPerformed()
     
     func onCleanedData()
+    func onClearedData()
 }
 
 // MARK: - Presenter

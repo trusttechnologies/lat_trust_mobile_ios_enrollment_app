@@ -21,7 +21,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     }
     
     func onViewWillAppear() {
-        view?.startActivityIndicator()
+//        view?.startActivityIndicator()
 //        interactor?.getAudits()
     }
     
@@ -29,9 +29,9 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 //        interactor?.getAudits()
     }
     
-    func onLogoutButtonPressed() {
-        view?.startActivityIndicator()
-        interactor?.performLogout()
+    func onLogoutButtonPressed() { //Start Logout
+//        view?.startActivityIndicator()
+        interactor?.performLogout() //Use performLogout in MainScreenInteractor
     }
     
     func onNotificationReceived(with auditID: String) {
@@ -44,8 +44,13 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 
 // MARK: - InteractorOutput
 extension MainScreenPresenter: MainScreenInteractorOutput {
+    func onClearedData() {
+        interactor?.cleanData()
+    }
+    
     func onLogoutPerformed() {
-        router?.dismiss()
+//        router?.dismiss()
+        interactor?.cleanThings() //use "Clean" data in MainScreenInteractor
     }
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {
@@ -53,7 +58,7 @@ extension MainScreenPresenter: MainScreenInteractorOutput {
     }
     
     func onCleanedData() {
-        view?.stopActivityIndicator()
+//        view?.stopActivityIndicator()
         router?.goToMainScreen()
     }
 }

@@ -131,10 +131,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mY3-g1-lDg" userLabel="{activityIndicatorMain}">
-                                <rect key="frame" x="197" y="674" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoEnrollment2" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-E4-os1" userLabel="{bottomEnrollmentLogoImage}">
                                 <rect key="frame" x="87" y="831" width="240" height="15"/>
                             </imageView>
@@ -157,7 +153,6 @@
                         <viewLayoutGuide key="safeArea" id="k0J-VM-UcK"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="mY3-g1-lDg" id="rHQ-DR-m76"/>
                         <outlet property="logoutButton" destination="yPI-mZ-hUs" id="hUa-hy-02a"/>
                         <outlet property="nameLabel" destination="L89-Om-zHl" id="PuH-un-God"/>
                         <outlet property="rutLabel" destination="FjN-nn-fIh" id="xSd-Ix-Js9"/>

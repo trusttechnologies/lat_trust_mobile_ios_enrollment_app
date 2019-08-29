@@ -16,7 +16,7 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         guard
             let sessionID = UserDefaults.OAuth2URLData.string(forKey: .sessionID),
             let sessionState = UserDefaults.OAuth2URLData.string(forKey: .sessionState) else {
-                self.interactorOutput?.onLogoutPerformed()
+                self.interactorOutput?.onLogoutPerformed() //Call onLogoutPerformed
                 
                 return
         }
@@ -35,7 +35,7 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
                     return
                 }
                 
-                self.interactorOutput?.onLogoutPerformed()
+                self.interactorOutput?.onLogoutPerformed() //Call onLogoutPerformed in MainScreenPresenter
             }
         )
     }
@@ -53,7 +53,10 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     func getTrustIdDataSource() {
 //        let trustIdDataSource = TrustIdDataManager?.getTrustID()
         
-        
+    }
+    
+    func cleanThings() {
+        self.cleanData()
     }
     
     func cleanData() {
@@ -66,5 +69,11 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
             
             interactorOutput?.onCleanedData()
         }
+    }
+}
+
+extension MainScreenInteractor {
+    func onClearData() {
+        interactorOutput?.onClearedData()
     }
 }

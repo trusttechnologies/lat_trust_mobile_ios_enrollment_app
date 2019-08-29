@@ -8,38 +8,46 @@
 
 import UIKit
 
+// MARK: - View
+protocol SplashViewProtocol: AnyObject {}
+
 // MARK: - Interactor
 protocol SplashInteractorProtocol: AnyObject {
-    var interactorOutput: SplashInteractorOutput? {get set}
+    var interactorOutput: SplashInteractorOutputProtocol? {get set}
     
     var oauth2Manager: OAuth2ManagerProtocol? {get set}
     var userDataManager: UserDataManagerProtocol? {get set}
+
+    func getUser()
     
-    func checkIfUserHasLoggedIn()
-    func authorize(from context: AnyObject)
-//    func updateFirebaseToken()
-    func cleanData()
+    func checkAccessToken()
+    func checkRefreshToken()
+    func authenticate(context: AnyObject)
+    
+    func clearData()
 }
 
 // MARK: - InteractorOutput
-protocol SplashInteractorOutput: AnyObject {
-    func onUserHasLoggedInSuccess()
-    func onUserHasLoggedInFailure()
+protocol SplashInteractorOutputProtocol: AnyObject {
+    func onGetUserSuccess()
+    func onGetUserFailure()
     
-    func onAuthorizeSuccess()
-    func onAuthorizeFailure()
+    func onCheckAccessTokenSuccess()
+    func onCheckAccessTokenFailure()
+    func onRefreshTokenSuccess()
+    func onRefreshTokenFailure()
+    func onAuthenticateSuccess()
+    func onAuthenticateFailure()
     
-    func onDataCleaned()
+    func onDataCleared()
 }
-
-// MARK: - View
-protocol SplashViewProtocol: AnyObject {}
 
 // MARK: - Presenter
 protocol SplashPresenterProtocol: AnyObject {
     var view: SplashViewProtocol? {get set}
     var router: SplashRouterProtocol? {get set}
-    
+    var interactor: SplashInteractorProtocol? {get set}
+
     func onViewDidAppear()
 }
 
@@ -48,5 +56,6 @@ protocol SplashRouterProtocol: AnyObject {
     var viewController: UIViewController? {get set}
     
     static func createModule() -> SplashViewController
-    func goToLogin()
+    func goToMainScreen()
+    func goToSesionMenuScreen()
 }

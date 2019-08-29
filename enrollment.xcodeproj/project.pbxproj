@@ -23,7 +23,6 @@
 		FE1BF3CA230C51DA004EEFEB /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3C9230C51DA004EEFEB /* SplashRouter.swift */; };
 		FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3CB230C51EB004EEFEB /* SplashViewController.swift */; };
 		FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */; };
-		FE1BF3D0230C5212004EEFEB /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3CF230C5212004EEFEB /* SplashPresenter.swift */; };
 		FE1BF3D2230C5224004EEFEB /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3D1230C5224004EEFEB /* Splash.storyboard */; };
 		FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3D4230C56E3004EEFEB /* Extensions.swift */; };
 		FE1BF3D8230C5D82004EEFEB /* SesionMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3D7230C5D82004EEFEB /* SesionMenu.storyboard */; };
@@ -46,6 +45,8 @@
 		FE1BF3FF230DCB82004EEFEB /* RealmRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3FE230DCB82004EEFEB /* RealmRepo.swift */; };
 		FE1BF401230DCBDE004EEFEB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF400230DCBDE004EEFEB /* Profile.swift */; };
 		FE1BF403230DCBFC004EEFEB /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF402230DCBFC004EEFEB /* Credential.swift */; };
+		FE6595DC231823E7006CAD1F /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6595DB231823E7006CAD1F /* SplashPresenter.swift */; };
+		FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6595DD231826B3006CAD1F /* SplashInteractor.swift */; };
 		FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */; };
 		FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */; };
 		FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */; };
@@ -60,7 +61,6 @@
 		FEEA7F952311E2A000FE93F7 /* WelcomeScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */; };
 		FEEA7F972311E2AE00FE93F7 /* WelcomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */; };
 		FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */; };
-		FEEA7F9B23132B7C00FE93F7 /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */; };
 		FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +83,6 @@
 		FE1BF3C9230C51DA004EEFEB /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
 		FE1BF3CB230C51EB004EEFEB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashProtocols.swift; sourceTree = "<group>"; };
-		FE1BF3CF230C5212004EEFEB /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		FE1BF3D1230C5224004EEFEB /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		FE1BF3D4230C56E3004EEFEB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FE1BF3D7230C5D82004EEFEB /* SesionMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SesionMenu.storyboard; sourceTree = "<group>"; };
@@ -106,6 +105,8 @@
 		FE1BF3FE230DCB82004EEFEB /* RealmRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepo.swift; sourceTree = "<group>"; };
 		FE1BF400230DCBDE004EEFEB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		FE1BF402230DCBFC004EEFEB /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		FE6595DB231823E7006CAD1F /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		FE6595DD231826B3006CAD1F /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
 		FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInteractor.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		FEEA7F942311E2A000FE93F7 /* WelcomeScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenProtocols.swift; sourceTree = "<group>"; };
 		FEEA7F962311E2AE00FE93F7 /* WelcomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenRouter.swift; sourceTree = "<group>"; };
 		FEEA7F982311E2C100FE93F7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
-		FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
 		FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustIdDataManager.swift; sourceTree = "<group>"; };
 		FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = enrollment.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,8 +198,8 @@
 		FE1BF3C8230C51BA004EEFEB /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				FEEA7F9A23132B7C00FE93F7 /* SplashInteractor.swift */,
-				FE1BF3CF230C5212004EEFEB /* SplashPresenter.swift */,
+				FE6595DD231826B3006CAD1F /* SplashInteractor.swift */,
+				FE6595DB231823E7006CAD1F /* SplashPresenter.swift */,
 				FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */,
 				FE1BF3C9230C51DA004EEFEB /* SplashRouter.swift */,
 				FE1BF3CB230C51EB004EEFEB /* SplashViewController.swift */,
@@ -477,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1BF3EC230DABCF004EEFEB /* UserDataManager.swift in Sources */,
+				FE6595DC231823E7006CAD1F /* SplashPresenter.swift in Sources */,
 				FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */,
 				FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */,
 				FE1BF3FB230DADB6004EEFEB /* APIRouter.swift in Sources */,
@@ -498,16 +499,15 @@
 				FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */,
 				FE1BF3FD230DADCD004EEFEB /* Responses.swift in Sources */,
 				FE1BF3FF230DCB82004EEFEB /* RealmRepo.swift in Sources */,
-				FEEA7F9B23132B7C00FE93F7 /* SplashInteractor.swift in Sources */,
 				FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */,
 				FEEA7F992311E2C100FE93F7 /* WelcomeScreenViewController.swift in Sources */,
-				FE1BF3D0230C5212004EEFEB /* SplashPresenter.swift in Sources */,
 				FEEA7F912311E27100FE93F7 /* WelcomeScreenInteractor.swift in Sources */,
 				FE1BF3EA230DABAF004EEFEB /* OAuth2Manager.swift in Sources */,
 				FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */,
 				FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */,
 				FE1BF3DA230C5D9B004EEFEB /* SesionMenuViewController.swift in Sources */,
 				FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */,
+				FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */,
 				FE1BF3F9230DAD73004EEFEB /* OAuth2RetryHandler.swift in Sources */,
 				FE1BF3F7230DAD2B004EEFEB /* API.swift in Sources */,
 				FE1BF403230DCBFC004EEFEB /* Credential.swift in Sources */,

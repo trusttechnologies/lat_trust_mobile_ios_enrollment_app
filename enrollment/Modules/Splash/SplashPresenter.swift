@@ -2,16 +2,60 @@
 //  SplashPresenter.swift
 //  enrollment
 //
-//  Created by Kevin Torres on 8/20/19.
+//  Created by Kevin Torres on 8/29/19.
 //  Copyright © 2019 Kevin Torres. All rights reserved.
 //
 
-// MARK: - Presenter
+import Foundation
+
 class SplashPresenter: SplashPresenterProtocol {
-    weak var view: SplashViewProtocol?
+    var view: SplashViewProtocol?
+    
     var router: SplashRouterProtocol?
     
+    var interactor: SplashInteractorProtocol?
+    
     func onViewDidAppear() {
-        router?.goToLogin()
+        interactor?.getUser()
+    }
+}
+
+extension SplashPresenter: SplashInteractorOutputProtocol {
+    func onGetUserSuccess() {
+        interactor?.checkAccessToken()
+    }
+    
+    func onGetUserFailure() {
+        router?.goToSesionMenuScreen()
+    }
+    
+    func onCheckAccessTokenSuccess() {
+        router?.goToMainScreen()
+    }
+    
+    func onCheckAccessTokenFailure() {
+        interactor?.checkRefreshToken()
+    }
+    
+    func onRefreshTokenSuccess() {
+        if let context = router?.viewController {
+            interactor?.authenticate(context: context)
+        }
+    }
+    
+    func onRefreshTokenFailure() {
+        interactor?.clearData()
+    }
+    
+    func onAuthenticateSuccess() {
+        //TODO
+    }
+    
+    func onAuthenticateFailure() {
+        //TODO
+    }
+    
+    func onDataCleared() {
+        router?.goToSesionMenuScreen()
     }
 }

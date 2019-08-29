@@ -2,70 +2,69 @@
 //  SplashInteractor.swift
 //  enrollment
 //
-//  Created by Kevin Torres on 8/25/19.
+//  Created by Kevin Torres on 8/29/19.
 //  Copyright © 2019 Kevin Torres. All rights reserved.
 //
 
-import RealmSwift
+import Foundation
 
 class SplashInteractor: SplashInteractorProtocol {
-    weak var interactorOutput: SplashInteractorOutput?
+    var interactorOutput: SplashInteractorOutputProtocol?
     
     var oauth2Manager: OAuth2ManagerProtocol?
+    
     var userDataManager: UserDataManagerProtocol?
     
-    func checkIfUserHasLoggedIn() {
-        guard userDataManager?.getUser() != nil else {
-            interactorOutput?.onUserHasLoggedInFailure()
-            return
+    func getUser() {
+        if userDataManager?.getUser() != nil {
+            interactorOutput?.onGetUserSuccess() //Check Access token
+        } else {
+            interactorOutput?.onGetUserFailure()
         }
-        
-        guard oauth2Manager?.getAccessToken != nil else {
-            guard oauth2Manager?.getRefreshToken != nil else {
-                interactorOutput?.onUserHasLoggedInFailure()
-                return
-            }
-            
-            interactorOutput?.onUserHasLoggedInSuccess()
-            
-            return
-        }
-        
-        interactorOutput?.onUserHasLoggedInSuccess()
     }
     
-    func authorize(from context: AnyObject) {
-        oauth2Manager?.silentAuthorize(from: context)
-    }
-    
-    func cleanData() {
+    func clearData() {
+        userDataManager?.deleteAll(completion: nil)
         oauth2Manager?.clearTokens()
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.deleteAll()
-            
-            interactorOutput?.onDataCleaned()
+        interactorOutput?.onDataCleared()
+    }
+
+    func checkAccessToken() {
+        if oauth2Manager?.getAccessToken() != nil {
+            interactorOutput?.onCheckAccessTokenSuccess() //Go to main screen
+        } else {
+          interactorOutput?.onCheckAccessTokenFailure() //Silentauth
         }
+    }
+    
+    func checkRefreshToken() {
+        if oauth2Manager?.getRefreshToken() != nil {
+            interactorOutput?.onRefreshTokenSuccess()
+        } else {
+            interactorOutput?.onRefreshTokenFailure()
+        }
+    }
+    
+    func authenticate(context: AnyObject) {
+        //TODO
     }
 }
 
-// MARK: - OAuth2ManagerOutputProtocol
 extension SplashInteractor: OAuth2ManagerOutputProtocol {
     func onAuthorizeSuccess() {
-        print("onAuthorizeSuccess")
+        //TODO
     }
     
     func onAuthorizeFailure(with errorMessage: String) {
-        print("onAuthorizeFailure")
+        //TODO
     }
     
     func onSilentAuthorizeSuccess() {
-        interactorOutput?.onAuthorizeSuccess()
+        interactorOutput?.onAuthenticateSuccess()
     }
     
     func onSilentAuthorizeFailure() {
-        interactorOutput?.onAuthorizeFailure()
+        interactorOutput?.onAuthenticateFailure()
     }
 }

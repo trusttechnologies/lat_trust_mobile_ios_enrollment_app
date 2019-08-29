@@ -21,8 +21,8 @@ protocol OAuth2ManagerProtocol: AnyObject {
 protocol OAuth2ManagerOutputProtocol: AnyObject {
     func onAuthorizeSuccess()
     func onAuthorizeFailure(with errorMessage: String)
-//    func onSilentAuthorizeSuccess()
-//    func onSilentAuthorizeFailure()
+    func onSilentAuthorizeSuccess()
+    func onSilentAuthorizeFailure()
 }
 
 // MARK: - OAuth2Manager
@@ -102,11 +102,11 @@ class OAuth2Manager: OAuth2ManagerProtocol {
             }
             
             guard error == nil else {
-//                self.managerOutput?.onSilentAuthorizeFailure()
+                self.managerOutput?.onSilentAuthorizeFailure()
                 return
             }
             
-//            self.managerOutput?.onSilentAuthorizeSuccess()
+            self.managerOutput?.onSilentAuthorizeSuccess()
         }
     }
     
