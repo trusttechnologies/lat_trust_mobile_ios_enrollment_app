@@ -7,11 +7,15 @@
 //
 
 import RealmSwift
+import TrustDeviceInfo
 
 // MARK: - Interactor
 class MainScreenInteractor: MainScreenInteractorProtocol {
     weak var interactorOutput: MainScreenInteractorOutput?
-
+    
+    var userDataManager: UserDataManagerProtocol?
+    var trustIdDataManager: TrustIdDataManagerProtocol?
+    
     func performLogout() {
         guard
             let sessionID = UserDefaults.OAuth2URLData.string(forKey: .sessionID),
@@ -40,9 +44,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         )
     }
 
-    var userDataManager: UserDataManagerProtocol?
-    var trustIdDataManager: TrustIdDataManagerProtocol?
-    
     func getProfileDataSource() {
         let profileDataSource = userDataManager?.getUser()
         
@@ -50,10 +51,12 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     }
     
     func getTrustIdDataSource() {
-//        let trustIdDataSource = TrustIdDataManager?.getTrustID()
+        let trustIdDataSource = trustIdDataManager?.getTrustID()
+        
+        interactorOutput?.onGetTrustIdDataSourceOutPut(trustId: trustIdDataSource)
     }
     
-    func cleanThings() {
+    func callCleanData() {
         self.cleanData()
     }
     

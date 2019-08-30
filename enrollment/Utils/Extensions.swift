@@ -1533,10 +1533,11 @@ extension MDCButton {
             colorSchema.primaryColor = .primary
             colorSchema.onPrimaryColor = .white
             colorSchema.surfaceColor = .black
-            self.inkColor = .whiteRipple
+            self.inkColor = .red
         case .btnSecondary:
             colorSchema.primaryColor = .white
             colorSchema.onPrimaryColor = .red
+            self.inkColor = .whiteRipple
         case .btnSignUp:
             colorSchema.primaryColor = .primary
             colorSchema.onPrimaryColor = .white
@@ -1557,12 +1558,12 @@ extension MDCButton {
         switch mdcType {
         case .text:
             MDCTextButtonThemer.applyScheme(buttonScheme, to: self)
-            self.inkColor = .secondaryRipple
+//            self.inkColor = .secondaryRipple
             
         case .outlined:
             MDCOutlinedButtonThemer.applyScheme(buttonScheme, to: self)
             buttonScheme.cornerRadius = 0
-            self.inkColor = .primaryRipple
+//            self.inkColor = .primaryRipple
             
         case .contained:
             MDCContainedButtonThemer.applyScheme(buttonScheme, to: self)

@@ -11,6 +11,7 @@ import UIKit
 // MARK: - View
 protocol MainScreenViewProtocol: AnyObject {
     func set(profileDataSource: ProfileDataSource?)
+    func setTrustId(trustIdDataSource: String?)
 }
 
 // MARK: - Interactor
@@ -18,19 +19,21 @@ protocol MainScreenInteractorProtocol: AnyObject {
     var interactorOutput: MainScreenInteractorOutput? {get set}
     
     var userDataManager: UserDataManagerProtocol? {get set}
-    
+    var trustIdDataManager: TrustIdDataManagerProtocol? {get set}
+
+    func performLogout()
+
     func getProfileDataSource()
-    
     func getTrustIdDataSource()
     
-    func performLogout()
+    func callCleanData()
     func cleanData()
-    func cleanThings()
 }
 
 // MARK: - InteractorOutput
 protocol MainScreenInteractorOutput: AnyObject {
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?)
+    func onGetTrustIdDataSourceOutPut(trustId: String?)
     
     func onLogoutPerformed()
     

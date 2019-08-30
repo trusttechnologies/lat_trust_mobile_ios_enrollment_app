@@ -9,17 +9,42 @@
 import Foundation
 import TrustDeviceInfo
 
-
-protocol TrustIdDataManagerProtocol {
+// MARK: - TrustIdDataManagerProtocol
+protocol TrustIdDataManagerProtocol: AnyObject {
     func getTrustID() -> String?
+    func setKeychainData(serviceName: String?, accessGroup: String?)
+    func enableTrustID()
+    func showTrustID()
+}
+
+// MARK: - OAuth2ManagerOutputProtocol
+protocol TrustIdDataManagerOutputProtocol: AnyObject {
+    func setKeychainDataSuccess()
 }
 
 // MARK: - getTrustIdDataManager
 class TrustIdDataManager: TrustDeviceInfoDelegate, TrustIdDataManagerProtocol {
     var userTrustID: String?
     
+    init() {
+        Identify.shared.trustDeviceInfoDelegate = self
+    }
+    
+    func setKeychainData(serviceName: String?, accessGroup: String?) {
+        Identify.shared.set(serviceName: serviceName ?? "", accessGroup: accessGroup ?? "")
+    }
+    
+    func enableTrustID() {
+        Identify.shared.enable()
+    }
+    
+    
     func getTrustID() -> String? {
         return userTrustID
+    }
+    
+    func showTrustID() {
+        print("SAVED TRUST ID: \(userTrustID)")
     }
     
     func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {

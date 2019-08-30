@@ -35,12 +35,16 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 
 // MARK: - InteractorOutput
 extension MainScreenPresenter: MainScreenInteractorOutput {
+    func onGetTrustIdDataSourceOutPut(trustId: String?) {
+        view?.setTrustId(trustIdDataSource: trustId)
+    }
+    
     func onClearedData() {
         interactor?.cleanData()
     }
     
     func onLogoutPerformed() {
-        interactor?.cleanThings() //use "Clean" data in MainScreenInteractor
+        interactor?.callCleanData() //use "Clean" data in MainScreenInteractor
     }
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {

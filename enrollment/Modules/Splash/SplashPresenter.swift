@@ -48,11 +48,11 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
     }
     
     func onAuthenticateSuccess() {
-        //TODO
+        router?.goToMainScreen()
     }
     
     func onAuthenticateFailure() {
-        //TODO
+        router?.goToSesionMenuScreen()
     }
     
     func onDataCleared() {

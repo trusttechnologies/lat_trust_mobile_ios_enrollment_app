@@ -15,32 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 }
 
-extension AppDelegate: TrustDeviceInfoDelegate {
-    func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
-        //TODO
-    }
-    
-    func onTrustIDSaved(savedTrustID: String) {
-        print("Saved trust id was: \(savedTrustID)")
-    }
-    
-    func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {
-        //TODO
-    }
-    
-    func onSendDeviceInfoResponse(status: ResponseStatus) {
-        //TODO
-    }
-    
+extension AppDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        var trustIdManager = TrustIdDataManager()
+        let serviceName = "defaultServiceName"
+        let accessGroup = "P896AB2AMC.trustID.appLib"
+        
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
         setInitialVC()
         
-//        Identify.shared.trustDeviceInfoDelegate = self
-        Identify.shared.set(serviceName: "defaultServiceName", accessGroup: "P896AB2AMC.trustID.appLib")
-        Identify.shared.enable()
+        trustIdManager.setKeychainData(serviceName: serviceName, accessGroup: accessGroup)
+        trustIdManager.enableTrustID()
+        trustIdManager.showTrustID()
+        
         return true
     }
     

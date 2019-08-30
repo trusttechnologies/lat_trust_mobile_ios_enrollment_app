@@ -47,17 +47,17 @@ class SplashInteractor: SplashInteractorProtocol {
     }
     
     func authenticate(context: AnyObject) {
-        //TODO
+        oauth2Manager?.silentAuthorize(from: context)
     }
 }
 
 extension SplashInteractor: OAuth2ManagerOutputProtocol {
     func onAuthorizeSuccess() {
-        //TODO
+        print("onAuthorizeSuccess")
     }
     
     func onAuthorizeFailure(with errorMessage: String) {
-        //TODO
+        print("onAuthorizeFailure")
     }
     
     func onSilentAuthorizeSuccess() {
