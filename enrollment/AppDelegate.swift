@@ -15,20 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 }
 
-extension AppDelegate {
+extension AppDelegate: TrustDeviceInfoDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        var trustIdManager = TrustIdDataManager()
-        let serviceName = "defaultServiceName"
-        let accessGroup = "P896AB2AMC.trustID.appLib"
-        
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
         setInitialVC()
         
-        trustIdManager.setKeychainData(serviceName: serviceName, accessGroup: accessGroup)
-        trustIdManager.enableTrustID()
-        trustIdManager.showTrustID()
+        let serviceName = "defaultServiceName"
+        let accessGroup = "P896AB2AMC.trustID.appLib"
+        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+        
+        Identify.shared.trustDeviceInfoDelegate = self
+        Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        Identify.shared.enable()
+        
+//        print("El trustID de este dispositibvo es: \(generatedTrustId)")
         
         return true
     }
@@ -51,6 +55,22 @@ extension AppDelegate {
         
         oAuth2Manager.managerOutput = self
         oAuth2Manager.silentAuthorize(from: mainVC)
+    }
+    
+    func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
+        //
+    }
+    
+    func onTrustIDSaved(savedTrustID: String) {
+        //
+    }
+    
+    func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {
+        //
+    }
+    
+    func onSendDeviceInfoResponse(status: ResponseStatus) {
+        //
     }
 }
 

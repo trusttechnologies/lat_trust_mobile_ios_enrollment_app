@@ -55,7 +55,6 @@
 		FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */; };
 		FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE29947230C40ED006DE4D5 /* AppDelegate.swift */; };
 		FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE2994E230C40EE006DE4D5 /* Assets.xcassets */; };
-		FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,7 +110,6 @@
 		FEE29947230C40ED006DE4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEE2994E230C40EE006DE4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEE29953230C40EE006DE4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustIdDataManager.swift; sourceTree = "<group>"; };
 		FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = enrollment.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,7 +229,6 @@
 			children = (
 				FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */,
 				FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */,
-				FEEA7FC02315B21800FE93F7 /* TrustIdDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */,
 				FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */,
 				FE1BF3DA230C5D9B004EEFEB /* SesionMenuViewController.swift in Sources */,
-				FEEA7FC12315B21800FE93F7 /* TrustIdDataManager.swift in Sources */,
 				FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */,
 				FE1BF3F9230DAD73004EEFEB /* OAuth2RetryHandler.swift in Sources */,
 				FE1BF3F7230DAD2B004EEFEB /* API.swift in Sources */,

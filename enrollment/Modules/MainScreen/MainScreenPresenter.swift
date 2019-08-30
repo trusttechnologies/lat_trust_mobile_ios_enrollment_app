@@ -14,6 +14,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     
     func onViewDidLoad() {
         interactor?.getProfileDataSource()
+        interactor?.getTrustIdDataSource()
     }
     
     func onViewWillAppear() {

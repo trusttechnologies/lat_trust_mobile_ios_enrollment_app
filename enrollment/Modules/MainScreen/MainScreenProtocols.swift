@@ -19,7 +19,6 @@ protocol MainScreenInteractorProtocol: AnyObject {
     var interactorOutput: MainScreenInteractorOutput? {get set}
     
     var userDataManager: UserDataManagerProtocol? {get set}
-    var trustIdDataManager: TrustIdDataManagerProtocol? {get set}
 
     func performLogout()
 

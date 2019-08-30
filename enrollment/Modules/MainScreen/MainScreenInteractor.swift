@@ -14,7 +14,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     weak var interactorOutput: MainScreenInteractorOutput?
     
     var userDataManager: UserDataManagerProtocol?
-    var trustIdDataManager: TrustIdDataManagerProtocol?
     
     func performLogout() {
         guard
@@ -51,9 +50,9 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     }
     
     func getTrustIdDataSource() {
-        let trustIdDataSource = trustIdDataManager?.getTrustID()
+        let generatedTrustId = Identify.shared.getTrustID()
         
-        interactorOutput?.onGetTrustIdDataSourceOutPut(trustId: trustIdDataSource)
+        interactorOutput?.onGetTrustIdDataSourceOutPut(trustId: generatedTrustId)
     }
     
     func callCleanData() {

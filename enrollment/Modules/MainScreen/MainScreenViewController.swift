@@ -15,10 +15,6 @@ protocol ProfileDataSource {
     var rut: String? {get}
 }
 
-protocol TrustIdDataSource {
-    var trustId: String? {get}
-}
-
 class MainScreenViewController: UIViewController {
     
     var presenter: MainScreenPresenterProtocol?
@@ -26,20 +22,11 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var rutLabel: UILabel!
     @IBOutlet weak var trustIdLabel: UILabel!
     
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     var profileDataSource: ProfileDataSource? {
         didSet {
             guard let dataSource = profileDataSource else { return }
             nameLabel.text = dataSource.name?.capitalized
             rutLabel.text = dataSource.rut
-        }
-    }
-    
-    var trustIdDataSource: TrustIdDataSource? {
-        didSet {
-            guard let data = trustIdDataSource else { return }
-            trustIdLabel.text = data.trustId
         }
     }
     
@@ -61,8 +48,9 @@ extension MainScreenViewController: MainScreenViewProtocol {
     func set(profileDataSource: ProfileDataSource?) {
         self.profileDataSource = profileDataSource
     }
+    
     func setTrustId(trustIdDataSource: String?) {
-//        self.trustIdDataSource = trustIdDataSource
+        trustIdLabel.text = trustIdDataSource
     }
 }
 
