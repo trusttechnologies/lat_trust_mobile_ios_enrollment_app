@@ -4,8 +4,11 @@
   source 'https://github.com/trusttechnologies/auditpodspecs.git'
   source 'https://github.com/trusttechnologies/TrustDeviceInfoPodSpecs.git'
   source 'https://github.com/CocoaPods/Specs.git'
+  source 'https://github.com/trusttechnologies/trustnotificationpodspecs.git'
 
   use_frameworks!
+
+  pod 'TrustNotification'
 
 target 'enrollment' do
   pod 'MaterialComponents/TextFields'
@@ -38,4 +41,8 @@ target 'enrollment' do
       config.build_settings.delete('CODE_SIGNING_REQUIRED')
     end
   end
+end
+
+target 'ServiceNotificationExtension' do
+  pod 'TrustNotification'
 end

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3571559BEE2BBE2C28E43133 /* Pods_ServiceNotificationExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2648AC082E618FF2D54AE537 /* Pods_ServiceNotificationExtension.framework */; };
 		6A4419D96C355EA746222170 /* Pods_enrollment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */; };
+		8355BD9023313891003134AF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355BD8F23313891003134AF /* NotificationService.swift */; };
+		8355BD9423313891003134AF /* ServiceNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8355BD8D23313891003134AF /* ServiceNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		83D589722339155000FAC8C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83D589712339155000FAC8C5 /* GoogleService-Info.plist */; };
 		FE1BF3B0230C4D0D004EEFEB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */; };
 		FE1BF3BC230C4D1A004EEFEB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3B1230C4D1A004EEFEB /* Roboto-Bold.ttf */; };
 		FE1BF3BD230C4D1A004EEFEB /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3B2230C4D1A004EEFEB /* Roboto-BlackItalic.ttf */; };
@@ -57,10 +61,41 @@
 		FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE2994E230C40EE006DE4D5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8355BD9223313891003134AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEE2993C230C40ED006DE4D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8355BD8C23313891003134AF;
+			remoteInfo = ServiceNotificationExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8355BD9823313891003134AF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8355BD9423313891003134AF /* ServiceNotificationExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2648AC082E618FF2D54AE537 /* Pods_ServiceNotificationExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ServiceNotificationExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_enrollment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.release.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.release.xcconfig"; sourceTree = "<group>"; };
+		7E5A1F8CAFC60B598C6D5593 /* Pods-ServiceNotificationExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceNotificationExtension.debug.xcconfig"; path = "Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		8355BD8D23313891003134AF /* ServiceNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8355BD8F23313891003134AF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8355BD9123313891003134AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83D589712339155000FAC8C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.debug.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.debug.xcconfig"; sourceTree = "<group>"; };
+		F5ABAD0241F86346400F054D /* Pods-ServiceNotificationExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceNotificationExtension.release.xcconfig"; path = "Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension.release.xcconfig"; sourceTree = "<group>"; };
 		FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		FE1BF3B1230C4D1A004EEFEB /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		FE1BF3B2230C4D1A004EEFEB /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -114,6 +149,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8355BD8A23313891003134AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3571559BEE2BBE2C28E43133 /* Pods_ServiceNotificationExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FEE29941230C40ED006DE4D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,10 +168,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8355BD8E23313891003134AF /* ServiceNotificationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8355BD8F23313891003134AF /* NotificationService.swift */,
+				8355BD9123313891003134AF /* Info.plist */,
+			);
+			path = ServiceNotificationExtension;
+			sourceTree = "<group>";
+		};
 		90C581E4A2A4274A8E91EB0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */,
+				2648AC082E618FF2D54AE537 /* Pods_ServiceNotificationExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,6 +191,8 @@
 			children = (
 				8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */,
 				6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */,
+				7E5A1F8CAFC60B598C6D5593 /* Pods-ServiceNotificationExtension.debug.xcconfig */,
+				F5ABAD0241F86346400F054D /* Pods-ServiceNotificationExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -280,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE29946230C40ED006DE4D5 /* enrollment */,
+				8355BD8E23313891003134AF /* ServiceNotificationExtension */,
 				FEE29945230C40ED006DE4D5 /* Products */,
 				F7E0AF83BB335CC185AD4688 /* Pods */,
 				90C581E4A2A4274A8E91EB0E /* Frameworks */,
@@ -290,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE29944230C40ED006DE4D5 /* enrollment.app */,
+				8355BD8D23313891003134AF /* ServiceNotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				FEEA7FC22315BEDD00FE93F7 /* enrollment.entitlements */,
+				83D589712339155000FAC8C5 /* GoogleService-Info.plist */,
 				FEE29953230C40EE006DE4D5 /* Info.plist */,
 				FEE29947230C40ED006DE4D5 /* AppDelegate.swift */,
 				FEE2994E230C40EE006DE4D5 /* Assets.xcassets */,
@@ -315,6 +373,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8355BD8C23313891003134AF /* ServiceNotificationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8355BD9523313891003134AF /* Build configuration list for PBXNativeTarget "ServiceNotificationExtension" */;
+			buildPhases = (
+				39D1AD5B5991B835621070B5 /* [CP] Check Pods Manifest.lock */,
+				8355BD8923313891003134AF /* Sources */,
+				8355BD8A23313891003134AF /* Frameworks */,
+				8355BD8B23313891003134AF /* Resources */,
+				F0FEFB047FBF1EC120CB3B32 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ServiceNotificationExtension;
+			productName = ServiceNotificationExtension;
+			productReference = 8355BD8D23313891003134AF /* ServiceNotificationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FEE29943230C40ED006DE4D5 /* enrollment */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEE29956230C40EE006DE4D5 /* Build configuration list for PBXNativeTarget "enrollment" */;
@@ -324,10 +401,13 @@
 				FEE29941230C40ED006DE4D5 /* Frameworks */,
 				FEE29942230C40ED006DE4D5 /* Resources */,
 				F472BDA42ADCAA4D1C49CABB /* [CP] Embed Pods Frameworks */,
+				8355BD9823313891003134AF /* Embed App Extensions */,
+				F9BF1DCFB3D14A5755F6B17B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8355BD9323313891003134AF /* PBXTargetDependency */,
 			);
 			name = enrollment;
 			productName = enrollment;
@@ -340,14 +420,23 @@
 		FEE2993C230C40ED006DE4D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Kevin Torres";
 				TargetAttributes = {
+					8355BD8C23313891003134AF = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					FEE29943230C40ED006DE4D5 = {
 						CreatedOnToolsVersion = 10.3;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -368,11 +457,19 @@
 			projectRoot = "";
 			targets = (
 				FEE29943230C40ED006DE4D5 /* enrollment */,
+				8355BD8C23313891003134AF /* ServiceNotificationExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8355BD8B23313891003134AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FEE29942230C40ED006DE4D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +485,7 @@
 				FE1BF3BE230C4D1A004EEFEB /* Roboto-LightItalic.ttf in Resources */,
 				FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */,
 				FE1BF3E3230C8FCE004EEFEB /* LaunchScreen.storyboard in Resources */,
+				83D589722339155000FAC8C5 /* GoogleService-Info.plist in Resources */,
 				FE1BF3BC230C4D1A004EEFEB /* Roboto-Bold.ttf in Resources */,
 				FE1BF3B0230C4D0D004EEFEB /* Roboto-Black.ttf in Resources */,
 				FE1BF3C5230C4D1A004EEFEB /* Roboto-ThinItalic.ttf in Resources */,
@@ -400,6 +498,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39D1AD5B5991B835621070B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ServiceNotificationExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3CA2A122F8A88EA316DA97E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,6 +542,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F0FEFB047FBF1EC120CB3B32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F472BDA42ADCAA4D1C49CABB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -439,9 +576,34 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F9BF1DCFB3D14A5755F6B17B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8355BD8923313891003134AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8355BD9023313891003134AF /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FEE29940230C40ED006DE4D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,7 +643,59 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8355BD9323313891003134AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8355BD8C23313891003134AF /* ServiceNotificationExtension */;
+			targetProxy = 8355BD9223313891003134AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8355BD9623313891003134AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E5A1F8CAFC60B598C6D5593 /* Pods-ServiceNotificationExtension.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P896AB2AMC;
+				INFOPLIST_FILE = ServiceNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios.ServiceNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8355BD9723313891003134AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5ABAD0241F86346400F054D /* Pods-ServiceNotificationExtension.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P896AB2AMC;
+				INFOPLIST_FILE = ServiceNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios.ServiceNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FEE29954230C40EE006DE4D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -602,6 +816,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -612,9 +827,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -623,6 +838,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -633,9 +849,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -643,6 +859,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8355BD9523313891003134AF /* Build configuration list for PBXNativeTarget "ServiceNotificationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8355BD9623313891003134AF /* Debug */,
+				8355BD9723313891003134AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FEE2993F230C40ED006DE4D5 /* Build configuration list for PBXProject "enrollment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
