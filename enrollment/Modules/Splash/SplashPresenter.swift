@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import UIKit
 
 class SplashPresenter: SplashPresenterProtocol {
     var view: SplashViewProtocol?
@@ -15,18 +17,37 @@ class SplashPresenter: SplashPresenterProtocol {
     
     var interactor: SplashInteractorProtocol?
     
+    var isUpdatingLocation = false
+
     func onViewDidAppear() {
-        interactor?.getUser()
+        interactor?.checkPermissions()
     }
 }
 
 extension SplashPresenter: SplashInteractorOutputProtocol {
+    func callAlert(alertController: UIAlertController) {
+        self.router?.presentPermissionsAlert(alertController: alertController)
+    }
+    
+    func onGetAcceptedPermissions() {
+        interactor?.getUser()
+    }
+    
+    func onGetNotDeterminedPermissions() {
+//        interactor?.checkPermissions()
+    }
+    
+    func returnViewDidAppear() {
+        self.onViewDidAppear()
+    }
+    
     func onGetUserSuccess() {
         interactor?.checkAccessToken()
     }
     
     func onGetUserFailure() {
-        router?.goToSesionMenuScreen()
+        interactor?.clearData()
+        router?.goToSessionMenuScreen()
     }
     
     func onCheckAccessTokenSuccess() {
@@ -52,10 +73,10 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
     }
     
     func onAuthenticateFailure() {
-        router?.goToSesionMenuScreen()
+        router?.goToSessionMenuScreen()
     }
     
     func onDataCleared() {
-        router?.goToSesionMenuScreen()
+        router?.goToSessionMenuScreen()
     }
 }

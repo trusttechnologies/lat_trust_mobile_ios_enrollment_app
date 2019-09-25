@@ -61,7 +61,6 @@ extension MainScreenViewController {
     }
 }
 
-
 // MARK: - Lifecycle
 extension MainScreenViewController {
     override func viewDidLoad() {

@@ -10,10 +10,13 @@ import Alamofire
 
 // MARK: - APIRouter
 enum APIRouter: URLRequestConvertible {
-    case createAudit(parameters: Parameterizable, authorizationHeader: String) //Receive authorization by parameters
+    case clientCredentials(parameters: Parameterizable)
+    case createAudit(parameters: Parameterizable) //Receive authorization by parameters
     
     var path: String {
         switch self {
+        case .clientCredentials:
+            return "/oauth/token/"
         case .createAudit:
             return "/audit\(API.apiVersion)/audit"
         }
@@ -21,14 +24,16 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .createAudit:
+        case .createAudit, .clientCredentials:
             return .post
         }
     }
     
     var parameters: Parameters {
         switch self {
-        case .createAudit(let parameters, _):
+        case .clientCredentials(let parameters):
+            return parameters.asParameters
+        case .createAudit(let parameters):
             return parameters.asParameters
         }
     }
@@ -37,6 +42,8 @@ enum APIRouter: URLRequestConvertible {
         var baseURLAsString: String = .empty
         
         switch self {
+        case .clientCredentials:
+            baseURLAsString = API.clientCredentialsBaseURL
         case .createAudit:
             baseURLAsString = API.baseURL
         }
@@ -56,12 +63,28 @@ enum APIRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        case .createAudit(_, let authorizationHeader):
-            urlRequest.addValue(authorizationHeader, forHTTPHeaderField: "Authorization")
+        case .createAudit:
+            let serviceName = TrustAudit.serviceName
+            let accessGroup = TrustAudit.accessGroup
+            
+            let clientCredentialsManager = ClientCredentialsManager(serviceName: serviceName, accessGroup: accessGroup)
+            
+            if
+                let clientCredentials = clientCredentialsManager.getClientCredentials(),
+                let tokenType = clientCredentials.tokenType,
+                let accessToken = clientCredentials.accessToken {
+                
+                let authorizationHeaderValue = "\(tokenType) \(accessToken)"
+                
+                print(authorizationHeaderValue)
+                
+                urlRequest.addValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+            }
+        default: break
         }
         
         switch self {
-        case .createAudit:
+        case .createAudit, .clientCredentials:
             return try JSONEncoding.default.encode(urlRequest, with: parameters)
         }
     }

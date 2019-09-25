@@ -8,13 +8,18 @@
 
 import RealmSwift
 import TrustDeviceInfo
+import Audit
 
 // MARK: - Interactor
 class MainScreenInteractor: MainScreenInteractorProtocol {
+    
     weak var interactorOutput: MainScreenInteractorOutput?
     
     var userDataManager: UserDataManagerProtocol?
+    var auditDataManager: AuditDataManagerProtocol?
     
+    let generatedTrustId = Identify.shared.getTrustID()
+
     func performLogout() {
         guard
             let sessionID = UserDefaults.OAuth2URLData.string(forKey: .sessionID),
@@ -50,8 +55,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     }
     
     func getTrustIdDataSource() {
-        let generatedTrustId = Identify.shared.getTrustID()
-        
         interactorOutput?.onGetTrustIdDataSourceOutPut(trustId: generatedTrustId)
     }
     
@@ -69,6 +72,11 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
             
             interactorOutput?.onCleanedData()
         }
+    }
+    
+    // MARK: - Login Audit
+    func loginAudit() {
+        auditDataManager?.createLoginAudit()
     }
 }
 

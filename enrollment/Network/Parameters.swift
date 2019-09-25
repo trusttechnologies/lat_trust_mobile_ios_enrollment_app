@@ -78,27 +78,3 @@ struct UpdateProfileParameters: Parameterizable {
         ]
     }
 }
-
-// MARK: - UpdateFirebaseTokenParameters
-struct UpdateFirebaseTokenParameters: Parameterizable {
-    var firebaseToken: String?
-    
-    var asParameters: Parameters {
-        guard let firebaseToken = firebaseToken else {
-            return [:]
-        }
-        
-        return [
-            "type": "person",
-            "attributes": [
-                "status": "alive",
-                "verified": false,
-                "profile": [
-                    "channels": [
-                        "ios": firebaseToken
-                    ]
-                ]
-            ]
-        ]
-    }
-}

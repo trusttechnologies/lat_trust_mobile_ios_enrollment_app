@@ -19,7 +19,8 @@ protocol MainScreenInteractorProtocol: AnyObject {
     var interactorOutput: MainScreenInteractorOutput? {get set}
     
     var userDataManager: UserDataManagerProtocol? {get set}
-
+    var auditDataManager: AuditDataManagerProtocol? {get set}
+    
     func performLogout()
 
     func getProfileDataSource()
@@ -27,6 +28,8 @@ protocol MainScreenInteractorProtocol: AnyObject {
     
     func callCleanData()
     func cleanData()
+    
+    func loginAudit()
 }
 
 // MARK: - InteractorOutput

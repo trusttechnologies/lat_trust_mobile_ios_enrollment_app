@@ -1,13 +1,15 @@
 PODS:
   - Alamofire (4.8.2)
-  - AlamofireObjectMapper (5.2.0):
+  - AlamofireObjectMapper (5.2.1):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
-  - Audit (0.1.1):
+  - Audit (0.2.5):
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
-  - DeviceKit (2.0.0)
+    - RealmSwift
+  - DeviceKit (2.1.0)
   - IQKeyboardManagerSwift (6.4.1)
+  - lottie-ios (3.1.2)
   - MaterialComponents/AnimationTiming (87.1.1)
   - MaterialComponents/BottomNavigation (87.1.1):
     - MaterialComponents/Elevation
@@ -116,12 +118,12 @@ PODS:
   - MDFTextAccessibility (2.0.0)
   - ObjectMapper (3.5.1)
   - p2.OAuth2 (5.0.0)
-  - Realm (3.17.3):
-    - Realm/Headers (= 3.17.3)
-  - Realm/Headers (3.17.3)
-  - RealmSwift (3.17.3):
-    - Realm (= 3.17.3)
-  - TrustDeviceInfo (1.0.1):
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
+  - TrustDeviceInfo (1.0.3):
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
     - DeviceKit
@@ -129,6 +131,7 @@ PODS:
 DEPENDENCIES:
   - Audit
   - IQKeyboardManagerSwift
+  - lottie-ios
   - MaterialComponents/BottomNavigation
   - "MaterialComponents/BottomNavigation+ColorThemer"
   - "MaterialComponents/BottomNavigation+TypographyThemer"
@@ -137,7 +140,6 @@ DEPENDENCIES:
   - "MaterialComponents/Snackbar+TypographyThemer"
   - MaterialComponents/TextFields
   - p2.OAuth2
-  - RealmSwift
   - TrustDeviceInfo
 
 SPEC REPOS:
@@ -146,6 +148,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - DeviceKit
     - IQKeyboardManagerSwift
+    - lottie-ios
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -160,19 +163,20 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
-  Audit: b842f1b65904024b0942dc46b9b9daa92ab94379
-  DeviceKit: 72d36709552d4b3582abd76a53949148acad9811
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  Audit: d47dc74ed16e69cd1a9e98050e1f380979f3d3bc
+  DeviceKit: 2f6c28410d5a5fe2977be7f8cb9b313d28bdae69
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
+  lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
   MaterialComponents: 5a7610b21224bebf35427f39c6fa058e9bfdd10c
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   p2.OAuth2: 5d203b46c2857b4bbcca3e521089959e7b3b5a5c
-  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
-  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
-  TrustDeviceInfo: bca32888b22967f0a29853ed28da06cbcf20a299
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  TrustDeviceInfo: f8dbd3fad295c4523a4f654bb70c374f151742b4
 
-PODFILE CHECKSUM: e558298bb062947c34b93b521f3b6d41541fb855
+PODFILE CHECKSUM: 9fad574ab339e6b6b0f13cebc51c6b73121f768a
 
 COCOAPODS: 1.7.5

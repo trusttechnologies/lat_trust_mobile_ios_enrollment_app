@@ -18,7 +18,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     }
     
     func onViewWillAppear() {
-        //TODO
+        interactor?.loginAudit()
     }
     
     func onRefreshControlPulled() {

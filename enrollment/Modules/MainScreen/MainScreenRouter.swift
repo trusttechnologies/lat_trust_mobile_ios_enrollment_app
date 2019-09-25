@@ -25,11 +25,12 @@ class MainScreenRouter: MainScreenRouterProtocol {
         let router = MainScreenRouter()
         
         let userDataManager = UserDataManager()
-        
+        let auditDataManager = AuditDataManager()
         view.presenter = presenter
 
         interactor.interactorOutput = presenter
         interactor.userDataManager = userDataManager
+        interactor.auditDataManager = auditDataManager
         
         presenter.view = view
         presenter.router = router

@@ -23,6 +23,7 @@ protocol SplashInteractorProtocol: AnyObject {
     func checkAccessToken()
     func checkRefreshToken()
     func authenticate(context: AnyObject)
+    func checkPermissions()
     
     func clearData()
 }
@@ -38,6 +39,11 @@ protocol SplashInteractorOutputProtocol: AnyObject {
     func onRefreshTokenFailure()
     func onAuthenticateSuccess()
     func onAuthenticateFailure()
+    
+    func onGetAcceptedPermissions()
+    func onGetNotDeterminedPermissions()
+    func returnViewDidAppear()
+    func callAlert(alertController: UIAlertController)
     
     func onDataCleared()
 }
@@ -57,5 +63,6 @@ protocol SplashRouterProtocol: AnyObject {
     
     static func createModule() -> SplashViewController
     func goToMainScreen()
-    func goToSesionMenuScreen()
+    func goToSessionMenuScreen()
+    func presentPermissionsAlert(alertController: UIAlertController)
 }

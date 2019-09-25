@@ -21,11 +21,9 @@ target 'enrollment' do
 
   pod 'IQKeyboardManagerSwift'
 
-  pod 'RealmSwift'
-
   pod 'p2.OAuth2'
-  pod 'RealmSwift'
-
+  pod 'lottie-ios'
+  
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|

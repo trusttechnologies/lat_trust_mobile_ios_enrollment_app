@@ -56,6 +56,8 @@ extension API {
                 onResponse()
             }
             
+            print(response.result)
+            
             switch (response.result) {
             case .success(let response):
                 guard let onSuccess = onSuccess else {
@@ -74,30 +76,30 @@ extension API {
     }
     
     // MARK: - call<T: Mappable>(onResponse: SuccessHandler<DataResponse<T>>), onResponse with response data
-//    static func call<T: Mappable>(responseDataType: T.Type, resource: APIRouter, onResponse: SuccessHandler<DataResponse<T>> = nil, onSuccess: SuccessHandler<T> = nil, onFailure: CompletionHandler = nil) {
-//        request(resource).responseObject {
-//            (response: DataResponse<T>) in
-//
-//            if let onResponse = onResponse {
-//                onResponse(response)
-//            }
-//
-//            switch (response.result) {
-//            case .success(let response):
-//                guard let onSuccess = onSuccess else {
-//                    return
-//                }
-//
-//                onSuccess(response)
-//            case .failure(_):
-//                guard let onFailure = onFailure else {
-//                    return
-//                }
-//
-//                onFailure()
-//            }
-//        }
-//    }
+    //    static func call<T: Mappable>(responseDataType: T.Type, resource: APIRouter, onResponse: SuccessHandler<DataResponse<T>> = nil, onSuccess: SuccessHandler<T> = nil, onFailure: CompletionHandler = nil) {
+    //        request(resource).responseObject {
+    //            (response: DataResponse<T>) in
+    //
+    //            if let onResponse = onResponse {
+    //                onResponse(response)
+    //            }
+    //
+    //            switch (response.result) {
+    //            case .success(let response):
+    //                guard let onSuccess = onSuccess else {
+    //                    return
+    //                }
+    //
+    //                onSuccess(response)
+    //            case .failure(_):
+    //                guard let onFailure = onFailure else {
+    //                    return
+    //                }
+    //
+    //                onFailure()
+    //            }
+    //        }
+    //    }
     
     // MARK: - callAsJSON(onResponse: CompletionHandler), onResponse without response data
     static func callAsJSON(resource: APIRouter, onResponse: CompletionHandler = nil, onSuccess: SuccessHandler<Any> = nil, onFailure: CompletionHandler = nil) {
@@ -105,7 +107,7 @@ extension API {
             (response: DataResponse<Any>) in
             
             print("API.callAsJSON() Response as JSON: \(response)")
-                        
+            
             if let onResponse = onResponse {
                 onResponse()
             }

@@ -85,7 +85,7 @@ class OAuth2Manager: OAuth2ManagerProtocol {
                 return
             }
             
-            print(authParameters!)
+            print(authParameters!) //print("AUTH PARAMETERS: \(authParameters!)")
             
             web.dismiss(animated: true) {
                 self.managerOutput?.onAuthorizeSuccess()

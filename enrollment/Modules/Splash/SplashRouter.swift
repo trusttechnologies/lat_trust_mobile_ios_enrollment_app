@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - Router
 class SplashRouter: SplashRouterProtocol {
+    
     var viewController: UIViewController?
     
     static func createModule() -> SplashViewController {
@@ -42,8 +43,13 @@ class SplashRouter: SplashRouterProtocol {
         viewController?.present(mainScreenVC, animated: true)
     }
     
-    func goToSesionMenuScreen() {
-        let sesionMenuScreenVC = SesionMenuRouter.createModule()
-        viewController?.present(sesionMenuScreenVC, animated: true)
+    func goToSessionMenuScreen() {
+        let sessionMenuScreenVC = SessionMenuRouter.createModule()
+        
+        viewController?.present(sessionMenuScreenVC, animated: true)
+    }
+    
+    func presentPermissionsAlert(alertController: UIAlertController) {
+        viewController?.present(alertController, animated: true, completion: nil)
     }
 }

@@ -1,22 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "B0C498DD-EE69-451E-8448-4850080FFC14"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/WelcomeScreen/WelcomeScreenViewController.swift"
-            timestampString = "588616584.278396"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "dataSource"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "MainScreenViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - 95d499c8024ba5ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.nameLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - f6592f319a6159f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.nameLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - 90f42c89dd815ce8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.nameLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - 16dde5dc387761eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.nameLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - 218a16dc2395d98f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; enrollment.MainScreenViewController"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "E357781B-8E61-4F99-861B-EEFD4D68C24C - 29296c926f4d9f47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;enrollment.MainScreenViewController&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED3A2A1B-2723-483D-8E68-38C096B209CC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "profileDataSource"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A55BF2F6-4933-4809-8841-B0E9BC64D97E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getProfileDataSource()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63EE1F4C-E11F-4BD6-B096-9422CEB6F983"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "getProfileDataSource()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F8E24EC-D475-4281-BB62-E32717B024BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "onGetProfileDataSourceOutput(datasource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55D50CD1-183D-471D-827F-92D58F7C2AF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "set(profileDataSource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47C231AF-64AA-40EC-BE84-DD25A3EBB02D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "profileDataSource"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "47C231AF-64AA-40EC-BE84-DD25A3EBB02D - 61d0943b214cd681"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.profileDataSource.modify : Swift.Optional&lt;enrollment.ProfileDataSource&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "47C231AF-64AA-40EC-BE84-DD25A3EBB02D - 65e7f8c787a622cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.profileDataSource.modify : Swift.Optional&lt;enrollment.ProfileDataSource&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "47C231AF-64AA-40EC-BE84-DD25A3EBB02D - 218a16dc2395d98f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; enrollment.MainScreenViewController"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "47C231AF-64AA-40EC-BE84-DD25A3EBB02D - 29296c926f4d9f47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "enrollment.MainScreenViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;enrollment.MainScreenViewController&gt;"
+                  moduleName = "enrollment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/MainScreen/MainScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "468">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

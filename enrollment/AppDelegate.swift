@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import TrustDeviceInfo
+import Audit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +21,6 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
-        setInitialVC()
-        
         let serviceName = "defaultServiceName"
         let accessGroup = "P896AB2AMC.trustID.appLib"
         let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
@@ -32,7 +31,10 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
         Identify.shared.enable()
         
-//        print("El trustID de este dispositibvo es: \(generatedTrustId)")
+        TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        TrustAudit.shared.createAuditClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        
+        setInitialVC()
         
         return true
     }
@@ -42,7 +44,7 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         
         saveOAuth2URLParametersFrom(url: url)
         OAuth2ClientHandler.shared.handleRedirectURL(url)
-        
+
         return true
     }
     
@@ -82,7 +84,7 @@ extension AppDelegate: OAuth2ManagerOutputProtocol {
     
     func onSilentAuthorizeSuccess() {}
      
-     func onSilentAuthorizeFailure() {}
+    func onSilentAuthorizeFailure() {}
 }
 
 // MARK: - setInitialVC

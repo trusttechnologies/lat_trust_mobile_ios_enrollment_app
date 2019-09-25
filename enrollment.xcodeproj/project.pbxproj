@@ -25,14 +25,14 @@
 		FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */; };
 		FE1BF3D2230C5224004EEFEB /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3D1230C5224004EEFEB /* Splash.storyboard */; };
 		FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3D4230C56E3004EEFEB /* Extensions.swift */; };
-		FE1BF3D8230C5D82004EEFEB /* SesionMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3D7230C5D82004EEFEB /* SesionMenu.storyboard */; };
-		FE1BF3DA230C5D9B004EEFEB /* SesionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3D9230C5D9B004EEFEB /* SesionMenuViewController.swift */; };
-		FE1BF3DC230C5DBA004EEFEB /* SesionMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DB230C5DBA004EEFEB /* SesionMenuRouter.swift */; };
-		FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DD230C5DCD004EEFEB /* SesionMenuProtocols.swift */; };
-		FE1BF3E0230C5DDE004EEFEB /* SesionMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DF230C5DDE004EEFEB /* SesionMenuPresenter.swift */; };
+		FE1BF3D8230C5D82004EEFEB /* SessionMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3D7230C5D82004EEFEB /* SessionMenu.storyboard */; };
+		FE1BF3DA230C5D9B004EEFEB /* SessionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3D9230C5D9B004EEFEB /* SessionMenuViewController.swift */; };
+		FE1BF3DC230C5DBA004EEFEB /* SessionMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DB230C5DBA004EEFEB /* SessionMenuRouter.swift */; };
+		FE1BF3DE230C5DCD004EEFEB /* SessionMenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DD230C5DCD004EEFEB /* SessionMenuProtocols.swift */; };
+		FE1BF3E0230C5DDE004EEFEB /* SessionMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3DF230C5DDE004EEFEB /* SessionMenuPresenter.swift */; };
 		FE1BF3E3230C8FCE004EEFEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3E2230C8FCE004EEFEB /* LaunchScreen.storyboard */; };
 		FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3E4230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift */; };
-		FE1BF3E7230DA497004EEFEB /* SesionMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3E6230DA497004EEFEB /* SesionMenuInteractor.swift */; };
+		FE1BF3E7230DA497004EEFEB /* SessionMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3E6230DA497004EEFEB /* SessionMenuInteractor.swift */; };
 		FE1BF3EA230DABAF004EEFEB /* OAuth2Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */; };
 		FE1BF3EC230DABCF004EEFEB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */; };
 		FE1BF3EF230DABFB004EEFEB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF3EE230DABFB004EEFEB /* User.swift */; };
@@ -47,6 +47,8 @@
 		FE1BF403230DCBFC004EEFEB /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1BF402230DCBFC004EEFEB /* Credential.swift */; };
 		FE6595DC231823E7006CAD1F /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6595DB231823E7006CAD1F /* SplashPresenter.swift */; };
 		FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6595DD231826B3006CAD1F /* SplashInteractor.swift */; };
+		FE76404D231D6D570085299D /* enrollmentLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = FE76404C231D6D570085299D /* enrollmentLoading.json */; };
+		FE76404F231DCEC60085299D /* AuditDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE76404E231DCEC60085299D /* AuditDataManager.swift */; };
 		FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */; };
 		FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */; };
 		FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */; };
@@ -78,14 +80,14 @@
 		FE1BF3CD230C5200004EEFEB /* SplashProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashProtocols.swift; sourceTree = "<group>"; };
 		FE1BF3D1230C5224004EEFEB /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		FE1BF3D4230C56E3004EEFEB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		FE1BF3D7230C5D82004EEFEB /* SesionMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SesionMenu.storyboard; sourceTree = "<group>"; };
-		FE1BF3D9230C5D9B004EEFEB /* SesionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesionMenuViewController.swift; sourceTree = "<group>"; };
-		FE1BF3DB230C5DBA004EEFEB /* SesionMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesionMenuRouter.swift; sourceTree = "<group>"; };
-		FE1BF3DD230C5DCD004EEFEB /* SesionMenuProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesionMenuProtocols.swift; sourceTree = "<group>"; };
-		FE1BF3DF230C5DDE004EEFEB /* SesionMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesionMenuPresenter.swift; sourceTree = "<group>"; };
+		FE1BF3D7230C5D82004EEFEB /* SessionMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SessionMenu.storyboard; sourceTree = "<group>"; };
+		FE1BF3D9230C5D9B004EEFEB /* SessionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenuViewController.swift; sourceTree = "<group>"; };
+		FE1BF3DB230C5DBA004EEFEB /* SessionMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenuRouter.swift; sourceTree = "<group>"; };
+		FE1BF3DD230C5DCD004EEFEB /* SessionMenuProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenuProtocols.swift; sourceTree = "<group>"; };
+		FE1BF3DF230C5DDE004EEFEB /* SessionMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenuPresenter.swift; sourceTree = "<group>"; };
 		FE1BF3E2230C8FCE004EEFEB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE1BF3E4230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentTypographyScheme.swift; sourceTree = "<group>"; };
-		FE1BF3E6230DA497004EEFEB /* SesionMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesionMenuInteractor.swift; sourceTree = "<group>"; };
+		FE1BF3E6230DA497004EEFEB /* SessionMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenuInteractor.swift; sourceTree = "<group>"; };
 		FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Manager.swift; sourceTree = "<group>"; };
 		FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		FE1BF3EE230DABFB004EEFEB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -100,6 +102,9 @@
 		FE1BF402230DCBFC004EEFEB /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		FE6595DB231823E7006CAD1F /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		FE6595DD231826B3006CAD1F /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
+		FE76404C231D6D570085299D /* enrollmentLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enrollmentLoading.json; sourceTree = "<group>"; };
+		FE76404E231DCEC60085299D /* AuditDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDataManager.swift; sourceTree = "<group>"; };
+		FE764050231EAF130085299D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInteractor.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 		90C581E4A2A4274A8E91EB0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE764050231EAF130085299D /* CoreLocation.framework */,
 				384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */,
 			);
 			name = Frameworks;
@@ -206,12 +212,12 @@
 		FE1BF3D6230C5D59004EEFEB /* SesionMenu */ = {
 			isa = PBXGroup;
 			children = (
-				FE1BF3E6230DA497004EEFEB /* SesionMenuInteractor.swift */,
-				FE1BF3DF230C5DDE004EEFEB /* SesionMenuPresenter.swift */,
-				FE1BF3DD230C5DCD004EEFEB /* SesionMenuProtocols.swift */,
-				FE1BF3DB230C5DBA004EEFEB /* SesionMenuRouter.swift */,
-				FE1BF3D9230C5D9B004EEFEB /* SesionMenuViewController.swift */,
-				FE1BF3D7230C5D82004EEFEB /* SesionMenu.storyboard */,
+				FE1BF3E6230DA497004EEFEB /* SessionMenuInteractor.swift */,
+				FE1BF3DF230C5DDE004EEFEB /* SessionMenuPresenter.swift */,
+				FE1BF3DD230C5DCD004EEFEB /* SessionMenuProtocols.swift */,
+				FE1BF3DB230C5DBA004EEFEB /* SessionMenuRouter.swift */,
+				FE1BF3D9230C5D9B004EEFEB /* SessionMenuViewController.swift */,
+				FE1BF3D7230C5D82004EEFEB /* SessionMenu.storyboard */,
 			);
 			path = SesionMenu;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 			children = (
 				FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */,
 				FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */,
+				FE76404E231DCEC60085299D /* AuditDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -261,6 +268,14 @@
 				FE1BF3F8230DAD73004EEFEB /* OAuth2RetryHandler.swift */,
 			);
 			path = OAuth2;
+			sourceTree = "<group>";
+		};
+		FE764049231C76120085299D /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				FE76404C231D6D570085299D /* enrollmentLoading.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		FE7796B4230DDCEE00FFFEAC /* MainScreen */ = {
@@ -301,6 +316,7 @@
 				FEE29953230C40EE006DE4D5 /* Info.plist */,
 				FEE29947230C40ED006DE4D5 /* AppDelegate.swift */,
 				FEE2994E230C40EE006DE4D5 /* Assets.xcassets */,
+				FE764049231C76120085299D /* Animations */,
 				FE1BF3E8230DABA2004EEFEB /* DataManagers */,
 				FE1BF3AD230C4CCA004EEFEB /* Fonts */,
 				FE1BF3ED230DABEE004EEFEB /* Model */,
@@ -379,12 +395,13 @@
 			files = (
 				FE1BF3C6230C4D1A004EEFEB /* Roboto-MediumItalic.ttf in Resources */,
 				FE1BF3BD230C4D1A004EEFEB /* Roboto-BlackItalic.ttf in Resources */,
+				FE76404D231D6D570085299D /* enrollmentLoading.json in Resources */,
 				FE1BF3D2230C5224004EEFEB /* Splash.storyboard in Resources */,
 				FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */,
 				FE1BF3C1230C4D1A004EEFEB /* Roboto-Regular.ttf in Resources */,
 				FE1BF3C2230C4D1A004EEFEB /* Roboto-Light.ttf in Resources */,
 				FE1BF3BF230C4D1A004EEFEB /* Roboto-BoldItalic.ttf in Resources */,
-				FE1BF3D8230C5D82004EEFEB /* SesionMenu.storyboard in Resources */,
+				FE1BF3D8230C5D82004EEFEB /* SessionMenu.storyboard in Resources */,
 				FE1BF3BE230C4D1A004EEFEB /* Roboto-LightItalic.ttf in Resources */,
 				FEE2994F230C40EE006DE4D5 /* Assets.xcassets in Resources */,
 				FE1BF3E3230C8FCE004EEFEB /* LaunchScreen.storyboard in Resources */,
@@ -451,16 +468,17 @@
 				FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */,
 				FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */,
 				FE1BF3FB230DADB6004EEFEB /* APIRouter.swift in Sources */,
-				FE1BF3E0230C5DDE004EEFEB /* SesionMenuPresenter.swift in Sources */,
+				FE1BF3E0230C5DDE004EEFEB /* SessionMenuPresenter.swift in Sources */,
 				FE1BF401230DCBDE004EEFEB /* Profile.swift in Sources */,
-				FE1BF3DC230C5DBA004EEFEB /* SesionMenuRouter.swift in Sources */,
+				FE1BF3DC230C5DBA004EEFEB /* SessionMenuRouter.swift in Sources */,
 				FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */,
 				FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */,
 				FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */,
 				FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */,
 				FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */,
 				FE1BF3CA230C51DA004EEFEB /* SplashRouter.swift in Sources */,
-				FE1BF3E7230DA497004EEFEB /* SesionMenuInteractor.swift in Sources */,
+				FE76404F231DCEC60085299D /* AuditDataManager.swift in Sources */,
+				FE1BF3E7230DA497004EEFEB /* SessionMenuInteractor.swift in Sources */,
 				FE1BF3EF230DABFB004EEFEB /* User.swift in Sources */,
 				FE1BF3F5230DAD00004EEFEB /* OAuth2ClientHandler.swift in Sources */,
 				FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */,
@@ -469,8 +487,8 @@
 				FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */,
 				FE1BF3EA230DABAF004EEFEB /* OAuth2Manager.swift in Sources */,
 				FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */,
-				FE1BF3DE230C5DCD004EEFEB /* SesionMenuProtocols.swift in Sources */,
-				FE1BF3DA230C5D9B004EEFEB /* SesionMenuViewController.swift in Sources */,
+				FE1BF3DE230C5DCD004EEFEB /* SessionMenuProtocols.swift in Sources */,
+				FE1BF3DA230C5D9B004EEFEB /* SessionMenuViewController.swift in Sources */,
 				FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */,
 				FE1BF3F9230DAD73004EEFEB /* OAuth2RetryHandler.swift in Sources */,
 				FE1BF3F7230DAD2B004EEFEB /* API.swift in Sources */,
@@ -612,6 +630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -633,6 +652,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

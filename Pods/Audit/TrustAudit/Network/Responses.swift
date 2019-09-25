@@ -39,3 +39,18 @@ public class CreateAuditResponse: Mappable, CustomStringConvertible {
         message <- map["message"]
     }
 }
+
+// MARK: - ClientCredentials
+public class AuditClientCredentials: Mappable, CustomStringConvertible {
+    public var accessToken: String?
+    public var tokenType: String?
+    
+    public required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    public func mapping(map: Map) {
+        accessToken <- map["access_token"]
+        tokenType <- map["token_type"]
+    }
+}

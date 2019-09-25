@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import CoreLocation
+import UIKit
+import RealmSwift
 
 class SplashInteractor: SplashInteractorProtocol {
     var interactorOutput: SplashInteractorOutputProtocol?
@@ -14,6 +17,8 @@ class SplashInteractor: SplashInteractorProtocol {
     var oauth2Manager: OAuth2ManagerProtocol?
     
     var userDataManager: UserDataManagerProtocol?
+    let locationManager = CLLocationManager()
+
     
     func getUser() {
         if userDataManager?.getUser() != nil {
@@ -27,7 +32,13 @@ class SplashInteractor: SplashInteractorProtocol {
         userDataManager?.deleteAll(completion: nil)
         oauth2Manager?.clearTokens()
         
-        interactorOutput?.onDataCleared()
+        let realm = try! Realm()
+
+        try! realm.write {
+            realm.deleteAll()
+            
+            interactorOutput?.onDataCleared()
+        }
     }
 
     func checkAccessToken() {
@@ -48,6 +59,43 @@ class SplashInteractor: SplashInteractorProtocol {
     
     func authenticate(context: AnyObject) {
         oauth2Manager?.silentAuthorize(from: context)
+    }
+    
+    func checkPermissions() {
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .notDetermined:
+//            locationManager.requestAlwaysAuthorization()
+            
+            locationManager.requestWhenInUseAuthorization()
+//            let auxStatus = CLLocationManager.authorizationStatus()
+//            if auxStatus == .authorizedWhenInUse || auxStatus == .authorizedAlways {
+//                interactorOutput?.onGetAcceptedPermissions()
+//            }
+            interactorOutput?.onGetAcceptedPermissions()
+            return
+        case .denied, .restricted:
+            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+            
+            interactorOutput?.callAlert(alertController: alertController)
+            return
+        case .authorizedAlways, .authorizedWhenInUse:
+            interactorOutput?.onGetAcceptedPermissions()
+            break
+        }
+
+        //        interactor?.getUser()
     }
 }
 
