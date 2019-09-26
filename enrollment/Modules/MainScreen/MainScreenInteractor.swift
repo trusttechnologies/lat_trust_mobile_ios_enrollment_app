@@ -65,13 +65,17 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     func cleanData() {
         OAuth2ClientHandler.shared.forgetTokens()
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.deleteAll()
-            
-            interactorOutput?.onCleanedData()
-        }
+        RealmRepo<User>.deleteAll()
+    
+        interactorOutput?.onCleanedData()
+
+//        let realm = try! Realm()
+//
+//        try! realm.write {
+//            realm.deleteAll()
+//
+//            interactorOutput?.onCleanedData()
+//        }
     }
     
     // MARK: - Login Audit

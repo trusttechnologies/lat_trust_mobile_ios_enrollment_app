@@ -105,8 +105,8 @@ class OAuth2Manager: OAuth2ManagerProtocol {
                 self.managerOutput?.onSilentAuthorizeFailure()
                 return
             }
-            
-            self.managerOutput?.onSilentAuthorizeSuccess()
+            // FIXME: arreglar esto, hace nada
+            self.managerOutput?.onSilentAuthorizeSuccess() //gggggggg
         }
     }
     

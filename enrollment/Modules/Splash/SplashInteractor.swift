@@ -42,16 +42,20 @@ class SplashInteractor: SplashInteractorProtocol {
     }
 
     func checkAccessToken() {
+        print("--- Access Token: \(oauth2Manager?.getAccessToken())")
         if oauth2Manager?.getAccessToken() != nil {
             interactorOutput?.onCheckAccessTokenSuccess() //Go to main screen
         } else {
-          interactorOutput?.onCheckAccessTokenFailure() //Silentauth
+            interactorOutput?.onCheckAccessTokenFailure() //Silentauth
         }
     }
     
     func checkRefreshToken() {
+        print("--- Refresh Token:: \(oauth2Manager?.getRefreshToken())")
         if oauth2Manager?.getRefreshToken() != nil {
-            interactorOutput?.onRefreshTokenSuccess()
+            interactorOutput?.onCheckAccessTokenSuccess() //Go to main screen
+
+//            interactorOutput?.onRefreshTokenSuccess() //authenticate
         } else {
             interactorOutput?.onRefreshTokenFailure()
         }
@@ -65,13 +69,8 @@ class SplashInteractor: SplashInteractorProtocol {
         let status = CLLocationManager.authorizationStatus()
         switch status {
         case .notDetermined:
-//            locationManager.requestAlwaysAuthorization()
-            
             locationManager.requestWhenInUseAuthorization()
-//            let auxStatus = CLLocationManager.authorizationStatus()
-//            if auxStatus == .authorizedWhenInUse || auxStatus == .authorizedAlways {
-//                interactorOutput?.onGetAcceptedPermissions()
-//            }
+            
             interactorOutput?.onGetAcceptedPermissions()
             return
         case .denied, .restricted:
@@ -94,7 +93,6 @@ class SplashInteractor: SplashInteractorProtocol {
             interactorOutput?.onGetAcceptedPermissions()
             break
         }
-
         //        interactor?.getUser()
     }
 }
