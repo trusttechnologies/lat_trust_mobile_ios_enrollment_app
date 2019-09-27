@@ -222,8 +222,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "SplashInteractor"
             landmarkType = "21">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "onSilentAuthorizeSuccess()"
             landmarkType = "7">
          </BreakpointContent>
@@ -272,8 +272,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "AppDelegate"
-            landmarkType = "21">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -972,8 +972,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "authenticate(context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -988,8 +988,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "checkPermissions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1004,8 +1004,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "checkPermissions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1020,8 +1020,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "checkPermissions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1036,8 +1036,8 @@
             filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "checkPermissions()"
             landmarkType = "7">
          </BreakpointContent>

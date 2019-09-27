@@ -3,13 +3,16 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/Audit/Audit.framework
 ${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
 ${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework
-${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
+${BUILT_PRODUCTS_DIR}/MaterialComponents-82fb79b4/MaterialComponents.framework
 ${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/TrustDeviceInfo/TrustDeviceInfo.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework

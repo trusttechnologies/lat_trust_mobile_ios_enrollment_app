@@ -2,18 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>ola</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Enrollment necesita acceder a tu ubicación</string>
-	<key>NSLocationUsageDescription</key>
-	<string>ayuda</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Enrollment necesita acceder a tu ubicación</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -43,11 +33,23 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Enrollment necesita acceder a tu ubicación</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>ola</string>
+	<key>NSLocationUsageDescription</key>
+	<string>ayuda</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enrollment necesita acceder a tu ubicación</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Medium.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -66,5 +68,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>light</string>
 </dict>
 </plist>

@@ -9,7 +9,9 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 
-class EnrollmentTypographyScheme: MDCTypographyScheming {
+class EnrollmentTypographyScheme: NSObject, MDCTypographyScheming {
+    var useCurrentContentSizeCategoryWhenApplied: Bool
+    
     
     var mdc_adjustsFontForContentSizeCategory: Bool
     
@@ -39,7 +41,7 @@ class EnrollmentTypographyScheme: MDCTypographyScheming {
     
     var overline: UIFont
     
-    init() {
+    override init() {
         self.headline1 = UIFont.h1Font
         self.headline2 = UIFont.h2Font
         self.headline3 = UIFont.h3Font
@@ -54,5 +56,6 @@ class EnrollmentTypographyScheme: MDCTypographyScheming {
         self.button = UIFont.button
         self.overline = UIFont.caption
         self.mdc_adjustsFontForContentSizeCategory = false
+        self.useCurrentContentSizeCategoryWhenApplied = false
     }
 }

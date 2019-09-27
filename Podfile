@@ -3,14 +3,16 @@
   
   source 'https://github.com/trusttechnologies/auditpodspecs.git'
   source 'https://github.com/trusttechnologies/TrustDeviceInfoPodSpecs.git'
+  source 'https://github.com/trusttechnologies/trustnotificationpodspecs.git'
   source 'https://github.com/CocoaPods/Specs.git'
 
   use_frameworks!
+  
 
 target 'enrollment' do
   pod 'MaterialComponents/TextFields'
-  pod 'MaterialComponents/Buttons'
-  pod 'MaterialComponents/Buttons+ButtonThemer'
+  #pod 'MaterialComponents/Buttons', '~> 87.1.1'
+  #pod 'MaterialComponents/Buttons+ButtonThemer', '~> 87.1.1'
   pod 'MaterialComponents/Snackbar+TypographyThemer'
   pod 'MaterialComponents/BottomNavigation'
   pod 'MaterialComponents/BottomNavigation+TypographyThemer'
@@ -18,6 +20,7 @@ target 'enrollment' do
 
   pod 'TrustDeviceInfo'
   pod 'Audit'
+  pod 'TrustNotification'
 
   pod 'IQKeyboardManagerSwift'
 
@@ -36,4 +39,8 @@ target 'enrollment' do
       config.build_settings.delete('CODE_SIGNING_REQUIRED')
     end
   end
+end
+
+target 'ServiceNotificationExtension' do
+    pod 'TrustNotification'
 end
