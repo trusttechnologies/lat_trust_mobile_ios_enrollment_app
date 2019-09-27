@@ -6,7 +6,13 @@
 	<string>light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>ola</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enrollment necesita acceder a tu ubicación</string>
+	<key>NSLocationUsageDescription</key>
+	<string>ayuda</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Enrollment necesita acceder a tu ubicación</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
