@@ -28,6 +28,8 @@ class SplashRouter: SplashRouterProtocol {
         interactor.oauth2Manager = oauth2Manager
         interactor.userDataManager = userDataManager
 
+        oauth2Manager.managerOutput = interactor
+
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor

@@ -24,13 +24,38 @@ class SplashPresenter: SplashPresenterProtocol {
     }
 }
 
+// MARK: - InteractorOutput
 extension SplashPresenter: SplashInteractorOutputProtocol {
+    // MARK: - Splash login
+    func onUserHasLoggedInSuccess() {
+          if let context = router?.viewController {
+              interactor?.authorize(from: context)
+          }
+    }
+    
+    func onUserHasLoggedInFailure() {
+        interactor?.cleanData()
+    }
+    
+    func onAuthorizeSuccess() {
+        router?.goToMainScreen()
+    }
+    
+    func onAuthorizeFailure() {
+        router?.goToSessionMenuScreen()
+    }
+    
+    func onDataCleaned() {
+        router?.goToSessionMenuScreen()
+    }
+    
+    // MARK: - Permissions
     func callAlert(alertController: UIAlertController) {
         self.router?.presentPermissionsAlert(alertController: alertController)
     }
     
     func onGetAcceptedPermissions() {
-        interactor?.getUser()
+        interactor?.checkIfUserHasLoggedIn()
     }
     
     func onGetNotDeterminedPermissions() {
@@ -39,44 +64,5 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
     
     func returnViewDidAppear() {
         self.onViewDidAppear()
-    }
-    
-    func onGetUserSuccess() {
-        interactor?.checkAccessToken()
-    }
-    
-    func onGetUserFailure() {
-        interactor?.clearData()
-        router?.goToSessionMenuScreen()
-    }
-    
-    func onCheckAccessTokenSuccess() {
-        router?.goToMainScreen()
-    }
-    
-    func onCheckAccessTokenFailure() {
-        interactor?.checkRefreshToken()
-    }
-    
-    func onRefreshTokenSuccess() {
-        if let context = router?.viewController {
-            interactor?.authenticate(context: context)
-        }
-    }
-    
-    func onRefreshTokenFailure() {
-        interactor?.clearData()
-    }
-    
-    func onAuthenticateSuccess() {
-        router?.goToMainScreen()
-    }
-    
-    func onAuthenticateFailure() {
-        router?.goToSessionMenuScreen()
-    }
-    
-    func onDataCleared() {
-        router?.goToSessionMenuScreen()
     }
 }

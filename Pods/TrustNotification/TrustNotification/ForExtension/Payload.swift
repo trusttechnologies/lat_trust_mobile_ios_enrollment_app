@@ -9,8 +9,23 @@
 import Foundation
 import UserNotifications
 
-class Payload: NSObject {
-    func setTitleAndBody(bestAttemptContent: UNMutableNotificationContent?){
+// This is a class created to establish the title and body of the notification through the paylod of the notification sent.
+
+public class Payload: NSObject {
+    
+    /**
+    Call this function in Service Notification Extension to establish the title and body of the push notification.
+    - Parameters:
+    - bestAttemptContent: Best Attemprt Content
+    
+    
+    ### Usage Example: ###
+    ````
+    setTitleAndBody(bestAttemptContent: bestAttemptContent)
+    ````
+    */
+    
+    public func setTitleAndBody(bestAttemptContent: UNMutableNotificationContent?){
         
         if let data = bestAttemptContent?.userInfo["data"] as? Dictionary<AnyHashable, Any>{
             if let type = data["notificationBody"] as? Dictionary<AnyHashable, Any>{

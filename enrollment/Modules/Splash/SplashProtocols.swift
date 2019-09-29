@@ -18,34 +18,27 @@ protocol SplashInteractorProtocol: AnyObject {
     var oauth2Manager: OAuth2ManagerProtocol? {get set}
     var userDataManager: UserDataManagerProtocol? {get set}
 
-    func getUser()
-    
-    func checkAccessToken()
-    func checkRefreshToken()
-    func authenticate(context: AnyObject)
+    func checkIfUserHasLoggedIn() //Get User, Check AccessToken, Check RefreshToken
+    func authorize(from context: AnyObject)
     func checkPermissions()
     
-    func clearData()
+    func cleanData()
 }
 
 // MARK: - InteractorOutput
 protocol SplashInteractorOutputProtocol: AnyObject {
-    func onGetUserSuccess()
-    func onGetUserFailure()
+    func onUserHasLoggedInSuccess()
+    func onUserHasLoggedInFailure()
     
-    func onCheckAccessTokenSuccess()
-    func onCheckAccessTokenFailure()
-    func onRefreshTokenSuccess()
-    func onRefreshTokenFailure()
-    func onAuthenticateSuccess()
-    func onAuthenticateFailure()
+    func onAuthorizeSuccess()
+    func onAuthorizeFailure()
     
     func onGetAcceptedPermissions()
     func onGetNotDeterminedPermissions()
     func returnViewDidAppear()
     func callAlert(alertController: UIAlertController)
     
-    func onDataCleared()
+    func onDataCleaned()
 }
 
 // MARK: - Presenter

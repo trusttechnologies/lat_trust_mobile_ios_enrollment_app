@@ -15,8 +15,6 @@ class SessionMenuPresenter: SessionMenuPresenterProtocol {
     var router: SessionMenuRouterProtocol?
     
     func onLoginButtonPressed(from context: AnyObject) {
-        //getuser
-//        interactor?.getUser()
         view?.startActivityIndicator()
         interactor?.authorizeUser(from: context)
     }

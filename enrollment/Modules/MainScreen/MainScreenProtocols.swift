@@ -26,7 +26,6 @@ protocol MainScreenInteractorProtocol: AnyObject {
     func getProfileDataSource()
     func getTrustIdDataSource()
     
-    func callCleanData()
     func cleanData()
     
     func loginAudit()

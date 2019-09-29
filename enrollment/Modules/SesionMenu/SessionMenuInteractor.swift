@@ -18,15 +18,6 @@ class SessionMenuInteractor: SessionMenuInteractorProtocol {
         oauth2Manager?.authorizeUser(from: context)
     }
     
-//    func getUser() {
-//        if userDataManager?.getUser() != nil {
-//            interactorOutput?.onGetUserSuccess() //Check Access token
-//        } else {
-//            interactorOutput?.onGetUserFailure()
-//        }
-//    }
-    
-    
     func getUserProfile() {
         let parameters = ProfileParameters(accessToken: OAuth2ClientHandler.shared.accessToken)
         

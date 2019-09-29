@@ -13,20 +13,39 @@ import MaterialComponents
 import MediaPlayer
 import AudioToolbox
 
+/// This is a class created for handling video notifications in Project
+
 class VideoViewController: UIViewController {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+    
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!{
         didSet{
             activityIndicator.isHidden = true
         }
     }
+    
+    /**
+     Notification area
+     */
     @IBOutlet weak var dialogView: UIView!
+    
+    
+    /**
+     Flag for handling the activation o deactivation of the video audio
+     */
     var flagAudio: Bool = false
+    
+    
+    /**
+     Button on the left, for activate o deactivate the video audio
+     */
     @IBOutlet weak var audioButton: UIButton!{
         didSet{
             let origImage = UIImage(named: "audio_enabled_icon")
@@ -36,28 +55,48 @@ class VideoViewController: UIViewController {
         }
     }
     
-    
+    /**
+     Button on the left, for activate o deactivate the video audio
+     */
     @IBAction func audioButton(_ sender: Any) {
         flagAudio = !flagAudio
     }
     
+    /**
+     Contains the close button and the remaining seconds label
+     */
     @IBOutlet weak var closeView: UIView!{
         didSet{
             closeView.layer.cornerRadius = 18.0
         }
     }
+    
+    /**
+     Close button, inactive for the first x seconds,  where x is defined by the notification sender
+     */
     @IBOutlet weak var closeButton: UIButton!{
         didSet{
             closeButton.isEnabled = false
             flagAudio = false
         }
     }
+    
+    /**
+     close button, handle the pressing action
+     */
     @IBAction func closeButton(_ sender: Any) {
         flagAudio = true
         self.dismiss(animated: true)
     }
+    
+    /**
+     Is a label that shows the remaining seconds for the close button to activate
+     */
     @IBOutlet weak var remainSecLabel: UILabel!
     
+    /**
+     Is the video playing area
+     */
     
     @IBOutlet weak var videoView: UIView!{
         didSet{
@@ -65,16 +104,30 @@ class VideoViewController: UIViewController {
         }
     }
     
+    /**
+     Url for action the the right button
+     */
     var urlRightButton: String?
-    var urlCenterButton: String?
-    @IBOutlet weak var buttonC: MDCButton!{
+    /**
+     Url for action the the left button
+     */
+    var urlLeftButton: String?
+    
+    
+    /**
+     Left button, in case that the notification has two buttons
+     */
+    @IBOutlet weak var buttonL: MDCButton!{
         didSet{
-            buttonC.addTarget(
+            buttonL.addTarget(
                 self,
-                action: #selector(onCenterButtonPressed(sender:)),
+                action: #selector(onLeftButtonPressed(sender:)),
                 for: .touchUpInside)
         }
     }
+    /**
+     Right button, in case that the notification has one or two buttons
+     */
     @IBOutlet weak var buttonR: MDCButton!{
         didSet{
             buttonR.addTarget(
@@ -84,12 +137,20 @@ class VideoViewController: UIViewController {
         }
     }
     
-    @objc func onCenterButtonPressed(sender: UIButton) {
-        if let url = URL(string: urlCenterButton!) {
+    /**
+     This function is call in case that you have a video notification with two buttons, and the left button is pressed.
+     */
+    
+    @objc func onLeftButtonPressed(sender: UIButton) {
+        if let url = URL(string: urlLeftButton!) {
             UIApplication.shared.open(url , options: [:], completionHandler: nil)
 
         }
     }
+    
+    /**
+     This function is call in case that you have a video notification with one or two buttons, and the right (or only) button is pressed.
+     */
     
     @objc func onRightButtonPressed(sender: UIButton) {
         if let url = URL(string: urlRightButton!) {
@@ -97,8 +158,20 @@ class VideoViewController: UIViewController {
         }
     }
     
-    
-    //MARK: set the dialog background
+    /**
+     Call this function for set the notification background.
+     - Parameters:
+     - color : there are three options parameterized for background color
+        - .SOLID : Gray solid color
+        - .TRANSPARENT: Black color with 60% opacity
+        - .NO_BACKGROUND: The notification is shown withouth any background and what is seen behind the notification is the screen of the application being used.
+     
+     
+     ### Usage Example: ###
+     ````
+     videoVC.setBackground(color: .SOLID)
+     ````
+     */
     func setBackground(color: backgroundColor){
         switch color {
         case .SOLID:
@@ -110,7 +183,18 @@ class VideoViewController: UIViewController {
         }
     }
     
-    //MARK: set the video content
+    /**
+     Call this function for set the notification content.
+     - Parameters:
+     - content : this is an object from class GenericNotification, this class contains the data parsed from the notification.
+    
+     
+     ### Usage Example: ###
+     ````
+     videoVC.fillVideo(content: genericNotification)
+     ````
+     */
+    
     func fillVideo(content: GenericNotification!) {
         
         //Set video
@@ -124,8 +208,8 @@ class VideoViewController: UIViewController {
             let playerLayer = AVPlayerLayer(player: player)
             let controller = AVPlayerViewController()
             controller.player = player
-            playerLayer.frame = self.videoView.frame
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            playerLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
             videoView.layer.addSublayer(playerLayer)
             player.play()
             
@@ -173,7 +257,7 @@ class VideoViewController: UIViewController {
         let buttonCounter = buttons!.count
         if(buttonCounter == 1){
             
-            buttonC.isHidden = true
+            buttonL.isHidden = true
             buttonR.setTitle(buttons![0].text, for: .normal)
             buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons![0].action
@@ -181,9 +265,9 @@ class VideoViewController: UIViewController {
         
         if(buttonCounter == 2){
             
-            buttonC.setTitle(buttons![1].text, for: .normal)
-            buttonC.setupButtonWithType(color: buttons![1].color, type: .whiteButton, mdcType: .text)
-            urlCenterButton = buttons![1].action
+            buttonL.setTitle(buttons![1].text, for: .normal)
+            buttonL.setupButtonWithType(color: buttons![1].color, type: .whiteButton, mdcType: .text)
+            urlLeftButton = buttons![1].action
             buttonR.setTitle(buttons![0].text, for: .normal)
             buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons![0].action

@@ -8,7 +8,9 @@
 
 import Foundation
 
-
+/**
+ This enum maps the three optins of background
+ */
 enum backgroundColor{
     case SOLID
     case TRANSPARENT

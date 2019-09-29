@@ -12,7 +12,6 @@ import MaterialComponents.MaterialButtons
 class EnrollmentTypographyScheme: NSObject, MDCTypographyScheming {
     var useCurrentContentSizeCategoryWhenApplied: Bool
     
-    
     var mdc_adjustsFontForContentSizeCategory: Bool
     
     var headline1: UIFont

@@ -9,11 +9,31 @@
 import Foundation
 import UserNotifications
 
-class FileDownloader: NSObject {
+// This is a class created to download the resource to display in the push notification
+
+public class FileDownloader: NSObject {
+    
+    /**
+    Download background content
+    */
     
     var downloadTask: URLSessionDownloadTask?
     
-    func fileDonwload( urlString: String, contentHandler: ((UNNotificationContent) -> Void)? ,bestAttemptContent: UNMutableNotificationContent? ) -> Void {
+    /**
+    Call this function in Service Notification Extension to download the content that will be displayed on the push notification.
+    - Parameters:
+    - urlString : Web address of content
+    - contentHandler : Content Handler
+    - bestAttemptContent: Best Attemprt Content
+    
+    
+    ### Usage Example: ###
+    ````
+    fileDonwload( urlString: urlString, contentHandler: contentHandler, bestAttemptContent: bestAttemptContent)
+    ````
+    */
+    
+    public func fileDonwload( urlString: String, contentHandler: ((UNNotificationContent) -> Void)? ,bestAttemptContent: UNMutableNotificationContent? ) -> Void {
         
         guard let url = URL(string: urlString) else {
             // Cannot create a valid URL, return early.
@@ -40,7 +60,20 @@ class FileDownloader: NSObject {
         self.downloadTask?.resume()
     }
     
-    func getURLpayload(bestAttemptContent: UNMutableNotificationContent?, contentHandler: ((UNNotificationContent) -> Void)? ) -> String {
+    /**
+    Call this function in the Service notification extension to get the content url.
+    - Parameters:
+    - bestAttemptContent: Best Attemprt Content
+    - contentHandler : Content Handler
+    
+    
+    ### Usage Example: ###
+    ````
+    getURLpayload(bestAttemptContent: bestAttemptContent, contentHandler: contentHandler)
+    ````
+    */
+    
+    public func getURLpayload(bestAttemptContent: UNMutableNotificationContent?, contentHandler: ((UNNotificationContent) -> Void)? ) -> String {
         var urlString:String?
         if let url = bestAttemptContent!.userInfo["data"] as? Dictionary<AnyHashable, Any> {
             

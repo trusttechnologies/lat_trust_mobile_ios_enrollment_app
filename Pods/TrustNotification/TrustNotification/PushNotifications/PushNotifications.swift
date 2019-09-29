@@ -12,21 +12,46 @@ import FirebaseCore
 import FirebaseMessaging
 import TrustDeviceInfo
 
+
+/// This is a class created for handling notifications in general in the project
 public class PushNotifications: NSObject {
     
-    //var genericNotification: GenericNotification = GenericNotification.
     
     public var clientId: String?
     public var clientSecret: String?
     public var serviceName: String?
     public var accesGroup: String?
     
+    /**
+     Create an instance of class Push notifications
+     
+     - Parameters:
+     - clientId:
+     - clientSecret:
+     - serviceName:
+     - accesGroup: Apple team with shared keychain
+     
+     
+     ### Usage Example: ###
+     ````
+     let notifications = PushNotifications(clientId: "your client id", clientSecret: "your client secret", serviceName: "defaultServiceName", accesGroup: "your access group")
+     ````
+     */
     public init(clientId:String, clientSecret:String, serviceName:String, accesGroup:String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
         self.serviceName = serviceName
         self.accesGroup = accesGroup
     }
+    
+    /**
+     Call this function for set the initial configuration of firebase and messaging service
+     
+     ### Usage Example: ###
+     ````
+     notifications.firebaseConfig(application: application)
+     ````
+     */
     
     public func firebaseConfig(application: UIApplication) {
         // Use Firebase library to configure APIs
@@ -35,6 +60,15 @@ public class PushNotifications: NSObject {
         Messaging.messaging().delegate = self
     }
     
+    /**
+     Call this function to ask for permmission to receive push notifications to the user
+     
+     
+     ### Usage Example: ###
+     ````
+     notifications.registerForRemoteNotifications(application: application)
+     ````
+     */
     
     public func registerForRemoteNotifications(application: UIApplication){
         if #available(iOS 10.0, *) {
@@ -54,6 +88,15 @@ public class PushNotifications: NSObject {
         application.registerForRemoteNotifications()
     }
     
+    /**
+     Call this function to ask for permmission to receive custom push notifications to the user
+     
+     ### Usage Example: ###
+     ````
+     notifications.registerCustomNotificationCategory()
+     ````
+     */
+    
     public func registerCustomNotificationCategory() {
         //Buttons
         let acceptAction = UNNotificationAction(identifier: "accept", title:  "Aceptar", options: [.foreground])
@@ -69,6 +112,15 @@ public class PushNotifications: NSObject {
         UNUserNotificationCenter.current().setNotificationCategories([customCategory])
     }
     
+    /**
+     Call this function to eliminate the number on the app' icon when the user touch the notification (badge number)
+    
+     ### Usage Example: ###
+     ````
+     notifications.clearBadgeNumber()
+     ````
+     */
+    
     public func clearBadgeNumber() {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
@@ -78,16 +130,19 @@ public class PushNotifications: NSObject {
 //MARK: Messaging Delegate
 extension PushNotifications: MessagingDelegate{
     
+    /**
+     This function monitors token refresh and register the firebase token in the trust service and receive the trustID
+     this function does not need to be called
+     */
+    
     // MARK:  Monitor token refresh
     public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        // TODO: If necessary send token to application server.
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
-        Identify.shared.trustDeviceInfoDelegate = self
         
+        Identify.shared.trustDeviceInfoDelegate = self
         Identify.shared.set(serviceName: serviceName!, accessGroup: accesGroup!)
         Identify.shared.createClientCredentials(clientID: clientId!, clientSecret: clientSecret!)
         Identify.shared.enable()
@@ -126,7 +181,13 @@ extension PushNotifications: TrustDeviceInfoDelegate{
 //MARK: UserNotifications Handling
 extension PushNotifications: UNUserNotificationCenterDelegate{
     
-    // MARK: FOREGROUND
+    /**
+     This function is executed when a notification is received in the foreground. This function is not called by the developer.
+     
+     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
+     */
+    
+    // MARK: Foreground Notification
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                         willPresent notification: UNNotification,
                                         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -150,10 +211,17 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         Messaging.messaging().appDidReceiveMessage(notification.request.content.userInfo)
         
-        completionHandler([])
+        completionHandler([.alert, .badge, .sound])
     }
     
-    // MARK: BACKGROUND
+    
+    /**
+     This function is executed when a notification is received in the background. This function is not called by the developer.
+     
+     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
+     */
+    
+    // MARK: Background Notification
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let genericNotification = parseNotification(content: response.notification.request.content.userInfo)
@@ -184,41 +252,106 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
     }
 }
 
-//MARK: DIALOGS
 
 extension PushNotifications{
+    
+    /**
+     This function is called by the UNUserNotificationCenterDelegate functions (if receive notification in foreground or background).
+     
+     - Parameters:
+     - content: This is a generic notification that can have any kind of notification data, but for this function in particular, it is required a notification dialog tipe, for more information see the GenericNotification struct documentation
+     
+     ### Usage Example: ###
+     ````
+     presentDialog(content: genericNotification)
+     ````
+     */
+    
     func presentDialog(content: GenericNotification!){
         
         let storyboard = UIStoryboard(name: "DialogView", bundle: nil)
         let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController
         
-        guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
-            return
+        var topController = UIApplication.shared.keyWindow?.rootViewController
+        
+        while let presentedViewController = topController?.presentedViewController {
+            topController = presentedViewController
         }
+        
         let window = UIApplication.shared.keyWindow
         
         dialogVC?.modalPresentationStyle = .overCurrentContext
         dialogVC?.setBackground(color: .SOLID)
         dialogVC?.fillDialog(content: content)
-        vc.present(dialogVC!, animated: true)
+
+        if topController is DialogViewController {
+           
+            topController?.dismiss(animated: true, completion: {
+                let presentedViewController = window?.rootViewController?.presentedViewController
+                presentedViewController?.present(dialogVC!, animated: true)
+            })
+            
+        }
+        else if topController is VideoViewController{
+            topController?.dismiss(animated: true, completion: {
+                let presentedViewController = window?.rootViewController?.presentedViewController
+                presentedViewController?.present(dialogVC!, animated: true)
+            })
+        }
+        else{
+            topController!.present(dialogVC!, animated: true)
+        }
         
         window?.makeKeyAndVisible()
     }
+    
+    /**
+     This function is called by the UNUserNotificationCenterDelegate functions (if receive notification in foreground or background).
+     
+     - Parameters:
+     - content: This is a generic notification that can have any kind of notification data, but for this function in particular, it is required a notification video tipe, for more information see the GenericNotification struct documentation
+     
+     ### Usage Example: ###
+     ````
+     presentVideo(content: genericNotification)
+     ````
+     */
+    
     func presentVideo(content: GenericNotification){
         //To Do
         let storyboard = UIStoryboard(name: "VideoView", bundle: nil)
         let videoVC = storyboard.instantiateViewController(withIdentifier: "VideoView") as? VideoViewController
         
-        guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
-            return
+        var topController = UIApplication.shared.keyWindow?.rootViewController
+        
+        while let presentedViewController = topController?.presentedViewController {
+            topController = presentedViewController
         }
+         
         let window = UIApplication.shared.keyWindow
         
         videoVC?.modalPresentationStyle = .overCurrentContext
         videoVC?.setBackground(color: .SOLID)
         
         videoVC?.fillVideo(content: content)
-        vc.present(videoVC!, animated: true)
+        
+        if topController is DialogViewController {
+            
+            topController?.dismiss(animated: true, completion: {
+                let presentedViewController = window?.rootViewController?.presentedViewController
+                presentedViewController?.present(videoVC!, animated: true)
+            })
+            
+        }
+        else if topController is VideoViewController{
+            topController?.dismiss(animated: true, completion: {
+                let presentedViewController = window?.rootViewController?.presentedViewController
+                presentedViewController?.present(videoVC!, animated: true)
+            })
+        }
+        else{
+            topController!.present(videoVC!, animated: true)
+        }
         
         window?.makeKeyAndVisible()
     }

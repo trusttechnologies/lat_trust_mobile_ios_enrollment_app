@@ -45,7 +45,7 @@ extension MainScreenPresenter: MainScreenInteractorOutput {
     }
     
     func onLogoutPerformed() {
-        interactor?.callCleanData() //use "Clean" data in MainScreenInteractor
+        interactor?.cleanData()
     }
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {

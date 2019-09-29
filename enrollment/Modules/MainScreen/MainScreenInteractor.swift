@@ -58,24 +58,16 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         interactorOutput?.onGetTrustIdDataSourceOutPut(trustId: generatedTrustId)
     }
     
-    func callCleanData() {
-        self.cleanData()
-    }
-    
     func cleanData() {
         OAuth2ClientHandler.shared.forgetTokens()
         
-        RealmRepo<User>.deleteAll()
-    
-        interactorOutput?.onCleanedData()
-
-//        let realm = try! Realm()
-//
-//        try! realm.write {
-//            realm.deleteAll()
-//
-//            interactorOutput?.onCleanedData()
-//        }
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.deleteAll()
+            
+            interactorOutput?.onCleanedData()
+        }
     }
     
     // MARK: - Login Audit

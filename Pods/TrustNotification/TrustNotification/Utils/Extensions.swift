@@ -12,6 +12,19 @@ import MaterialComponents
 
 // MARK: Load image from URL
 extension UIImageView {
+    
+    /**
+     Call this function to load an image from url to an image view.
+     
+     - Parameters:
+     - url: Url which has the image
+     
+     ### Usage Example: ###
+     ````
+     imageView.load(url: url)
+     ````
+     */
+    
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
@@ -30,7 +43,17 @@ extension UIImageView {
 }
 
 
-// MARK: Verify if a URL is reachable
+/**
+ Call this function to verify if the url is valid
+ 
+ - Parameters:
+ - urlString: Url as string, check if is null, and if can reach the url
+ 
+ ### Usage Example: ###
+ ````
+ verifyUrl(urlString: imageUrl)
+ ````
+ */
 func verifyUrl (urlString: String?) -> Bool {
     //Check for nil
     if let urlString = urlString {
@@ -42,6 +65,20 @@ func verifyUrl (urlString: String?) -> Bool {
     }
     return false
 }
+
+/**
+ This function is called to parse the notification data and transfor that in a generic notification
+ 
+ - Parameters:
+ - content: This is the JSON data [AnyHashable: Any].
+ 
+ For more information of the differents structures and content of the JSON from notifications see the structs documentation
+ 
+ ### Usage Example: ###
+ ````
+ verifyUrl(urlString: imageUrl)
+ ````
+ */
 
 func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
     
@@ -56,19 +93,29 @@ func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
 }
 
 extension UIColor {
-    // MARK: - Values from Zeplin
+    
+    /**
+     Set default colors
+     */
     @nonobjc class var whiteRipple: UIColor {
         return UIColor(white: 1.0, alpha: 0.12)
     }
+    /**
+     Set default colors
+     */
     @nonobjc class var white: UIColor {
         return UIColor(white: 1.0, alpha: 1.0)
     }
+    /**
+     Set default colors
+     */
     @nonobjc class var black: UIColor {
         return UIColor(white: 33.0 / 255.0, alpha: 1.0)
     }
     
-    
-    // MARK: - Initialization
+    /**
+     Convert a color from hexadecimal to UIColor
+     */
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
@@ -101,41 +148,20 @@ extension UIColor {
         
         self.init(red: r, green: g, blue: b, alpha: a)
     }
-    
-    // MARK: - Computed Properties
-    var toHex: String? {
-        return toHex()
-    }
-    
-    // MARK: - From UIColor to String
-    func toHex(alpha: Bool = false) -> String? {
-        guard let components = cgColor.components, components.count >= 3 else {
-            return nil
-        }
-        
-        let r = Float(components[0])
-        let g = Float(components[1])
-        let b = Float(components[2])
-        var a = Float(1.0)
-        
-        if components.count >= 4 {
-            a = Float(components[3])
-        }
-        
-        guard alpha else {
-            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
-        }
-        
-        return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
-    }
+
 }
 
-
+/**
+ Set the different button types for the notification
+ */
 enum CustomButtonType {
     case whiteButton
     case coloredButton
 }
 
+/**
+ Set the different button types for the notification
+ */
 enum MdcType {
     case text
     case outlined
@@ -144,6 +170,9 @@ enum MdcType {
 
 extension MDCButton {
     
+    /**
+     Set the button properties according to the type
+     */
     func setupButtonWithType(color: String!, type: CustomButtonType, mdcType: MdcType) {
         
         let colorSchema = MDCSemanticColorScheme()
@@ -181,7 +210,9 @@ extension MDCButton {
 }
 
 extension UIView {
-    
+    /**
+     Set animation fade in applycable to a visual object
+     */
     func fadeIn(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
         self.alpha = 0.0
         
@@ -191,6 +222,9 @@ extension UIView {
         }, completion: completion)
     }
     
+    /**
+     Set animation fade out applycable to a visual object
+     */
     func fadeOut(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
         self.alpha = 1.0
         

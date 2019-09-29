@@ -1527,7 +1527,8 @@ extension MDCButton {
         let colorSchema = MDCSemanticColorScheme()
         let typeScheme = EnrollmentTypographyScheme()
         let buttonScheme = MDCButtonScheme()
-        
+        let rippleView = MDCRippleView()
+        let statefulRippleView = MDCStatefulRippleView()
         switch type {
         case .btnPrimary:
             colorSchema.primaryColor = .primary
@@ -1537,6 +1538,8 @@ extension MDCButton {
         case .btnSecondary:
             colorSchema.primaryColor = .white
             colorSchema.onPrimaryColor = .red
+            rippleView.rippleColor = .black //cambiar
+            statefulRippleView.setRippleColor(.blue, for: .selected) //cambiar
             self.inkColor = .whiteRipple
         case .btnSignUp:
             colorSchema.primaryColor = .primary

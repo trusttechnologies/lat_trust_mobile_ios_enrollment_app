@@ -55,6 +55,9 @@ extension AppDelegate: TrustDeviceInfoDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        notifications.clearBadgeNumber()
+        
         guard let mainVC = application.topMostViewController() as? MainScreenViewController else {
             return
         }

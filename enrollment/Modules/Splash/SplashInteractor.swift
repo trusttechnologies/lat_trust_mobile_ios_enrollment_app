@@ -19,38 +19,27 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
     var userDataManager: UserDataManagerProtocol?
     let locationManager = CLLocationManager()
     
-    // MARK: - Persistence layer
-    func getUser() {
-        guard userDataManager?.getUser() != nil else {
-            interactorOutput?.onGetUserFailure() // Get user nil, No user in data
+    // MARK: - Checking user
+    func checkIfUserHasLoggedIn() { // * 1 Get user -> 2 check access token -> 3 check refresh token
+        guard userDataManager?.getUser() != nil else { // 1
+            interactorOutput?.onUserHasLoggedInFailure() //Not user, clear data
             return
         }
-        interactorOutput?.onGetUserSuccess() // Have an user in... Check Access token
-    }
-
-    func checkAccessToken() {
-        print("--- Access Token: \(oauth2Manager?.getAccessToken())")
         
-        guard oauth2Manager?.getAccessToken() != nil else {
-            interactorOutput?.onCheckAccessTokenFailure() //Silentauth
+        guard oauth2Manager?.getAccessToken != nil else { // 2
+            guard oauth2Manager?.getRefreshToken != nil else { //3
+                interactorOutput?.onUserHasLoggedInFailure()
+                return
+            }
+
+            interactorOutput?.onUserHasLoggedInSuccess()
             return
         }
-        interactorOutput?.onCheckAccessTokenSuccess() //Go to main screen
+
+        interactorOutput?.onUserHasLoggedInSuccess()
     }
     
-    func checkRefreshToken() {
-        print("--- Refresh Token:: \(oauth2Manager?.getRefreshToken())")
-        
-        guard oauth2Manager?.getRefreshToken() != nil else {
-            interactorOutput?.onRefreshTokenFailure()
-            return
-        }
-//            interactorOutput?.onCheckAccessTokenSuccess() //Go to main screen
-
-        interactorOutput?.onRefreshTokenSuccess() //authenticate
-    }
-    
-    func authenticate(context: AnyObject) {
+    func authorize(from context: AnyObject) {
         oauth2Manager?.silentAuthorize(from: context)
     }
     
@@ -78,7 +67,7 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
             }))
             
             interactorOutput?.callAlert(alertController: alertController)
-            return
+            break
         case .authorizedAlways, .authorizedWhenInUse:
             interactorOutput?.onGetAcceptedPermissions()
             break
@@ -88,7 +77,7 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
         //        interactor?.getUser()
     }
     
-    func clearData() {
+    func cleanData() {
         userDataManager?.deleteAll(completion: nil)
         oauth2Manager?.clearTokens()
         
@@ -97,11 +86,12 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
         try! realm.write {
             realm.deleteAll()
             
-            interactorOutput?.onDataCleared()
+            interactorOutput?.onDataCleaned()
         }
     }
 }
 
+// MARK: - OAuth2ManagerOutputProtocol
 extension SplashInteractor: OAuth2ManagerOutputProtocol {
     func onAuthorizeSuccess() {
         print("onAuthorizeSuccess")
@@ -112,10 +102,10 @@ extension SplashInteractor: OAuth2ManagerOutputProtocol {
     }
     
     func onSilentAuthorizeSuccess() {
-        interactorOutput?.onAuthenticateSuccess()
+        interactorOutput?.onAuthorizeSuccess()
     }
     
     func onSilentAuthorizeFailure() {
-        interactorOutput?.onAuthenticateFailure()
+        interactorOutput?.onAuthorizeFailure()
     }
 }
