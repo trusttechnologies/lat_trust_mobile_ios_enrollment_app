@@ -1507,11 +1507,7 @@ extension UIColor{
 // MARK: - Extension Material Buttons (values from zeplin)
 enum CustomButtonType {
     case btnPrimary
-    case btnLight
     case btnSecondary
-    case btnLinkPrimary
-    case btnLinkSalmon
-    case btnSignUp
 }
 
 enum MdcType {
@@ -1528,29 +1524,17 @@ extension MDCButton {
         let typeScheme = EnrollmentTypographyScheme()
         let buttonScheme = MDCButtonScheme()
         let rippleView = MDCRippleView()
-        let statefulRippleView = MDCStatefulRippleView()
+        
+//        let statefulRippleView = MDCStatefulRippleView()
+//        statefulRippleView.setRippleColor(.blue, for: .selected)
+        
         switch type {
         case .btnPrimary:
             colorSchema.primaryColor = .primary
             colorSchema.onPrimaryColor = .white
-            colorSchema.surfaceColor = .black
-            self.inkColor = .red
         case .btnSecondary:
             colorSchema.primaryColor = .white
             colorSchema.onPrimaryColor = .red
-            rippleView.rippleColor = .black //cambiar
-            statefulRippleView.setRippleColor(.blue, for: .selected) //cambiar
-            self.inkColor = .whiteRipple
-        case .btnSignUp:
-            colorSchema.primaryColor = .primary
-            colorSchema.onPrimaryColor = .white
-            self.inkColor = .whiteRipple
-        case .btnLight:
-            colorSchema.primaryColor = .light
-        case .btnLinkPrimary:
-            colorSchema.primaryColor = .lighter
-        case .btnLinkSalmon:
-            colorSchema.primaryColor = .warning
         }
         
         buttonScheme.colorScheme = colorSchema
@@ -1561,7 +1545,6 @@ extension MDCButton {
         switch mdcType {
         case .text:
             MDCTextButtonThemer.applyScheme(buttonScheme, to: self)
-//            self.inkColor = .secondaryRipple
             
         case .outlined:
             MDCOutlinedButtonThemer.applyScheme(buttonScheme, to: self)

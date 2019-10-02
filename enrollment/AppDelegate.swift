@@ -34,7 +34,9 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         Identify.shared.enable()
         
         notifications.firebaseConfig(application: application)
-        notifications.registerForRemoteNotifications(application: application)
+            
+//        notifications.registerForRemoteNotifications()
+        
         notifications.registerCustomNotificationCategory()
         
         TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)

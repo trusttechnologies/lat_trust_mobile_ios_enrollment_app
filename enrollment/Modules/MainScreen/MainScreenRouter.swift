@@ -38,7 +38,7 @@ class MainScreenRouter: MainScreenRouterProtocol {
         
         router.viewController = view
         
-        return view
+        return view 
     }
     
     func goToMainScreen() {

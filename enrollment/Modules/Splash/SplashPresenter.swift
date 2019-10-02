@@ -20,7 +20,7 @@ class SplashPresenter: SplashPresenterProtocol {
     var isUpdatingLocation = false
 
     func onViewDidAppear() {
-        interactor?.checkPermissions()
+        interactor?.requestNotificationPermissions()
     }
 }
 
@@ -49,20 +49,19 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
         router?.goToSessionMenuScreen()
     }
     
-    // MARK: - Permissions
     func callAlert(alertController: UIAlertController) {
         self.router?.presentPermissionsAlert(alertController: alertController)
     }
     
-    func onGetAcceptedPermissions() {
+    func returnViewDidAppear() {
+        self.onViewDidAppear()
+    }
+    
+    func onGetAllPermissionsAccepted() {
         interactor?.checkIfUserHasLoggedIn()
     }
     
-    func onGetNotDeterminedPermissions() {
-//        interactor?.checkPermissions()
-    }
-    
-    func returnViewDidAppear() {
-        self.onViewDidAppear()
+    func requestNotificationResponse() {
+        interactor?.requestLocationPermissions()
     }
 }

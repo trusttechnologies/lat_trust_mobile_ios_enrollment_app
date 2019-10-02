@@ -34,13 +34,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Enrollment necesita acceder a tu ubicación</string>
+	<string>Enrollment necesita acceder a tu ubicación para registrar tus acciones en la aplicación.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>ola</string>
+	<string>Enrollment necesita acceder a tu ubicación para registrar tus acciones en la aplicación.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>ayuda</string>
+	<string>Enrollment necesita acceder a tu ubicación para registrar tus acciones en la aplicación.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Enrollment necesita acceder a tu ubicación</string>
+	<string>Enrollment necesita acceder a tu ubicación para registrar tus acciones en la aplicación.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Bold.ttf</string>

@@ -15,21 +15,25 @@ class SplashRouter: SplashRouterProtocol {
     
     static func createModule() -> SplashViewController {
         let view = SplashViewController.storyboardViewController()
-        let interactor: SplashInteractorProtocol & OAuth2ManagerOutputProtocol = SplashInteractor()
+        let interactor: SplashInteractorProtocol & OAuth2ManagerOutputProtocol & LocationManagerOutputProtocol = SplashInteractor()
         let presenter: SplashPresenterProtocol & SplashInteractorOutputProtocol = SplashPresenter()
         let router = SplashRouter()
 
         let oauth2Manager = OAuth2Manager()
         let userDataManager = UserDataManager()
-
+        let locationManager = LocationManager()
+        
         view.presenter = presenter
 
         interactor.interactorOutput = presenter
         interactor.oauth2Manager = oauth2Manager
+        interactor.locationDataManager = locationManager
         interactor.userDataManager = userDataManager
 
         oauth2Manager.managerOutput = interactor
+        locationManager.managerOutput = interactor
 
+        
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor

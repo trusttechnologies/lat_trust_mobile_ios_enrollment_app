@@ -38,30 +38,32 @@ class SessionMenuViewController: UIViewController {
 // MARK: - View
 extension SessionMenuViewController: SessionMenuViewProtocol {
     func startActivityIndicator() {
-        let animation = Animation.named(filename)
-        animationView.animation = animation
-        animationView.contentMode = .scaleAspectFit
-        animationView.play(fromProgress: 0,
-                           toProgress: 1,
-                           loopMode: LottieLoopMode.loop,
-                           completion: { (finished) in
-                            if finished {
-                                print("Animation Complete")
-                            } else {
-                                print("Animation cancelled")
-                            }
-        })
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.addSubview(animationView)
+        let secondsToDelay = 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation
+            let animation = Animation.named(self.filename)
+            self.animationView.animation = animation
+            self.animationView.contentMode = .scaleAspectFit
+            self.animationView.play(fromProgress: 0,
+                               toProgress: 1,
+                               loopMode: LottieLoopMode.loop,
+                               completion: { (finished) in
+                                if finished {
+                                    print("Animation Complete")
+                                } else {
+                                    print("Animation cancelled")
+                                }
+            })
+            self.animationView.translatesAutoresizingMaskIntoConstraints = false
+            self.loadingView.addSubview(self.animationView)
 
-        NSLayoutConstraint.activate([
-            animationView.heightAnchor.constraint(equalTo: loadingView.heightAnchor),
-            animationView.widthAnchor.constraint(equalTo: loadingView.widthAnchor),
-        ])
-        
-//        activityIndicator.startAnimating()
-        activityIndicatorBackground.show()
-        animationView.backgroundBehavior = .pauseAndRestore
+            NSLayoutConstraint.activate([
+                self.animationView.heightAnchor.constraint(equalTo: self.loadingView.heightAnchor),
+                self.animationView.widthAnchor.constraint(equalTo: self.loadingView.widthAnchor),
+            ])
+            
+            self.activityIndicatorBackground.show()
+            self.animationView.backgroundBehavior = .pauseAndRestore
+        }
     }
     
     func stopActivityIndicator() {

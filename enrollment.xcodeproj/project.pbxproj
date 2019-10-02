@@ -56,6 +56,7 @@
 		FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */; };
 		FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */; };
 		FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */; };
+		FEBD3B78234279D1002811E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD3B77234279D1002811E2 /* LocationManager.swift */; };
 		FED0282C233E610800ADF65C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED0282B233E610800ADF65C /* NotificationService.swift */; };
 		FED02830233E610800ADF65C /* ServiceNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FED02838233E6E8400ADF65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED02837233E6E8400ADF65C /* GoogleService-Info.plist */; };
@@ -141,6 +142,7 @@
 		FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
 		FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenProtocols.swift; sourceTree = "<group>"; };
 		FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
+		FEBD3B77234279D1002811E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED0282B233E610800ADF65C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		FED0282D233E610800ADF65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				FE1BF3E9230DABAF004EEFEB /* OAuth2Manager.swift */,
 				FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */,
 				FE76404E231DCEC60085299D /* AuditDataManager.swift */,
+				FEBD3B77234279D1002811E2 /* LocationManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 			files = (
 				FE1BF3EC230DABCF004EEFEB /* UserDataManager.swift in Sources */,
 				FE6595DC231823E7006CAD1F /* SplashPresenter.swift in Sources */,
+				FEBD3B78234279D1002811E2 /* LocationManager.swift in Sources */,
 				FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */,
 				FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */,
 				FE1BF3FB230DADB6004EEFEB /* APIRouter.swift in Sources */,

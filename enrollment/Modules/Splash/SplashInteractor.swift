@@ -11,12 +11,13 @@ import CoreLocation
 import UIKit
 import RealmSwift
 
-class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDelegate {
+class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     var interactorOutput: SplashInteractorOutputProtocol?
     
     var oauth2Manager: OAuth2ManagerProtocol?
-    
     var userDataManager: UserDataManagerProtocol?
+    var locationDataManager: LocationManagerProtocol?
+    
     let locationManager = CLLocationManager()
     
     // MARK: - Checking user
@@ -43,38 +44,86 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
         oauth2Manager?.silentAuthorize(from: context)
     }
     
-    // MARK: - Check location permissions
-    func checkPermissions() {
-        let status = CLLocationManager.authorizationStatus()
-        switch status {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            
-            interactorOutput?.onGetAcceptedPermissions()
-            return
-        case .denied, .restricted:
-            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos", preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
-                if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-                self.interactorOutput?.returnViewDidAppear()
-            }))
-            
-            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
-                self.interactorOutput?.returnViewDidAppear()
-            }))
-            
-            interactorOutput?.callAlert(alertController: alertController)
-            break
-        case .authorizedAlways, .authorizedWhenInUse:
-            interactorOutput?.onGetAcceptedPermissions()
-            break
+    // MARK: - REQUEST PERMISSIONS --------------------------------------------------------
+    func requestNotificationPermissions() {
+        UNUserNotificationCenter.current().delegate = self
+        
+        UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { //decline
+                self.interactorOutput?.requestNotificationResponse()
+                return
+            }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+            self.interactorOutput?.requestNotificationResponse()
         }
+    }
+    
+    func requestLocationPermissions() {
+        let status = CLLocationManager.authorizationStatus()
         locationManager.delegate = self
+        
+        if status == .notDetermined {
+            locationManager.requestAlwaysAuthorization() //Request permission
+        }
+        if status == .denied {
+            print("Deined Location Permissions")
+        }
+        if status == .restricted {
+            print("Restricted Location Permissions")
+        }
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            DispatchQueue.main.async {
+                if !UIApplication.shared.isRegisteredForRemoteNotifications { //Not accepted permissions
+                    
+                    let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
 
-        //        interactor?.getUser()
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                        
+                        
+                        UNUserNotificationCenter.current().delegate = self
+
+                        UNUserNotificationCenter.current().requestAuthorization(
+                        options: [.alert, .sound, .badge]) {
+                            (granted, error) in
+                            print("Permission granted: \(granted)")
+                            // 1. Check if permission granted
+                            guard granted else { //decline
+                                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                                    DispatchQueue.main.async {
+                                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                    }
+                                }
+                                self.interactorOutput?.requestNotificationResponse()
+                                return
+                            }
+                            // 2. Attempt registration for remote notifications on the main thread
+                            DispatchQueue.main.async {
+                                UIApplication.shared.registerForRemoteNotifications()
+                            }
+                            self.interactorOutput?.returnViewDidAppear()
+                        }
+                    }))
+
+                    alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                        self.interactorOutput?.returnViewDidAppear()
+                    }))
+
+                    self.interactorOutput?.callAlert(alertController: alertController)
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.interactorOutput?.onGetAllPermissionsAccepted()
+                    }
+                }
+            }
+        }
     }
     
     func cleanData() {
@@ -107,5 +156,102 @@ extension SplashInteractor: OAuth2ManagerOutputProtocol {
     
     func onSilentAuthorizeFailure() {
         interactorOutput?.onAuthorizeFailure()
+    }
+}
+
+// MARK: - Listener location permission response
+extension SplashInteractor {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        var acceptedLocationPermission: Bool = false
+        
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            acceptedLocationPermission = true
+            if !UIApplication.shared.isRegisteredForRemoteNotifications {
+                let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
+
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                    
+                    UNUserNotificationCenter.current().delegate = self
+
+                    UNUserNotificationCenter.current().requestAuthorization(
+                    options: [.alert, .sound, .badge]) {
+                        (granted, error) in
+                        print("Permission granted: \(granted)")
+                        // 1. Check if permission granted
+                        guard granted else { //decline
+                            if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                                DispatchQueue.main.async {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                            }
+                            self.interactorOutput?.requestNotificationResponse()
+                    //                self.interactorOutput?.requestNotificationFail()
+                            return
+                        }
+                        // 2. Attempt registration for remote notifications on the main thread
+                        DispatchQueue.main.async {
+                            UIApplication.shared.registerForRemoteNotifications()
+                        }
+//                        self.interactorOutput?.requestNotificationResponse()
+                        self.interactorOutput?.returnViewDidAppear()
+                    }
+
+//                    self.interactorOutput?.returnViewDidAppear()
+                }))
+
+                alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                    self.interactorOutput?.returnViewDidAppear()
+                }))
+
+                interactorOutput?.callAlert(alertController: alertController)
+            }
+            else {
+                interactorOutput?.onGetAllPermissionsAccepted()
+            }
+        }
+        else {
+            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
+
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+
+            interactorOutput?.callAlert(alertController: alertController)
+        }
+    }
+}
+
+extension SplashInteractor: LocationManagerOutputProtocol {
+    
+    func requestNotificationFail() {
+        //TODO
+    }
+    
+    func requestLocationFail() {
+        let status = CLLocationManager.authorizationStatus()
+
+        if status == .denied || status == .notDetermined || status == .restricted {
+            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
+
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+                self.interactorOutput?.returnViewDidAppear()
+            }))
+
+            interactorOutput?.callAlert(alertController: alertController)
+        }
     }
 }

@@ -195,7 +195,7 @@ class VideoViewController: UIViewController {
      ````
      */
     
-    func fillVideo(content: GenericNotification!) {
+    func fillVideo(content: GenericNotification) {
         
         //Set video
         if(verifyUrl(urlString: content.notificationVideo?.videoUrl)){
@@ -207,6 +207,8 @@ class VideoViewController: UIViewController {
             let player = AVPlayer(url: videoURL!)
             let playerLayer = AVPlayerLayer(player: player)
             let controller = AVPlayerViewController()
+            let minPlayTime = content.notificationVideo?.minPlayTime ?? 0.00
+            
             controller.player = player
             playerLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
@@ -219,7 +221,7 @@ class VideoViewController: UIViewController {
                 { (progressTime) in
                     
                     let seconds = CMTimeGetSeconds(progressTime)
-                    let remaining = round(Double(content.notificationVideo!.minPlayTime) - seconds)
+                    let remaining = round(Double(minPlayTime) - seconds)
                     if(player.status == .readyToPlay ){
                         player.play()
                     }
@@ -236,7 +238,7 @@ class VideoViewController: UIViewController {
                         self.audioButton.tintColor = .white
                     }
                     //lets move the slider thumb
-                    if(seconds.isLess(than: Double(content.notificationVideo!.minPlayTime))){
+                    if(seconds.isLess(than: Double(minPlayTime))){
                         self.remainSecLabel.text = "Quedan \(remaining) segundos"
                         self.remainSecLabel.isHidden = false
                         self.closeButton.isEnabled = false
@@ -254,21 +256,23 @@ class VideoViewController: UIViewController {
         }
         
         let buttons = content.notificationVideo?.buttons
-        let buttonCounter = buttons!.count
+        let buttonCounter = buttons?.count
+        
+        
         if(buttonCounter == 1){
-            
+    
             buttonL.isHidden = true
-            buttonR.setTitle(buttons![0].text, for: .normal)
+            buttonR.setTitle(buttons![0].text ?? "", for: .normal)
             buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons![0].action
         }
-        
+
         if(buttonCounter == 2){
             
-            buttonL.setTitle(buttons![1].text, for: .normal)
+            buttonL.setTitle(buttons![1].text ?? "", for: .normal)
             buttonL.setupButtonWithType(color: buttons![1].color, type: .whiteButton, mdcType: .text)
             urlLeftButton = buttons![1].action
-            buttonR.setTitle(buttons![0].text, for: .normal)
+            buttonR.setTitle(buttons![0].text ?? "", for: .normal)
             buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons![0].action
             

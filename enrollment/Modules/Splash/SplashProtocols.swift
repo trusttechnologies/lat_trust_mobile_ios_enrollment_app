@@ -17,10 +17,13 @@ protocol SplashInteractorProtocol: AnyObject {
     
     var oauth2Manager: OAuth2ManagerProtocol? {get set}
     var userDataManager: UserDataManagerProtocol? {get set}
-
+    var locationDataManager: LocationManagerProtocol? {get set}
+    
     func checkIfUserHasLoggedIn() //Get User, Check AccessToken, Check RefreshToken
     func authorize(from context: AnyObject)
-    func checkPermissions()
+    
+    func requestNotificationPermissions()
+    func requestLocationPermissions()
     
     func cleanData()
 }
@@ -33,12 +36,13 @@ protocol SplashInteractorOutputProtocol: AnyObject {
     func onAuthorizeSuccess()
     func onAuthorizeFailure()
     
-    func onGetAcceptedPermissions()
-    func onGetNotDeterminedPermissions()
     func returnViewDidAppear()
     func callAlert(alertController: UIAlertController)
     
+    func onGetAllPermissionsAccepted()
+    
     func onDataCleaned()
+    func requestNotificationResponse()
 }
 
 // MARK: - Presenter

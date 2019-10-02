@@ -21,16 +21,8 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
         interactor?.loginAudit()
     }
     
-    func onRefreshControlPulled() {
-        //TODO
-    }
-    
     func onLogoutButtonPressed() { //Start Logout
         interactor?.performLogout() //Use performLogout in MainScreenInteractor
-    }
-    
-    func onNotificationReceived(with auditID: String) {
-        //TODO
     }
 }
 

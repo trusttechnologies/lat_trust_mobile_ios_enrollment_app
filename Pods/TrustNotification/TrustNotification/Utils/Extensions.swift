@@ -83,11 +83,17 @@ func verifyUrl (urlString: String?) -> Bool {
 func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
     
     //take the notification content and convert it to data
-    let jsonData = try! JSONSerialization.data(withJSONObject: content["data"]!, options: .prettyPrinted)
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
+        else {
+            print("Parsing notification error: Review your JSON structure")
+            return GenericNotification()
+    }
     
     //decode the notification with the structure of a generic notification
     let jsonDecoder = JSONDecoder()
-    let notDialog = try! jsonDecoder.decode(GenericNotification.self, from: jsonData)
+    guard let notDialog = try? jsonDecoder.decode(GenericNotification.self, from: jsonData) else {
+        print("Parsing notification error: Review your JSON structure")
+        return GenericNotification() }
     
     return notDialog
 }
@@ -173,19 +179,19 @@ extension MDCButton {
     /**
      Set the button properties according to the type
      */
-    func setupButtonWithType(color: String!, type: CustomButtonType, mdcType: MdcType) {
+    func setupButtonWithType(color: String, type: CustomButtonType, mdcType: MdcType) {
         
         let colorSchema = MDCSemanticColorScheme()
         let buttonScheme = MDCButtonScheme()
         
         switch type {
         case .whiteButton:
-            colorSchema.primaryColor = UIColor.init(hex: color)!
+            colorSchema.primaryColor = UIColor.init(hex: color) ?? UIColor.blue
             colorSchema.onPrimaryColor = .white
             colorSchema.backgroundColor = .white
-            self.inkColor = UIColor.init(hex: color)!.withAlphaComponent(0.12)
+            self.inkColor = UIColor.init(hex: color)?.withAlphaComponent(0.12)
         case .coloredButton:
-            colorSchema.primaryColor = UIColor.init(hex: color)!
+            colorSchema.primaryColor = UIColor.init(hex: color) ?? UIColor.blue
             colorSchema.onPrimaryColor = .white
             self.inkColor = .whiteRipple
         }

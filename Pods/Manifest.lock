@@ -205,7 +205,7 @@ PODS:
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
     - DeviceKit
-  - TrustNotification (0.2.8):
+  - TrustNotification (0.2.10):
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
@@ -288,7 +288,7 @@ SPEC CHECKSUMS:
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   TrustDeviceInfo: f8dbd3fad295c4523a4f654bb70c374f151742b4
-  TrustNotification: 18b72768e7035fa8f3607278b44f5503fe002881
+  TrustNotification: ae29b4d741a0588a60a88848ccd5aeb7c1d4dc75
 
 PODFILE CHECKSUM: 128489f143f2b647671986cca8bf07d18c12b3da
 

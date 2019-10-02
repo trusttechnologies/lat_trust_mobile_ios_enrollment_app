@@ -17,10 +17,10 @@ import TrustDeviceInfo
 public class PushNotifications: NSObject {
     
     
-    public var clientId: String?
-    public var clientSecret: String?
-    public var serviceName: String?
-    public var accesGroup: String?
+    public var clientId: String
+    public var clientSecret: String
+    public var serviceName: String
+    public var accesGroup: String
     
     /**
      Create an instance of class Push notifications
@@ -70,22 +70,20 @@ public class PushNotifications: NSObject {
      ````
      */
     
-    public func registerForRemoteNotifications(application: UIApplication){
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+    public func registerForRemoteNotifications(){
+        UNUserNotificationCenter.current().delegate = self
         
-        application.registerForRemoteNotifications()
+        UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
     }
     
     /**
@@ -143,11 +141,14 @@ extension PushNotifications: MessagingDelegate{
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         
         Identify.shared.trustDeviceInfoDelegate = self
-        Identify.shared.set(serviceName: serviceName!, accessGroup: accesGroup!)
-        Identify.shared.createClientCredentials(clientID: clientId!, clientSecret: clientSecret!)
+        Identify.shared.set(serviceName: serviceName, accessGroup: accesGroup)
+        Identify.shared.createClientCredentials(clientID: clientId, clientSecret: clientSecret)
         Identify.shared.enable()
-        let bundle = Bundle.main.bundleIdentifier
-        Identify.shared.registerFirebaseToken(firebaseToken: fcmToken, bundleID: bundle!)
+        guard let bundle = Bundle.main.bundleIdentifier else{
+            print("Bundle ID Error")
+            return
+        }
+        Identify.shared.registerFirebaseToken(firebaseToken: fcmToken, bundleID: bundle)
         
     }
     
@@ -228,8 +229,21 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
         
         switch response.actionIdentifier {
         case "accept":
-            let url = response.notification.request.content.userInfo["url-scheme"] as? String
-            UIApplication.shared.open(URL(string: url!)!, options: [:], completionHandler: nil)
+            guard let stringUrl = response.notification.request.content.userInfo["url-scheme"] as? String else {
+                print("Error parsing the url")
+                return
+            }
+            
+            guard let url = URL(string: stringUrl) else {
+                print("Error parsing the url")
+                return
+            }
+            
+            if(verifyUrl(urlString: stringUrl)){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }else{
+                print("Invalid URL")
+            }
             UIApplication.shared.applicationIconBadgeNumber = 0
         case "cancel":
             UIApplication.shared.applicationIconBadgeNumber = 0
@@ -267,10 +281,12 @@ extension PushNotifications{
      ````
      */
     
-    func presentDialog(content: GenericNotification!){
+    func presentDialog(content: GenericNotification){
         
         let storyboard = UIStoryboard(name: "DialogView", bundle: nil)
-        let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController
+        guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController else{
+            return
+        }
         
         var topController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -280,26 +296,26 @@ extension PushNotifications{
         
         let window = UIApplication.shared.keyWindow
         
-        dialogVC?.modalPresentationStyle = .overCurrentContext
-        dialogVC?.setBackground(color: .SOLID)
-        dialogVC?.fillDialog(content: content)
+        dialogVC.modalPresentationStyle = .overCurrentContext
+        dialogVC.setBackground(color: .SOLID)
+        dialogVC.fillDialog(content: content)
 
         if topController is DialogViewController {
            
             topController?.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(dialogVC!, animated: true)
+                presentedViewController?.present(dialogVC, animated: true)
             })
             
         }
         else if topController is VideoViewController{
             topController?.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(dialogVC!, animated: true)
+                presentedViewController?.present(dialogVC, animated: true)
             })
         }
         else{
-            topController!.present(dialogVC!, animated: true)
+            topController?.present(dialogVC, animated: true)
         }
         
         window?.makeKeyAndVisible()
@@ -320,7 +336,9 @@ extension PushNotifications{
     func presentVideo(content: GenericNotification){
         //To Do
         let storyboard = UIStoryboard(name: "VideoView", bundle: nil)
-        let videoVC = storyboard.instantiateViewController(withIdentifier: "VideoView") as? VideoViewController
+        guard let videoVC = storyboard.instantiateViewController(withIdentifier: "VideoView") as? VideoViewController else{
+            return
+        }
         
         var topController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -330,27 +348,27 @@ extension PushNotifications{
          
         let window = UIApplication.shared.keyWindow
         
-        videoVC?.modalPresentationStyle = .overCurrentContext
-        videoVC?.setBackground(color: .SOLID)
+        videoVC.modalPresentationStyle = .overCurrentContext
+        videoVC.setBackground(color: .SOLID)
         
-        videoVC?.fillVideo(content: content)
+        videoVC.fillVideo(content: content)
         
         if topController is DialogViewController {
             
             topController?.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(videoVC!, animated: true)
+                presentedViewController?.present(videoVC, animated: true)
             })
             
         }
         else if topController is VideoViewController{
             topController?.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(videoVC!, animated: true)
+                presentedViewController?.present(videoVC, animated: true)
             })
         }
         else{
-            topController!.present(videoVC!, animated: true)
+            topController?.present(videoVC, animated: true)
         }
         
         window?.makeKeyAndVisible()

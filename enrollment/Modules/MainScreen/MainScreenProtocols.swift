@@ -50,12 +50,8 @@ protocol MainScreenPresenterProtocol: AnyObject {
     
     func onViewDidLoad()
     func onViewWillAppear()
-    
-    func onRefreshControlPulled()
-    
-    func onLogoutButtonPressed()
-    
-    func onNotificationReceived(with auditID: String)
+        
+    func onLogoutButtonPressed()    
 }
 
 // MARK: - Router
