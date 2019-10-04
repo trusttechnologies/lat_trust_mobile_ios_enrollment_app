@@ -102,7 +102,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/close_icon.imageset/24px.png"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_disabled_icon.imageset/baseline_volume_off_black_18dp.png"
@@ -110,7 +109,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/close_icon.imageset/24px.png"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

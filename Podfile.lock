@@ -60,23 +60,23 @@ PODS:
   - GoogleDataTransportCCTSupport (1.1.0):
     - GoogleDataTransport (~> 2.0)
     - nanopb
-  - GoogleUtilities/AppDelegateSwizzler (6.3.0):
+  - GoogleUtilities/AppDelegateSwizzler (6.3.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.3.0)
-  - GoogleUtilities/Logger (6.3.0):
+  - GoogleUtilities/Environment (6.3.1)
+  - GoogleUtilities/Logger (6.3.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.3.0):
+  - GoogleUtilities/MethodSwizzler (6.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.3.0):
+  - GoogleUtilities/Network (6.3.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.3.0)"
-  - GoogleUtilities/Reachability (6.3.0):
+  - "GoogleUtilities/NSData+zlib (6.3.1)"
+  - GoogleUtilities/Reachability (6.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.3.0):
+  - GoogleUtilities/UserDefaults (6.3.1):
     - GoogleUtilities/Logger
   - IQKeyboardManagerSwift (6.4.1)
   - lottie-ios (3.1.2)
@@ -195,7 +195,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - ObjectMapper (3.5.1)
   - p2.OAuth2 (5.0.0)
-  - Protobuf (3.9.2)
+  - Protobuf (3.10.0)
   - Realm (3.18.0):
     - Realm/Headers (= 3.18.0)
   - Realm/Headers (3.18.0)
@@ -205,7 +205,7 @@ PODS:
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
     - DeviceKit
-  - TrustNotification (0.2.10):
+  - TrustNotification (0.2.13):
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
@@ -275,7 +275,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 0ae90be1cc4dad40f4a27fc767ef59fa032ec87b
   GoogleDataTransport: c8617c00e4f3eb9418e42ac0e8ac5241a9d555dd
   GoogleDataTransportCCTSupport: 9f352523e8785a71f6754f51eeff09f49ec19268
-  GoogleUtilities: 9c2c544202301110b29f7974a82e77fdcf12bf51
+  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
   MaterialComponents: 0fccf7f7e232145c164dc60da6fdefd011e9bf28
@@ -284,12 +284,12 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   p2.OAuth2: 5d203b46c2857b4bbcca3e521089959e7b3b5a5c
-  Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
+  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   TrustDeviceInfo: f8dbd3fad295c4523a4f654bb70c374f151742b4
-  TrustNotification: ae29b4d741a0588a60a88848ccd5aeb7c1d4dc75
+  TrustNotification: 3175682315cbfc1c730887a2fb69760ba5705abf
 
-PODFILE CHECKSUM: 128489f143f2b647671986cca8bf07d18c12b3da
+PODFILE CHECKSUM: 33ddcd79f0ceb8238963a7985e7cff2eb94749bd
 
 COCOAPODS: 1.7.5

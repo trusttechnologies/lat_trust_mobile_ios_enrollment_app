@@ -44,7 +44,13 @@ class DialogViewController: UIViewController {
     /**
      Close button, available if the notification is cancelable
      */
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!{
+        didSet{
+            let bundle = Bundle(for: DialogViewController.self)
+            let buttonImage = UIImage(named: "close_icon", in: bundle, compatibleWith: nil)
+            closeButton.setImage(buttonImage, for: .normal)
+        }
+    }
     
     /**
      Close button, available if the notification is cancelable

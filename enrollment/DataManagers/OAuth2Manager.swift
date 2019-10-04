@@ -85,7 +85,7 @@ class OAuth2Manager: OAuth2ManagerProtocol {
                 return
             }
             
-            print(authParameters!) //print("AUTH PARAMETERS: \(authParameters!)")
+            print(authParameters!)
             
             web.dismiss(animated: true) {
                 self.managerOutput?.onAuthorizeSuccess()
@@ -105,8 +105,7 @@ class OAuth2Manager: OAuth2ManagerProtocol {
                 self.managerOutput?.onSilentAuthorizeFailure()
                 return
             }
-            // FIXME: arreglar esto, hace nada
-            self.managerOutput?.onSilentAuthorizeSuccess() //gggggggg
+            self.managerOutput?.onSilentAuthorizeSuccess()
         }
     }
     

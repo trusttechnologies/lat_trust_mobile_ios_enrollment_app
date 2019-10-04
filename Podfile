@@ -40,7 +40,3 @@ target 'enrollment' do
     end
   end
 end
-
-target 'ServiceNotificationExtension' do
-    pod 'TrustNotification'
-end

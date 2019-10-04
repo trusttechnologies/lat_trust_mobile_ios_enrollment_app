@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27C809A254D1669F99D37B5B /* Pods_ServiceNotificationExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FB9D7526D6903568B392A2 /* Pods_ServiceNotificationExtension.framework */; };
 		6A4419D96C355EA746222170 /* Pods_enrollment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */; };
 		FE1BF3B0230C4D0D004EEFEB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */; };
 		FE1BF3BC230C4D1A004EEFEB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3B1230C4D1A004EEFEB /* Roboto-Bold.ttf */; };
@@ -56,20 +55,21 @@
 		FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */; };
 		FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */; };
 		FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */; };
+		FE9E9E23234661390091F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE2994E230C40EE006DE4D5 /* Assets.xcassets */; };
+		FE9E9E24234662E70091F139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE29947230C40ED006DE4D5 /* AppDelegate.swift */; };
+		FE9E9E2C234668010091F139 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9E9E2B234668010091F139 /* NotificationService.swift */; };
+		FE9E9E30234668010091F139 /* Service Notification Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE9E9E29234668010091F139 /* Service Notification Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FEBD3B78234279D1002811E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD3B77234279D1002811E2 /* LocationManager.swift */; };
-		FED0282C233E610800ADF65C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED0282B233E610800ADF65C /* NotificationService.swift */; };
-		FED02830233E610800ADF65C /* ServiceNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FED02838233E6E8400ADF65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED02837233E6E8400ADF65C /* GoogleService-Info.plist */; };
-		FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE29947230C40ED006DE4D5 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FED0282E233E610800ADF65C /* PBXContainerItemProxy */ = {
+		FE9E9E2E234668010091F139 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FEE2993C230C40ED006DE4D5 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FED02828233E610800ADF65C;
-			remoteInfo = ServiceNotificationExtension;
+			remoteGlobalIDString = FE9E9E28234668010091F139;
+			remoteInfo = "Service Notification Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -80,7 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FED02830233E610800ADF65C /* ServiceNotificationExtension.appex in Embed App Extensions */,
+				FE9E9E30234668010091F139 /* Service Notification Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,10 +142,10 @@
 		FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
 		FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenProtocols.swift; sourceTree = "<group>"; };
 		FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
+		FE9E9E29234668010091F139 /* Service Notification Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Service Notification Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE9E9E2B234668010091F139 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		FE9E9E2D234668010091F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBD3B77234279D1002811E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		FED0282B233E610800ADF65C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		FED0282D233E610800ADF65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FED02837233E6E8400ADF65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FEE29944230C40ED006DE4D5 /* enrollment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enrollment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE29947230C40ED006DE4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,11 +155,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FED02826233E610800ADF65C /* Frameworks */ = {
+		FE9E9E26234668010091F139 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C809A254D1669F99D37B5B /* Pods_ServiceNotificationExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,20 +338,20 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
-		FED0282A233E610800ADF65C /* ServiceNotificationExtension */ = {
+		FE9E9E2A234668010091F139 /* Service Notification Extension */ = {
 			isa = PBXGroup;
 			children = (
-				FED0282B233E610800ADF65C /* NotificationService.swift */,
-				FED0282D233E610800ADF65C /* Info.plist */,
+				FE9E9E2B234668010091F139 /* NotificationService.swift */,
+				FE9E9E2D234668010091F139 /* Info.plist */,
 			);
-			path = ServiceNotificationExtension;
+			path = "Service Notification Extension";
 			sourceTree = "<group>";
 		};
 		FEE2993B230C40ED006DE4D5 = {
 			isa = PBXGroup;
 			children = (
 				FEE29946230C40ED006DE4D5 /* enrollment */,
-				FED0282A233E610800ADF65C /* ServiceNotificationExtension */,
+				FE9E9E2A234668010091F139 /* Service Notification Extension */,
 				FEE29945230C40ED006DE4D5 /* Products */,
 				F7E0AF83BB335CC185AD4688 /* Pods */,
 				90C581E4A2A4274A8E91EB0E /* Frameworks */,
@@ -363,7 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE29944230C40ED006DE4D5 /* enrollment.app */,
-				FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */,
+				FE9E9E29234668010091F139 /* Service Notification Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,23 +390,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FED02828233E610800ADF65C /* ServiceNotificationExtension */ = {
+		FE9E9E28234668010091F139 /* Service Notification Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FED02834233E610800ADF65C /* Build configuration list for PBXNativeTarget "ServiceNotificationExtension" */;
+			buildConfigurationList = FE9E9E31234668010091F139 /* Build configuration list for PBXNativeTarget "Service Notification Extension" */;
 			buildPhases = (
-				93D5C0ABCF0482613B25E3FD /* [CP] Check Pods Manifest.lock */,
-				FED02825233E610800ADF65C /* Sources */,
-				FED02826233E610800ADF65C /* Frameworks */,
-				FED02827233E610800ADF65C /* Resources */,
-				7A02EC0C37C95D6119BAD33C /* [CP] Copy Pods Resources */,
+				FE9E9E25234668010091F139 /* Sources */,
+				FE9E9E26234668010091F139 /* Frameworks */,
+				FE9E9E27234668010091F139 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ServiceNotificationExtension;
-			productName = ServiceNotificationExtension;
-			productReference = FED02829233E610800ADF65C /* ServiceNotificationExtension.appex */;
+			name = "Service Notification Extension";
+			productName = "Service Notification Extension";
+			productReference = FE9E9E29234668010091F139 /* Service Notification Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		FEE29943230C40ED006DE4D5 /* enrollment */ = {
@@ -425,7 +422,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FED0282F233E610800ADF65C /* PBXTargetDependency */,
+				FE9E9E2F234668010091F139 /* PBXTargetDependency */,
 			);
 			name = enrollment;
 			productName = enrollment;
@@ -442,7 +439,7 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Kevin Torres";
 				TargetAttributes = {
-					FED02828233E610800ADF65C = {
+					FE9E9E28234668010091F139 = {
 						CreatedOnToolsVersion = 11.0;
 					};
 					FEE29943230C40ED006DE4D5 = {
@@ -469,13 +466,13 @@
 			projectRoot = "";
 			targets = (
 				FEE29943230C40ED006DE4D5 /* enrollment */,
-				FED02828233E610800ADF65C /* ServiceNotificationExtension */,
+				FE9E9E28234668010091F139 /* Service Notification Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FED02827233E610800ADF65C /* Resources */ = {
+		FE9E9E27234668010091F139 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,6 +486,7 @@
 				FE1BF3C6230C4D1A004EEFEB /* Roboto-MediumItalic.ttf in Resources */,
 				FE1BF3BD230C4D1A004EEFEB /* Roboto-BlackItalic.ttf in Resources */,
 				FE76404D231D6D570085299D /* enrollmentLoading.json in Resources */,
+				FE9E9E23234661390091F139 /* Assets.xcassets in Resources */,
 				FE1BF3D2230C5224004EEFEB /* Splash.storyboard in Resources */,
 				FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */,
 				FE1BF3C1230C4D1A004EEFEB /* Roboto-Regular.ttf in Resources */,
@@ -532,45 +530,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A02EC0C37C95D6119BAD33C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		93D5C0ABCF0482613B25E3FD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ServiceNotificationExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B7AC79352A7D30D381CAF5AC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,11 +567,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FED02825233E610800ADF65C /* Sources */ = {
+		FE9E9E25234668010091F139 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FED0282C233E610800ADF65C /* NotificationService.swift in Sources */,
+				FE9E9E2C234668010091F139 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +587,7 @@
 				FE1BF3FB230DADB6004EEFEB /* APIRouter.swift in Sources */,
 				FE1BF3E0230C5DDE004EEFEB /* SessionMenuPresenter.swift in Sources */,
 				FE1BF401230DCBDE004EEFEB /* Profile.swift in Sources */,
+				FE9E9E24234662E70091F139 /* AppDelegate.swift in Sources */,
 				FE1BF3DC230C5DBA004EEFEB /* SessionMenuRouter.swift in Sources */,
 				FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */,
 				FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */,
@@ -639,7 +599,6 @@
 				FE1BF3E7230DA497004EEFEB /* SessionMenuInteractor.swift in Sources */,
 				FE1BF3EF230DABFB004EEFEB /* User.swift in Sources */,
 				FE1BF3F5230DAD00004EEFEB /* OAuth2ClientHandler.swift in Sources */,
-				FEE29948230C40ED006DE4D5 /* AppDelegate.swift in Sources */,
 				FE1BF3FD230DADCD004EEFEB /* Responses.swift in Sources */,
 				FE1BF3FF230DCB82004EEFEB /* RealmRepo.swift in Sources */,
 				FE1BF3CC230C51EB004EEFEB /* SplashViewController.swift in Sources */,
@@ -658,28 +617,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FED0282F233E610800ADF65C /* PBXTargetDependency */ = {
+		FE9E9E2F234668010091F139 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FED02828233E610800ADF65C /* ServiceNotificationExtension */;
-			targetProxy = FED0282E233E610800ADF65C /* PBXContainerItemProxy */;
+			target = FE9E9E28234668010091F139 /* Service Notification Extension */;
+			targetProxy = FE9E9E2E234668010091F139 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		FED02832233E610800ADF65C /* Debug */ = {
+		FE9E9E32234668010091F139 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 306CAC31E93B0A8E7F60A56E /* Pods-ServiceNotificationExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
-				INFOPLIST_FILE = ServiceNotificationExtension/Info.plist;
+				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios.ServiceNotificationExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -687,20 +645,19 @@
 			};
 			name = Debug;
 		};
-		FED02833233E610800ADF65C /* Release */ = {
+		FE9E9E33234668010091F139 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6451C5B864A50E73003A1BD5 /* Pods-ServiceNotificationExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
-				INFOPLIST_FILE = ServiceNotificationExtension/Info.plist;
+				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios.ServiceNotificationExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -829,7 +786,7 @@
 			baseConfigurationReference = 8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
@@ -852,7 +809,7 @@
 			baseConfigurationReference = 6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P896AB2AMC;
@@ -873,11 +830,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FED02834233E610800ADF65C /* Build configuration list for PBXNativeTarget "ServiceNotificationExtension" */ = {
+		FE9E9E31234668010091F139 /* Build configuration list for PBXNativeTarget "Service Notification Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FED02832233E610800ADF65C /* Debug */,
-				FED02833233E610800ADF65C /* Release */,
+				FE9E9E32234668010091F139 /* Debug */,
+				FE9E9E33234668010091F139 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

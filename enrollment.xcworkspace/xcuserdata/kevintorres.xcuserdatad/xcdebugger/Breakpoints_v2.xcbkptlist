@@ -7,150 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F0B465A0-ECE9-45E8-8831-9B676D9F36AE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "requestNotificationPermissions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "63FA59E3-12FD-49CE-9D91-72DAA4FC43D6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C732BE08-1D7C-449A-9EE9-36D981CA65B6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3E0141BE-FD42-4AAE-B181-AFF3622D98F4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DA7C1187-0B77-47FE-B955-F7139C576153"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "01FBCC0A-3C12-4AF5-BC3E-15348D0E55B6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "requestNotificationPermissions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A8A212B7-3CEC-496D-A89B-BAE226D5835D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D4615488-A122-456C-BE31-CFE7D0F3FFFF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "onViewDidAppear()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "51579909-B29D-4724-A843-9F159C2A86FC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "requestLocationPermissions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "268F0F5B-0F47-4596-8DD8-F6E3F7B55AE8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -165,207 +21,316 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "108DF555-6F43-43A4-8507-BE114531C2C9"
+            uuid = "78C59527-C830-446A-9390-C7C3F6FC8312"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustNotification/TrustNotification/PushNotifications/PushNotifications.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "requestLocationPermissions()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A21B5DF6-2698-4217-85FD-41AB541F2544"
+            uuid = "7501810B-73BE-4CC8-9D3A-66C885BFFCC0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustNotification/TrustNotification/PushNotifications/PushNotifications.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "requestLocationPermissions()"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E3DF33C9-4E32-4E33-8246-5316EC277FB4"
+            uuid = "60F59E09-07A6-4D59-A04B-BEECE68A1E29"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/DataManager/Remote/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "requestLocationPermissions()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E3DF33C9-4E32-4E33-8246-5316EC277FB4 - c1a7bd561ae81aef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in enrollment.SplashInteractor.requestLocationPermissions() -&gt; ()"
-                  moduleName = "enrollment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "432">
-               </Location>
-               <Location
-                  uuid = "E3DF33C9-4E32-4E33-8246-5316EC277FB4 - 507259263ccb4106"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in closure #1 () -&gt; () in enrollment.SplashInteractor.requestLocationPermissions() -&gt; ()"
-                  moduleName = "enrollment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8F1A5ACE-F25F-48E7-9387-5129A146ED3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "requestLocationPermissions()"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "setAppState(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "938F596A-3127-4386-9F2F-6CD615A4D1C4"
+            uuid = "F71367FD-FE85-48CB-832D-A7B41901544A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/DataManager/Remote/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "requestLocationPermissions()"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "setAppState(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E25FDF6E-6BC3-4537-9C5A-C62AE65B2040"
+            uuid = "8848151F-0C2D-4F64-8266-B1D676A51CBB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "set(profileDataSource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB42E54B-1F94-449D-B1B7-50DA1F0FD95C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/DataManager/Remote/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "setAppState(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EF0DC74-CA50-40C3-BB8A-3840EA16DC13"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "setAppState(dni:bundleID:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1B93269-6969-4956-8F94-6C1B5C45F2B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "187"
             endingLineNumber = "187"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkName = "setAppState(dni:bundleID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "81EAC4BE-BDFE-4F0C-A9DC-D8076B387EF6"
+            uuid = "8E634967-A186-4AD7-AB16-17F54002E167"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "Identify"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8734BB39-437D-4985-8E57-4F6F1FF3E46A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "Identify"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C4B3959-0893-4EFD-9D60-31143D1C0361"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "Identify"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2DB4D7D-A25C-4F69-B83D-8250C648F94B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/DataManager/Remote/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "setAppState(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "080B277C-52AB-4DCF-A1EC-8247F559F781"
+            uuid = "98D5B5F6-F1D4-4DCB-95FA-8128AF8FCA96"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "set(profileDataSource:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "57AD8587-1166-4C60-B259-DC9DFE758709"
+            uuid = "0591EF44-756D-4E07-B3F5-0CD3930284C2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "enrollment/Modules/MainScreen/MainScreenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "set(profileDataSource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "57AD8587-1166-4C60-B259-DC9DFE758709 - d2b8851b8af30b35"
+                  uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B - 803af3ef878698ed"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in enrollment.SplashInteractor.locationManager(_: __C.CLLocationManager, didChangeAuthorization: __C.CLAuthorizationStatus) -&gt; ()"
-                  moduleName = "enrollment"
+                  symbolName = "default argument 1 of static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "344">
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "57AD8587-1166-4C60-B259-DC9DFE758709 - 29fd39d275402b13"
+                  uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B - f68d005ac1d92eee"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.UIAlertAction) -&gt; () in enrollment.SplashInteractor.locationManager(_: __C.CLLocationManager, didChangeAuthorization: __C.CLAuthorizationStatus) -&gt; ()"
-                  moduleName = "enrollment"
+                  symbolName = "default argument 2 of static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "360">
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B - dfc010011b1dfcef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 3 of static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B - 6e96eb29bb5b9c10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "AF74732B-A2DF-46AC-A12A-652B18CE1E2B - 8b930c910a018349"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "340">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -373,129 +338,257 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A5F99F11-25B2-499A-BAC9-E17EC97C79D1"
+            uuid = "5EFDCF21-7441-4777-8185-812856D25AB4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "484DBA10-BE41-4B13-9029-65F6614CE8DB"
+            uuid = "D1046F90-FEE6-4050-B4C5-5F660D9AEB04"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D1046F90-FEE6-4050-B4C5-5F660D9AEB04 - 8b930c910a018349"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "772">
+               </Location>
+               <Location
+                  uuid = "D1046F90-FEE6-4050-B4C5-5F660D9AEB04 - 5da4c79051b93c21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static TrustDeviceInfo.API.callAsJSON(resource: TrustDeviceInfo.APIRouter, onResponse: Swift.Optional&lt;() -&gt; ()&gt;, onSuccess: Swift.Optional&lt;(Any) -&gt; ()&gt;, onFailure: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "TrustDeviceInfo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D75731C8-FA9D-4AFB-9969-16E97FDDB851"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "143928A4-742C-47E2-89FD-98F33F6F4179"
+            uuid = "BA0841A4-B22E-4F5C-9042-6F66B1ABCD89"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1FA3E76E-1CFC-48D4-AD30-48E6CFF4DADE"
+            uuid = "29FC8DB5-0693-4CE9-AE47-B37DA32F4B13"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "520B40B8-892B-49BB-9D46-1C7C020F566F"
+            uuid = "7F2218CD-52A1-47CA-8828-3F4BFC6CAB61"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "16EBC4F9-F10A-484D-9793-9A7F3703DE9D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "enrollment/Modules/Splash/SplashInteractor.swift"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkName = "callAsJSON(resource:onResponse:onSuccess:onFailure:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "16EBC4F9-F10A-484D-9793-9A7F3703DE9D - 29fd39d275402b13"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.UIAlertAction) -&gt; () in enrollment.SplashInteractor.locationManager(_: __C.CLLocationManager, didChangeAuthorization: __C.CLAuthorizationStatus) -&gt; ()"
-                  moduleName = "enrollment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
-                  offsetFromSymbolStart = "1668">
-               </Location>
-               <Location
-                  uuid = "16EBC4F9-F10A-484D-9793-9A7F3703DE9D - ed2bc4e6d825ebaa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.UIAlertAction) -&gt; () in enrollment.SplashInteractor.locationManager(_: __C.CLLocationManager, didChangeAuthorization: __C.CLAuthorizationStatus) -&gt; ()"
-                  moduleName = "enrollment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevintorres/Projects/NewEnrollmentTest/lat_trust_mobile_ios_enrollment_app/enrollment/Modules/Splash/SplashInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB740253-4456-4D3E-AC93-A8F302C751D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79CD502A-2CBA-4567-98E6-EE12FEEB0A7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D61CD57-C766-4241-868A-ADECFF9184AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "enrollment/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB8B814A-54D8-4A54-A4BB-1E8BEFBFCFB8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "accessGroup"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39C71369-6B01-4146-B531-ABE7D6DBADC5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "serviceName"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12BD2CCA-5E56-48E5-938E-C09AABDCECD6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Identify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "set(serviceName:accessGroup:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9708B140-DC94-4298-922A-8F5AC4427181"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/APIRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "asURLRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "413A8D48-8597-41E4-8D3D-86B8FB4924D4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TrustDeviceInfo/TrustDeviceInfo/Network/APIRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "asURLRequest()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

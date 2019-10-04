@@ -35,7 +35,7 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         
         notifications.firebaseConfig(application: application)
             
-//        notifications.registerForRemoteNotifications()
+        notifications.registerForRemoteNotifications()
         
         notifications.registerCustomNotificationCategory()
         

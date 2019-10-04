@@ -64,27 +64,3 @@ class LocationManager: NSObject, CLLocationManagerDelegate, LocationManagerProto
         self.operationQueue.addOperation(block)
     }
 }
-
-extension LocationManager {
-    func checkLocationPermissions() -> Bool {
-        let locationPermissionStatus = CLLocationManager.authorizationStatus()
-        switch locationPermissionStatus {
-        case .notDetermined:
-            return false
-        case .denied, .restricted:
-            return false
-        case .authorizedAlways, .authorizedWhenInUse:
-            return true
-            break
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    func checkNotificationPermissions() -> Bool {
-        if UIApplication.shared.isRegisteredForRemoteNotifications {
-            return true
-        }
-        return false
-    }
-}

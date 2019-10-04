@@ -1525,9 +1525,6 @@ extension MDCButton {
         let buttonScheme = MDCButtonScheme()
         let rippleView = MDCRippleView()
         
-//        let statefulRippleView = MDCStatefulRippleView()
-//        statefulRippleView.setRippleColor(.blue, for: .selected)
-        
         switch type {
         case .btnPrimary:
             colorSchema.primaryColor = .primary

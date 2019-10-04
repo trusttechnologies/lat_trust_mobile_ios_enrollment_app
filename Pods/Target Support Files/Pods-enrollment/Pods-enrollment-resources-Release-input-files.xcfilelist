@@ -4,4 +4,3 @@ ${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_enabled_i
 ${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/close_icon.imageset/24px.png
 ${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard
 ${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard
-${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets

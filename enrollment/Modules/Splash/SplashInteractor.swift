@@ -45,9 +45,7 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
     }
     
     // MARK: - REQUEST PERMISSIONS --------------------------------------------------------
-    func requestNotificationPermissions() {
-        UNUserNotificationCenter.current().delegate = self
-        
+    func requestNotificationPermissions() {        
         UNUserNotificationCenter.current().requestAuthorization(
         options: [.alert, .sound, .badge]) {
             (granted, error) in
@@ -76,7 +74,7 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
             print("Deined Location Permissions")
         }
         if status == .restricted {
-            print("Restricted Location Permissions")
+            print("Restricted Location Permissions");
         }
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             DispatchQueue.main.async {
@@ -85,7 +83,6 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
                     let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
 
                     alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
-                        
                         
                         UNUserNotificationCenter.current().delegate = self
 
@@ -162,10 +159,7 @@ extension SplashInteractor: OAuth2ManagerOutputProtocol {
 // MARK: - Listener location permission response
 extension SplashInteractor {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        var acceptedLocationPermission: Bool = false
-        
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            acceptedLocationPermission = true
             if !UIApplication.shared.isRegisteredForRemoteNotifications {
                 let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
 
@@ -185,18 +179,14 @@ extension SplashInteractor {
                                 }
                             }
                             self.interactorOutput?.requestNotificationResponse()
-                    //                self.interactorOutput?.requestNotificationFail()
                             return
                         }
                         // 2. Attempt registration for remote notifications on the main thread
                         DispatchQueue.main.async {
                             UIApplication.shared.registerForRemoteNotifications()
                         }
-//                        self.interactorOutput?.requestNotificationResponse()
                         self.interactorOutput?.returnViewDidAppear()
                     }
-
-//                    self.interactorOutput?.returnViewDidAppear()
                 }))
 
                 alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)

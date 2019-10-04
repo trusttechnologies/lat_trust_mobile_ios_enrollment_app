@@ -48,7 +48,9 @@ class VideoViewController: UIViewController {
      */
     @IBOutlet weak var audioButton: UIButton!{
         didSet{
-            let origImage = UIImage(named: "audio_enabled_icon")
+            
+            let bundle = Bundle(for: VideoViewController.self)
+            let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
             let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
             audioButton.setImage(tintedImage, for: .normal)
             audioButton.tintColor = .white
@@ -76,6 +78,9 @@ class VideoViewController: UIViewController {
      */
     @IBOutlet weak var closeButton: UIButton!{
         didSet{
+            let bundle = Bundle(for: VideoViewController.self)
+            let buttonImage = UIImage(named: "close_icon", in: bundle, compatibleWith: nil)
+            closeButton.setImage(buttonImage, for: .normal)
             closeButton.isEnabled = false
             flagAudio = false
         }
@@ -227,12 +232,14 @@ class VideoViewController: UIViewController {
                     }
                     player.isMuted = self.flagAudio
                     if(player.isMuted){
-                        let origImage = UIImage(named: "audio_disabled_icon")
+                        let bundle = Bundle(for: VideoViewController.self)
+                        let origImage = UIImage(named: "audio_disabled_icon", in: bundle, compatibleWith: nil)
                         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                         self.audioButton.setImage(tintedImage, for: .normal)
                         self.audioButton.tintColor = .white
                     }else{
-                        let origImage = UIImage(named: "audio_enabled_icon")
+                        let bundle = Bundle(for: VideoViewController.self)
+                        let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
                         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                         self.audioButton.setImage(tintedImage, for: .normal)
                         self.audioButton.tintColor = .white
