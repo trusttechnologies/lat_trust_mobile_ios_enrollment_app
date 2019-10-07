@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - UserDataManagerProtocol
 protocol LocationManagerProtocol: AnyObject {
-    func runLocationBlock(callback: @escaping () -> ())
+
 }
 
 protocol LocationManagerOutputProtocol {

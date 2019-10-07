@@ -79,17 +79,19 @@
                                 </subviews>
                             </stackView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3U-2B-thZ" userLabel="{grayScreenActivityIndicatorView}" customClass="LottieView" customModule="Lottie">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="298" width="375" height="274"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zqO-h4-DGA" userLabel="{activityIndicator}">
                                         <rect key="frame" x="177.66666666666666" y="374" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zqO-h4-DGA" firstAttribute="centerY" secondItem="i3U-2B-thZ" secondAttribute="centerY" constant="-22" id="19z-FN-iYl"/>
+                                    <constraint firstItem="zqO-h4-DGA" firstAttribute="centerY" secondItem="i3U-2B-thZ" secondAttribute="centerY" constant="247" id="19z-FN-iYl"/>
                                     <constraint firstItem="zqO-h4-DGA" firstAttribute="centerX" secondItem="i3U-2B-thZ" secondAttribute="centerX" id="KVH-xL-jZL"/>
                                 </constraints>
+                            </view>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-6X-X6v">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,22 +99,26 @@
                             <constraint firstItem="V7F-Sw-gz7" firstAttribute="top" secondItem="VZ5-12-mSZ" secondAttribute="bottom" constant="120" id="1eQ-Aa-rcj"/>
                             <constraint firstItem="V7F-Sw-gz7" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="BGq-Zt-hhO"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="i3U-2B-thZ" secondAttribute="trailing" id="CgN-SS-YnC"/>
-                            <constraint firstItem="i3U-2B-thZ" firstAttribute="trailing" secondItem="jex-U0-h2k" secondAttribute="trailing" id="KBK-lk-DlR"/>
+                            <constraint firstItem="vMB-6X-X6v" firstAttribute="leading" secondItem="RpP-e3-LDv" secondAttribute="leading" id="F7Q-iA-cH5"/>
+                            <constraint firstItem="vMB-6X-X6v" firstAttribute="trailing" secondItem="jex-U0-h2k" secondAttribute="trailing" id="IHD-rb-ySu"/>
+                            <constraint firstItem="vMB-6X-X6v" firstAttribute="top" secondItem="RpP-e3-LDv" secondAttribute="top" id="NDv-a8-JlX"/>
                             <constraint firstItem="V7F-Sw-gz7" firstAttribute="leading" secondItem="jex-U0-h2k" secondAttribute="leading" constant="16" id="Qpn-ug-koP"/>
                             <constraint firstItem="HZH-eN-XVI" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="YQ2-39-8cr"/>
                             <constraint firstItem="i3U-2B-thZ" firstAttribute="leading" secondItem="jex-U0-h2k" secondAttribute="leading" id="aqy-tP-NTk"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="V7F-Sw-gz7" secondAttribute="trailing" constant="16" id="bYY-cm-jO0"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="104" id="cy1-l9-tXS"/>
-                            <constraint firstAttribute="bottom" secondItem="i3U-2B-thZ" secondAttribute="bottom" id="k1S-g0-Kl7"/>
+                            <constraint firstAttribute="bottom" secondItem="vMB-6X-X6v" secondAttribute="bottom" id="gKl-cV-dLD"/>
+                            <constraint firstAttribute="bottom" secondItem="i3U-2B-thZ" secondAttribute="bottom" constant="240" id="k1S-g0-Kl7"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="bottom" secondItem="HZH-eN-XVI" secondAttribute="bottom" constant="24" id="qJ2-jD-y8c"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="srV-g7-W1m"/>
-                            <constraint firstItem="i3U-2B-thZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="-44" id="yFH-IC-rkp"/>
+                            <constraint firstItem="i3U-2B-thZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="254" id="yFH-IC-rkp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jex-U0-h2k"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="zqO-h4-DGA" id="VEG-nY-qSK"/>
                         <outlet property="activityIndicatorBackground" destination="i3U-2B-thZ" id="7DL-jV-jdv"/>
+                        <outlet property="loadingBackground" destination="vMB-6X-X6v" id="joR-iy-5Nq"/>
                         <outlet property="loadingView" destination="i3U-2B-thZ" id="wqb-cA-5Ak"/>
                         <outlet property="loginButton" destination="foQ-iD-JlR" id="7n5-i6-jbX"/>
                     </connections>

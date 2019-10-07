@@ -16,6 +16,7 @@ class SessionMenuViewController: UIViewController {
     let filename = "enrollmentLoading"
     
     @IBOutlet weak var loadingView: LottieView!
+    @IBOutlet weak var loadingBackground: UIView!
     
     @IBOutlet weak var loginButton: MDCButton! {
         didSet {
@@ -38,7 +39,7 @@ class SessionMenuViewController: UIViewController {
 // MARK: - View
 extension SessionMenuViewController: SessionMenuViewProtocol {
     func startActivityIndicator() {
-        let secondsToDelay = 1.0
+        let secondsToDelay = 0.4
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation
             let animation = Animation.named(self.filename)
             self.animationView.animation = animation
@@ -55,18 +56,24 @@ extension SessionMenuViewController: SessionMenuViewProtocol {
             })
             self.animationView.translatesAutoresizingMaskIntoConstraints = false
             self.loadingView.addSubview(self.animationView)
-
+            
+            self.loadingBackground.backgroundColor = .gray
+            self.loadingView.backgroundColor = .gray
+            
             NSLayoutConstraint.activate([
                 self.animationView.heightAnchor.constraint(equalTo: self.loadingView.heightAnchor),
                 self.animationView.widthAnchor.constraint(equalTo: self.loadingView.widthAnchor),
             ])
             
             self.activityIndicatorBackground.show()
+            self.loadingBackground.show()
+            self.view.bringSubviewToFront(self.loadingView)
             self.animationView.backgroundBehavior = .pauseAndRestore
         }
     }
     
     func stopActivityIndicator() {
+        loadingBackground.hide()
         activityIndicator.stopAnimating()
         activityIndicatorBackground.hide()
     }
