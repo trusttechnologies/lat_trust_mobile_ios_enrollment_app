@@ -79,6 +79,7 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!{
         didSet{
             let bundle = Bundle(for: VideoViewController.self)
+            //let iconTest = UIImage(systemName: "stop")
             let buttonImage = UIImage(named: "close_icon", in: bundle, compatibleWith: nil)
             closeButton.setImage(buttonImage, for: .normal)
             closeButton.isEnabled = false

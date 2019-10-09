@@ -97,16 +97,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_disabled_icon.imageset/baseline_volume_off_black_18dp.png"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_enabled_icon.imageset/baseline_volume_up_black_18dp.png"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/close_icon.imageset/24px.png"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_disabled_icon.imageset/baseline_volume_off_black_18dp.png"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/audio_enabled_icon.imageset/baseline_volume_up_black_18dp.png"
-  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/Assets.xcassets/close_icon.imageset/24px.png"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
 fi

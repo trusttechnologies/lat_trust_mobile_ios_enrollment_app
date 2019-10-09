@@ -29,33 +29,33 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-eN-XVI" userLabel="{inTopItemsStackView}">
-                                <rect key="frame" x="156.66666666666666" y="711" width="62" height="43"/>
+                                <rect key="frame" x="125.66666666666669" y="688.33333333333337" width="124" height="65.666666666666629"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powerd by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dW-ey-xHH" userLabel="{poweredByLabel}">
-                                        <rect key="frame" x="0.0" y="0.0" width="62" height="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="11.666666666666666"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                                         <color key="textColor" red="0.58039215690000001" green="0.61176470589999998" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trustLogo" translatesAutoresizingMaskIntoConstraints="NO" id="v1f-r1-Gnd" userLabel="{bottomTrustLogoImage}">
-                                        <rect key="frame" x="0.0" y="20" width="62" height="23"/>
+                                        <rect key="frame" x="0.0" y="19.666666666666629" width="124" height="46"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="V7F-Sw-gz7" userLabel="{inCenterItemsStackView}">
-                                <rect key="frame" x="16" y="364" width="343" height="169.66666666666663"/>
+                                <rect key="frame" x="16" y="364" width="343" height="169"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LOf-t2-dKc" userLabel="{inCenterLabelStackView}">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="57.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APW-SB-yk8" userLabel="{welcomeLabel}">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="32.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="28"/>
                                                 <color key="textColor" red="0.58039215686274503" green="0.61176470588235299" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingresa a Enrollment utilizando itrust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-4m-O2D" userLabel="{useEnrollmentLabel}">
-                                                <rect key="frame" x="0.0" y="41" width="343" height="16.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="40.666666666666686" width="343" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" red="0.58039215690000001" green="0.61176470589999998" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84Z-0o-kP0" userLabel="{inCenterButtonsStackView}">
-                                        <rect key="frame" x="0.0" y="113.66666666666669" width="343" height="56"/>
+                                        <rect key="frame" x="0.0" y="113" width="343" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foQ-iD-JlR" userLabel="{loginUseItrustButton}" customClass="MDCButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
