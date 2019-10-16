@@ -203,6 +203,12 @@ class VideoViewController: UIViewController {
     
     func fillVideo(content: GenericNotification) {
         
+        let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
+        self.videoView.addConstraint(widthConstraint)
+        self.videoView.addConstraint(aspectRatioConstraint)
+        
+        //self.videoView.frame.size.width
         //Set video
         if(verifyUrl(urlString: content.notificationVideo?.videoUrl)){
             
@@ -216,7 +222,7 @@ class VideoViewController: UIViewController {
             let minPlayTime = content.notificationVideo?.minPlayTime ?? 0.00
             
             controller.player = player
-            playerLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
             videoView.layer.addSublayer(playerLayer)
             player.play()
@@ -230,6 +236,7 @@ class VideoViewController: UIViewController {
                     let remaining = round(Double(minPlayTime) - seconds)
                     if(player.status == .readyToPlay ){
                         player.play()
+                        self.activityIndicator.isHidden = true
                     }
                     player.isMuted = self.flagAudio
                     if(player.isMuted){
@@ -270,6 +277,7 @@ class VideoViewController: UIViewController {
         if(buttonCounter == 1){
     
             buttonL.isHidden = true
+            //buttonL.isEnabled = false
             buttonR.setTitle(buttons![0].text ?? "", for: .normal)
             buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons![0].action
@@ -286,6 +294,4 @@ class VideoViewController: UIViewController {
             
         }
     }
-    
-    
 }

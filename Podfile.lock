@@ -57,8 +57,8 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3.901)
-  - GoogleDataTransport (3.0.0)
-  - GoogleDataTransportCCTSupport (1.2.0):
+  - GoogleDataTransport (3.0.1)
+  - GoogleDataTransportCCTSupport (1.2.1):
     - GoogleDataTransport (~> 3.0)
     - nanopb (~> 0.3.901)
   - GoogleUtilities/AppDelegateSwizzler (6.3.1):
@@ -202,11 +202,14 @@ PODS:
   - Realm/Headers (3.18.0)
   - RealmSwift (3.18.0):
     - Realm (= 3.18.0)
+  - Sentry (4.3.1):
+    - Sentry/Core (= 4.3.1)
+  - Sentry/Core (4.3.1)
   - TrustDeviceInfo (1.0.3):
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
     - DeviceKit
-  - TrustNotification (0.2.23):
+  - TrustNotification (0.3.0):
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
@@ -222,6 +225,7 @@ DEPENDENCIES:
   - "MaterialComponents/Snackbar+TypographyThemer"
   - MaterialComponents/TextFields
   - p2.OAuth2
+  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `4.3.1`)
   - TrustDeviceInfo
   - TrustNotification
 
@@ -260,6 +264,16 @@ SPEC REPOS:
   https://github.com/trusttechnologies/trustnotificationpodspecs.git:
     - TrustNotification
 
+EXTERNAL SOURCES:
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 4.3.1
+
+CHECKOUT OPTIONS:
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 4.3.1
+
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
@@ -274,8 +288,8 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
   FirebaseMessaging: 35edef69a6af9b34e9e44624089f054be3c09089
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
-  GoogleDataTransport: f6fe28f43e3a300736854260961ad485b473edc5
-  GoogleDataTransportCCTSupport: 862418a8cdda520c4dd4af83a756d04efe4a6990
+  GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
+  GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
@@ -288,9 +302,10 @@ SPEC CHECKSUMS:
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   TrustDeviceInfo: f8dbd3fad295c4523a4f654bb70c374f151742b4
-  TrustNotification: 932a81bbfcc0e7d0ddcc6f75c2b6090d7cba176d
+  TrustNotification: e883152b563ad31a43ca12345691563a8833145f
 
-PODFILE CHECKSUM: 33ddcd79f0ceb8238963a7985e7cff2eb94749bd
+PODFILE CHECKSUM: df6b1334d20a056bed9e901b03d261546f4f4622
 
 COCOAPODS: 1.8.3

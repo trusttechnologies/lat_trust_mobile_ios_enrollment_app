@@ -12,6 +12,8 @@ import UIKit
 protocol MainScreenViewProtocol: AnyObject {
     func set(profileDataSource: ProfileDataSource?)
     func setTrustId(trustIdDataSource: String?)
+    func showPermissionModal()
+    func hidePermissionModal()
 }
 
 // MARK: - Interactor
@@ -20,13 +22,17 @@ protocol MainScreenInteractorProtocol: AnyObject {
     
     var userDataManager: UserDataManagerProtocol? {get set}
     var auditDataManager: AuditDataManagerProtocol? {get set}
+    var permissionsManager: PermissionsManagerProtocol? {get set}
     
     func performLogout()
 
+    func checkBothPermissions()
     func getProfileDataSource()
     func getTrustIdDataSource()
     
     func cleanData()
+    
+    func openSettings()
     
     func loginAudit()
 }
@@ -37,6 +43,9 @@ protocol MainScreenInteractorOutput: AnyObject {
     func onGetTrustIdDataSourceOutPut(trustId: String?)
     
     func onLogoutPerformed()
+    
+    func showMessage()
+//    agregar interactorOutput?.showMessage
     
     func onCleanedData()
     func onClearedData()
@@ -50,8 +59,10 @@ protocol MainScreenPresenterProtocol: AnyObject {
     
     func onViewDidLoad()
     func onViewWillAppear()
-        
-    func onLogoutButtonPressed()    
+    
+    func onLogoutButtonPressed()
+    
+    func openEnrollmentSettings()
 }
 
 // MARK: - Router

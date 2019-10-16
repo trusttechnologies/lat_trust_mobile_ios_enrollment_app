@@ -13,6 +13,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     var router: MainScreenRouterProtocol?
     
     func onViewDidLoad() {
+        interactor?.checkBothPermissions()
         interactor?.getProfileDataSource()
         interactor?.getTrustIdDataSource()
     }
@@ -24,10 +25,18 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     func onLogoutButtonPressed() { //Start Logout
         interactor?.performLogout() //Use performLogout in MainScreenInteractor
     }
+    
+    func openEnrollmentSettings() {
+        interactor?.openSettings()
+    }
 }
 
 // MARK: - InteractorOutput
 extension MainScreenPresenter: MainScreenInteractorOutput {
+    func showMessage() {
+        view?.showPermissionModal()
+    }
+    
     func onGetTrustIdDataSourceOutPut(trustId: String?) {
         view?.setTrustId(trustIdDataSource: trustId)
     }

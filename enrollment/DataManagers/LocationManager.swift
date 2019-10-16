@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import UIKit
 
-// MARK: - UserDataManagerProtocol
+// MARK: - LocationManagerProtocol
 protocol LocationManagerProtocol: AnyObject {
 
 }

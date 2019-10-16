@@ -179,19 +179,26 @@
 			<key>orderHint</key>
 			<integer>28</integer>
 		</dict>
-		<key>TrustDeviceInfo.xcscheme</key>
+		<key>Sentry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
-		<key>TrustNotification.xcscheme</key>
+		<key>TrustDeviceInfo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>30</integer>
+		</dict>
+		<key>TrustNotification.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>31</integer>
 		</dict>
 		<key>lottie-ios.xcscheme</key>
 		<dict>

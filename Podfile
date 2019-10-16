@@ -27,6 +27,7 @@ target 'enrollment' do
   pod 'p2.OAuth2'
   pod 'lottie-ios'
   
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '4.3.1'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|

@@ -14,7 +14,7 @@ class SessionMenuRouter: SessionMenuRouterProtocol {
     
     static func createModule() -> SessionMenuViewController {
         
-        let view = SessionMenuViewController.storyboardViewController()
+        let view = SessionMenuViewController.storyboardViewController() //????
         let interactor: SessionMenuInteractor & OAuth2ManagerOutputProtocol = SessionMenuInteractor()
         let presenter: SessionMenuPresenterProtocol & SessionMenuInteractorOutput = SessionMenuPresenter()
         let router = SessionMenuRouter()

@@ -40,7 +40,7 @@ class SessionMenuViewController: UIViewController {
 extension SessionMenuViewController: SessionMenuViewProtocol {
     func startActivityIndicator() {
         let secondsToDelay = 0.4
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation            
             let animation = Animation.named(self.filename)
             self.animationView.animation = animation
             self.animationView.contentMode = .scaleAspectFit

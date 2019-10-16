@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import TrustDeviceInfo
 import Audit
 import TrustNotification
+import Sentry
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: TrustDeviceInfoDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // IQKeyboardManager Initialization
+        // Create a Sentry client and start crash handler
+        do {
+            Client.shared = try Client(dsn: "https://f2798e2f783c4c448a1f2a3467695462@sentry.io/1776107")
+            try Client.shared?.startCrashHandler()
+        } catch let error {
+            print("\(error)")
+        }
+        
         IQKeyboardManager.shared.enable = true
         
         let serviceName = "defaultServiceName"

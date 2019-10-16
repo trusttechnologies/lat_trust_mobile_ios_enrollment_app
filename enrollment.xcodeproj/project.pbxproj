@@ -61,6 +61,7 @@
 		FE9E9E30234668010091F139 /* Service Notification Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE9E9E29234668010091F139 /* Service Notification Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FEBD3B78234279D1002811E2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD3B77234279D1002811E2 /* LocationManager.swift */; };
 		FED02838233E6E8400ADF65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED02837233E6E8400ADF65C /* GoogleService-Info.plist */; };
+		FEDBBDCF2354C0E300D9D4F5 /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDBBDCE2354C0E300D9D4F5 /* PermissionsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		FE9E9E2D234668010091F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBD3B77234279D1002811E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FED02837233E6E8400ADF65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FEDBBDCE2354C0E300D9D4F5 /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		FEE29944230C40ED006DE4D5 /* enrollment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enrollment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE29947230C40ED006DE4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEE2994E230C40EE006DE4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				FE1BF3EB230DABCF004EEFEB /* UserDataManager.swift */,
 				FE76404E231DCEC60085299D /* AuditDataManager.swift */,
 				FEBD3B77234279D1002811E2 /* LocationManager.swift */,
+				FEDBBDCE2354C0E300D9D4F5 /* PermissionsManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				F472BDA42ADCAA4D1C49CABB /* [CP] Embed Pods Frameworks */,
 				FED02831233E610800ADF65C /* Embed App Extensions */,
 				B7AC79352A7D30D381CAF5AC /* [CP] Copy Pods Resources */,
+				FEDBBDCD234FD41F00D9D4F5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -564,6 +568,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FEDBBDCD234FD41F00D9D4F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=trust-technologies\nexport SENTRY_PROJECT=enrollment-ios\nexport SENTRY_AUTH_TOKEN=b5d238b857734d7c89172ae95fe7e8a2b8d782694ee141d78c0a10cdcf2068a7\nERROR=$(sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -590,6 +612,7 @@
 				FE9E9E24234662E70091F139 /* AppDelegate.swift in Sources */,
 				FE1BF3DC230C5DBA004EEFEB /* SessionMenuRouter.swift in Sources */,
 				FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */,
+				FEDBBDCF2354C0E300D9D4F5 /* PermissionsManager.swift in Sources */,
 				FE1BF3CE230C5200004EEFEB /* SplashProtocols.swift in Sources */,
 				FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */,
 				FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */,
@@ -629,6 +652,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -641,7 +665,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -649,6 +673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -661,7 +686,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -789,6 +814,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -813,6 +839,7 @@
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;

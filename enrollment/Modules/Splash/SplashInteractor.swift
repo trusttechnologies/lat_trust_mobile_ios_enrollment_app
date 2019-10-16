@@ -44,8 +44,9 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
         oauth2Manager?.silentAuthorize(from: context)
     }
     
+    
     // MARK: - REQUEST PERMISSIONS --------------------------------------------------------
-    func requestNotificationPermissions() {        
+    func requestNotificationPermissions() {
         UNUserNotificationCenter.current().requestAuthorization(
         options: [.alert, .sound, .badge]) {
             (granted, error) in
@@ -62,8 +63,31 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
             self.interactorOutput?.requestNotificationResponse()
         }
     }
+   
     
     func requestLocationPermissions() {
+        let status = CLLocationManager.authorizationStatus()
+        locationManager.delegate = self
+        
+        if status == .notDetermined {
+            locationManager.requestAlwaysAuthorization() //Request permission
+        }
+        if status == .denied {
+            self.interactorOutput?.onGetAllPermissionsAccepted()
+
+            print("Deined Location Permissions")
+        }
+        if status == .restricted {
+            print("Restricted Location Permissions");
+        }
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            DispatchQueue.main.async {
+                self.interactorOutput?.onGetAllPermissionsAccepted()
+            }
+        }
+    }
+    
+    /*func requestLocationPermissions() {
         let status = CLLocationManager.authorizationStatus()
         locationManager.delegate = self
         
@@ -121,7 +145,7 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
                 }
             }
         }
-    }
+    }*/
     
     func cleanData() {
         userDataManager?.deleteAll(completion: nil)
@@ -159,6 +183,9 @@ extension SplashInteractor: OAuth2ManagerOutputProtocol {
 // MARK: - Listener location permission response
 extension SplashInteractor {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        interactorOutput?.onGetAllPermissionsAccepted()
+    }
+    /*func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             if !UIApplication.shared.isRegisteredForRemoteNotifications {
                 let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
@@ -215,7 +242,7 @@ extension SplashInteractor {
 
             interactorOutput?.callAlert(alertController: alertController)
         }
-    }
+    }*/
 }
 
 extension SplashInteractor: LocationManagerOutputProtocol {
@@ -225,23 +252,23 @@ extension SplashInteractor: LocationManagerOutputProtocol {
     }
     
     func requestLocationFail() {
-        let status = CLLocationManager.authorizationStatus()
-
-        if status == .denied || status == .notDetermined || status == .restricted {
-            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
-
-            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
-                if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-                self.interactorOutput?.returnViewDidAppear()
-            }))
-
-            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
-                self.interactorOutput?.returnViewDidAppear()
-            }))
-
-            interactorOutput?.callAlert(alertController: alertController)
-        }
+//        let status = CLLocationManager.authorizationStatus()
+//
+//        if status == .denied || status == .notDetermined || status == .restricted {
+//            let alertController = UIAlertController(title: "Enrollment", message: "Acepte los permisos para que puedas utilizar la aplicación.", preferredStyle: .alert)
+//
+//            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+//                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+//                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                }
+//                self.interactorOutput?.returnViewDidAppear()
+//            }))
+//
+//            alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (action) in alertController.dismiss(animated: true, completion: nil)
+//                self.interactorOutput?.returnViewDidAppear()
+//            }))
+//
+//            interactorOutput?.callAlert(alertController: alertController)
+//        }
     }
 }

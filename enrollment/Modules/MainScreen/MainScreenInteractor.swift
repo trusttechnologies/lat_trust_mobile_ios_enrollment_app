@@ -18,8 +18,22 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     var userDataManager: UserDataManagerProtocol?
     var auditDataManager: AuditDataManagerProtocol?
     
+    var permissionsManager: PermissionsManagerProtocol?
+    
     let generatedTrustId = Identify.shared.getTrustID()
 
+    func openSettings() {
+        if let url = URL.init(string: UIApplication.openSettingsURLString) {
+            DispatchQueue.main.async {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
+    func checkBothPermissions() {
+        permissionsManager?.checkBothPermissions()
+    }
+    
     func performLogout() {
         guard
             let sessionID = UserDefaults.OAuth2URLData.string(forKey: .sessionID),
@@ -79,5 +93,16 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
 extension MainScreenInteractor {
     func onClearData() {
         interactorOutput?.onClearedData()
+    }
+}
+
+// MARK: - PermissionsManagerOutputProtocol
+extension MainScreenInteractor: PermissionsManagerOutputProtocol {
+    func permissionsSuccess() {
+        print("xd")
+    }
+    
+    func permissionsFail() {
+        interactorOutput?.showMessage()
     }
 }

@@ -20,17 +20,23 @@ class MainScreenRouter: MainScreenRouterProtocol {
     static func createModule() -> MainScreenViewController {
         
         let view = MainScreenViewController.storyboardViewController()
-        let interactor: MainScreenInteractorProtocol = MainScreenInteractor()
+        let interactor: MainScreenInteractorProtocol & PermissionsManagerOutputProtocol = MainScreenInteractor()
         let presenter: MainScreenPresenterProtocol & MainScreenInteractorOutput = MainScreenPresenter()
         let router = MainScreenRouter()
         
         let userDataManager = UserDataManager()
         let auditDataManager = AuditDataManager()
+        let permissionsManager = PermissionsManager()
+        
+        permissionsManager.managerOutput = interactor
+        
         view.presenter = presenter
 
         interactor.interactorOutput = presenter
+        
         interactor.userDataManager = userDataManager
         interactor.auditDataManager = auditDataManager
+        interactor.permissionsManager = permissionsManager
         
         presenter.view = view
         presenter.router = router

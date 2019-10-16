@@ -19,6 +19,7 @@ class DialogViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBOutlet var screenArea: UIView!
     /**
      Notification area
      */
@@ -26,6 +27,8 @@ class DialogViewController: UIViewController {
         didSet{
             dialogView.layer.cornerRadius = 4.0
             dialogView.clipsToBounds = true
+            
+            
         }
     }
     
@@ -81,6 +84,8 @@ class DialogViewController: UIViewController {
      */
     @IBOutlet weak var leftMargin: UIView!
     
+    @IBOutlet weak var upperMargin: UIView!
+    @IBOutlet weak var lowerMargin: UIView!
     /**
      Right margin for the body of the notification
      */
@@ -163,10 +168,37 @@ class DialogViewController: UIViewController {
         if(content.notificationDialog != nil){
             print("soy un dialogo")
             
+            if(isIphoneXOrBigger()){
+                dialogView.frame = CGRect(x:0, y: 0, width: 0.9 * screenArea.frame.width, height: 0.2 * screenArea.frame.height)
+            }else{
+                dialogView.frame = CGRect(x:0, y: 0, width: 0.9 * screenArea.frame.width, height: 0.2 * screenArea.frame.height)
+            }
+            
+            //Set body label
+            if(content.notificationDialog!.textBody != ""){
+                body.text = content.notificationDialog?.textBody
+                body.textAlignment = NSTextAlignment.center
+                body.numberOfLines = 0
+                body.lineBreakMode = .byWordWrapping
+                body.sizeToFit()
+                let aspectRatioConstraint = NSLayoutConstraint(item: self.imageView,attribute: .height,relatedBy: .equal,toItem: self.imageView,attribute: .width, multiplier: (320.0 / 340.0),constant: 0)
+                self.imageView.addConstraint(aspectRatioConstraint)
+            }else{
+                body.isHidden = true
+                leftMargin.isHidden = true
+                rightMargin.isHidden = true
+                upperMargin.isHidden = true
+                lowerMargin.isHidden = true
+                labelStackView.isHidden = true
+                let aspectRatioConstraint = NSLayoutConstraint(item: self.imageView,attribute: .height,relatedBy: .equal,toItem: self.imageView,attribute: .width, multiplier: (400.0 / 340.0),constant: 0)
+                self.imageView.addConstraint(aspectRatioConstraint)
+            }
+            
             //Set the dialog image
             if(verifyUrl(urlString: content.notificationDialog?.imageUrl)){
                 let imageUrl = URL(string: content.notificationDialog!.imageUrl)!
                 imageView.load(url: imageUrl)
+                imageView.contentMode = .scaleAspectFill
             }else{
                 imageView.isHidden = true
             }
@@ -212,19 +244,7 @@ class DialogViewController: UIViewController {
                 urlRightButton = buttons![0].action
                 
             }
-            //Set body label
-            if(content.notificationDialog!.textBody != ""){
-                body.text = content.notificationDialog?.textBody
-                body.textAlignment = NSTextAlignment.center
-                body.numberOfLines = 0
-                body.lineBreakMode = .byWordWrapping
-                body.sizeToFit()
-            }else{
-                body.isHidden = true
-                leftMargin.isHidden = true
-                rightMargin.isHidden = true
-                labelStackView.isHidden = true
-            }
+            
             
             
             print(content.notificationDialog?.buttons ?? "contentButtons")

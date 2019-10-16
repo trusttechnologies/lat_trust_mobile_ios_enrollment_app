@@ -18,10 +18,31 @@ protocol ProfileDataSource {
 
 class MainScreenViewController: UIViewController {
     
+
     var presenter: MainScreenPresenterProtocol?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rutLabel: UILabel!
     @IBOutlet weak var trustIdLabel: UILabel!
+    
+    // MARK: - Permission message
+    @IBOutlet weak var permissionsMessage: UIView!
+    @IBOutlet weak var permissionsBackground: UIView! {
+        didSet {
+            permissionsBackground?.backgroundColor = .blackBackground
+        }
+    }
+    
+    @IBOutlet weak var acceptMessageButton: MDCButton!{
+        didSet {
+//            acceptMessageButton.setupButtonWithType(type: .btnSecondary, mdcType: .contained)
+            
+            acceptMessageButton.addTarget(
+                self,
+                action: #selector(onAcceptMessageButtonPressed(sender:)),
+                for: .touchUpInside
+            )
+        }
+    }
     
     var profileDataSource: ProfileDataSource? {
         didSet {
@@ -66,6 +87,16 @@ extension MainScreenViewController: MainScreenViewProtocol {
     func setTrustId(trustIdDataSource: String?) {
         trustIdLabel.text = trustIdDataSource
     }
+    
+    func showPermissionModal() {
+        permissionsMessage.show()
+        permissionsBackground.show()
+    }
+    
+    func hidePermissionModal() {
+        permissionsMessage.hide()
+        permissionsBackground.hide()
+    }
 }
 
 extension MainScreenViewController: TrustDeviceInfoDelegate {
@@ -92,6 +123,10 @@ extension MainScreenViewController: TrustDeviceInfoDelegate {
 extension MainScreenViewController {
     @objc func onLogoutButtonPressed(sender: UIButton) {
         self.presenter?.onLogoutButtonPressed()
+    }
+    @objc func onAcceptMessageButtonPressed(sender: UIButton) {
+        self.presenter?.openEnrollmentSettings()
+        self.hidePermissionModal()
     }
 }
 

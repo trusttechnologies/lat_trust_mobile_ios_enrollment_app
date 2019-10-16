@@ -46,7 +46,7 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
     }
     
     func onDataCleaned() {
-        router?.goToSessionMenuScreen()
+        router?.goToSessionMenuScreen()//die
     }
     
     func callAlert(alertController: UIAlertController) {

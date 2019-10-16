@@ -1334,7 +1334,7 @@ extension Storyboardable where Self: UIViewController {
     static func storyboardViewController() -> Self {
         let storyboard = UIStoryboard(name: defaultStoryboardName, bundle: nil)
         
-        guard let vc = storyboard.instantiateInitialViewController() as? Self else {
+        guard let vc = storyboard.instantiateInitialViewController() as? Self else { //???
             fatalError("Could not instantiate initial storyboard with name: \(defaultStoryboardName)")
         }
         
@@ -1421,6 +1421,9 @@ extension UIFont {
 
 // MARK: - Extension Color (values from zeplin)
 extension UIColor{
+    @nonobjc class var blackBackground: UIColor {
+        return UIColor(red:0.05, green:0.05, blue:0.05, alpha:0.5)
+    }
     @nonobjc class var backBtnColor: UIColor {
         return UIColor(red:0.50, green:0.53, blue:0.55, alpha:1.0)
     }
