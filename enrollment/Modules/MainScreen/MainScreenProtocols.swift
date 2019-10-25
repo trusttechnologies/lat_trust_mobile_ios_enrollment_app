@@ -35,6 +35,8 @@ protocol MainScreenInteractorProtocol: AnyObject {
     func openSettings()
     
     func loginAudit()
+    
+    func callSetAppState(profileDataSource: ProfileDataSource?)
 }
 
 // MARK: - InteractorOutput

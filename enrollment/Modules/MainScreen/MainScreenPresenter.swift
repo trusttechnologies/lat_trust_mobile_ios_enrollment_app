@@ -51,6 +51,7 @@ extension MainScreenPresenter: MainScreenInteractorOutput {
     
     func onGetProfileDataSourceOutput(datasource: ProfileDataSource?) {
         view?.set(profileDataSource: datasource)
+        interactor?.callSetAppState(profileDataSource: datasource)
     }
     
     func onCleanedData() {

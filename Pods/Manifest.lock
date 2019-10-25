@@ -7,15 +7,15 @@ PODS:
     - Alamofire (~> 4.8.2)
     - AlamofireObjectMapper
     - RealmSwift
-  - DeviceKit (2.1.0)
-  - Firebase/Core (6.10.0):
+  - DeviceKit (2.3.0)
+  - Firebase/Core (6.11.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.3)
-  - Firebase/CoreOnly (6.10.0):
-    - FirebaseCore (= 6.3.1)
-  - Firebase/Messaging (6.10.0):
+  - Firebase/CoreOnly (6.11.0):
+    - FirebaseCore (= 6.3.2)
+  - Firebase/Messaging (6.11.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 4.1.6)
+    - FirebaseMessaging (~> 4.1.7)
   - FirebaseAnalytics (6.1.3):
     - FirebaseCore (~> 6.3)
     - FirebaseInstanceID (~> 4.2)
@@ -26,7 +26,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3.901)
   - FirebaseAnalyticsInterop (1.4.0)
-  - FirebaseCore (6.3.1):
+  - FirebaseCore (6.3.2):
     - FirebaseCoreDiagnostics (~> 1.0)
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
@@ -38,11 +38,11 @@ PODS:
     - GoogleUtilities/Logger (~> 6.2)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseInstanceID (4.2.5):
+  - FirebaseInstanceID (4.2.6):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
-  - FirebaseMessaging (4.1.6):
+  - FirebaseMessaging (4.1.7):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.1)
@@ -205,11 +205,10 @@ PODS:
   - Sentry (4.3.1):
     - Sentry/Core (= 4.3.1)
   - Sentry/Core (4.3.1)
-  - TrustDeviceInfo (1.0.3):
+  - TrustDeviceInfo (1.1.4):
     - Alamofire (~> 4.8.2)
-    - AlamofireObjectMapper
     - DeviceKit
-  - TrustNotification (0.3.0):
+  - TrustNotification (0.3.2):
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
@@ -278,15 +277,15 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   Audit: d47dc74ed16e69cd1a9e98050e1f380979f3d3bc
-  DeviceKit: 2f6c28410d5a5fe2977be7f8cb9b313d28bdae69
-  Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
+  DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
+  Firebase: bc9cfc7a96c73268656d5aaab453ff1b4b530e0e
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
   FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
-  FirebaseCore: 064c2dd92a8ca5974bbdcb080df9921e46bd34cd
+  FirebaseCore: beeff42c07c30ea94702471d99db2089b594fbbd
   FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
-  FirebaseMessaging: 35edef69a6af9b34e9e44624089f054be3c09089
+  FirebaseInstanceID: d0eafcd8bdbd3447cd694594734078c3e3e77d8b
+  FirebaseMessaging: 5ab57080c83bc98c9961412e1dab379f4193d02a
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
   GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
@@ -303,8 +302,8 @@ SPEC CHECKSUMS:
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
-  TrustDeviceInfo: f8dbd3fad295c4523a4f654bb70c374f151742b4
-  TrustNotification: e883152b563ad31a43ca12345691563a8833145f
+  TrustDeviceInfo: a1bad361655047e4f87356360e184b6867ad1ab3
+  TrustNotification: 51a0494b1b701229f64a6f36428eca67fc4f9f13
 
 PODFILE CHECKSUM: df6b1334d20a056bed9e901b03d261546f4f4622
 

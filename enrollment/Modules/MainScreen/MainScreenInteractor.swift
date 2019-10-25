@@ -99,10 +99,68 @@ extension MainScreenInteractor {
 // MARK: - PermissionsManagerOutputProtocol
 extension MainScreenInteractor: PermissionsManagerOutputProtocol {
     func permissionsSuccess() {
-        print("xd")
+        print("Permissions Success")
     }
     
     func permissionsFail() {
         interactorOutput?.showMessage()
     }
+}
+
+extension MainScreenInteractor: TrustDeviceInfoDelegate {
+    func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
+//        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+    }
+    
+    func onTrustIDSaved(savedTrustID: String) {
+        //
+    }
+    
+    func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {
+        //
+    }
+    
+    func onSendDeviceInfoResponse(status: ResponseStatus) {
+        //
+    }
+    
+    func callSetAppState(profileDataSource: ProfileDataSource?) {
+        let serviceName = "defaultServiceName"
+        let accessGroup = "P896AB2AMC.trustID.appLib"
+        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+        
+        Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        
+        guard let rut = profileDataSource?.rut else {
+            return
+        }
+        guard let userName = profileDataSource?.name else {
+            return
+        }
+        
+        Identify.shared.setAppState(dni: rut, bundleID: "com.trust.enrollment.ios")
+        
+        var userIdentity = userDeviceInfo(dni: rut)
+        userIdentity.name = userName
+        userIdentity.lastname = ""
+        userIdentity.email = ""
+        userIdentity.phone = ""
+        
+        Identify.shared.sendDeviceInfo(identityInfo: userIdentity)
+    }
+}
+
+struct userDeviceInfo: IdentityInfoDataSource {
+    var dni: String
+    
+    var name: String?
+    
+    var lastname: String?
+    
+    var email: String?
+    
+    var phone: String?
+    
 }

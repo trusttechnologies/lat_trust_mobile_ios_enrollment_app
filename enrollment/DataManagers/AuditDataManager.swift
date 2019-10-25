@@ -6,10 +6,8 @@
 //  Copyright © 2019 Kevin Torres. All rights reserved.
 //
 
-import Foundation
 import Audit
 import TrustDeviceInfo
-import SystemConfiguration
 import CoreTelephony
 import SystemConfiguration.CaptiveNetwork
 
@@ -52,7 +50,7 @@ extension AuditDataManager {
             print(flags)
             return "DISCONNECTED"
         }
-        return "Some raro pasa aca with este movil"
+        return "Error in connection data"
     }
     
     private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {

@@ -27,7 +27,8 @@ class DialogViewController: UIViewController {
         didSet{
             dialogView.layer.cornerRadius = 4.0
             dialogView.clipsToBounds = true
-            
+            dialogView.layer.borderWidth = 1.0
+            dialogView.layer.borderColor = UIColor.black.cgColor
             
         }
     }
@@ -245,11 +246,7 @@ class DialogViewController: UIViewController {
                 
             }
             
-            
-            
             print(content.notificationDialog?.buttons ?? "contentButtons")
-            
-            
             
         }else if(content.notificationVideo != nil){
             print("soy un video")
@@ -266,6 +263,7 @@ class DialogViewController: UIViewController {
     @objc func onLeftButtonPressed(sender: UIButton) {
         if let url = URL(string: urlLeftButton!) {
             UIApplication.shared.open(url , options: [:], completionHandler: nil)
+            self.dismiss(animated: true)
         }
     }
     
@@ -275,6 +273,7 @@ class DialogViewController: UIViewController {
     @objc func onRightButtonPressed(sender: UIButton) {
         if let url = URL(string: urlRightButton!) {
             UIApplication.shared.open(url , options: [:], completionHandler: nil)
+            self.dismiss(animated: true)
         }
     }
     

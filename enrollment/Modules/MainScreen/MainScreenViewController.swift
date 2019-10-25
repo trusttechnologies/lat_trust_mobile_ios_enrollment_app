@@ -19,6 +19,10 @@ protocol ProfileDataSource {
 class MainScreenViewController: UIViewController {
     
 
+    @IBAction func testError(_ sender: Any) {
+        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+
+    }
     var presenter: MainScreenPresenterProtocol?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rutLabel: UILabel!
@@ -69,19 +73,6 @@ class MainScreenViewController: UIViewController {
 extension MainScreenViewController: MainScreenViewProtocol {
     func set(profileDataSource: ProfileDataSource?) {
         self.profileDataSource = profileDataSource
-        
-        //MARK: - SetAppState Identify Lib
-        let serviceName = "defaultServiceName"
-        let accessGroup = "P896AB2AMC.trustID.appLib"
-        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
-        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
-        
-//        Identify.shared.trustDeviceInfoDelegate = self
-        Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
-        Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
-        Identify.shared.setAppState(dni: profileDataSource?.rut ?? "", bundleID: "com.trust.enrollment.ios")
-//        Identify.shared.enable()
-        
     }
     
     func setTrustId(trustIdDataSource: String?) {
@@ -101,7 +92,7 @@ extension MainScreenViewController: MainScreenViewProtocol {
 
 extension MainScreenViewController: TrustDeviceInfoDelegate {
     func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
-        //
+//        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
     }
     
     func onTrustIDSaved(savedTrustID: String) {

@@ -40,6 +40,8 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         Identify.shared.trustDeviceInfoDelegate = self
         Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
         Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+
         Identify.shared.enable()
         
         notifications.firebaseConfig(application: application)
@@ -81,6 +83,8 @@ extension AppDelegate: TrustDeviceInfoDelegate {
     
     func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
         //
+        print("azzzzzza")
+//        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
     }
     
     func onTrustIDSaved(savedTrustID: String) {

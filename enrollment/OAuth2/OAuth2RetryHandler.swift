@@ -49,7 +49,7 @@ class OAuth2RetryHandler: RequestRetrier, RequestAdapter {
         guard nil != loader.oauth2.accessToken else {
             return urlRequest
         }
-        
-        return try urlRequest.signed(with: loader.oauth2)   // "try" added in 3.0.2
+        return urlRequest
+//        return try urlRequest.signed(with: loader.oauth2)   // "try" added in 3.0.2
     }
 }

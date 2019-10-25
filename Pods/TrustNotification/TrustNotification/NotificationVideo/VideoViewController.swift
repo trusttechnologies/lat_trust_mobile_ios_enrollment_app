@@ -34,7 +34,12 @@ class VideoViewController: UIViewController {
     /**
      Notification area
      */
-    @IBOutlet weak var dialogView: UIView!
+    @IBOutlet weak var dialogView: UIView!{
+        didSet{
+            dialogView.layer.borderWidth = 1.0
+            dialogView.layer.borderColor = UIColor.black.cgColor
+        }
+    }
     
     
     /**
@@ -150,6 +155,7 @@ class VideoViewController: UIViewController {
     @objc func onLeftButtonPressed(sender: UIButton) {
         if let url = URL(string: urlLeftButton!) {
             UIApplication.shared.open(url , options: [:], completionHandler: nil)
+            self.dismiss(animated: true)
 
         }
     }
@@ -161,6 +167,7 @@ class VideoViewController: UIViewController {
     @objc func onRightButtonPressed(sender: UIButton) {
         if let url = URL(string: urlRightButton!) {
             UIApplication.shared.open(url , options: [:], completionHandler: nil)
+            self.dismiss(animated: true)
         }
     }
     
