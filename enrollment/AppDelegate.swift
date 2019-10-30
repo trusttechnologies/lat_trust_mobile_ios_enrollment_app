@@ -21,37 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: TrustDeviceInfoDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // IQKeyboardManager Initialization
-        // Create a Sentry client and start crash handler
-        do {
-            Client.shared = try Client(dsn: "https://f2798e2f783c4c448a1f2a3467695462@sentry.io/1776107")
-            try Client.shared?.startCrashHandler()
-        } catch let error {
-            print("\(error)")
-        }
+
+        // MARK: - Sentry
+        initializeSentry()
         
+        // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
-        let serviceName = "defaultServiceName"
-        let accessGroup = "P896AB2AMC.trustID.appLib"
-        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
-        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+        // MARK: - Identify
+        setTrustIdentify()
         
-        Identify.shared.trustDeviceInfoDelegate = self
-        Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
-        Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
-        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
-
-        Identify.shared.enable()
-        
+        // MARK: - Notification
         notifications.firebaseConfig(application: application)
             
         notifications.registerForRemoteNotifications()
         
         notifications.registerCustomNotificationCategory()
         
-        TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)
-        TrustAudit.shared.createAuditClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        // MARK: - Audit
+        setTrustAudit()
         
         setInitialVC()
         
@@ -80,11 +68,34 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         oAuth2Manager.managerOutput = self
         oAuth2Manager.silentAuthorize(from: mainVC)
     }
+}
+
+// MARK: - Set TrustID and Audit Access data
+extension AppDelegate {
+    func setTrustAudit() {
+        let serviceName = "defaultServiceName"
+        let accessGroup = "P896AB2AMC.trustID.appLib"
+        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+        
+        TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        TrustAudit.shared.createAuditClientCredentials(clientID: clientID, clientSecret: clientSecret)
+    }
+    
+    func setTrustIdentify() {
+        let serviceName = "defaultServiceName"
+        let accessGroup = "P896AB2AMC.trustID.appLib"
+        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+        
+        Identify.shared.trustDeviceInfoDelegate = self
+        Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
+        Identify.shared.enable()
+    }
     
     func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
-        //
-        print("azzzzzza")
-//        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
     }
     
     func onTrustIDSaved(savedTrustID: String) {
@@ -140,6 +151,17 @@ extension AppDelegate {
             
             UserDefaults.OAuth2URLData.set(value, forKey: key)
         }
+    }
+    
+    private func initializeSentry() {
+        // Create a Sentry client and start crash handler
+        do {
+            Client.shared = try Client(dsn: "https://f2798e2f783c4c448a1f2a3467695462@sentry.io/1776107")
+            try Client.shared?.startCrashHandler()
+        } catch let error {
+            print("\(error)")
+        }
+        
     }
 }
 
