@@ -202,9 +202,11 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
         case "notificationBody":
             presentBodyNotification(content: genericNotification)
         case "notificationDialog":
-            presentDialog(content: genericNotification)
+            let dialogNotification = parseDialog(content: genericNotification)
+            presentDialog(content: dialogNotification)
         case "notificationVideo":
-            presentVideo(content: genericNotification)
+            let videoNotification = parseVideo(content: genericNotification)
+            presentVideo(content: videoNotification)
         default:
             print("error: must specify a notification type")
         }
@@ -225,43 +227,47 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
     // MARK: Background Notification
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        let genericNotification = parseNotification(content: response.notification.request.content.userInfo)
-        
-        switch response.actionIdentifier {
-        case "accept":
-            guard let stringUrl = response.notification.request.content.userInfo["url-scheme"] as? String else {
-                print("Error parsing the url")
-                return
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            let genericNotification = parseNotification(content: response.notification.request.content.userInfo)
             
-            guard let url = URL(string: stringUrl) else {
-                print("Error parsing the url")
-                return
-            }
-            
-            if(verifyUrl(urlString: stringUrl)){
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }else{
-                print("Invalid URL")
-            }
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        case "cancel":
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        default:
-            print("Other Action")
-            switch genericNotification.type {
-            case "notificationBody":
-                presentBodyNotification(content: genericNotification)
-            case "notificationDialog":
-                presentDialog(content: genericNotification)
-            case "notificationVideo":
-                presentVideo(content: genericNotification)
+            switch response.actionIdentifier {
+            case "accept":
+                guard let stringUrl = response.notification.request.content.userInfo["url-scheme"] as? String else {
+                    print("Error parsing the url")
+                    return
+                }
+                
+                guard let url = URL(string: stringUrl) else {
+                    print("Error parsing the url")
+                    return
+                }
+                
+                if(verifyUrl(urlString: stringUrl)){
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }else{
+                    print("Invalid URL")
+                }
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            case "cancel":
+                UIApplication.shared.applicationIconBadgeNumber = 0
             default:
-                print("error: must specify a notification type")
+                print("Other Action")
+                switch genericNotification.type {
+                       case "notificationBody":
+                            self.presentBodyNotification(content: genericNotification)
+                       case "notificationDialog":
+                            let dialogNotification = parseDialog(content: genericNotification)
+                            self.presentDialog(content: dialogNotification)
+                       case "notificationVideo":
+                            let videoNotification = parseVideo(content: genericNotification)
+                            self.presentVideo(content: videoNotification)
+                       default:
+                           print("error: must specify a notification type")
+                       }
             }
+            
+            completionHandler()
         }
-        
-        completionHandler()
         
     }
 }
@@ -281,7 +287,7 @@ extension PushNotifications{
      ````
      */
     
-    func presentDialog(content: GenericNotification){
+    func presentDialog(content: NotificationDialog){
         
         let storyboard = UIStoryboard(name: "DialogView", bundle: nil)
         guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController else{
@@ -333,7 +339,7 @@ extension PushNotifications{
      ````
      */
     
-    func presentVideo(content: GenericNotification){
+    func presentVideo(content: VideoNotification){
         //To Do
         let storyboard = UIStoryboard(name: "VideoView", bundle: nil)
         guard let videoVC = storyboard.instantiateViewController(withIdentifier: "VideoView") as? VideoViewController else{

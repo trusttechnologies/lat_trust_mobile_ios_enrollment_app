@@ -208,7 +208,7 @@ class VideoViewController: UIViewController {
      ````
      */
     
-    func fillVideo(content: GenericNotification) {
+    func fillVideo(content: VideoNotification) {
         
         let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
         let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
@@ -217,16 +217,16 @@ class VideoViewController: UIViewController {
         
         //self.videoView.frame.size.width
         //Set video
-        if(verifyUrl(urlString: content.notificationVideo?.videoUrl)){
+        if(verifyUrl(urlString: content.videoUrl)){
             
             remainSecLabel.isHidden = true
             activityIndicator.isHidden = false
             
-            let videoURL = URL(string: content.notificationVideo!.videoUrl)
+            let videoURL = URL(string: content.videoUrl)
             let player = AVPlayer(url: videoURL!)
             let playerLayer = AVPlayerLayer(player: player)
             let controller = AVPlayerViewController()
-            let minPlayTime = content.notificationVideo?.minPlayTime ?? 0.00
+            let minPlayTime = content.minPlayTime ?? 0.00
             
             controller.player = player
             playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))
@@ -277,27 +277,27 @@ class VideoViewController: UIViewController {
             
         }
         
-        let buttons = content.notificationVideo?.buttons
-        let buttonCounter = buttons?.count
+        let buttons = content.buttons
+        let buttonCounter = buttons.count
         
         
         if(buttonCounter == 1){
     
             buttonL.isHidden = true
             //buttonL.isEnabled = false
-            buttonR.setTitle(buttons![0].text ?? "", for: .normal)
-            buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
-            urlRightButton = buttons![0].action
+            buttonR.setTitle(buttons[0].text ?? "", for: .normal)
+            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+            urlRightButton = buttons[0].action
         }
 
         if(buttonCounter == 2){
             
-            buttonL.setTitle(buttons![1].text ?? "", for: .normal)
-            buttonL.setupButtonWithType(color: buttons![1].color, type: .whiteButton, mdcType: .text)
-            urlLeftButton = buttons![1].action
-            buttonR.setTitle(buttons![0].text ?? "", for: .normal)
-            buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
-            urlRightButton = buttons![0].action
+            buttonL.setTitle(buttons[1].text ?? "", for: .normal)
+            buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
+            urlLeftButton = buttons[1].action
+            buttonR.setTitle(buttons[0].text ?? "", for: .normal)
+            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+            urlRightButton = buttons[0].action
             
         }
     }

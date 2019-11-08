@@ -59,9 +59,7 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         
         notifications.clearBadgeNumber()
         
-        guard let mainVC = application.topMostViewController() as? MainScreenViewController else {
-            return
-        }
+        guard let mainVC = application.topMostViewController() as? MainScreenViewController else { return }
         
         let oAuth2Manager = OAuth2Manager()
         
@@ -128,7 +126,12 @@ extension AppDelegate {
         let splashVC = SplashRouter.createModule()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = splashVC
+        
+        let navController = UINavigationController(rootViewController: splashVC)
+        
+        navController.setNavigationBarHidden(true, animated: false)
+        
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
 }

@@ -32,23 +32,13 @@ extension API {
             
             print("API.call() Response: \(response)")
             
-            if let onResponse = onResponse {
-                onResponse()
-            }
+            onResponse?()
             
             switch (response.result) {
             case .success(let response):
-                guard let onSuccess = onSuccess else {
-                    return
-                }
-                
-                onSuccess(response)
+                onSuccess?(response)
             case .failure(_):
-                guard let onFailure = onFailure else {
-                    return
-                }
-                
-                onFailure()
+                onFailure?()
             }
         }
     }

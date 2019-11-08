@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A4419D96C355EA746222170 /* Pods_enrollment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */; };
+		FE13B6992373169400E53594 /* ParseNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B6982373169400E53594 /* ParseNotification.swift */; };
+		FE13B69B237316B100E53594 /* DialogNotificationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */; };
+		FE13B69D2374875100E53594 /* FileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B69C2374875100E53594 /* FileTest.swift */; };
 		FE1BF3B0230C4D0D004EEFEB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */; };
 		FE1BF3BC230C4D1A004EEFEB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3B1230C4D1A004EEFEB /* Roboto-Bold.ttf */; };
 		FE1BF3BD230C4D1A004EEFEB /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3B2230C4D1A004EEFEB /* Roboto-BlackItalic.ttf */; };
@@ -95,6 +98,9 @@
 		6451C5B864A50E73003A1BD5 /* Pods-ServiceNotificationExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceNotificationExtension.release.xcconfig"; path = "Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension.release.xcconfig"; sourceTree = "<group>"; };
 		6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.release.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.release.xcconfig"; sourceTree = "<group>"; };
 		8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.debug.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.debug.xcconfig"; sourceTree = "<group>"; };
+		FE13B6982373169400E53594 /* ParseNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNotification.swift; sourceTree = "<group>"; };
+		FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogNotificationStructs.swift; sourceTree = "<group>"; };
+		FE13B69C2374875100E53594 /* FileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTest.swift; sourceTree = "<group>"; };
 		FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		FE1BF3B1230C4D1A004EEFEB /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		FE1BF3B2230C4D1A004EEFEB /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -228,7 +234,7 @@
 			children = (
 				FE1BF3E1230C8FBC004EEFEB /* LaunchScreen */,
 				FE1BF3C8230C51BA004EEFEB /* Splash */,
-				FE1BF3D6230C5D59004EEFEB /* SesionMenu */,
+				FE1BF3D6230C5D59004EEFEB /* SessionMenu */,
 				FE7796B4230DDCEE00FFFEAC /* MainScreen */,
 			);
 			path = Modules;
@@ -257,7 +263,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		FE1BF3D6230C5D59004EEFEB /* SesionMenu */ = {
+		FE1BF3D6230C5D59004EEFEB /* SessionMenu */ = {
 			isa = PBXGroup;
 			children = (
 				FE1BF3E6230DA497004EEFEB /* SessionMenuInteractor.swift */,
@@ -267,7 +273,7 @@
 				FE1BF3D9230C5D9B004EEFEB /* SessionMenuViewController.swift */,
 				FE1BF3D7230C5D82004EEFEB /* SessionMenu.storyboard */,
 			);
-			path = SesionMenu;
+			path = SessionMenu;
 			sourceTree = "<group>";
 		};
 		FE1BF3E1230C8FBC004EEFEB /* LaunchScreen */ = {
@@ -346,6 +352,8 @@
 			children = (
 				FE9E9E2B234668010091F139 /* NotificationService.swift */,
 				FE9E9E2D234668010091F139 /* Info.plist */,
+				FE13B6982373169400E53594 /* ParseNotification.swift */,
+				FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */,
 			);
 			path = "Service Notification Extension";
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 				FE1BF3F0230DAC5D004EEFEB /* Network */,
 				FE1BF3F3230DACE6004EEFEB /* OAuth2 */,
 				FE1BF3D3230C55A6004EEFEB /* Utils */,
+				FE13B69C2374875100E53594 /* FileTest.swift */,
 			);
 			path = enrollment;
 			sourceTree = "<group>";
@@ -593,7 +602,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE13B6992373169400E53594 /* ParseNotification.swift in Sources */,
 				FE9E9E2C234668010091F139 /* NotificationService.swift in Sources */,
+				FE13B69B237316B100E53594 /* DialogNotificationStructs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +629,7 @@
 				FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */,
 				FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */,
 				FE1BF3CA230C51DA004EEFEB /* SplashRouter.swift in Sources */,
+				FE13B69D2374875100E53594 /* FileTest.swift in Sources */,
 				FE76404F231DCEC60085299D /* AuditDataManager.swift in Sources */,
 				FE1BF3E7230DA497004EEFEB /* SessionMenuInteractor.swift in Sources */,
 				FE1BF3EF230DABFB004EEFEB /* User.swift in Sources */,

@@ -98,6 +98,33 @@ func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
     return notDialog
 }
 
+func parseDialog(content: GenericNotification) -> NotificationDialog {
+    
+    print(content)
+    let contentAsString = content.notificationDialog?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
+    let replacingApos = contentAsString?.replacingOccurrences(of: "&apos;", with: "'", options: .literal, range: nil)
+    print("--------Change structure with double quotes-----------")
+    print(replacingApos)
+    
+    let jsonDecoder = JSONDecoder()
+    let dialogNotification = try? jsonDecoder.decode(NotificationDialog.self, from: replacingApos!.data(using: .utf8)!)
+
+    return dialogNotification ?? NotificationDialog(textBody: "", imageUrl: "", isPersistent: false, isCancelable: true, buttons: [])
+}
+
+func parseVideo(content: GenericNotification) -> VideoNotification {
+    print(content)
+    let contentAsString = content.notificationVideo?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
+    let replacingApos = contentAsString?.replacingOccurrences(of: "&apos;", with: "'", options: .literal, range: nil)
+    print("--------Change structure with double quotes-----------")
+    print(replacingApos)
+
+    let jsonDecoder = JSONDecoder()
+    let videoNotification = try? jsonDecoder.decode(VideoNotification.self, from: replacingApos!.data(using: .utf8)!)
+
+    return videoNotification ?? VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: [])
+}
+ 
 extension UIColor {
     
     /**

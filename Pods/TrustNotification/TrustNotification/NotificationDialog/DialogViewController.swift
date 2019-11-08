@@ -164,10 +164,7 @@ class DialogViewController: UIViewController {
      ````
      */
     
-    func fillDialog(content: GenericNotification) {
-        
-        if(content.notificationDialog != nil){
-            print("soy un dialogo")
+    func fillDialog(content: NotificationDialog) {
             
             if(isIphoneXOrBigger()){
                 dialogView.frame = CGRect(x:0, y: 0, width: 0.9 * screenArea.frame.width, height: 0.2 * screenArea.frame.height)
@@ -176,8 +173,8 @@ class DialogViewController: UIViewController {
             }
             
             //Set body label
-            if(content.notificationDialog!.textBody != ""){
-                body.text = content.notificationDialog?.textBody
+            if(content.textBody != ""){
+                body.text = content.textBody
                 body.textAlignment = NSTextAlignment.center
                 body.numberOfLines = 0
                 body.lineBreakMode = .byWordWrapping
@@ -196,8 +193,8 @@ class DialogViewController: UIViewController {
             }
             
             //Set the dialog image
-            if(verifyUrl(urlString: content.notificationDialog?.imageUrl)){
-                let imageUrl = URL(string: content.notificationDialog!.imageUrl)!
+            if(verifyUrl(urlString: content.imageUrl)){
+                let imageUrl = URL(string: content.imageUrl)!
                 imageView.load(url: imageUrl)
                 imageView.contentMode = .scaleAspectFill
             }else{
@@ -205,7 +202,7 @@ class DialogViewController: UIViewController {
             }
             
             //Set the close button
-            if(!(content.notificationDialog?.isCancelable ?? true)){
+            if(!(content.isCancelable ?? true)){
                 closeButton.isEnabled = false
                 closeButton.isHidden = true
             }else{
@@ -214,7 +211,7 @@ class DialogViewController: UIViewController {
             }
             
             //Set touching outside the dialog process
-            if(!(content.notificationDialog?.isPersistent ?? false)){
+            if(!(content.isPersistent ?? false)){
                 persistenceButton.isEnabled = true
                 persistenceButton.isHidden = false
                 setBackground(color: .NO_BACKGROUND)
@@ -224,7 +221,7 @@ class DialogViewController: UIViewController {
                 setBackground(color: .TRANSPARENT)
             }
             
-            let buttons = content.notificationDialog?.buttons
+            let buttons = content.buttons
             let buttonCounter = buttons!.count
             
             if(buttonCounter == 1){
@@ -246,15 +243,7 @@ class DialogViewController: UIViewController {
                 
             }
             
-            print(content.notificationDialog?.buttons ?? "contentButtons")
-            
-        }else if(content.notificationVideo != nil){
-            print("soy un video")
-        }else if(content.notificationBody != nil){
-            print("soy una noti normal")
-        }else{
-            print("blablabla")
-        }
+            print(content.buttons ?? "contentButtons")
     }
     
     /**

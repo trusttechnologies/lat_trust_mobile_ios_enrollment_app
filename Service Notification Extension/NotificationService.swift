@@ -14,112 +14,49 @@ class NotificationService: UNNotificationServiceExtension {
         var bestAttemptContent: UNMutableNotificationContent?
         
         var downloadTask: URLSessionDownloadTask?
+    
+        var url:String?
         
         override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
             self.contentHandler = contentHandler
             bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
             
-            func fileDonwload( urlString: String) -> Void {
-                
-                guard let url = URL(string: urlString) else {
-                    // Cannot create a valid URL, return early.
-                    contentHandler(bestAttemptContent!)
-                    return
-                }
-                
-                self.downloadTask = URLSession.shared.downloadTask(with: url) { (location, response, error) in
+            let genericNotification = parseNotification(content: request.content.userInfo)
+            switch genericNotification.type {
+                case "notificationBody":
+//                    let bodyNotification = parseBody(content: genericNotification)
+                    url = genericNotification.notificationBody?.imageUrl
+                case "notificationDialog":
+                    let dialogNotification = parseDialog(content: genericNotification)
+                    url = dialogNotification.imageUrl
+                case "notificationVideo":
+                    let videoNotification = parseVideo(content: genericNotification)
+                    url = videoNotification.videoUrl
+                default:
+                    print("error: must specify a notification type")
+            }
+                                        
+    
+            if let urlString = url, let fileUrl = URL(string: urlString) {
+                // Download the attachment
+                URLSession.shared.downloadTask(with: fileUrl) { (location, response, error) in
                     if let location = location {
+                    // Move temporary file to remove .tmp extension
                         let tmpDirectory = NSTemporaryDirectory()
-                        let tmpFile = "file://".appending(tmpDirectory).appending(url.lastPathComponent)
-                        
+                        let tmpFile = "file://".appending(tmpDirectory).appending(fileUrl.lastPathComponent)
                         let tmpUrl = URL(string: tmpFile)!
                         try! FileManager.default.moveItem(at: location, to: tmpUrl)
-                        
+
+                        // Add the attachment to the notification content
                         if let attachment = try? UNNotificationAttachment(identifier: "", url: tmpUrl) {
                             self.bestAttemptContent?.attachments = [attachment]
                         }
                     }
-                    
+                    // Serve the notification content
                     self.contentHandler!(self.bestAttemptContent!)
-                }
-                
-                self.downloadTask?.resume()
+                }.resume()
             }
-            
-            func getURLpayload() -> String {
-                var urlString:String?
-                if let url = bestAttemptContent!.userInfo["data"] as? Dictionary<AnyHashable, Any> {
-                    
-                    if let imageUrl = url["notificationBody"] as? Dictionary<AnyHashable, Any> {
-                        
-                        urlString = imageUrl["image_url"] as? String
-                        
-                    }
-                    else if let videoURL = url["notificationVideo"] as? Dictionary<AnyHashable, Any> {
-                        
-                        urlString = videoURL["video_url"] as? String
-                        
-                    }
-                    else if let imageUrl = url["notificationDialog"] as? Dictionary<AnyHashable, Any> {
-                        
-                        urlString = imageUrl["image_url"] as? String
-                        
-                    }
-                    else {
-                        // Nothing to add to the push, return early.
-                        contentHandler(bestAttemptContent!)
-                    }
-                }
-                return urlString!
-            }
-            
-            func setTitleAndBody(){
-                
-                if let data = bestAttemptContent?.userInfo["data"] as? Dictionary<AnyHashable, Any>{
-                    if let type = data["notificationBody"] as? Dictionary<AnyHashable, Any>{
-                        
-                        if let title = type["text_title"] as? String{
-                            bestAttemptContent?.title = title
-                        }
-                        if let body = type["text_body"] as? String{
-                            bestAttemptContent?.body = body
-                        }
-                        
-                    }
-                        
-                    else if let type = data["notificationDialog"] as? Dictionary<AnyHashable, Any>{
-                        if let title = type["text_title"] as? String{
-                            bestAttemptContent?.title = title
-                        }
-                        
-                        if let body = type["text_body"] as? String{
-                            bestAttemptContent?.body = body
-                        }
-                    }
-                        
-                    else if let type = data["notificationVideo"] as? Dictionary<AnyHashable, Any>{
-                        
-                        if let title = type["text_title"] as? String{
-                            bestAttemptContent?.title = title
-                        }
-                        if let body = type["text_body"] as? String{
-                            bestAttemptContent?.body = body
-                        }
-                    }
-                }
-            }
-            
-            if let bestAttemptContent = bestAttemptContent {
-    //            // Modify the notification content here...
-    //            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
-    //
-                setTitleAndBody()
-                let urlString = getURLpayload()
-                fileDonwload( urlString: urlString)
-                
-    //            contentHandler(bestAttemptContent)
-             
-            }
+                             
         }
         
         override func serviceExtensionTimeWillExpire() {

@@ -68,22 +68,16 @@ struct GenericNotification: Codable {
     /**
      If the type is "notificationDialog" this variable will be not null. For further information see the NotificationDialog struct documentation.
      */
-    var notificationDialog: NotificationDialog?
-    /**
-     If the type is "VideoNotification" this variable will be not null. For further information see the VideoNotification struct documentation.
-     */
-    var notificationVideo: VideoNotification?
-    /**
-     If the type is "notificationBody" this variable will be not null. For further information see the BodyNotification struct documentation.
-     */
-    var notificationBody: BodyNotification?
+    var notificationVideo: String?
     
-    enum CodingKeys: String, CodingKey {
-        case type
-        case notificationDialog
-        case notificationVideo
-        case notificationBody
-    }
+    var notificationDialog: String?
+    
+    var notificationBody: String?
+    
+//    enum CodingKeys: String, CodingKey {
+//        case type
+//        case notificationDialog
+//    }
 }
 
 /**

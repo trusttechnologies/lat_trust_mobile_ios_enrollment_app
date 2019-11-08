@@ -14,6 +14,10 @@ class SplashViewController: UIViewController {
 
 // MARK: - Lifecycle
 extension SplashViewController {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        presenter?.onViewDidAppear()
+//    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter?.onViewDidAppear()

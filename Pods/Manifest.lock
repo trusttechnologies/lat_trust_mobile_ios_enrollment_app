@@ -8,25 +8,25 @@ PODS:
     - AlamofireObjectMapper
     - RealmSwift
   - DeviceKit (2.3.0)
-  - Firebase/Core (6.11.0):
+  - Firebase/Core (6.12.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.3)
-  - Firebase/CoreOnly (6.11.0):
-    - FirebaseCore (= 6.3.2)
-  - Firebase/Messaging (6.11.0):
+    - FirebaseAnalytics (= 6.1.5)
+  - Firebase/CoreOnly (6.12.0):
+    - FirebaseCore (= 6.3.3)
+  - Firebase/Messaging (6.12.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 4.1.7)
-  - FirebaseAnalytics (6.1.3):
+    - FirebaseMessaging (~> 4.1.8)
+  - FirebaseAnalytics (6.1.5):
     - FirebaseCore (~> 6.3)
     - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.3)
+    - GoogleAppMeasurement (= 6.1.5)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3.901)
+    - nanopb (= 0.3.9011)
   - FirebaseAnalyticsInterop (1.4.0)
-  - FirebaseCore (6.3.2):
+  - FirebaseCore (6.3.3):
     - FirebaseCoreDiagnostics (~> 1.0)
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
@@ -37,12 +37,12 @@ PODS:
     - GoogleUtilities/Environment (~> 6.2)
     - GoogleUtilities/Logger (~> 6.2)
     - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseInstanceID (4.2.6):
+  - FirebaseCoreDiagnosticsInterop (1.1.0)
+  - FirebaseInstanceID (4.2.7):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
-  - FirebaseMessaging (4.1.7):
+  - FirebaseMessaging (4.1.8):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.1)
@@ -51,12 +51,12 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.2)
     - GoogleUtilities/UserDefaults (~> 6.2)
     - Protobuf (>= 3.9.2, ~> 3.9)
-  - GoogleAppMeasurement (6.1.3):
+  - GoogleAppMeasurement (6.1.5):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3.901)
+    - nanopb (= 0.3.9011)
   - GoogleDataTransport (3.0.1)
   - GoogleDataTransportCCTSupport (1.2.1):
     - GoogleDataTransport (~> 3.0)
@@ -189,11 +189,11 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - ObjectMapper (3.5.1)
   - p2.OAuth2 (5.0.0)
   - Protobuf (3.10.0)
@@ -208,7 +208,7 @@ PODS:
   - TrustDeviceInfo (1.1.4):
     - Alamofire (~> 4.8.2)
     - DeviceKit
-  - TrustNotification (0.3.2):
+  - TrustNotification (0.4.6):
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
@@ -278,15 +278,15 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   Audit: d47dc74ed16e69cd1a9e98050e1f380979f3d3bc
   DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
-  Firebase: bc9cfc7a96c73268656d5aaab453ff1b4b530e0e
-  FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
+  Firebase: da031bc7012374e3bed17a6731b89327b29863b9
+  FirebaseAnalytics: 4e53a7eb7b76bc703c4d9239bc964545e9b23361
   FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
-  FirebaseCore: beeff42c07c30ea94702471d99db2089b594fbbd
+  FirebaseCore: bcd6c112429249d7921e907d661e8955a3549e26
   FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
-  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseInstanceID: d0eafcd8bdbd3447cd694594734078c3e3e77d8b
-  FirebaseMessaging: 5ab57080c83bc98c9961412e1dab379f4193d02a
-  GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
+  FirebaseCoreDiagnosticsInterop: e9b1b023157e3a2fc6418b5cb601e79b9af7b3a0
+  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
+  FirebaseMessaging: de30f83a372a390be6f2ba44ec43a45b7ccdb43f
+  GoogleAppMeasurement: 037f46d1d8ae8b312720f1042585ab961a1289e3
   GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
   GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
@@ -295,7 +295,7 @@ SPEC CHECKSUMS:
   MaterialComponents: 0fccf7f7e232145c164dc60da6fdefd011e9bf28
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   p2.OAuth2: 5d203b46c2857b4bbcca3e521089959e7b3b5a5c
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
@@ -303,7 +303,7 @@ SPEC CHECKSUMS:
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   TrustDeviceInfo: a1bad361655047e4f87356360e184b6867ad1ab3
-  TrustNotification: 51a0494b1b701229f64a6f36428eca67fc4f9f13
+  TrustNotification: 606a0b2e9ad7ba6b490ea1fde5b3c74c0105f6c2
 
 PODFILE CHECKSUM: df6b1334d20a056bed9e901b03d261546f4f4622
 

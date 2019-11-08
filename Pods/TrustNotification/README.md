@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	let notifications = PushNotifications(
-			clientId: "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb", 
-			clientSecret: "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd", 
+			clientId: "example890348h02758a5f8bee4ba2d7880a48d0581e9efb", 
+			clientSecret: "example8015437e7a963dacaa778961f647aa37f6730bd", 
 			serviceName: "defaultServiceName", 
-			accesGroup: "P896AB2AMC.trustID.appLib")
+			accesGroup: "A2D9N3HN.trustID.example")
 
 }
 
@@ -86,146 +86,206 @@ func applicationDidBecomeActive(_ application: UIApplication) {
 }
 ```
 
-Add this function in class of Notification Service Extension 
+Add this files in Notification Service Extension 
+
+DialogNotificationsStructs.siwft
 ```Swift
- func fileDonwload( urlString: String) -> Void {
-	 guard let url = URL(string: urlString) else {
-		// Cannot create a valid URL, return early.
-		contentHandler(bestAttemptContent!)
-		return
-		}
-                
-	self.downloadTask = URLSession.shared.downloadTask(with: url) { (location, response, error) in
-		if let location = location {
-			let tmpDirectory = NSTemporaryDirectory()
-            let tmpFile = "file://".appending(tmpDirectory).appending(url.lastPathComponent)
-                        
-            let tmpUrl = URL(string: tmpFile)!
-            try! FileManager.default.moveItem(at: location, to: tmpUrl)
-                        
-	        if let attachment = try? UNNotificationAttachment(identifier: "", url: tmpUrl) {
-				self.bestAttemptContent?.attachments = [attachment]
-            }
-		}
-                    
-	    self.contentHandler!(self.bestAttemptContent!)
-	}
-                
-	self.downloadTask?.resume()
+import Foundation
+
+struct GenericNotification: Codable {
+    
+    var type: String!
+    
+    var notificationVideo: String?
+    
+    var notificationDialog: String?
+    
+    var notificationBody: BodyNotification?
+    
 }
+
+struct NotificationDialog: Codable {
+    
+    var textBody: String
+   
+    var imageUrl: String
+    
+    var isPersistent: Bool
+    
+    var isCancelable: Bool
+    
+    var buttons: [Button]?
+    
+    enum CodingKeys: String, CodingKey {
+        case buttons
+        case imageUrl = "image_url"
+        case isPersistent = "isPersistent"
+        case isCancelable = "isCancelable"
+        case textBody = "text_body"
+    }
+}
+
+struct VideoNotification: Codable {
+    
+    var videoUrl: String
+    
+    var minPlayTime: Float
+    
+    var isPersistent: Bool
+    
+    var buttons: [Button]
+    
+    enum CodingKeys: String, CodingKey {
+        case buttons
+        case videoUrl = "video_url"
+        case minPlayTime = "min_play_time"
+        case isPersistent = "isPersistent"
+        
+    }
+}
+
+struct BodyNotification: Codable {
+    var textTitle: String
+    var textBody: String
+    var imageUrl: String
+    var buttons: [Button]
+    
+    enum CodingKeys: String, CodingKey {
+        case buttons
+        case textTitle = "text_title"
+        case textBody = "text_body"
+        case imageUrl = "image_url"
+        
+    }
+}
+
+struct Button: Codable {
+    var type: String
+    var text: String
+    var color: String
+    var action: String
+}
+
 ```
-            
-```Swift            
-func getURLpayload() -> String {
-	var urlString:String?
-    if let url = bestAttemptContent!.userInfo["data"] as? Dictionary<AnyHashable, Any> {
-                    
-		if let imageUrl = url["notificationBody"] as? Dictionary<AnyHashable, Any> {
-                        
-			urlString = imageUrl["image_url"] as? String
-                        
-            }
-		else if let videoURL = url["notificationVideo"] as? Dictionary<AnyHashable, Any> {
-                        
-			urlString = videoURL["video_url"] as? String
-                        
-		}
-        else if let imageUrl = url["notificationDialog"] as? Dictionary<AnyHashable, Any> {
-                        
-			urlString = imageUrl["image_url"] as? String
-                        
-		}
+
+ParseNotifications.swift
+```Swift
+import Foundation
+import UIKit
+
+// MARK: -Parse Generic Notification
+
+func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
+    
+    //take the notification content and convert it to data
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
         else {
-	        // Nothing to add to the push, return early.
-            contentHandler(bestAttemptContent!)
-        }
-	}
-    return urlString!
-} 
-```
-
-
-```Swift            
-func setTitleAndBody(){
-                
-	if let data = bestAttemptContent?.userInfo["data"] as? Dictionary<AnyHashable, Any>{
-		if let type = data["notificationBody"] as? Dictionary<AnyHashable, Any>{
-                        
-			if let title = type["text_title"] as? String{
-				bestAttemptContent?.title = title
-			}
-            if let body = type["text_body"] as? String{
-	            bestAttemptContent?.body = body
-            }
-                        
-		}
-                        
-        else if let type = data["notificationDialog"] as? Dictionary<AnyHashable, Any>{
-			if let title = type["text_title"] as? String{
-	            bestAttemptContent?.title = title
-            }
-                        
-            if let body = type["text_body"] as? String{
-	            bestAttemptContent?.body = body
-            }
-		}
-                        
-        else if let type = data["notificationVideo"] as? Dictionary<AnyHashable, Any>{
-                        
-	        if let title = type["text_title"] as? String{
-	            bestAttemptContent?.title = title
-            }
-            if let body = type["text_body"] as? String{
-	            bestAttemptContent?.body = body
-            }
-		}
-	}
+            print("Parsing notification error: Review your JSON structure")
+            return GenericNotification()
+    }
+    
+    //decode the notification with the structure of a generic notification
+    let jsonDecoder = JSONDecoder()
+    guard let notDialog = try? jsonDecoder.decode(GenericNotification.self, from: jsonData) else {
+        print("Parsing notification error: Review your JSON structure")
+        return GenericNotification() }
+    
+    return notDialog
 }
-```
 
+//MARK: -Parse Dialog
+func parseDialog(content: GenericNotification) -> NotificationDialog {
+    
+    print(content)
+    let contentAsString = content.notificationDialog?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
+    print("--------Change structure with double quotes-----------")
+    print(contentAsString)
+    
+    let jsonDecoder = JSONDecoder()
+    let dialogNotification = try! jsonDecoder.decode(NotificationDialog.self, from: contentAsString!.data(using: .utf8)!)
+
+    return dialogNotification
+}
+
+//MARK: -PARSE VIDEO
+func parseVideo(content: GenericNotification) -> VideoNotification {
+    print(content)
+    let contentAsString = content.notificationVideo?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
+    print("--------Change structure with double quotes-----------")
+    print(contentAsString)
+
+    let jsonDecoder = JSONDecoder()
+    let videoNotification = try! jsonDecoder.decode(VideoNotification.self, from: contentAsString!.data(using: .utf8)!)
+
+    return videoNotification
+}
+
+```
+Replace content of NotificationService.swift
 ```Swift
+import UserNotifications
+
 class NotificationService: UNNotificationServiceExtension {
-	var contentHandler: ((UNNotificationContent) -> Void)?
-	var bestAttemptContent: UNMutableNotificationContent?
 
-	var downloadTask: URLSessionDownloadTask?
+    var contentHandler: ((UNNotificationContent) -> Void)?
+        var bestAttemptContent: UNMutableNotificationContent?
+        
+        var downloadTask: URLSessionDownloadTask?
+    
+        var url:String?
+        
+        override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+            self.contentHandler = contentHandler
+            bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+            
+            let genericNotification = parseNotification(content: request.content.userInfo)
+            switch genericNotification.type {
+                case "notificationBody":
+//                    let bodyNotification = parseBody(content: genericNotification)
+                    url = genericNotification.notificationBody?.imageUrl
+                case "notificationDialog":
+                    let dialogNotification = parseDialog(content: genericNotification)
+                    url = dialogNotification.imageUrl
+                case "notificationVideo":
+                    let videoNotification = parseVideo(content: genericNotification)
+                    url = videoNotification.videoUrl
+                default:
+                    print("error: must specify a notification type")
+            }
+                                        
+    
+            if let urlString = url, let fileUrl = URL(string: urlString) {
+                // Download the attachment
+                URLSession.shared.downloadTask(with: fileUrl) { (location, response, error) in
+                    if let location = location {
+                    // Move temporary file to remove .tmp extension
+                        let tmpDirectory = NSTemporaryDirectory()
+                        let tmpFile = "file://".appending(tmpDirectory).appending(fileUrl.lastPathComponent)
+                        let tmpUrl = URL(string: tmpFile)!
+                        try! FileManager.default.moveItem(at: location, to: tmpUrl)
 
-	override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-		self.contentHandler = contentHandler
+                        // Add the attachment to the notification content
+                        if let attachment = try? UNNotificationAttachment(identifier: "", url: tmpUrl) {
+                            self.bestAttemptContent?.attachments = [attachment]
+                        }
+                    }
+                    // Serve the notification content
+                    self.contentHandler!(self.bestAttemptContent!)
+                }.resume()
+            }
+                             
+        }
+        
+        override func serviceExtensionTimeWillExpire() {
+            // Called just before the extension will be terminated by the system.
+            // Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used.
+            if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
+                contentHandler(bestAttemptContent)
+            }
+        }
 
-		bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-
-		if let bestAttemptContent = bestAttemptContent {
-
-			//Modify the notification content here...
-
-			//bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
-			
-			...
-			setTitleAndBody()
-
-			let urlString = getURLpayload()
-
-			fileDonwload( urlString: urlString)
-			...
-		    //contentHandler(bestAttemptContent)_
-
-		}
-
-	}
-	override func serviceExtensionTimeWillExpire() {
-
-		//Called just before the extension will be terminated by the system._
-
-		// Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used._
-
-		if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
-
-			contentHandler(bestAttemptContent)
-
-		}
-	}
 }
+
 ```
 Add image package to project assets. 
 link zip images 
