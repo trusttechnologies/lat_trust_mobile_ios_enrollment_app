@@ -211,7 +211,7 @@ class DialogViewController: UIViewController {
             }
             
             //Set touching outside the dialog process
-            if(!(content.isPersistent ?? false)){
+        if(!(content.isPersistent )){
                 persistenceButton.isEnabled = true
                 persistenceButton.isHidden = false
                 setBackground(color: .NO_BACKGROUND)
@@ -227,17 +227,17 @@ class DialogViewController: UIViewController {
             if(buttonCounter == 1){
                 
                 buttonL.isHidden = true
-                buttonR.setTitle(buttons![0].text ?? "", for: .normal)
+                buttonR.setTitle(buttons![0].text , for: .normal)
                 buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
                 urlRightButton = buttons![0].action
             }
             
             if(buttonCounter == 2){
                 
-                buttonL.setTitle(buttons![1].text ?? "", for: .normal)
+                buttonL.setTitle(buttons![1].text , for: .normal)
                 buttonL.setupButtonWithType(color: buttons![1].color, type: .whiteButton, mdcType: .text)
                 urlLeftButton = buttons![1].action
-                buttonR.setTitle(buttons![0].text ?? "", for: .normal)
+                buttonR.setTitle(buttons![0].text , for: .normal)
                 buttonR.setupButtonWithType(color: buttons![0].color, type: .whiteButton, mdcType: .text)
                 urlRightButton = buttons![0].action
                 

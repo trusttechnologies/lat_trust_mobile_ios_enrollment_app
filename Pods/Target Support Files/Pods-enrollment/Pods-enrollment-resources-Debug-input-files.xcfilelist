@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-resources.sh
+${PODS_ROOT}/TrustNotification/TrustNotification/DialogLegacy/DialogLegacy.storyboard
 ${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard
 ${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard

@@ -97,10 +97,12 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/DialogLegacy/DialogLegacy.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/DialogLegacy/DialogLegacy.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationDialog/DialogView.storyboard"
   install_resource "${PODS_ROOT}/TrustNotification/TrustNotification/NotificationVideo/VideoView.storyboard"
 fi

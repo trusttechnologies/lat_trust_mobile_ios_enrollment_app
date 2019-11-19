@@ -1,4 +1,5 @@
 
+
 # Trust Technologies 
 ![image](https://avatars2.githubusercontent.com/u/42399326?s=200&v=4)  
   
@@ -241,7 +242,6 @@ class NotificationService: UNNotificationServiceExtension {
             let genericNotification = parseNotification(content: request.content.userInfo)
             switch genericNotification.type {
                 case "notificationBody":
-//                    let bodyNotification = parseBody(content: genericNotification)
                     url = genericNotification.notificationBody?.imageUrl
                 case "notificationDialog":
                     let dialogNotification = parseDialog(content: genericNotification)
@@ -287,12 +287,15 @@ class NotificationService: UNNotificationServiceExtension {
 }
 
 ```
-Add image package to project assets. 
-link zip images 
+Add images to project assets.  
+[url download images](https://github.com/trusttechnologies/lat_trust_mobile_ios_trust-notification_library/raw/master/Notification%20icons.zip)
 
+Call images with these names:
+```
 audio_disabled_icon
 audio_enabled_icon
 close_icon
+```
 # GoogleService-Info.plist file
     
 To obtain this firebase file, contact the development team at app@trust.lat

@@ -8,6 +8,24 @@
 
 import Foundation
 
+struct GenericStringNotification: Codable{
+    /**
+     The notification type can be:
+     
+     - notificationDialog
+     - notificationVideo
+     - notificationBody
+    */
+    var type: String!
+    
+    /**
+     If the type is "notificationDialog" this variable will be not null. For further information see the NotificationDialog struct documentation.
+     */
+    var notificationVideo: String?
+    
+    var notificationDialog: String?
+}
+
 /**
  This stucts are used to parse the json from a generic notification data
  
@@ -65,19 +83,20 @@ struct GenericNotification: Codable {
     */
     var type: String!
     
+    var typeDialog: String?
     /**
      If the type is "notificationDialog" this variable will be not null. For further information see the NotificationDialog struct documentation.
      */
-    var notificationVideo: String?
+    var notificationVideo: VideoNotification?
     
-    var notificationDialog: String?
+    var notificationDialog: NotificationDialog?
     
-    var notificationBody: String?
-    
-//    enum CodingKeys: String, CodingKey {
-//        case type
-//        case notificationDialog
-//    }
+    enum CodingKeys: String, CodingKey {
+        case type
+        case notificationDialog
+        case notificationVideo
+        case typeDialog = "type_dialog"
+    }
 }
 
 /**
@@ -220,20 +239,7 @@ struct VideoNotification: Codable {
  ```
  
  */
-struct BodyNotification: Codable {
-    var textTitle: String
-    var textBody: String
-    var imageUrl: String
-    var buttons: [Button]
-    
-    enum CodingKeys: String, CodingKey {
-        case buttons
-        case textTitle = "text_title"
-        case textBody = "text_body"
-        case imageUrl = "image_url"
-        
-    }
-}
+
 
 /**
  This stuct is used to parse the buttons data
@@ -255,3 +261,59 @@ struct Button: Codable {
     var color: String
     var action: String
 }
+
+
+struct VideoLegacy: Codable{
+    var type: String
+    var typeDialog: String
+    var urlVideo: String
+    var urlAction: String
+    var buttonText: String
+    var playTime: String
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case typeDialog = "type_dialog"
+        case urlVideo = "url_video"
+        case urlAction = "url_action"
+        case buttonText = "button_text"
+        case playTime = "play_time"
+    }
+}
+
+struct DialogLegacy: Codable {
+    var type: String
+    var typeDialog: String
+    var body: String
+    var title: String
+    var isPay: String
+    var buttonText: String
+    var urlAction: String
+    var cancelable: String
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case typeDialog = "type_dialog"
+        case body
+        case title
+        case isPay = "is_pay"
+        case buttonText = "button_text"
+        case urlAction = "url_action"
+        case cancelable
+    }
+}
+
+struct NotificationLegacy: Codable{
+    var type: String
+    var title: String
+    var body: String
+    var img: String
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case body
+        case title
+        case img
+    }
+}
+

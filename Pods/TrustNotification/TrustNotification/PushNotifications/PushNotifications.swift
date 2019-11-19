@@ -192,24 +192,8 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                         willPresent notification: UNNotification,
                                         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        let userInfo = notification.request.content.userInfo
-        print(userInfo)
-        
-        let genericNotification = parseNotification(content: userInfo)
-        
-        switch genericNotification.type {
-        case "notificationBody":
-            presentBodyNotification(content: genericNotification)
-        case "notificationDialog":
-            let dialogNotification = parseDialog(content: genericNotification)
-            presentDialog(content: dialogNotification)
-        case "notificationVideo":
-            let videoNotification = parseVideo(content: genericNotification)
-            presentVideo(content: videoNotification)
-        default:
-            print("error: must specify a notification type")
-        }
+
+        processNotification(userInfo: notification.request.content.userInfo)
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         Messaging.messaging().appDidReceiveMessage(notification.request.content.userInfo)
@@ -228,7 +212,6 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            let genericNotification = parseNotification(content: response.notification.request.content.userInfo)
             
             switch response.actionIdentifier {
             case "accept":
@@ -252,18 +235,8 @@ extension PushNotifications: UNUserNotificationCenterDelegate{
                 UIApplication.shared.applicationIconBadgeNumber = 0
             default:
                 print("Other Action")
-                switch genericNotification.type {
-                       case "notificationBody":
-                            self.presentBodyNotification(content: genericNotification)
-                       case "notificationDialog":
-                            let dialogNotification = parseDialog(content: genericNotification)
-                            self.presentDialog(content: dialogNotification)
-                       case "notificationVideo":
-                            let videoNotification = parseVideo(content: genericNotification)
-                            self.presentVideo(content: videoNotification)
-                       default:
-                           print("error: must specify a notification type")
-                       }
+                self.processNotification(userInfo: response.notification.request.content.userInfo)
+                
             }
             
             completionHandler()
@@ -379,8 +352,98 @@ extension PushNotifications{
         
         window?.makeKeyAndVisible()
     }
-    func presentBodyNotification(content: GenericNotification){
-        //To Do
-        print("aquí deberia ir un body")
+//    func presentBodyNotification(content: GenericNotification){
+//        //To Do
+//        print("aquí deberia ir un body")
+//    }
+}
+
+extension PushNotifications{
+    func processNotification(userInfo: [AnyHashable : Any]){
+        
+        //if is a body notification - Notify: do nothing
+        print(userInfo)
+        guard let data = userInfo["data"] else {
+            return
+        }
+        
+        let genericNotification = parseNotification(content: userInfo)
+        
+        if(genericNotification.typeDialog != nil){
+            print("soy una noti antiguita")
+            switch genericNotification.type {
+            case "video":
+                //parse legacy video
+                print("video legacy")
+                let video = parseLegacyVideo(content: userInfo)
+                presentVideo(content: video)
+            case "dialog":
+                let storyboard = UIStoryboard(name: "DialogLegacy", bundle: nil)
+                guard let dialogLegacyVC = storyboard.instantiateViewController(withIdentifier: "DialogLegacy") as? DialogViewController else{
+                    return
+                }
+                
+                var topController = UIApplication.shared.keyWindow?.rootViewController
+                
+                while let presentedViewController = topController?.presentedViewController {
+                    topController = presentedViewController
+                }
+                
+                let window = UIApplication.shared.keyWindow
+                
+                dialogLegacyVC.modalPresentationStyle = .overCurrentContext
+
+                if topController is DialogViewController {
+                   
+                    topController?.dismiss(animated: true, completion: {
+                        let presentedViewController = window?.rootViewController?.presentedViewController
+                        presentedViewController?.present(dialogLegacyVC, animated: true)
+                    })
+                    
+                }
+                else if topController is VideoViewController{
+                    topController?.dismiss(animated: true, completion: {
+                        let presentedViewController = window?.rootViewController?.presentedViewController
+                        presentedViewController?.present(dialogLegacyVC, animated: true)
+                    })
+                }
+                else{
+                    topController?.present(dialogLegacyVC, animated: true)
+                }
+                
+                window?.makeKeyAndVisible()
+                
+            default:
+                print("error: must specify a notification type")
+            }
+        }else if(genericNotification.notificationVideo == nil && genericNotification.notificationDialog == nil){
+            let genericStringNotification = parseStringNotification(content: userInfo)
+        
+            switch genericStringNotification.type {
+            case "dialog":
+                let dialogNotification = parseDialog(content: genericStringNotification)
+                presentDialog(content: dialogNotification)
+            case "banner":
+                let dialogNotification = parseDialog(content: genericStringNotification)
+                presentDialog(content: dialogNotification)
+            case "video":
+                let videoNotification = parseVideo(content: genericStringNotification)
+                presentVideo(content: videoNotification)
+            default:
+                print("error: must specify a notification type")
+            }
+        }else{
+            switch genericNotification.type {
+
+            case "dialog":
+                presentDialog(content: genericNotification.notificationDialog ?? NotificationDialog(textBody: "", imageUrl: "", isPersistent: false, isCancelable: true, buttons: []))
+            case "banner":
+            presentDialog(content: genericNotification.notificationDialog ?? NotificationDialog(textBody: "", imageUrl: "", isPersistent: false, isCancelable: true, buttons: []))
+            case "video":
+                presentVideo(content: genericNotification.notificationVideo ?? VideoNotification(videoUrl: "", minPlayTime: 0.00, isPersistent: false, buttons: []))
+            default:
+                print("error: must specify a notification type")
+            }
+        }
     }
 }

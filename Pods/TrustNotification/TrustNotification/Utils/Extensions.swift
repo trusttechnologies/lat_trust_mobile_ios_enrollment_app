@@ -98,7 +98,65 @@ func parseNotification(content: [AnyHashable: Any]) -> GenericNotification {
     return notDialog
 }
 
-func parseDialog(content: GenericNotification) -> NotificationDialog {
+func parseLegacyDialog(content: [AnyHashable: Any]) -> DialogLegacy {
+    
+    //take the notification content and convert it to data
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
+        else {
+            print("Parsing notification error: Review your JSON structure")
+            return DialogLegacy(type: "", typeDialog: "", body: "", title: "", isPay: "", buttonText: "", urlAction: "", cancelable: "")
+    }
+    
+    //decode the notification with the structure of a generic notification
+    let jsonDecoder = JSONDecoder()
+    guard let notDialog = try? jsonDecoder.decode(DialogLegacy.self, from: jsonData) else {
+        print("Parsing notification error: Review your JSON structure")
+        return DialogLegacy(type: "", typeDialog: "", body: "", title: "", isPay: "", buttonText: "", urlAction: "", cancelable: "") }
+    
+    return notDialog
+}
+
+func parseLegacyVideo(content: [AnyHashable: Any]) -> VideoNotification {
+    
+    //take the notification content and convert it to data
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
+        else {
+            print("Parsing notification error: Review your JSON structure")
+            return VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: [])
+    }
+    
+    //decode the notification with the structure of a generic notification
+    let jsonDecoder = JSONDecoder()
+    guard let notDialog = try? jsonDecoder.decode(VideoLegacy.self, from: jsonData) else {
+        print("Parsing notification error: Review your JSON structure")
+        return VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: []) }
+    
+    let button = Button(type: "action", text: notDialog.buttonText, color: "#F25E60", action: notDialog.urlAction)
+    
+    return VideoNotification(videoUrl: notDialog.urlVideo, minPlayTime: Float(notDialog.playTime) ?? 0.00, isPersistent: false, buttons: [button])
+}
+
+func parseStringNotification(content: [AnyHashable: Any]) -> GenericStringNotification {
+    
+    //take the notification content and convert it to data
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
+        else {
+            print("Parsing notification error: Review your JSON structure")
+            return GenericStringNotification()
+    }
+    
+    //decode the notification with the structure of a generic notification
+    let jsonDecoder = JSONDecoder()
+    guard let notDialog = try? jsonDecoder.decode(GenericStringNotification.self, from: jsonData) else {
+        print("Parsing notification error: Review your JSON structure")
+        return GenericStringNotification() }
+    
+    return notDialog
+}
+
+
+
+func parseDialog(content: GenericStringNotification) -> NotificationDialog {
     
     print(content)
     let contentAsString = content.notificationDialog?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
@@ -112,7 +170,7 @@ func parseDialog(content: GenericNotification) -> NotificationDialog {
     return dialogNotification ?? NotificationDialog(textBody: "", imageUrl: "", isPersistent: false, isCancelable: true, buttons: [])
 }
 
-func parseVideo(content: GenericNotification) -> VideoNotification {
+func parseVideo(content: GenericStringNotification) -> VideoNotification {
     print(content)
     let contentAsString = content.notificationVideo?.replacingOccurrences(of: "\'", with: "\"", options: .literal, range: nil)
     let replacingApos = contentAsString?.replacingOccurrences(of: "&apos;", with: "'", options: .literal, range: nil)
