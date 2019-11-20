@@ -371,15 +371,15 @@ extension PushNotifications{
         
         if(genericNotification.typeDialog != nil){
             print("soy una noti antiguita")
-            switch genericNotification.type {
+            switch genericNotification.typeDialog {
             case "video":
                 //parse legacy video
                 print("video legacy")
                 let video = parseLegacyVideo(content: userInfo)
                 presentVideo(content: video)
-            case "dialog":
+            default:
                 let storyboard = UIStoryboard(name: "DialogLegacy", bundle: nil)
-                guard let dialogLegacyVC = storyboard.instantiateViewController(withIdentifier: "DialogLegacy") as? DialogViewController else{
+                guard let dialogLegacyVC = storyboard.instantiateViewController(withIdentifier: "DialogLegacy") as? DialogLegacyViewController else{
                     return
                 }
                 
@@ -412,10 +412,9 @@ extension PushNotifications{
                 }
                 
                 window?.makeKeyAndVisible()
-                
-            default:
-                print("error: must specify a notification type")
+
             }
+            
         }else if(genericNotification.notificationVideo == nil && genericNotification.notificationDialog == nil){
             let genericStringNotification = parseStringNotification(content: userInfo)
         
@@ -440,10 +439,11 @@ extension PushNotifications{
             case "banner":
             presentDialog(content: genericNotification.notificationDialog ?? NotificationDialog(textBody: "", imageUrl: "", isPersistent: false, isCancelable: true, buttons: []))
             case "video":
-                presentVideo(content: genericNotification.notificationVideo ?? VideoNotification(videoUrl: "", minPlayTime: 0.00, isPersistent: false, buttons: []))
+                presentVideo(content: genericNotification.notificationVideo ?? VideoNotification(videoUrl: "", minPlayTime: "", isPersistent: false, buttons: []))
             default:
                 print("error: must specify a notification type")
             }
         }
     }
 }
+

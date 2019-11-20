@@ -21,16 +21,16 @@ class NotificationService: UNNotificationServiceExtension {
             self.contentHandler = contentHandler
             bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
             
-            let genericNotification = parseNotification(content: request.content.userInfo)
-            switch genericNotification.type {
-                case "notificationBody":
-//                    let bodyNotification = parseBody(content: genericNotification)
-                    url = genericNotification.notificationBody?.imageUrl
-                case "notificationDialog":
-                    let dialogNotification = parseDialog(content: genericNotification)
+            let genericStringNotification = parseStringNotification(content: request.content.userInfo)
+            switch genericStringNotification.type {
+                case "dialog":
+                    let dialogNotification = parseDialog(content: genericStringNotification)
                     url = dialogNotification.imageUrl
-                case "notificationVideo":
-                    let videoNotification = parseVideo(content: genericNotification)
+                case "banner":
+                    let dialogNotification = parseDialog(content: genericStringNotification)
+                    url = dialogNotification.imageUrl
+                case "video":
+                    let videoNotification = parseVideo(content: genericStringNotification)
                     url = videoNotification.videoUrl
                 default:
                     print("error: must specify a notification type")

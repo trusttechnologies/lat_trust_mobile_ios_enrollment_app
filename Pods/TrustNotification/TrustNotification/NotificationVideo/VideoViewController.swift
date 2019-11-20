@@ -226,7 +226,7 @@ class VideoViewController: UIViewController {
             let player = AVPlayer(url: videoURL!)
             let playerLayer = AVPlayerLayer(player: player)
             let controller = AVPlayerViewController()
-            let minPlayTime = content.minPlayTime ?? 0.00
+            let minPlayTime = Float(content.minPlayTime) ?? 0.00
             
             controller.player = player
             playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))

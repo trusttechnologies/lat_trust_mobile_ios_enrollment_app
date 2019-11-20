@@ -197,7 +197,7 @@ struct VideoNotification: Codable {
     /**
      This variable sets a protected time, during this time the user will not be able to close the notification. Just can block the audio. There is a label that shows the remaining time to the enable the close button.
      */
-    var minPlayTime: Float
+    var minPlayTime: String
     
     var isPersistent: Bool
     

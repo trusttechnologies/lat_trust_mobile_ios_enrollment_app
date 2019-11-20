@@ -122,18 +122,18 @@ func parseLegacyVideo(content: [AnyHashable: Any]) -> VideoNotification {
     guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
         else {
             print("Parsing notification error: Review your JSON structure")
-            return VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: [])
+            return VideoNotification(videoUrl: "", minPlayTime: "0.0", isPersistent: false, buttons: [])
     }
     
     //decode the notification with the structure of a generic notification
     let jsonDecoder = JSONDecoder()
     guard let notDialog = try? jsonDecoder.decode(VideoLegacy.self, from: jsonData) else {
         print("Parsing notification error: Review your JSON structure")
-        return VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: []) }
+        return VideoNotification(videoUrl: "", minPlayTime: "0.0", isPersistent: false, buttons: []) }
     
     let button = Button(type: "action", text: notDialog.buttonText, color: "#F25E60", action: notDialog.urlAction)
     
-    return VideoNotification(videoUrl: notDialog.urlVideo, minPlayTime: Float(notDialog.playTime) ?? 0.00, isPersistent: false, buttons: [button])
+    return VideoNotification(videoUrl: notDialog.urlVideo, minPlayTime: notDialog.playTime, isPersistent: false, buttons: [button])
 }
 
 func parseStringNotification(content: [AnyHashable: Any]) -> GenericStringNotification {
@@ -178,9 +178,10 @@ func parseVideo(content: GenericStringNotification) -> VideoNotification {
     print(replacingApos)
 
     let jsonDecoder = JSONDecoder()
-    let videoNotification = try? jsonDecoder.decode(VideoNotification.self, from: replacingApos!.data(using: .utf8)!)
-
-    return videoNotification ?? VideoNotification(videoUrl: "", minPlayTime: 0.0, isPersistent: false, buttons: [])
+    guard let videoNotification = try? jsonDecoder.decode(VideoNotification.self, from: replacingApos!.data(using: .utf8)!) else {
+        return VideoNotification(videoUrl: "", minPlayTime: "0.0", isPersistent: false, buttons: [])
+    }
+    return VideoNotification(videoUrl: videoNotification.videoUrl, minPlayTime: videoNotification.minPlayTime, isPersistent: videoNotification.isPersistent, buttons: videoNotification.buttons)
 }
  
 extension UIColor {
