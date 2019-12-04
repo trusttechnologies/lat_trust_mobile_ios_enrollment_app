@@ -136,7 +136,12 @@ extension MainScreenInteractor: TrustDeviceInfoDelegate {
         guard let rut = profileDataSource?.rut else {
             return
         }
+
         guard let userName = profileDataSource?.name else {
+            return
+        }
+        
+        guard let lastName = profileDataSource?.lastName else {
             return
         }
         
@@ -144,7 +149,7 @@ extension MainScreenInteractor: TrustDeviceInfoDelegate {
         
         var userIdentity = userDeviceInfo(dni: rut)
         userIdentity.name = userName
-        userIdentity.lastname = ""
+        userIdentity.lastname = lastName
         userIdentity.email = ""
         userIdentity.phone = ""
         

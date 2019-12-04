@@ -13,6 +13,7 @@ import TrustDeviceInfo
 // MARK: ProfileDataSource
 protocol ProfileDataSource {
     var name: String? {get}
+    var lastName: String? {get}
     var rut: String? {get}
 }
 
