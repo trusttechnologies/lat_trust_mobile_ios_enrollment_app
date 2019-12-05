@@ -88,9 +88,12 @@ extension User {
 
 // MARK: - ProfileDataSource
 extension User: ProfileDataSource {
+    var completeName: String? {
+        return "\(givenName ?? .empty) \(familyName ?? .empty) \(middleName ?? .empty)"
+    }
+    
     var name: String? {
         return "\(givenName ?? .empty)"
-
     }
     
     var lastName: String? {

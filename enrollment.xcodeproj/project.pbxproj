@@ -309,9 +309,9 @@
 		FE1BF3F0230DAC5D004EEFEB /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FE1BF3F1230DAC72004EEFEB /* Parameters.swift */,
 				FE1BF3F6230DAD2B004EEFEB /* API.swift */,
 				FE1BF3FA230DADB6004EEFEB /* APIRouter.swift */,
+				FE1BF3F1230DAC72004EEFEB /* Parameters.swift */,
 				FE1BF3FC230DADCD004EEFEB /* Responses.swift */,
 			);
 			path = Network;

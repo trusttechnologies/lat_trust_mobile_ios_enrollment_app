@@ -12,6 +12,7 @@ import TrustDeviceInfo
 
 // MARK: ProfileDataSource
 protocol ProfileDataSource {
+    var completeName: String? {get}
     var name: String? {get}
     var lastName: String? {get}
     var rut: String? {get}
@@ -22,7 +23,6 @@ class MainScreenViewController: UIViewController {
 
     @IBAction func testError(_ sender: Any) {
         Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
-
     }
     var presenter: MainScreenPresenterProtocol?
     @IBOutlet weak var nameLabel: UILabel!
@@ -52,7 +52,7 @@ class MainScreenViewController: UIViewController {
     var profileDataSource: ProfileDataSource? {
         didSet {
             guard let dataSource = profileDataSource else { return }
-            nameLabel.text = dataSource.name?.capitalized
+            nameLabel.text = dataSource.completeName?.capitalized
             rutLabel.text = dataSource.rut
         }
     }
