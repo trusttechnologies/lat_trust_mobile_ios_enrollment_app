@@ -17,8 +17,6 @@ class SplashPresenter: SplashPresenterProtocol {
     
     var interactor: SplashInteractorProtocol?
     
-    var isUpdatingLocation = false
-
     func onViewDidAppear() {
         DispatchQueue.main.async {
             self.interactor?.requestNotificationPermissions()

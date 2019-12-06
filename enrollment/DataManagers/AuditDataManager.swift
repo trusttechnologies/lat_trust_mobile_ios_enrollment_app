@@ -22,8 +22,8 @@ class AuditDataManager: NSObject, AuditDataManagerProtocol {
  
     func createLoginAudit() {
         guard let savedTrustId = Identify.shared.getTrustID() else { return }
-        guard let connectionType = checkReachable() else { return }
-        guard let ssidConnection = getWiFiSsid() else { return }
+        let connectionType = checkReachable() ?? ""
+        let ssidConnection = getWiFiSsid() ?? ""
         
         TrustAudit.shared.createAudit(trustID: savedTrustId, connectionType: connectionType, connectionName: ssidConnection, type: "trust identify", result: "success", method: "createLoginAudit", operation: "login")
     }
