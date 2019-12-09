@@ -196,7 +196,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - ObjectMapper (3.5.1)
   - p2.OAuth2 (5.0.0)
-  - Protobuf (3.10.0)
+  - Protobuf (3.11.1)
   - Realm (3.18.0):
     - Realm/Headers (= 3.18.0)
   - Realm/Headers (3.18.0)
@@ -208,11 +208,14 @@ PODS:
   - TrustDeviceInfo (1.1.4):
     - Alamofire (~> 4.8.2)
     - DeviceKit
-  - TrustNotification (0.5.10):
+  - TrustNotification (0.5.29):
+    - AlamofireObjectMapper
     - Firebase/Core
     - Firebase/Messaging
     - "MaterialComponents/Buttons+ButtonThemer"
-    - TrustDeviceInfo
+    - ObjectMapper
+    - RealmSwift
+    - TrustDeviceInfo (~> 1.1.4)
 
 DEPENDENCIES:
   - Audit
@@ -298,12 +301,12 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   p2.OAuth2: 5d203b46c2857b4bbcca3e521089959e7b3b5a5c
-  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   TrustDeviceInfo: a1bad361655047e4f87356360e184b6867ad1ab3
-  TrustNotification: 02d43f443ba3cc4162cb4a710e6d22745011f760
+  TrustNotification: af218712bfb2dbb3add08110e338cac8f0c1c2a7
 
 PODFILE CHECKSUM: df6b1334d20a056bed9e901b03d261546f4f4622
 

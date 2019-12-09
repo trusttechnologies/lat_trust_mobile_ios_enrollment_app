@@ -15,8 +15,25 @@ import AudioToolbox
 
 /// This is a class created for handling video notifications in Project
 
+
 class VideoViewController: UIViewController {
     
+    var presenter: VideoPresenterProtocol?
+    var urlLeftButton: String?
+    var urlRightButton: String?
+    var data: NotificationInfo?
+    var flagAudio: Bool = false
+    
+    var viewState: LoadingStatus = .loading {
+        didSet {
+            switch viewState {
+            case .loaded:
+                activityIndicator.stopAnimating()
+            case .loading:
+                activityIndicator.startAnimating()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +42,7 @@ class VideoViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!{
-        didSet{
-            activityIndicator.isHidden = true
-        }
-    }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     /**
      Notification area
@@ -40,13 +53,6 @@ class VideoViewController: UIViewController {
             dialogView.layer.borderColor = UIColor.black.cgColor
         }
     }
-    
-    
-    /**
-     Flag for handling the activation o deactivation of the video audio
-     */
-    var flagAudio: Bool = false
-    
     
     /**
      Button on the left, for activate o deactivate the video audio
@@ -59,16 +65,14 @@ class VideoViewController: UIViewController {
             let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
             audioButton.setImage(tintedImage, for: .normal)
             audioButton.tintColor = .white
+            audioButton.addTarget(
+                self,
+                action: #selector(onAudioButtonPressed(sender:)),
+                for: .touchUpInside)
         }
     }
     
-    /**
-     Button on the left, for activate o deactivate the video audio
-     */
-    @IBAction func audioButton(_ sender: Any) {
-        flagAudio = !flagAudio
-    }
-    
+
     /**
      Contains the close button and the remaining seconds label
      */
@@ -88,16 +92,11 @@ class VideoViewController: UIViewController {
             let buttonImage = UIImage(named: "close_icon", in: bundle, compatibleWith: nil)
             closeButton.setImage(buttonImage, for: .normal)
             closeButton.isEnabled = false
-            flagAudio = false
+            closeButton.addTarget(
+                self,
+                action: #selector(onCloseButtonPressed(sender:)),
+                for: .touchUpInside)
         }
-    }
-    
-    /**
-     close button, handle the pressing action
-     */
-    @IBAction func closeButton(_ sender: Any) {
-        flagAudio = true
-        self.dismiss(animated: true)
     }
     
     /**
@@ -112,18 +111,12 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.clipsToBounds = true
+            let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
+            let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
+            self.videoView.addConstraint(widthConstraint)
+            self.videoView.addConstraint(aspectRatioConstraint)
         }
     }
-    
-    /**
-     Url for action the the right button
-     */
-    var urlRightButton: String?
-    /**
-     Url for action the the left button
-     */
-    var urlLeftButton: String?
-    
     
     /**
      Left button, in case that the notification has two buttons
@@ -153,11 +146,7 @@ class VideoViewController: UIViewController {
      */
     
     @objc func onLeftButtonPressed(sender: UIButton) {
-        if let url = URL(string: urlLeftButton!) {
-            UIApplication.shared.open(url , options: [:], completionHandler: nil)
-            self.dismiss(animated: true)
-
-        }
+        presenter?.onActionButtonPressed(action: urlLeftButton!)
     }
     
     /**
@@ -165,26 +154,21 @@ class VideoViewController: UIViewController {
      */
     
     @objc func onRightButtonPressed(sender: UIButton) {
-        if let url = URL(string: urlRightButton!) {
-            UIApplication.shared.open(url , options: [:], completionHandler: nil)
-            self.dismiss(animated: true)
-        }
+        presenter?.onActionButtonPressed(action: urlRightButton!)
     }
     
-    /**
-     Call this function for set the notification background.
-     - Parameters:
-     - color : there are three options parameterized for background color
-        - .SOLID : Gray solid color
-        - .TRANSPARENT: Black color with 60% opacity
-        - .NO_BACKGROUND: The notification is shown withouth any background and what is seen behind the notification is the screen of the application being used.
-     
-     
-     ### Usage Example: ###
-     ````
-     videoVC.setBackground(color: .SOLID)
-     ````
-     */
+    @objc func onAudioButtonPressed(sender: UIButton) {
+        flagAudio = !flagAudio
+    }
+    
+    @objc func onCloseButtonPressed(sender: UIButton) {
+        flagAudio = false
+        presenter?.onCloseButtonPressed()
+    }
+    
+}
+
+extension VideoViewController: VideoViewProtocol{
     func setBackground(color: backgroundColor){
         switch color {
         case .SOLID:
@@ -196,37 +180,31 @@ class VideoViewController: UIViewController {
         }
     }
     
-    /**
-     Call this function for set the notification content.
-     - Parameters:
-     - content : this is an object from class GenericNotification, this class contains the data parsed from the notification.
+    func fillVideo() {
+        setViewState(state: .loading)
+        setVideo()
+        setActionButtons(buttons: data?.videoNotification?.buttons ?? [])
+        setViewState(state: .loaded)
+    }
     
-     
-     ### Usage Example: ###
-     ````
-     videoVC.fillVideo(content: genericNotification)
-     ````
-     */
+    func setViewState(state: LoadingStatus) {
+        viewState = state
+    }
     
-    func fillVideo(content: VideoNotification) {
+    func setVideo() {
+        //
         
-        let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
-        self.videoView.addConstraint(widthConstraint)
-        self.videoView.addConstraint(aspectRatioConstraint)
-        
-        //self.videoView.frame.size.width
-        //Set video
-        if(verifyUrl(urlString: content.videoUrl)){
+        if(verifyUrl(urlString: data?.videoNotification?.videoUrl)){
             
             remainSecLabel.isHidden = true
             activityIndicator.isHidden = false
+            setViewState(state: .loading)
             
-            let videoURL = URL(string: content.videoUrl)
+            let videoURL = URL(string: data?.videoNotification?.videoUrl ?? "")
             let player = AVPlayer(url: videoURL!)
             let playerLayer = AVPlayerLayer(player: player)
             let controller = AVPlayerViewController()
-            let minPlayTime = Float(content.minPlayTime) ?? 0.00
+            let minPlayTime = (data?.videoNotification?.minPlayTime as! NSString).floatValue ?? 0.00
             
             controller.player = player
             playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))
@@ -243,7 +221,7 @@ class VideoViewController: UIViewController {
                     let remaining = round(Double(minPlayTime) - seconds)
                     if(player.status == .readyToPlay ){
                         player.play()
-                        self.activityIndicator.isHidden = true
+                        self.setViewState(state: .loaded)
                     }
                     player.isMuted = self.flagAudio
                     if(player.isMuted){
@@ -276,29 +254,31 @@ class VideoViewController: UIViewController {
             print("ERROR: URL DEL VIDEO NO VALIDA")
             
         }
-        
-        let buttons = content.buttons
+    }
+
+    
+    func setActionButtons(buttons: [Button]) {
         let buttonCounter = buttons.count
         
-        
         if(buttonCounter == 1){
-    
+            
             buttonL.isHidden = true
-            //buttonL.isEnabled = false
-            buttonR.setTitle(buttons[0].text ?? "", for: .normal)
+            buttonR.setTitle(buttons[0].text , for: .normal)
             buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons[0].action
         }
-
+        
         if(buttonCounter == 2){
             
-            buttonL.setTitle(buttons[1].text ?? "", for: .normal)
+            buttonL.setTitle(buttons[1].text , for: .normal)
             buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
             urlLeftButton = buttons[1].action
-            buttonR.setTitle(buttons[0].text ?? "", for: .normal)
+            buttonR.setTitle(buttons[0].text , for: .normal)
             buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
             urlRightButton = buttons[0].action
             
         }
     }
+    
+    
 }

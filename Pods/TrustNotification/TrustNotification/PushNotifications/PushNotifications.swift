@@ -22,36 +22,14 @@ public class PushNotifications: NSObject {
     public var serviceName: String
     public var accesGroup: String
     
-    /**
-     Create an instance of class Push notifications
-     
-     - Parameters:
-     - clientId:
-     - clientSecret:
-     - serviceName:
-     - accesGroup: Apple team with shared keychain
-     
-     
-     ### Usage Example: ###
-     ````
-     let notifications = PushNotifications(clientId: "your client id", clientSecret: "your client secret", serviceName: "defaultServiceName", accesGroup: "your access group")
-     ````
-     */
+    var notificationInfo: NotificationInfo = NotificationInfo()
+    
     public init(clientId:String, clientSecret:String, serviceName:String, accesGroup:String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
         self.serviceName = serviceName
         self.accesGroup = accesGroup
     }
-    
-    /**
-     Call this function for set the initial configuration of firebase and messaging service
-     
-     ### Usage Example: ###
-     ````
-     notifications.firebaseConfig(application: application)
-     ````
-     */
     
     public func firebaseConfig(application: UIApplication) {
         // Use Firebase library to configure APIs
@@ -60,15 +38,6 @@ public class PushNotifications: NSObject {
         Messaging.messaging().delegate = self
     }
     
-    /**
-     Call this function to ask for permmission to receive push notifications to the user
-     
-     
-     ### Usage Example: ###
-     ````
-     notifications.registerForRemoteNotifications(application: application)
-     ````
-     */
     
     public func registerForRemoteNotifications(){
         UNUserNotificationCenter.current().delegate = self
@@ -86,14 +55,6 @@ public class PushNotifications: NSObject {
         }
     }
     
-    /**
-     Call this function to ask for permmission to receive custom push notifications to the user
-     
-     ### Usage Example: ###
-     ````
-     notifications.registerCustomNotificationCategory()
-     ````
-     */
     
     public func registerCustomNotificationCategory() {
         //Buttons
@@ -110,14 +71,6 @@ public class PushNotifications: NSObject {
         UNUserNotificationCenter.current().setNotificationCategories([customCategory])
     }
     
-    /**
-     Call this function to eliminate the number on the app' icon when the user touch the notification (badge number)
-    
-     ### Usage Example: ###
-     ````
-     notifications.clearBadgeNumber()
-     ````
-     */
     
     public func clearBadgeNumber() {
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -162,11 +115,14 @@ extension PushNotifications: MessagingDelegate{
 //MARK: TrustID Handling
 extension PushNotifications: TrustDeviceInfoDelegate{
     public func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
-        //TODO:
+        guard let tokenType = savedClientCredentials.tokenType,
+            let accessToken = savedClientCredentials.accessToken else { return }
+        notificationInfo.bearerToken = "\(tokenType) \(accessToken)"
+        KeychainWrapper.standard.set("\(tokenType) \(accessToken)", forKey: "bearerToken")
     }
     
     public func onTrustIDSaved(savedTrustID: String) {
-        //TODO:
+        notificationInfo.trustID = savedTrustID
     }
     
     public func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {
@@ -262,10 +218,15 @@ extension PushNotifications{
     
     func presentDialog(content: NotificationDialog){
         
-        let storyboard = UIStoryboard(name: "DialogView", bundle: nil)
-        guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController else{
-            return
-        }
+//        let storyboard = UIStoryboard(name: "DialogView", bundle: nil)
+//        guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogView") as? DialogViewController else{
+//            return
+//        }
+        
+        let dialogVC = DialogRouter.createModule()
+        dialogVC.loadView()
+        notificationInfo.type = "dialog"
+        notificationInfo.dialogNotification = content
         
         var topController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -276,8 +237,8 @@ extension PushNotifications{
         let window = UIApplication.shared.keyWindow
         
         dialogVC.modalPresentationStyle = .overCurrentContext
-        dialogVC.setBackground(color: .SOLID)
-        dialogVC.fillDialog(content: content)
+        dialogVC.data = notificationInfo
+        dialogVC.fillDialog()
 
         if topController is DialogViewController {
            
@@ -314,10 +275,17 @@ extension PushNotifications{
     
     func presentVideo(content: VideoNotification){
         //To Do
-        let storyboard = UIStoryboard(name: "VideoView", bundle: nil)
-        guard let videoVC = storyboard.instantiateViewController(withIdentifier: "VideoView") as? VideoViewController else{
-            return
-        }
+        
+        notificationInfo.type = "video"
+        notificationInfo.videoNotification = content
+        
+        let videoVC = VideoRouter.createModule()
+        videoVC.modalPresentationStyle = .overCurrentContext
+        videoVC.loadView()
+        videoVC.data = notificationInfo
+        videoVC.fillVideo()
+        
+        
         
         var topController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -327,10 +295,7 @@ extension PushNotifications{
          
         let window = UIApplication.shared.keyWindow
         
-        videoVC.modalPresentationStyle = .overCurrentContext
-        videoVC.setBackground(color: .SOLID)
         
-        videoVC.fillVideo(content: content)
         
         if topController is DialogViewController {
             
@@ -362,6 +327,7 @@ extension PushNotifications{
     func processNotification(userInfo: [AnyHashable : Any]){
         
         //if is a body notification - Notify: do nothing
+        notificationInfo.messageID = (userInfo["gcm.message_id"] as! String)
         print(userInfo)
         guard let data = userInfo["data"] else {
             return
