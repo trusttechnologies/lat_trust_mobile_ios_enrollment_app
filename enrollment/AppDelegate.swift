@@ -24,19 +24,12 @@ extension AppDelegate: TrustDeviceInfoDelegate {
 
         // MARK: - Sentry
         initializeSentry()
-        
+
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
         // MARK: - Identify
         setTrustIdentify()
-        
-        // MARK: - Notification
-        notifications.firebaseConfig(application: application)
-            
-        notifications.registerForRemoteNotifications()
-        
-        notifications.registerCustomNotificationCategory()
         
         // MARK: - Audit
         setTrustAudit()
@@ -97,7 +90,12 @@ extension AppDelegate {
     }
     
     func onTrustIDSaved(savedTrustID: String) {
-        //
+        // MARK: - Notification
+        notifications.firebaseConfig(application: UIApplication.shared)
+            
+        notifications.registerForRemoteNotifications()
+        
+        notifications.registerCustomNotificationCategory(title1: "Ir", title2: "Mail", title3: "Llamar", title4: "Ir", title5: "Mail", title6: "Llamar")
     }
     
     func onRegisterFirebaseTokenSuccess(responseData: RegisterFirebaseTokenResponse) {

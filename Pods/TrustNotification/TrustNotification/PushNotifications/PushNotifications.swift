@@ -54,23 +54,7 @@ public class PushNotifications: NSObject {
             }
         }
     }
-    
-    
-    public func registerCustomNotificationCategory() {
-        //Buttons
-        let acceptAction = UNNotificationAction(identifier: "accept", title:  "Aceptar", options: [.foreground])
-        let denyAction = UNNotificationAction(identifier: "cancel", title: "Cancelar", options: [.destructive])
-        //Notification
-        let customCategory =  UNNotificationCategory(
-            identifier: "buttons",
-            actions: [acceptAction,denyAction],
-            intentIdentifiers: [],
-            options: []
-        )
-        
-        UNUserNotificationCenter.current().setNotificationCategories([customCategory])
-    }
-    
+
     
     public func clearBadgeNumber() {
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -136,70 +120,70 @@ extension PushNotifications: TrustDeviceInfoDelegate{
 }
 
 //MARK: UserNotifications Handling
-extension PushNotifications: UNUserNotificationCenterDelegate{
-    
-    /**
-     This function is executed when a notification is received in the foreground. This function is not called by the developer.
-     
-     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
-     */
-    
-    // MARK: Foreground Notification
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                        willPresent notification: UNNotification,
-                                        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-
-        processNotification(userInfo: notification.request.content.userInfo)
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        Messaging.messaging().appDidReceiveMessage(notification.request.content.userInfo)
-        
-        completionHandler([.alert, .badge, .sound])
-    }
-    
-    
-    /**
-     This function is executed when a notification is received in the background. This function is not called by the developer.
-     
-     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
-     */
-    
-    // MARK: Background Notification
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            
-            switch response.actionIdentifier {
-            case "accept":
-                guard let stringUrl = response.notification.request.content.userInfo["url-scheme"] as? String else {
-                    print("Error parsing the url")
-                    return
-                }
-                
-                guard let url = URL(string: stringUrl) else {
-                    print("Error parsing the url")
-                    return
-                }
-                
-                if(verifyUrl(urlString: stringUrl)){
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }else{
-                    print("Invalid URL")
-                }
-                UIApplication.shared.applicationIconBadgeNumber = 0
-            case "cancel":
-                UIApplication.shared.applicationIconBadgeNumber = 0
-            default:
-                print("Other Action")
-                self.processNotification(userInfo: response.notification.request.content.userInfo)
-                
-            }
-            
-            completionHandler()
-        }
-        
-    }
-}
+//extension PushNotifications: UNUserNotificationCenterDelegate{
+//    
+//    /**
+//     This function is executed when a notification is received in the foreground. This function is not called by the developer.
+//     
+//     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
+//     */
+//    
+//    // MARK: Foreground Notification
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                                        willPresent notification: UNNotification,
+//                                        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//
+//        processNotification(userInfo: notification.request.content.userInfo)
+//        
+//        // With swizzling disabled you must let Messaging know about the message, for Analytics
+//        Messaging.messaging().appDidReceiveMessage(notification.request.content.userInfo)
+//        
+//        completionHandler([.alert, .badge, .sound])
+//    }
+//    
+//    
+//    /**
+//     This function is executed when a notification is received in the background. This function is not called by the developer.
+//     
+//     When a notification is received, parse the data and with that object, call the function to present the notification according to the content (video, dialog, banner)
+//     */
+//    
+//    // MARK: Background Notification
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            
+//            switch response.actionIdentifier {
+//            case "accept":
+//                guard let stringUrl = response.notification.request.content.userInfo["url-scheme"] as? String else {
+//                    print("Error parsing the url")
+//                    return
+//                }
+//                
+//                guard let url = URL(string: stringUrl) else {
+//                    print("Error parsing the url")
+//                    return
+//                }
+//                
+//                if(verifyUrl(urlString: stringUrl)){
+//                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                }else{
+//                    print("Invalid URL")
+//                }
+//                UIApplication.shared.applicationIconBadgeNumber = 0
+//            case "cancel":
+//                UIApplication.shared.applicationIconBadgeNumber = 0
+//            default:
+//                print("Other Action")
+//                self.processNotification(userInfo: response.notification.request.content.userInfo)
+//                
+//            }
+//            
+//            completionHandler()
+//        }
+//        
+//    }
+//}
 
 
 extension PushNotifications{
