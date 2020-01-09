@@ -9,7 +9,9 @@
 import UIKit
 import MaterialComponents
 
-class DialogLegacyViewController: UIViewController {
+class DialogLegacyViewController: UIViewController, DialogLegacyViewProtocol {
+    var data: NotificationInfo?
+    var presenter: DialogLegacyPresenterProtocol?
 
     @IBOutlet var screenArea: UIView!
     
@@ -28,10 +30,11 @@ class DialogLegacyViewController: UIViewController {
             let buttonImage = UIImage(named: "exit_icon", in: bundle, compatibleWith: nil)
             closeButton.setImage(buttonImage, for: .normal)
             closeButton.tintColor = .gray
+            closeButton.addTarget(
+                    self,
+                    action: #selector(onCloseButtonPressed(sender:)),
+                    for: .touchUpInside)
         }
-    }
-    @IBAction func closeButton(_ sender: Any) {
-        self.dismiss(animated: true)
     }
     
     @IBOutlet weak var centralIcon: UIImageView!{
@@ -45,12 +48,14 @@ class DialogLegacyViewController: UIViewController {
     
     @IBOutlet weak var bodyLabel: UILabel!{
         didSet{
+            let bundle = Bundle(for: DialogLegacyViewController.self)
+            let roboto = UIFont(name: "Roboto-Regular", size: 16.0)
+            let boldRoboto = UIFont(name: "Roboto-Bold", size: 16.0)
             let string = "Estimado cliente, evite pago fuera de plazo, cancele oportunamente en http://bit.ly/Pagueaqui, 103 o en centros de pago, si pagó omita este aviso" as NSString
 
-            let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 16.0)])
+            let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: roboto  ?? UIFont.systemFont(ofSize: 16.0)])
 
-            let boldFontAttribute = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16.0)]
-
+            let boldFontAttribute = [NSAttributedString.Key.font: boldRoboto ?? UIFont.boldSystemFont(ofSize: 16.0)]
             // Part of string to be bold
             attributedString.addAttributes(boldFontAttribute, range: string.range(of: "cancele oportunamente"))
             
@@ -84,25 +89,19 @@ class DialogLegacyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red:0.17, green:0.16, blue:0.16, alpha:0.6)
+        self.view.backgroundColor = UIColor(red:0.17, green:0.16, blue:0.16, alpha:0.6)
         // Do any additional setup after loading the view.
     }
 
-
-}
-
-extension DialogLegacyViewController{
+    @objc func onCloseButtonPressed(sender: UIButton) {
+        presenter?.onCloseButtonPressed()
+    }
+    
     @objc func onLeftButtonPressed(sender: UIButton) {
-        if let url = URL(string: "tel:103") {
-            UIApplication.shared.open(url , options: [:], completionHandler: nil)
-            self.dismiss(animated: true)
-        }
+        presenter?.onActionButtonPressed(action: "tel:103")
     }
     
     @objc func onRightButtonPressed(sender: UIButton) {
-        if let url = URL(string: "https://www.google.cl") {
-            UIApplication.shared.open(url , options: [:], completionHandler: nil)
-            self.dismiss(animated: true)
-        }
+        presenter?.onActionButtonPressed(action: "https://www.google.cl")
     }
 }

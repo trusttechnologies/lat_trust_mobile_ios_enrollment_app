@@ -24,6 +24,14 @@ class DialogInteractor: DialogInteractorProtocol{
 }
 
 extension DialogInteractor: CallbackDataManagerOuputProtocol{
+    func onReceptionConfirmationSuccess() {
+        //
+    }
+    
+    func onReceptionConfirmationFailure() {
+        //
+    }
+    
     func onCallbackSuccess() {
         interactorOutput?.onCallbackSuccess()
     }

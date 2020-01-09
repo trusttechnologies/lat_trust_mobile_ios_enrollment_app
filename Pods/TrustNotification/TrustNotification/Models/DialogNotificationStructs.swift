@@ -18,12 +18,15 @@ struct GenericStringNotification: Codable{
     */
     var type: String!
     
+    var typeDialog: String?
+    
     /**
      If the type is "notificationDialog" this variable will be not null. For further information see the NotificationDialog struct documentation.
      */
     var notificationVideo: String?
     
     var notificationDialog: String?
+    
 }
 
 /**
@@ -67,7 +70,6 @@ struct GenericStringNotification: Codable{
  
 - notificationDialog
 - notificationVideo
-- notificationBody
  
  According to the type the last field from the prior JSON can change, the different options will be further describe.
  
@@ -79,7 +81,6 @@ struct GenericNotification: Codable {
      
      - notificationDialog
      - notificationVideo
-     - notificationBody
     */
     var type: String!
     
@@ -142,11 +143,11 @@ struct NotificationDialog: Codable {
     /**
      If this value is true, if you touch outside the dialog the notification still open, otherwise, the notification close on touching outside the dialog
      */
-    var isPersistent: Bool
+    var isPersistent: Bool = true
     /**
      If this value is true, a close button is available, otherwise, there is no close button. If both properties: persistence and cancelability are set to not close the notification, the notification can be closed only by closing the app.
      */
-    var isCancelable: Bool
+    var isCancelable: Bool = true
     
     /**
      This variable may or may not contains an array of buttons, the maximun number of button can be two, if this number is bigger, the dialog will show only two.
@@ -156,8 +157,6 @@ struct NotificationDialog: Codable {
     enum CodingKeys: String, CodingKey {
         case buttons
         case imageUrl = "image_url"
-        case isPersistent = "isPersistent"
-        case isCancelable = "isCancelable"
         case textBody = "text_body"
     }
 }
@@ -199,7 +198,7 @@ struct VideoNotification: Codable {
      */
     var minPlayTime: String
     
-    var isPersistent: Bool
+    var isPersistent: Bool = true
     
     /**
      This variable may or may not contains an array of buttons, the maximun number of button can be two, if this number is bigger, the dialog will show only two.
@@ -210,8 +209,6 @@ struct VideoNotification: Codable {
         case buttons
         case videoUrl = "video_url"
         case minPlayTime = "min_play_time"
-        case isPersistent = "isPersistent"
-        
     }
 }
 

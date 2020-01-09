@@ -89,6 +89,7 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var upperMargin: UIView!
     @IBOutlet weak var lowerMargin: UIView!
 
+    @IBOutlet weak var buttonsMargin: UIView!
     
     /**
      Left button, in case that the notification has two buttons
@@ -213,6 +214,12 @@ extension DialogViewController: DialogViewProtocol{
     func setActionButtons(buttons: [Button]) {
             
             let buttonCounter = buttons.count
+        
+            if buttonCounter == 0{
+                buttonsMargin.isHidden = true
+                buttonL.isHidden = true
+                buttonR.isHidden = true
+            }
             
             if(buttonCounter == 1){
                 

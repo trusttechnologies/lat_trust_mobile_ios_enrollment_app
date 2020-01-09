@@ -118,6 +118,7 @@ class VideoViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var buttonsStack: UIStackView!
     /**
      Left button, in case that the notification has two buttons
      */
@@ -260,6 +261,11 @@ extension VideoViewController: VideoViewProtocol{
     func setActionButtons(buttons: [Button]) {
         let buttonCounter = buttons.count
         
+        if buttonCounter == 0{
+            buttonsStack.isHidden = true
+            buttonL.isHidden = true
+            buttonR.isHidden = true
+        }
         if(buttonCounter == 1){
             
             buttonL.isHidden = true

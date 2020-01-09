@@ -24,6 +24,14 @@ class VideoInteractor: VideoInteractorProtocol{
 }
 
 extension VideoInteractor: CallbackDataManagerOuputProtocol{
+    func onReceptionConfirmationSuccess() {
+        //
+    }
+    
+    func onReceptionConfirmationFailure() {
+        //
+    }
+    
     func onCallbackSuccess() {
         interactorOutput?.onCallbackSuccess()
     }
