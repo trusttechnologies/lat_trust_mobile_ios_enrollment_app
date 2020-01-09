@@ -52,6 +52,8 @@ extension PushNotifications: UNUserNotificationCenterDelegate, PushNotifications
             guard let data = response.notification.request.content.userInfo["data"] else {return}
             let notiInfo = parseStringNotification(content: response.notification.request.content.userInfo)
             let category = response.notification.request.content.categoryIdentifier
+            self.notificationInfo.type = notiInfo.type
+            self.processNotificationInteractor?.onNotificationArrive(data: self.notificationInfo, action: response.actionIdentifier)
             
             switch category{
             case "url":
@@ -791,6 +793,7 @@ extension PushNotifications: UNUserNotificationCenterDelegate, PushNotifications
             default:
                 print("Other Action")
                 self.processNotification(userInfo: response.notification.request.content.userInfo)
+                self.processNotificationInteractor?.onNotificationArrive(data: self.notificationInfo, action: "")
             }
             
             completionHandler()

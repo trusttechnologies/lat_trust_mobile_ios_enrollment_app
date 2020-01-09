@@ -208,7 +208,7 @@ PODS:
   - TrustDeviceInfo (1.1.4):
     - Alamofire (~> 4.8.2)
     - DeviceKit
-  - TrustNotification (0.5.47):
+  - TrustNotification (0.5.48):
     - AlamofireObjectMapper
     - Firebase/Core
     - Firebase/Messaging
@@ -306,7 +306,7 @@ SPEC CHECKSUMS:
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   TrustDeviceInfo: a1bad361655047e4f87356360e184b6867ad1ab3
-  TrustNotification: cb8798b1e04465cf345fbc5d939e57e54ff114a3
+  TrustNotification: 5f2980516ca8d9446b44cbf97be5e6ec6086f2bf
 
 PODFILE CHECKSUM: df6b1334d20a056bed9e901b03d261546f4f4622
 
