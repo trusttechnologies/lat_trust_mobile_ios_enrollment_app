@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OIv-Mb-v5Q">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Environment Modal View Controller-->
+        <scene sceneID="Mu2-7b-Hfj">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="OIv-Mb-v5Q" customClass="EnvironmentModalViewController" customModule="Enrollment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vEk-gE-a6j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwy-wD-Cot">
+                                <rect key="frame" x="16" y="299.5" width="382" height="297"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LYj-Eb-jpT">
+                                        <rect key="frame" x="16" y="16" width="350" height="265"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seleccione" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECn-PT-AsU">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="19"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-DA-Jeh">
+                                                <rect key="frame" x="0.0" y="19" width="350" height="216"/>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxN-hy-98g">
+                                                <rect key="frame" x="0.0" y="235" width="350" height="30"/>
+                                                <state key="normal" title="Aceptar"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="LYj-Eb-jpT" firstAttribute="leading" secondItem="Wwy-wD-Cot" secondAttribute="leading" constant="16" id="7Yb-Je-Hze"/>
+                                    <constraint firstAttribute="trailing" secondItem="LYj-Eb-jpT" secondAttribute="trailing" constant="16" id="U5n-Ae-yiR"/>
+                                    <constraint firstAttribute="bottom" secondItem="LYj-Eb-jpT" secondAttribute="bottom" constant="16" id="hk2-hg-DVl"/>
+                                    <constraint firstItem="LYj-Eb-jpT" firstAttribute="top" secondItem="Wwy-wD-Cot" secondAttribute="top" constant="16" id="vUq-X0-bb1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.10292701198630137" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5LD-nk-Ikk" firstAttribute="trailing" secondItem="Wwy-wD-Cot" secondAttribute="trailing" constant="16" id="Cf6-iQ-CoU"/>
+                            <constraint firstItem="Wwy-wD-Cot" firstAttribute="centerY" secondItem="vEk-gE-a6j" secondAttribute="centerY" id="Dno-WI-mvP"/>
+                            <constraint firstItem="Wwy-wD-Cot" firstAttribute="leading" secondItem="5LD-nk-Ikk" secondAttribute="leading" constant="16" id="uru-FV-ee8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5LD-nk-Ikk"/>
+                    </view>
+                    <connections>
+                        <outlet property="acceptEnvironmentButton" destination="wxN-hy-98g" id="8xt-7Q-rxd"/>
+                        <outlet property="pickerView" destination="4AJ-DA-Jeh" id="XiS-ZJ-RCD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vH-6k-vTs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84" y="86"/>
+        </scene>
+    </scenes>
+</document>

@@ -12,7 +12,6 @@ import UIKit
 class SplashRouter: SplashRouterProtocol {
     
     var viewController: UIViewController?
-    
     static func createModule() -> SplashViewController {
         let view = SplashViewController.storyboardViewController()
         let interactor: SplashInteractorProtocol & OAuth2ManagerOutputProtocol & LocationManagerOutputProtocol = SplashInteractor()
@@ -39,7 +38,7 @@ class SplashRouter: SplashRouterProtocol {
         presenter.interactor = interactor
 
         router.viewController = view
-
+        
         return view
     }
     

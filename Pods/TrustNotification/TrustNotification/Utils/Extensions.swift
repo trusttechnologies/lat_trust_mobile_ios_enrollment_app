@@ -343,3 +343,19 @@ func getTopViewController() -> UIViewController{
     }
     return topController!
 }
+
+class ShadowedView: UIView {
+
+  override class var layerClass: AnyClass {
+    return MDCShadowLayer.self
+  }
+
+  var shadowLayer: MDCShadowLayer {
+    return self.layer as! MDCShadowLayer
+  }
+
+  func setDefaultElevation() {
+    self.shadowLayer.elevation = .cardResting
+  }
+
+}

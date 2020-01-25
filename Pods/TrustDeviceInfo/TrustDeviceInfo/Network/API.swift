@@ -23,8 +23,13 @@ enum StatusCode: Int {
 
 // MARK: - API class
 class API {
-    static let baseURL = "https://api.trust.lat"
-    static let clientCredentialsBaseURL = "https://atenea.trust.lat"
+    
+    static let baseURL = "https://api.trust.lat"    //Prod
+    static let baseURLTest = "https://api-tst.trust.lat"    //Test
+
+    static let clientCredentialsBaseURL = "https://atenea.trust.lat"    //Credentials Prod
+    static let clientCredentialsBaseURLTest = "https://atenea-tst.trust.lat"    //Credentials Test
+
     static let apiVersion = "/api/v1"
 }
 

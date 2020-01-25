@@ -43,9 +43,17 @@ enum APIRouter: URLRequestConvertible {
         
         switch self {
         case .clientCredentials:
-            baseURLAsString = API.clientCredentialsBaseURL
+            if UserDefaults.standard.string(forKey: "currentEnvironment") == "prod" {
+                baseURLAsString = API.clientCredentialsBaseURL
+            } else {
+                baseURLAsString = API.clientCredentialsBaseURLTest
+            }
         case .createAudit:
-            baseURLAsString = API.baseURL
+            if UserDefaults.standard.string(forKey: "currentEnvironment") == "prod" {
+                baseURLAsString = API.baseURL
+            } else {
+                baseURLAsString = API.baseURLTest
+            }
         }
         
         guard let url = URL(string: baseURLAsString) else {

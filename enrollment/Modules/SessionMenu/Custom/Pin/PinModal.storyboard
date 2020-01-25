@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e3p-MI-16G">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pin Modal View Controller-->
+        <scene sceneID="8gL-70-iNr">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="e3p-MI-16G" customClass="PinModalViewController" customModule="Enrollment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="beN-UW-5ia">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-Pu-vWC" userLabel="{pinModalView}">
+                                <rect key="frame" x="16" y="390" width="382" height="116.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-YD-Otj" userLabel="{pinStackView}">
+                                        <rect key="frame" x="16" y="16" width="350" height="84.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbr-pE-sUC" userLabel="{pinLabelText}">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-0H-VMv" userLabel="{pinTextField}">
+                                                <rect key="frame" x="0.0" y="20.5" width="350" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbY-TB-P2E" userLabel="{sendPinButton}">
+                                                <rect key="frame" x="0.0" y="54.5" width="350" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="O2R-YD-Otj" secondAttribute="bottom" constant="16" id="Atn-IA-Y0S"/>
+                                    <constraint firstItem="O2R-YD-Otj" firstAttribute="top" secondItem="5E7-Pu-vWC" secondAttribute="top" constant="16" id="cSC-GE-uZ2"/>
+                                    <constraint firstAttribute="trailing" secondItem="O2R-YD-Otj" secondAttribute="trailing" constant="16" id="l5F-wb-cZN"/>
+                                    <constraint firstItem="O2R-YD-Otj" firstAttribute="leading" secondItem="5E7-Pu-vWC" secondAttribute="leading" constant="16" id="r4e-hi-73Z"/>
+                                    <constraint firstItem="O2R-YD-Otj" firstAttribute="centerX" secondItem="5E7-Pu-vWC" secondAttribute="centerX" id="z50-V1-qUE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.10482662671232877" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D0L-o4-4ch" firstAttribute="trailing" secondItem="5E7-Pu-vWC" secondAttribute="trailing" constant="16" id="XrH-41-xUX"/>
+                            <constraint firstItem="5E7-Pu-vWC" firstAttribute="centerY" secondItem="beN-UW-5ia" secondAttribute="centerY" id="fuc-eh-NL2"/>
+                            <constraint firstItem="5E7-Pu-vWC" firstAttribute="leading" secondItem="D0L-o4-4ch" secondAttribute="leading" constant="16" id="ljf-Ac-wta"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D0L-o4-4ch"/>
+                    </view>
+                    <connections>
+                        <outlet property="checkPinButton" destination="AbY-TB-P2E" id="4Zc-WI-obt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WpQ-fU-vfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113" y="117"/>
+        </scene>
+    </scenes>
+</document>

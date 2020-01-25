@@ -5,7 +5,6 @@
 //  Created by Diego Villouta Fredes on 12/18/18.
 //  Copyright © 2018 Jumpitt Labs. All rights reserved.
 //
-
 import Foundation
 
 // MARK: - KeychainAttrRepresentable
@@ -88,9 +87,7 @@ private let keychainItemAccessibilityLookup: [KeychainItemAccessibility:CFString
     var lookup: [KeychainItemAccessibility:CFString] = [
         .afterFirstUnlock: kSecAttrAccessibleAfterFirstUnlock,
         .afterFirstUnlockThisDeviceOnly: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-        .always: kSecAttrAccessibleAlways,
         .whenPasscodeSetThisDeviceOnly: kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
-        .alwaysThisDeviceOnly : kSecAttrAccessibleAlwaysThisDeviceOnly,
         .whenUnlocked: kSecAttrAccessibleWhenUnlocked,
         .whenUnlockedThisDeviceOnly: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
     ]
@@ -192,7 +189,7 @@ open class KeychainWrapper {
         var keychainQueryDictionary: [String:Any] = [
             SecClass: kSecClassGenericPassword,
             SecAttrService: serviceName,
-            SecReturnAttributes: kCFBooleanTrue,
+            SecReturnAttributes: kCFBooleanTrue ?? true,
             SecMatchLimit: kSecMatchLimitAll,
         ]
         
@@ -277,7 +274,7 @@ open class KeychainWrapper {
             return nil
         }
         
-        return NSKeyedUnarchiver.unarchiveObject(with: keychainData) as? NSCoding
+        return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(keychainData) as? NSCoding
     }
     
     
@@ -363,7 +360,7 @@ open class KeychainWrapper {
     /// - parameter withAccessibility: Optional accessibility to use when setting the keychain item.
     /// - returns: True if the save was successful, false otherwise.
     @discardableResult open func set(_ value: NSCoding, forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Bool {
-        let data = NSKeyedArchiver.archivedData(withRootObject: value)
+        let data = try! NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: true)
         
         return set(data, forKey: key, withAccessibility: accessibility)
     }
@@ -397,7 +394,6 @@ open class KeychainWrapper {
         }
     }
     
-    @available(*, deprecated: 2.2.1, message: "remove is deprecated, use removeObject instead")
     @discardableResult open func remove(key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Bool {
         return removeObject(forKey: key, withAccessibility: accessibility)
     }

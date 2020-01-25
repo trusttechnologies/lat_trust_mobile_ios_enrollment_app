@@ -57,6 +57,7 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
 }
 
 - (void)commonMDCRippleViewInit {
+  _usesSuperviewShadowLayerAsMask = YES;
   self.userInteractionEnabled = NO;
   self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
@@ -101,10 +102,18 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
   [self updateRippleStyle];
 }
 
+- (void)setUsesSuperviewShadowLayerAsMask:(BOOL)usesSuperviewShadowLayerAsMask {
+  _usesSuperviewShadowLayerAsMask = usesSuperviewShadowLayerAsMask;
+
+  if (_usesSuperviewShadowLayerAsMask) {
+    [self setNeedsLayout];
+  }
+}
+
 - (void)updateRippleStyle {
   self.layer.masksToBounds = (self.rippleStyle == MDCRippleStyleBounded);
   if (self.rippleStyle == MDCRippleStyleBounded) {
-    if (self.superview.layer.shadowPath) {
+    if (self.usesSuperviewShadowLayerAsMask && self.superview.layer.shadowPath) {
       if (!self.maskLayer) {
         // Use mask layer when the superview has a shadowPath.
         self.maskLayer = [CAShapeLayer layer];
@@ -156,6 +165,9 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
         [rippleLayer removeFromSuperlayer];
       }
     }
+    if (completion) {
+      completion();
+    }
   }
 }
 
@@ -203,14 +215,38 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
 
 - (void)beginRippleTouchUpAnimated:(BOOL)animated
                         completion:(nullable MDCRippleCompletionBlock)completion {
+  // If all ripple animations are already cancelled and removed from the superlayer call the
+  // short circuit and call the completion handler directly.
+  if (self.activeRippleLayer == nil) {
+    if (completion) {
+      completion();
+    }
+    return;
+  }
   [self.activeRippleLayer endRippleAnimated:animated completion:completion];
 }
 
 - (void)fadeInRippleAnimated:(BOOL)animated completion:(MDCRippleCompletionBlock)completion {
+  // If all ripple animations are already cancelled and removed from the superlayer call the
+  // short circuit and call the completion handler directly.
+  if (self.activeRippleLayer == nil) {
+    if (completion) {
+      completion();
+    }
+    return;
+  }
   [self.activeRippleLayer fadeInRippleAnimated:animated completion:completion];
 }
 
 - (void)fadeOutRippleAnimated:(BOOL)animated completion:(MDCRippleCompletionBlock)completion {
+  // If all ripple animations are already cancelled and removed from the superlayer call the
+  // short circuit and call the completion handler directly.
+  if (self.activeRippleLayer == nil) {
+    if (completion) {
+      completion();
+    }
+    return;
+  }
   [self.activeRippleLayer fadeOutRippleAnimated:animated completion:completion];
 }
 

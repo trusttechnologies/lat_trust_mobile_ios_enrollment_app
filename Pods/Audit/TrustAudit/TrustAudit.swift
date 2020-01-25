@@ -49,6 +49,10 @@ public class TrustAudit {
     
     private static var credentials: String?
     
+    static var currentEnvironment: String {
+        return UserDefaults.standard.string(forKey: "currentEnvironment") ?? "prod"
+    }
+    
     // MARK: - Shared keychain values
     static var accessGroup: String {
         return UserDefaults.standard.string(forKey: "accessGroup") ?? ""
@@ -64,6 +68,14 @@ extension TrustAudit {
     public func set(serviceName: String, accessGroup: String) {
         UserDefaults.standard.set(serviceName, forKey: "serviceName")
         UserDefaults.standard.set(accessGroup, forKey: "accessGroup")
+    }
+    
+    public func set(currentEnvironment: String) {
+        UserDefaults.standard.set(currentEnvironment, forKey: "currentEnvironment")
+    }
+    
+    public func getCurrentEnvironment() -> String {
+        return UserDefaults.standard.string(forKey: "currentEnvironment") ?? "Check Lib"
     }
     
     public func createAuditClientCredentials(clientID: String , clientSecret: String) {

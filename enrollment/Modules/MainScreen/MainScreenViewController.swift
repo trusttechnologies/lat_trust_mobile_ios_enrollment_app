@@ -29,6 +29,8 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var rutLabel: UILabel!
     @IBOutlet weak var trustIdLabel: UILabel!
     
+
+    
     // MARK: - Permission message
     @IBOutlet weak var permissionsMessage: UIView!
     @IBOutlet weak var permissionsBackground: UIView! {

@@ -16,25 +16,36 @@ import Sentry
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    
     let notifications = PushNotifications(clientId: "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb", clientSecret: "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd", serviceName: "defaultServiceName", accesGroup: "P896AB2AMC.trustID.appLib")
 }
-
 extension AppDelegate: TrustDeviceInfoDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        UNUserNotificationCenter.current().delegate = notifications
+        
         // MARK: - Sentry
         initializeSentry()
-
+        
         // IQKeyboardManager Initialization
         IQKeyboardManager.shared.enable = true
         
+        // MARK: - Audit
+        setTrustAudit()
+
         // MARK: - Identify
         setTrustIdentify()
         
-        // MARK: - Audit
-        setTrustAudit()
-        
         setInitialVC()
+        
+        //Save 4 a new version
+//        notifications.clientId = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+//        notifications.clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+//        notifications.accessGroup = "P896AB2AMC.trustID.appLib"
+//        notifications.serviceName = "defaultServiceName"
+        
+//        notifications.initTrustNotifications()
         
         return true
     }
@@ -70,6 +81,7 @@ extension AppDelegate {
         let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
         
         TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        TrustAudit.shared.set(currentEnvironment: "prod")
         TrustAudit.shared.createAuditClientCredentials(clientID: clientID, clientSecret: clientSecret)
     }
     
@@ -81,19 +93,24 @@ extension AppDelegate {
         
         Identify.shared.trustDeviceInfoDelegate = self
         Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
+        Identify.shared.set(currentEnvironment: "prod")
         Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
         Identify.shared.enable()
     }
     
     func onClientCredentialsSaved(savedClientCredentials: ClientCredentials) {
-        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+        //
     }
     
     func onTrustIDSaved(savedTrustID: String) {
+        // First SetAppState in first open
+        Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
+
         // MARK: - Notification
-        notifications.firebaseConfig(application: UIApplication.shared)
             
         notifications.registerForRemoteNotifications()
+        
+        notifications.firebaseConfig(application: UIApplication.shared)
         
         notifications.registerCustomNotificationCategory(title1: "Ir", title2: "Mail", title3: "Llamar", title4: "Ir", title5: "Mail", title6: "Llamar")
     }
@@ -122,7 +139,6 @@ extension AppDelegate: OAuth2ManagerOutputProtocol {
 extension AppDelegate {
     private func setInitialVC() {
         let splashVC = SplashRouter.createModule()
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navController = UINavigationController(rootViewController: splashVC)

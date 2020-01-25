@@ -23,17 +23,17 @@ class DialogViewController: UIViewController {
     var urlRightButton: String?
     var data: NotificationInfo?
     
-    var viewState: LoadingStatus = .loading {
+    var viewState: LoadingStatus = .loaded {
         didSet {
             switch viewState {
             case .loaded:
                 activityIndicator.stopAnimating()
-                closeButton.isEnabled = true
-                persistenceButton.isEnabled = true
+                closeButton.isHidden = false
+                persistenceButton.isHidden = false
             case .loading:
                 activityIndicator.startAnimating()
-                closeButton.isEnabled = false
-                persistenceButton.isEnabled = false
+                closeButton.isHidden = true
+                persistenceButton.isHidden = true
             }
         }
     }
@@ -48,11 +48,10 @@ class DialogViewController: UIViewController {
     @IBOutlet var screenArea: UIView!
     @IBOutlet weak var dialogView: UIView!{
         didSet{
-            dialogView.layer.cornerRadius = 4.0
-            dialogView.clipsToBounds = true
-            dialogView.layer.borderWidth = 1.0
-            dialogView.layer.borderColor = UIColor.black.cgColor
-            
+            dialogView.layer.cornerRadius = 5
+            dialogView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            dialogView.layer.shadowRadius = 13
+            dialogView.layer.shadowOpacity = 0.25
         }
     }
     @IBOutlet weak var persistenceButton: UIButton!{
@@ -74,7 +73,13 @@ class DialogViewController: UIViewController {
                 for: .touchUpInside)
         }
     }
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!{
+        didSet{
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 5
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
+    }
     @IBOutlet weak var labelStackView: UIStackView!
     @IBOutlet weak var body: UILabel!{
         didSet{
@@ -89,7 +94,14 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var upperMargin: UIView!
     @IBOutlet weak var lowerMargin: UIView!
 
-    @IBOutlet weak var buttonsMargin: UIView!
+    @IBOutlet weak var buttonsMargin: UIView!{
+        didSet{
+            buttonsMargin.clipsToBounds = true
+            buttonsMargin.layer.cornerRadius = 5
+            buttonsMargin.layer.maskedCorners = [.layerMinXMaxYCorner]
+
+        }
+    }
     
     /**
      Left button, in case that the notification has two buttons
@@ -169,10 +181,10 @@ extension DialogViewController: DialogViewProtocol{
     
     func setCloseButton(cancelable: Bool) {
         if(!(cancelable)){
-            closeButton.isEnabled = true
+            closeButton.isEnabled = false
             closeButton.isHidden = true
         }else{
-            closeButton.isEnabled = false
+            closeButton.isEnabled = true
             closeButton.isHidden = false
         }
     }

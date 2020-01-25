@@ -47,16 +47,24 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cae-81-ktu" userLabel="BottomStackView">
                                                 <rect key="frame" x="0.0" y="484" width="310" height="50"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ras-f2-JCS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="50"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEK-yB-gkq" customClass="MDCButton">
-                                                        <rect key="frame" x="114" y="0.0" width="93" height="50"/>
-                                                        <state key="normal" title="Button">
-                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-r8-1WD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ras-f2-JCS">
+                                                                <rect key="frame" x="0.0" y="0.0" width="104" height="50"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEK-yB-gkq" customClass="MDCButton">
+                                                                <rect key="frame" x="114" y="0.0" width="93" height="50"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="261" id="03t-G9-3aj"/>
+                                                        </constraints>
+                                                    </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gho-i6-qYR" customClass="MDCButton">
                                                         <rect key="frame" x="217" y="0.0" width="93" height="50"/>
                                                         <state key="normal" title="Button">
@@ -65,7 +73,7 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="pEK-yB-gkq" firstAttribute="width" secondItem="Gho-i6-qYR" secondAttribute="width" id="Cez-66-4Wa"/>
+                                                    <constraint firstItem="pEK-yB-gkq" firstAttribute="width" secondItem="Gho-i6-qYR" secondAttribute="width" id="TEX-Lw-GKn"/>
                                                     <constraint firstAttribute="height" constant="50" id="rfF-sF-KTM"/>
                                                 </constraints>
                                             </stackView>
@@ -117,7 +125,7 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" image="close_icon"/>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-0q-MB3">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-0q-MB3">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>

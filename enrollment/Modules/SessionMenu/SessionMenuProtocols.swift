@@ -22,6 +22,7 @@ protocol SessionMenuInteractorProtocol: AnyObject {
     
     func authorizeUser(from context: AnyObject)
     func getUserProfile()
+    func changeEnvironment(environment: String)
 }
 
 // MARK: - InteractorOutput
@@ -45,6 +46,7 @@ protocol SessionMenuPresenterProtocol: AnyObject {
     var router: SessionMenuRouterProtocol? {get set}
     
     func onLoginButtonPressed(from context: AnyObject)
+    func changeEnvironment(environment: String)
 }
 
 // MARK: - Router
@@ -54,4 +56,5 @@ protocol SessionMenuRouterProtocol: AnyObject {
     
     func goToMainScreen()
     func presentAlertView(with errorMessage: String)
+    func openPinModal()
 }

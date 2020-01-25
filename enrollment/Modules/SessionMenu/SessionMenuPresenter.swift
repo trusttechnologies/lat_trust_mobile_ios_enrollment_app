@@ -18,6 +18,11 @@ class SessionMenuPresenter: SessionMenuPresenterProtocol {
         view?.startActivityIndicator()
         interactor?.authorizeUser(from: context)
     }
+    
+    func changeEnvironment(environment: String) {
+        router?.openPinModal()
+//        interactor?.changeEnvironment(environment: environment)
+    }
 }
 
 extension SessionMenuPresenter: SessionMenuInteractorOutput {

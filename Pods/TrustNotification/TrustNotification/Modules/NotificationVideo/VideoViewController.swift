@@ -24,7 +24,7 @@ class VideoViewController: UIViewController {
     var data: NotificationInfo?
     var flagAudio: Bool = false
     
-    var viewState: LoadingStatus = .loading {
+    var viewState: LoadingStatus = .loaded {
         didSet {
             switch viewState {
             case .loaded:
@@ -209,7 +209,7 @@ extension VideoViewController: VideoViewProtocol{
             
             controller.player = player
             playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoView.layer.addSublayer(playerLayer)
             player.play()
             

@@ -48,4 +48,9 @@ class SessionMenuRouter: SessionMenuRouterProtocol {
     func presentAlertView(with errorMessage: String) {
         viewController?.presentAlertView(type: .customMessage(message: errorMessage))
     }
+    
+    func openPinModal() {
+        let pinModal = PinModalViewController.storyboardViewController()
+        viewController?.present(pinModal, animated: false)
+    }
 }

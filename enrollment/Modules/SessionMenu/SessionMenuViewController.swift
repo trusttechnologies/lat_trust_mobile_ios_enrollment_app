@@ -14,9 +14,17 @@ class SessionMenuViewController: UIViewController {
     
     var animationView = AnimationView()
     let filename = "enrollmentLoading"
+    let environment = ["prod","test"]
+    var actualEnvironment: String?
     
     @IBOutlet weak var loadingView: LottieView!
     @IBOutlet weak var loadingBackground: UIView!
+    
+    @IBOutlet weak var changeEnvironmentButton: UIButton! {
+        didSet {
+            changeEnvironmentButton.addTarget(self, action: #selector(onChangeEnvironmentButton(sender:)), for: .touchUpInside)
+        }
+    }
     
     @IBOutlet weak var loginButton: MDCButton! {
         didSet {
@@ -83,5 +91,35 @@ extension SessionMenuViewController: SessionMenuViewProtocol {
 extension SessionMenuViewController {
     @objc func onLoginButtonPressed(sender: UIButton) {
         presenter?.onLoginButtonPressed(from: self)
+    }
+    
+    @objc func onChangeEnvironmentButton(sender: UIButton) {
+        //OPEN SELECT AND PUT WEA
+
+        
+        print("Pressed")
+        presenter?.changeEnvironment(environment: "test")
+//        presenter?.changeEnvironment()
+    }
+    func createEnvironmenPicker() {
+        let environmentPicker = UIPickerView()
+        environmentPicker.delegate = self
+    }
+}
+
+extension SessionMenuViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return environment.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return environment[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        actualEnvironment = environment[row]
     }
 }

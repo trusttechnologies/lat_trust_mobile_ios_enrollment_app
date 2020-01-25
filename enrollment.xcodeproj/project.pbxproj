@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A4419D96C355EA746222170 /* Pods_enrollment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384BA022F4E4D58AD82BD802 /* Pods_enrollment.framework */; };
+		FE0601DC23DB344700760561 /* PinModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0601DB23DB344700760561 /* PinModalViewController.swift */; };
+		FE0601E023DB4AEB00760561 /* EnvironmentModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0601DF23DB4AEB00760561 /* EnvironmentModal.storyboard */; };
+		FE0601E223DB4AF300760561 /* EnvironmentModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0601E123DB4AF300760561 /* EnvironmentModalViewController.swift */; };
 		FE13B6992373169400E53594 /* ParseNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B6982373169400E53594 /* ParseNotification.swift */; };
 		FE13B69B237316B100E53594 /* DialogNotificationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */; };
 		FE13B69D2374875100E53594 /* FileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B69C2374875100E53594 /* FileTest.swift */; };
@@ -58,6 +61,7 @@
 		FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */; };
 		FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */; };
 		FE7796C0230DDD7600FFFEAC /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */; };
+		FE99D24923DB330F00819A36 /* PinModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE99D24823DB330F00819A36 /* PinModal.storyboard */; };
 		FE9E9E23234661390091F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE2994E230C40EE006DE4D5 /* Assets.xcassets */; };
 		FE9E9E24234662E70091F139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE29947230C40ED006DE4D5 /* AppDelegate.swift */; };
 		FE9E9E2C234668010091F139 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9E9E2B234668010091F139 /* NotificationService.swift */; };
@@ -98,6 +102,9 @@
 		6451C5B864A50E73003A1BD5 /* Pods-ServiceNotificationExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceNotificationExtension.release.xcconfig"; path = "Target Support Files/Pods-ServiceNotificationExtension/Pods-ServiceNotificationExtension.release.xcconfig"; sourceTree = "<group>"; };
 		6B352043E33F7DC7F5D985B6 /* Pods-enrollment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.release.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.release.xcconfig"; sourceTree = "<group>"; };
 		8B46B1EFC298130F84FBBEDE /* Pods-enrollment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-enrollment.debug.xcconfig"; path = "Target Support Files/Pods-enrollment/Pods-enrollment.debug.xcconfig"; sourceTree = "<group>"; };
+		FE0601DB23DB344700760561 /* PinModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinModalViewController.swift; sourceTree = "<group>"; };
+		FE0601DF23DB4AEB00760561 /* EnvironmentModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnvironmentModal.storyboard; sourceTree = "<group>"; };
+		FE0601E123DB4AF300760561 /* EnvironmentModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModalViewController.swift; sourceTree = "<group>"; };
 		FE13B6982373169400E53594 /* ParseNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNotification.swift; sourceTree = "<group>"; };
 		FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogNotificationStructs.swift; sourceTree = "<group>"; };
 		FE13B69C2374875100E53594 /* FileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTest.swift; sourceTree = "<group>"; };
@@ -149,13 +156,14 @@
 		FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
 		FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenProtocols.swift; sourceTree = "<group>"; };
 		FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
+		FE99D24823DB330F00819A36 /* PinModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PinModal.storyboard; sourceTree = "<group>"; };
 		FE9E9E29234668010091F139 /* Service Notification Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Service Notification Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9E9E2B234668010091F139 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		FE9E9E2D234668010091F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBD3B77234279D1002811E2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FED02837233E6E8400ADF65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FEDBBDCE2354C0E300D9D4F5 /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
-		FEE29944230C40ED006DE4D5 /* enrollment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enrollment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEE29944230C40ED006DE4D5 /* Enrollment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enrollment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE29947230C40ED006DE4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEE2994E230C40EE006DE4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEE29953230C40EE006DE4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -200,6 +208,24 @@
 				6451C5B864A50E73003A1BD5 /* Pods-ServiceNotificationExtension.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE0601DD23DB4AC200760561 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				FE0601DB23DB344700760561 /* PinModalViewController.swift */,
+				FE99D24823DB330F00819A36 /* PinModal.storyboard */,
+			);
+			path = Pin;
+			sourceTree = "<group>";
+		};
+		FE0601DE23DB4ACC00760561 /* EnvironmentSelect */ = {
+			isa = PBXGroup;
+			children = (
+				FE0601E123DB4AF300760561 /* EnvironmentModalViewController.swift */,
+				FE0601DF23DB4AEB00760561 /* EnvironmentModal.storyboard */,
+			);
+			path = EnvironmentSelect;
 			sourceTree = "<group>";
 		};
 		FE1BF3AD230C4CCA004EEFEB /* Fonts */ = {
@@ -266,6 +292,7 @@
 		FE1BF3D6230C5D59004EEFEB /* SessionMenu */ = {
 			isa = PBXGroup;
 			children = (
+				FE99D24723DB2C8900819A36 /* Custom */,
 				FE1BF3E6230DA497004EEFEB /* SessionMenuInteractor.swift */,
 				FE1BF3DF230C5DDE004EEFEB /* SessionMenuPresenter.swift */,
 				FE1BF3DD230C5DCD004EEFEB /* SessionMenuProtocols.swift */,
@@ -347,6 +374,15 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
+		FE99D24723DB2C8900819A36 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				FE0601DE23DB4ACC00760561 /* EnvironmentSelect */,
+				FE0601DD23DB4AC200760561 /* Pin */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		FE9E9E2A234668010091F139 /* Service Notification Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,7 +408,7 @@
 		FEE29945230C40ED006DE4D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FEE29944230C40ED006DE4D5 /* enrollment.app */,
+				FEE29944230C40ED006DE4D5 /* Enrollment.app */,
 				FE9E9E29234668010091F139 /* Service Notification Extension.appex */,
 			);
 			name = Products;
@@ -427,10 +463,10 @@
 				FEE29940230C40ED006DE4D5 /* Sources */,
 				FEE29941230C40ED006DE4D5 /* Frameworks */,
 				FEE29942230C40ED006DE4D5 /* Resources */,
-				F472BDA42ADCAA4D1C49CABB /* [CP] Embed Pods Frameworks */,
 				FED02831233E610800ADF65C /* Embed App Extensions */,
-				B7AC79352A7D30D381CAF5AC /* [CP] Copy Pods Resources */,
-				FEDBBDCD234FD41F00D9D4F5 /* ShellScript */,
+				FEDBBDCD234FD41F00D9D4F5 /* Run Script */,
+				BECC4D2E4ADEE4F7CCFF74E7 /* [CP] Embed Pods Frameworks */,
+				7A871167321226BF5BDF7133 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,7 +475,7 @@
 			);
 			name = enrollment;
 			productName = enrollment;
-			productReference = FEE29944230C40ED006DE4D5 /* enrollment.app */;
+			productReference = FEE29944230C40ED006DE4D5 /* Enrollment.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -514,6 +550,8 @@
 				FE1BF3C5230C4D1A004EEFEB /* Roboto-ThinItalic.ttf in Resources */,
 				FE1BF3C3230C4D1A004EEFEB /* Roboto-RegularItalic.ttf in Resources */,
 				FE1BF3C4230C4D1A004EEFEB /* Roboto-Thin.ttf in Resources */,
+				FE99D24923DB330F00819A36 /* PinModal.storyboard in Resources */,
+				FE0601E023DB4AEB00760561 /* EnvironmentModal.storyboard in Resources */,
 				FE1BF3C0230C4D1A004EEFEB /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +581,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B7AC79352A7D30D381CAF5AC /* [CP] Copy Pods Resources */ = {
+		7A871167321226BF5BDF7133 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,7 +598,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F472BDA42ADCAA4D1C49CABB /* [CP] Embed Pods Frameworks */ = {
+		BECC4D2E4ADEE4F7CCFF74E7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,7 +615,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-enrollment/Pods-enrollment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FEDBBDCD234FD41F00D9D4F5 /* ShellScript */ = {
+		FEDBBDCD234FD41F00D9D4F5 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -587,6 +625,7 @@
 			inputPaths = (
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -628,6 +667,7 @@
 				FE1BF3D5230C56E3004EEFEB /* Extensions.swift in Sources */,
 				FE1BF3E5230C9AB6004EEFEB /* EnrollmentTypographyScheme.swift in Sources */,
 				FE7796BE230DDD6500FFFEAC /* MainScreenProtocols.swift in Sources */,
+				FE0601E223DB4AF300760561 /* EnvironmentModalViewController.swift in Sources */,
 				FE1BF3CA230C51DA004EEFEB /* SplashRouter.swift in Sources */,
 				FE13B69D2374875100E53594 /* FileTest.swift in Sources */,
 				FE76404F231DCEC60085299D /* AuditDataManager.swift in Sources */,
@@ -645,6 +685,7 @@
 				FE1BF3F9230DAD73004EEFEB /* OAuth2RetryHandler.swift in Sources */,
 				FE1BF3F7230DAD2B004EEFEB /* API.swift in Sources */,
 				FE1BF403230DCBFC004EEFEB /* Credential.swift in Sources */,
+				FE0601DC23DB344700760561 /* PinModalViewController.swift in Sources */,
 				FE1BF3F2230DAC72004EEFEB /* Parameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,7 +705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -673,7 +714,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -686,7 +727,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -695,7 +736,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -828,7 +869,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -837,9 +878,9 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Enrollment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -854,7 +895,7 @@
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -863,9 +904,9 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Enrollment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

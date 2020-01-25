@@ -16,11 +16,15 @@
         <!--Session Menu View Controller-->
         <scene sceneID="LA7-zW-zxj">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="iqm-Wc-IwP" customClass="SessionMenuViewController" customModule="enrollment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="iqm-Wc-IwP" customClass="SessionMenuViewController" customModule="Enrollment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RpP-e3-LDv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R1-zU-aX3" userLabel="{changeEnvironment}">
+                                <rect key="frame" x="305" y="724" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoEnrollment" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-12-mSZ" userLabel="{headerEnrollmentLogoImage}">
                                 <rect key="frame" x="115.66666666666669" y="148" width="144" height="96"/>
                                 <constraints>
@@ -101,6 +105,7 @@
                             <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="i3U-2B-thZ" secondAttribute="trailing" id="CgN-SS-YnC"/>
                             <constraint firstItem="vMB-6X-X6v" firstAttribute="leading" secondItem="RpP-e3-LDv" secondAttribute="leading" id="F7Q-iA-cH5"/>
                             <constraint firstItem="vMB-6X-X6v" firstAttribute="trailing" secondItem="jex-U0-h2k" secondAttribute="trailing" id="IHD-rb-ySu"/>
+                            <constraint firstItem="jex-U0-h2k" firstAttribute="bottom" secondItem="8R1-zU-aX3" secondAttribute="bottom" constant="24" id="MMj-uH-9Kj"/>
                             <constraint firstItem="vMB-6X-X6v" firstAttribute="top" secondItem="RpP-e3-LDv" secondAttribute="top" id="NDv-a8-JlX"/>
                             <constraint firstItem="i3U-2B-thZ" firstAttribute="centerY" secondItem="RpP-e3-LDv" secondAttribute="centerY" id="NvS-Lj-oIk"/>
                             <constraint firstItem="V7F-Sw-gz7" firstAttribute="leading" secondItem="jex-U0-h2k" secondAttribute="leading" constant="16" id="Qpn-ug-koP"/>
@@ -109,15 +114,22 @@
                             <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="V7F-Sw-gz7" secondAttribute="trailing" constant="16" id="bYY-cm-jO0"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="top" secondItem="jex-U0-h2k" secondAttribute="top" constant="104" id="cy1-l9-tXS"/>
                             <constraint firstAttribute="bottom" secondItem="vMB-6X-X6v" secondAttribute="bottom" id="gKl-cV-dLD"/>
+                            <constraint firstItem="jex-U0-h2k" firstAttribute="trailing" secondItem="8R1-zU-aX3" secondAttribute="trailing" constant="24" id="hCe-wP-Spq"/>
                             <constraint firstAttribute="bottom" secondItem="i3U-2B-thZ" secondAttribute="bottom" constant="240" id="k1S-g0-Kl7"/>
                             <constraint firstItem="jex-U0-h2k" firstAttribute="bottom" secondItem="HZH-eN-XVI" secondAttribute="bottom" constant="24" id="qJ2-jD-y8c"/>
                             <constraint firstItem="VZ5-12-mSZ" firstAttribute="centerX" secondItem="RpP-e3-LDv" secondAttribute="centerX" id="srV-g7-W1m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jex-U0-h2k"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8R1-zU-aX3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="zqO-h4-DGA" id="VEG-nY-qSK"/>
                         <outlet property="activityIndicatorBackground" destination="i3U-2B-thZ" id="7DL-jV-jdv"/>
+                        <outlet property="changeEnvironmentButton" destination="8R1-zU-aX3" id="Y3F-bE-pRl"/>
                         <outlet property="loadingBackground" destination="vMB-6X-X6v" id="joR-iy-5Nq"/>
                         <outlet property="loadingView" destination="i3U-2B-thZ" id="wqb-cA-5Ak"/>
                         <outlet property="loginButton" destination="foQ-iD-JlR" id="7n5-i6-jbX"/>

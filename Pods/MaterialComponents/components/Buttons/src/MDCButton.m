@@ -146,6 +146,8 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (void)commonMDCButtonInit {
+  // TODO(b/142861610): Default to `NO`, then remove once all internal usage is migrated.
+  _enableTitleFontForState = YES;
   _disabledAlpha = MDCButtonDisabledAlpha;
   _enabledAlpha = self.alpha;
   _uppercaseTitle = YES;
@@ -255,12 +257,6 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   [self updateBorderColor];
   if (!self.layer.shapeGenerator) {
     self.layer.shadowPath = [self boundingPath].CGPath;
-  }
-  if ([self respondsToSelector:@selector(cornerRadius)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.layer.cornerRadius = [self cornerRadius];
-#pragma clang diagnostic pop
   }
 
   // Center unbounded ink view frame taking into account possible insets using contentRectForBounds.
@@ -851,15 +847,7 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (UIBezierPath *)boundingPath {
-  CGFloat cornerRadius = self.layer.cornerRadius;
-
-  if ([self respondsToSelector:@selector(cornerRadius)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    cornerRadius = [self cornerRadius];
-#pragma clang diagnostic pop
-  }
-  return [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:cornerRadius];
+  return [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius];
 }
 
 - (UIEdgeInsets)defaultContentEdgeInsets {
@@ -926,6 +914,10 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (void)updateTitleFont {
+  if (!self.enableTitleFontForState) {
+    return;
+  }
+
   self.titleLabel.font = [self titleFontForState:self.state];
 
   [self setNeedsLayout];

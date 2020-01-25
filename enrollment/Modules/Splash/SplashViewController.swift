@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TrustNotification
 
 class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol?
@@ -14,15 +15,13 @@ class SplashViewController: UIViewController {
 
 // MARK: - Lifecycle
 extension SplashViewController {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        presenter?.onViewDidAppear()
-//    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         presenter?.onViewDidAppear()
     }
 }
 
 // MARK: - View
 extension SplashViewController: SplashViewProtocol {}
+

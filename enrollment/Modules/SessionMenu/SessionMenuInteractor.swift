@@ -5,6 +5,8 @@
 //  Created by Kevin Torres on 8/21/19.
 //  Copyright © 2019 Kevin Torres. All rights reserved.
 //
+import TrustDeviceInfo
+import Audit
 
 // MARK: - Interactor
 class SessionMenuInteractor: SessionMenuInteractorProtocol {
@@ -13,6 +15,17 @@ class SessionMenuInteractor: SessionMenuInteractorProtocol {
     
     var oauth2Manager: OAuth2ManagerProtocol?
     var userDataManager: UserDataManagerProtocol?
+    
+    func changeEnvironment(environment: String) {
+        if environment == "test" {
+            Identify.shared.set(currentEnvironment: "test")
+            TrustAudit.shared.set(currentEnvironment: "test")
+        }
+        if environment == "prod" {
+            Identify.shared.set(currentEnvironment: "prod")
+            TrustAudit.shared.set(currentEnvironment: "prod")
+        }
+    }
     
     func authorizeUser(from context: AnyObject) {
         oauth2Manager?.authorizeUser(from: context)
