@@ -14,10 +14,7 @@
 
 #import "MDCCardScheme.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation MDCCardScheme
-#pragma clang diagnostic pop
 
 - (instancetype)init {
   self = [super init];

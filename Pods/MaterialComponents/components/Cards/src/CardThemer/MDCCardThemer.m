@@ -22,15 +22,12 @@ static const MDCShadowElevation kHighlightedElevation = 4;
 static const MDCShadowElevation kSelectedElevation = 4;
 static const CGFloat kBorderWidth = 1;
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation MDCCardThemer
 
 + (void)applyScheme:(nonnull id<MDCCardScheming>)scheme toCard:(nonnull MDCCard *)card {
   [card setShadowElevation:kNormalElevation forState:UIControlStateNormal];
   [card setShadowElevation:kHighlightedElevation forState:UIControlStateHighlighted];
   card.interactable = YES;
-
   [MDCCardsColorThemer applySemanticColorScheme:scheme.colorScheme toCard:card];
   [MDCCardsShapeThemer applyShapeScheme:scheme.shapeScheme toCard:card];
 }
@@ -41,7 +38,6 @@ static const CGFloat kBorderWidth = 1;
   [cardCell setShadowElevation:kHighlightedElevation forState:MDCCardCellStateHighlighted];
   [cardCell setShadowElevation:kSelectedElevation forState:MDCCardCellStateSelected];
   cardCell.interactable = YES;
-
   [MDCCardsColorThemer applySemanticColorScheme:scheme.colorScheme toCardCell:cardCell];
   [MDCCardsShapeThemer applyShapeScheme:scheme.shapeScheme toCardCell:cardCell];
 }
@@ -72,5 +68,3 @@ static const CGFloat kBorderWidth = 1;
 }
 
 @end
-
-#pragma clang diagnostic pop

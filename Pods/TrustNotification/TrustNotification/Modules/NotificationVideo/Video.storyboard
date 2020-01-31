@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4w3-8n-30f">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -18,23 +18,23 @@
             <objects>
                 <viewController storyboardIdentifier="Video" id="4w3-8n-30f" customClass="VideoViewController" customModule="TrustNotification" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cX-f8-da1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au1-Gq-wHm" userLabel="DialogView">
-                                <rect key="frame" x="5" y="17" width="310" height="534"/>
+                                <rect key="frame" x="10" y="96.5" width="394" height="703"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z8v-LX-PS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="310" height="534"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="703"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fIx-qD-j1T">
-                                                <rect key="frame" x="0.0" y="0.0" width="310" height="484"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="653"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5D-yX-t9v" userLabel="VideoView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="310" height="484"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="653"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="J5D-yX-t9v" secondAttribute="height" multiplier="320:500" id="wKd-C5-OjB"/>
+                                                            <constraint firstAttribute="width" secondItem="J5D-yX-t9v" secondAttribute="height" multiplier="309:512" id="wKd-C5-OjB"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -45,35 +45,26 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cae-81-ktu" userLabel="BottomStackView">
-                                                <rect key="frame" x="0.0" y="484" width="310" height="50"/>
+                                                <rect key="frame" x="0.0" y="653" width="394" height="50"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-r8-1WD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ras-f2-JCS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="104" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEK-yB-gkq" customClass="MDCButton">
-                                                                <rect key="frame" x="114" y="0.0" width="93" height="50"/>
-                                                                <state key="normal" title="Button">
-                                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                            </button>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="261" id="03t-G9-3aj"/>
-                                                        </constraints>
-                                                    </stackView>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ras-f2-JCS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="201" height="50"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEK-yB-gkq" customClass="MDCButton">
+                                                        <rect key="frame" x="211" y="0.0" width="127" height="50"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gho-i6-qYR" customClass="MDCButton">
-                                                        <rect key="frame" x="217" y="0.0" width="93" height="50"/>
+                                                        <rect key="frame" x="348" y="0.0" width="46" height="50"/>
                                                         <state key="normal" title="Button">
                                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="pEK-yB-gkq" firstAttribute="width" secondItem="Gho-i6-qYR" secondAttribute="width" id="TEX-Lw-GKn"/>
                                                     <constraint firstAttribute="height" constant="50" id="rfF-sF-KTM"/>
                                                 </constraints>
                                             </stackView>
@@ -91,15 +82,14 @@
                                     <constraint firstItem="Z8v-LX-PS8" firstAttribute="centerX" secondItem="au1-Gq-wHm" secondAttribute="centerX" id="cxg-er-LKf"/>
                                     <constraint firstItem="Z8v-LX-PS8" firstAttribute="width" secondItem="au1-Gq-wHm" secondAttribute="width" id="f5M-33-Ax4"/>
                                     <constraint firstItem="Z8v-LX-PS8" firstAttribute="centerY" secondItem="au1-Gq-wHm" secondAttribute="centerY" id="mWa-HN-r8Y"/>
-                                    <constraint firstItem="Gho-i6-qYR" firstAttribute="width" secondItem="au1-Gq-wHm" secondAttribute="width" multiplier="0.3" id="oyS-fO-GWU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLa-KU-ydJ">
-                                <rect key="frame" x="21" y="38" width="36" height="36"/>
+                                <rect key="frame" x="26" y="117.5" width="36" height="36"/>
                                 <state key="normal" image="audio_enabled_icon"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvc-z5-Lv9">
-                                <rect key="frame" x="49" y="38" width="250" height="36"/>
+                                <rect key="frame" x="138" y="117.5" width="250" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tph-VC-2mQ">
                                         <rect key="frame" x="16" y="8" width="200" height="20"/>
@@ -118,7 +108,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-NL-Jn7">
-                                <rect key="frame" x="263" y="38" width="36" height="36"/>
+                                <rect key="frame" x="352" y="117.5" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="XGh-hW-ZFz"/>
                                 </constraints>
@@ -126,7 +116,7 @@
                                 <state key="normal" image="close_icon"/>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-0q-MB3">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,7 +130,7 @@
                             <constraint firstItem="FLa-KU-ydJ" firstAttribute="leading" secondItem="au1-Gq-wHm" secondAttribute="leading" constant="16" id="pJl-ly-88t"/>
                             <constraint firstItem="z5Y-NL-Jn7" firstAttribute="height" secondItem="Bvc-z5-Lv9" secondAttribute="height" id="rma-Hw-t2K"/>
                             <constraint firstItem="FLa-KU-ydJ" firstAttribute="top" secondItem="au1-Gq-wHm" secondAttribute="top" constant="21" id="uYJ-hz-UTl"/>
-                            <constraint firstItem="au1-Gq-wHm" firstAttribute="width" secondItem="rvH-Rr-bpi" secondAttribute="width" constant="-10" id="v7L-36-pye"/>
+                            <constraint firstItem="au1-Gq-wHm" firstAttribute="width" secondItem="rvH-Rr-bpi" secondAttribute="width" constant="-20" id="v7L-36-pye"/>
                             <constraint firstItem="au1-Gq-wHm" firstAttribute="centerX" secondItem="7cX-f8-da1" secondAttribute="centerX" id="vna-wf-WXb"/>
                             <constraint firstItem="z5Y-NL-Jn7" firstAttribute="top" secondItem="Bvc-z5-Lv9" secondAttribute="top" id="wgW-mJ-j8Y"/>
                         </constraints>
@@ -151,6 +141,7 @@
                         <outlet property="audioButton" destination="FLa-KU-ydJ" id="Bsh-LT-NXz"/>
                         <outlet property="buttonL" destination="pEK-yB-gkq" id="kUf-xD-Uxy"/>
                         <outlet property="buttonR" destination="Gho-i6-qYR" id="wNy-G6-G67"/>
+                        <outlet property="buttonsMargin" destination="Ras-f2-JCS" id="8jN-vk-HDp"/>
                         <outlet property="buttonsStack" destination="cae-81-ktu" id="RjI-Xj-cg8"/>
                         <outlet property="closeButton" destination="z5Y-NL-Jn7" id="vju-Lo-PM2"/>
                         <outlet property="closeView" destination="Bvc-z5-Lv9" id="mgV-P0-fWM"/>

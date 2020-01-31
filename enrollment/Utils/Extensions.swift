@@ -238,28 +238,6 @@ extension UIImage {
     }
 }
 
-// MARK: - Extension UIImageView
-extension UIImageView {
-    func changeTintColor(to color: UIColor) {
-        DispatchQueue.main.async {
-            [weak self] in
-            
-            guard let self = self else {
-                return
-            }
-            
-            UIView.animate(withDuration: self.defaultAnimationDuration) {
-                self.tintColor = color
-            }
-        }
-    }
-    
-    func setAsRoundedImage() {
-        self.layer.cornerRadius = self.frame.size.width / 2
-        self.clipsToBounds = true
-    }
-}
-
 // MARK: - Extension UILabel
 extension UILabel {
     func clearText() {
@@ -1353,6 +1331,9 @@ extension UIFont {
 
 // MARK: - Extension Color (values from zeplin)
 extension UIColor{
+    @nonobjc class var enrollmentColor: UIColor {
+        return UIColor(red:0.67, green:0.85, blue:0.28, alpha:1.0)
+    }
     @nonobjc class var blackBackground: UIColor {
         return UIColor(red:0.05, green:0.05, blue:0.05, alpha:0.5)
     }
@@ -1443,6 +1424,8 @@ extension UIColor{
 enum CustomButtonType {
     case btnPrimary
     case btnSecondary
+    case btnEnrollmentColor
+    case btnEnrollmentBlackColor
 }
 
 enum MdcType {
@@ -1467,6 +1450,12 @@ extension MDCButton {
         case .btnSecondary:
             colorSchema.primaryColor = .white
             colorSchema.onPrimaryColor = .red
+        case .btnEnrollmentColor:
+            colorSchema.primaryColor = .enrollmentColor
+            colorSchema.onPrimaryColor = .white
+        case .btnEnrollmentBlackColor:
+            colorSchema.primaryColor = .black
+            colorSchema.onPrimaryColor = .white
         }
         
         buttonScheme.colorScheme = colorSchema

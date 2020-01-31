@@ -34,7 +34,9 @@ public class PushNotifications: NSObject {
     
     public func firebaseConfig(application: UIApplication) {
         // Use Firebase library to configure APIs
-        FirebaseApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
         // Set the messaging delegate
         Messaging.messaging().delegate = self
     }

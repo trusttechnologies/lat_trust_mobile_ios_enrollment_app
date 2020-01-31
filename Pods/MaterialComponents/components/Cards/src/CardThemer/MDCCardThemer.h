@@ -25,7 +25,10 @@
  details on replacement APIs.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("Please use MaterialCards+Theming instead.") @interface MDCCardThemer : NSObject
+@interface MDCCardThemer : NSObject
+@end
+
+@interface MDCCardThemer (ToBeDeprecated)
 
 /**
  Applies the material card style using the card scheme data.
@@ -37,9 +40,7 @@ __deprecated_msg("Please use MaterialCards+Theming instead.") @interface MDCCard
  `MDCCard`'s `-applyThemeWithScheme:`
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-+ (void)applyScheme:(nonnull id<MDCCardScheming>)scheme
-             toCard:(nonnull MDCCard *)card
-    __deprecated_msg("Please use the Theming extension instead.");
++ (void)applyScheme:(nonnull id<MDCCardScheming>)scheme toCard:(nonnull MDCCard *)card;
 
 /**
  Applies the material card style using the card scheme data.
@@ -52,8 +53,7 @@ __deprecated_msg("Please use MaterialCards+Theming instead.") @interface MDCCard
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyScheme:(nonnull id<MDCCardScheming>)scheme
-         toCardCell:(nonnull MDCCardCollectionCell *)cardCell
-    __deprecated_msg("Please use the Theming extension instead.");
+         toCardCell:(nonnull MDCCardCollectionCell *)cardCell;
 
 /**
  Applies the material outlined card style using the card scheme data.
@@ -66,8 +66,7 @@ __deprecated_msg("Please use MaterialCards+Theming instead.") @interface MDCCard
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyOutlinedVariantWithScheme:(nonnull id<MDCCardScheming>)scheme
-                                toCard:(nonnull MDCCard *)card
-    __deprecated_msg("Please use the Theming extension instead.");
+                                toCard:(nonnull MDCCard *)card;
 
 /**
  Applies the material outlined card style using the card scheme data.
@@ -80,7 +79,6 @@ __deprecated_msg("Please use MaterialCards+Theming instead.") @interface MDCCard
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyOutlinedVariantWithScheme:(nonnull id<MDCCardScheming>)scheme
-                            toCardCell:(nonnull MDCCardCollectionCell *)cardCell
-    __deprecated_msg("Please use the Theming extension instead.");
+                            toCardCell:(nonnull MDCCardCollectionCell *)cardCell;
 
 @end

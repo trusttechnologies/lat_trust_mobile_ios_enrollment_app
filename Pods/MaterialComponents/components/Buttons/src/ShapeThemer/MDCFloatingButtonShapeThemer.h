@@ -25,9 +25,10 @@
  `MDCFloatingButton`'s Theming extensions.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("Please use [MDCFloatingButton applySecondaryThemeWithScheme:] instead. (Note: "
-                 "Shape theming is no longer available as an independent API.)")
-    @interface MDCFloatingButtonShapeThemer : NSObject
+@interface MDCFloatingButtonShapeThemer : NSObject
+@end
+
+@interface MDCFloatingButtonShapeThemer (ToBeDeprecated)
 
 /**
  Applies a rounded rectangular shape to an MDCFloatingButton instance. Each corner has a radius of

@@ -464,4 +464,10 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
   }
 }
 
+#pragma mark - Deprecations
+
++ (instancetype)buttonWithShape:(MDCFloatingButtonShape)shape {
+  return [[self class] floatingButtonWithShape:shape];
+}
+
 @end

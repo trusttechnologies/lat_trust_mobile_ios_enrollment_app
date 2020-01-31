@@ -19,22 +19,27 @@
 
 /**
  Used to apply a color scheme to theme MDCPageControl.
+
+ @warning This API will eventually be deprecated. See the individual method documentation for
+ details on replacement APIs.
+ Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("No replacement exists. Please comment on"
-                 " https://github.com/material-components/material-components-ios/issues/7172"
-                 " in order to indicate interest in a replacement API.")
-    @interface MDCPageControlColorThemer : NSObject
+@interface MDCPageControlColorThemer : NSObject
+@end
+
+@interface MDCPageControlColorThemer (ToBeDeprecated)
 
 /**
  Applies a color scheme to theme a MDCPageControl.
 
  @param colorScheme The color scheme to apply to the component instance.
  @param pageControl A component instance to which the color scheme should be applied.
+
+ @warning This API will eventually be deprecated. There is no replacement yet.
+ Track progress here: https://github.com/material-components/material-components-ios/issues/7172
+ Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyColorScheme:(nonnull id<MDCColorScheme>)colorScheme
-           toPageControl:(nonnull MDCPageControl *)pageControl
-    __deprecated_msg("No replacement exists. Please comment on"
-                     " https://github.com/material-components/material-components-ios/issues/7172"
-                     " in order to indicate interest in a replacement API.");
+           toPageControl:(nonnull MDCPageControl *)pageControl;
 
 @end

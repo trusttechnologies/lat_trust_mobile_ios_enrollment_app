@@ -37,7 +37,6 @@ protocol SplashInteractorOutputProtocol: AnyObject {
     func onAuthorizeFailure()
     
     func returnViewDidAppear()
-    func callAlert(alertController: UIAlertController)
     
     func onGetAllPermissionsAccepted()
     
@@ -61,5 +60,4 @@ protocol SplashRouterProtocol: AnyObject {
     static func createModule() -> SplashViewController
     func goToMainScreen()
     func goToSessionMenuScreen()
-    func presentPermissionsAlert(alertController: UIAlertController)
 }

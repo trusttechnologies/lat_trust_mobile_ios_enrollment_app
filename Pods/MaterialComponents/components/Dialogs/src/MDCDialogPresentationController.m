@@ -244,14 +244,6 @@ static UIEdgeInsets MDCDialogEdgeInsets = {24, 20, 24, 20};
   }
 }
 
-- (CGAffineTransform)dialogTransform {
-  return self.trackingView.transform;
-}
-
-- (void)setDialogTransform:(CGAffineTransform)shadowTransform {
-  self.trackingView.transform = shadowTransform;
-}
-
 - (void)dismissalTransitionDidEnd:(BOOL)completed {
   if (completed) {
     [self.dimmingView removeFromSuperview];

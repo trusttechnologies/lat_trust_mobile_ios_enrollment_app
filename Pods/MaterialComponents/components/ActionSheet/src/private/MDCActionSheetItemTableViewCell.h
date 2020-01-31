@@ -59,11 +59,4 @@
  */
 @property(nonatomic, assign) BOOL addLeadingPadding;
 
-/**
- The inset or outset margins for the rectangle surrounding all of the button’s content.
-
- Defaults to @c UIEdgeInsetsZero.
- */
-@property(nonatomic, assign) UIEdgeInsets contentEdgeInsets;
-
 @end

@@ -24,8 +24,10 @@
  details on replacement APIs.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("Please use the Theming extension instead.") @interface MDCCardsShapeThemer
-    : NSObject
+@interface MDCCardsShapeThemer : NSObject
+@end
+
+@interface MDCCardsShapeThemer (ToBeDeprecated)
 
 /**
  Applies a shape scheme's properties to an MDCCard.
@@ -37,9 +39,7 @@ __deprecated_msg("Please use the Theming extension instead.") @interface MDCCard
  extensions.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-+ (void)applyShapeScheme:(nonnull id<MDCShapeScheming>)shapeScheme
-                  toCard:(nonnull MDCCard *)card
-    __deprecated_msg("Please use the Theming extension instead.");
++ (void)applyShapeScheme:(nonnull id<MDCShapeScheming>)shapeScheme toCard:(nonnull MDCCard *)card;
 
 /**
  Applies a shape scheme's properties to an MDCCardCollectionCell.
@@ -52,7 +52,6 @@ __deprecated_msg("Please use the Theming extension instead.") @interface MDCCard
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyShapeScheme:(nonnull id<MDCShapeScheming>)shapeScheme
-              toCardCell:(nonnull MDCCardCollectionCell *)cardCell
-    __deprecated_msg("Please use the Theming extension instead.");
+              toCardCell:(nonnull MDCCardCollectionCell *)cardCell;
 
 @end

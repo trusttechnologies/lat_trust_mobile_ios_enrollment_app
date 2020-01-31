@@ -182,22 +182,16 @@ __attribute__((objc_subclassing_restricted)) @interface MDCActionSheetController
 @property(nonatomic, strong, nullable) UIColor *actionTintColor;
 
 /**
- The ink color for the action items within an action sheet.
- */
-@property(nonatomic, strong, nullable)
-    UIColor *inkColor __deprecated_msg("Use rippleColor instead.");
-
-/**
  By setting this property to @c YES, the Ripple component will be used instead of Ink
  to display visual feedback to the user.
 
- @note This property is enabled by default. It will be deprecated and then deleted as part of our
- migration to Ripple. Learn more at
+ @note This property will eventually be enabled by default, deprecated, and then deleted as part
+ of our migration to Ripple. Learn more at
  https://github.com/material-components/material-components-ios/tree/develop/components/Ink#migration-guide-ink-to-ripple
 
- Defaults to YES.
+ Defaults to NO.
  */
-@property(nonatomic, assign) BOOL enableRippleBehavior __deprecated;
+@property(nonatomic, assign) BOOL enableRippleBehavior;
 
 /**
  The ripple color for the action items within an action sheet.
@@ -208,33 +202,6 @@ __attribute__((objc_subclassing_restricted)) @interface MDCActionSheetController
  The image rendering mode for all actions within an action sheet.
  */
 @property(nonatomic) UIImageRenderingMode imageRenderingMode;
-
-/**
- Determines if a divider should be shown between the header and actions. To customize the divider
- color see @c headerDividerColor.
-
- Defaults to NO.
- */
-@property(nonatomic, assign) BOOL showsHeaderDivider;
-
-/**
- The color of the divider between the header and actions.
-
- Defaults to a semi transparent black.
- */
-@property(nonatomic, copy, nonnull) UIColor *headerDividerColor;
-
-/**
- The elevation of the action sheet. Defaults to @c MDCShadowElevationModalBottomSheet.
- */
-@property(nonatomic, assign) MDCShadowElevation elevation;
-
-/**
- The inset or outset margins for the rectangle surrounding all of each action's content.
-
- Defaults to @c UIEdgeInsetsZero.
- */
-@property(nonatomic, assign) UIEdgeInsets contentEdgeInsets;
 
 /**
  Determines the alignment behavior of all title leading edges.
@@ -320,5 +287,17 @@ typedef void (^MDCActionSheetHandler)(MDCActionSheetAction *_Nonnull action);
  @note If no @c tintColor is provided then the @c actionTintColor from the controller will be used.
  */
 @property(nonatomic, copy, nullable) UIColor *tintColor;
+
+@end
+
+@interface MDCActionSheetController (ToBeDeprecated)
+
+/**
+ The ink color for the action items within an action sheet.
+ @warning This method will eventually be deprecated. Opt-in to Ripple by setting
+ enableRippleBehavior to YES, and then use rippleColor instead. Learn more at
+ https://github.com/material-components/material-components-ios/tree/develop/components/Ink#migration-guide-ink-to-ripple
+ */
+@property(nonatomic, strong, nullable) UIColor *inkColor;
 
 @end

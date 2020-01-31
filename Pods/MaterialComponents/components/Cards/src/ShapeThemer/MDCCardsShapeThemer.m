@@ -14,10 +14,7 @@
 
 #import "MDCCardsShapeThemer.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation MDCCardsShapeThemer
-#pragma clang diagnostic pop
 
 + (void)applyShapeScheme:(id<MDCShapeScheming>)shapeScheme toCard:(MDCCard *)card {
   card.shapeGenerator = [self cardShapeGeneratorFromScheme:shapeScheme];

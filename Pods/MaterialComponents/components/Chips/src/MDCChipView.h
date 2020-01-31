@@ -132,6 +132,12 @@
 @property(nonatomic) BOOL rippleAllowsSelection;
 
 /*
+ The color of the ink ripple.
+ */
+@property(nonatomic, strong, null_resettable)
+    UIColor *inkColor UI_APPEARANCE_SELECTOR __deprecated_msg("Use setInkColor:forState:");
+
+/*
  The shape generator used to define the chip's shape.
  */
 @property(nullable, nonatomic, strong) id<MDCShapeGenerating> shapeGenerator UI_APPEARANCE_SELECTOR;
@@ -149,6 +155,17 @@
  */
 @property(nonatomic, readwrite, setter=mdc_setAdjustsFontForContentSizeCategory:)
     BOOL mdc_adjustsFontForContentSizeCategory UI_APPEARANCE_SELECTOR;
+
+/**
+ Enable legacy font scaling curves for Dynamic Type.
+
+ Legacy font scaling uses the older [UIFont mdc_fontSizedForMaterialTextStyle:scaledForDynamicType:
+ category instead of the MDCFontScaler API.
+
+ Default value is YES.
+ */
+@property(nonatomic, readwrite, setter=mdc_setLegacyFontScaling:)
+    BOOL mdc_legacyFontScaling __deprecated;
 
 /**
  Affects the fallback behavior for when a scaled font is not provided.

@@ -138,7 +138,6 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   _minimumSize = kMDCChipMinimumSizeDefault;
   self.rippleAllowsSelection = YES;
   self.isAccessibilityElement = YES;
-  self.accessibilityTraits = UIAccessibilityTraitButton;
   _mdc_overrideBaseElevation = -1;
   _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
 }
@@ -268,6 +267,14 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   return self.layer.shapeGenerator;
 }
 
+- (void)setInkColor:(UIColor *)inkColor {
+  [self setInkColor:inkColor forState:UIControlStateNormal];
+}
+
+- (UIColor *)inkColor {
+  return [self inkColorForState:UIControlStateNormal];
+}
+
 - (void)setEnableRippleBehavior:(BOOL)enableRippleBehavior {
   _enableRippleBehavior = enableRippleBehavior;
 
@@ -310,6 +317,14 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   }
 
   [self updateTitleFont];
+}
+
+- (void)mdc_setLegacyFontScaling:(BOOL)legacyScaling {
+  _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = legacyScaling;
+}
+
+- (BOOL)mdc_legacyFontScaling {
+  return _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
 }
 
 - (void)contentSizeCategoryDidChange:(__unused NSNotification *)notification {
@@ -527,7 +542,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
   // If we are automatically adjusting for Dynamic Type resize the font based on the text style
   if (self.mdc_adjustsFontForContentSizeCategory) {
-    if (titleFont.mdc_scalingCurve) {
+    if (titleFont.mdc_scalingCurve && !self.mdc_legacyFontScaling) {
       titleFont = [titleFont mdc_scaledFontForTraitEnvironment:self];
     } else if (self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable) {
       titleFont =
@@ -727,8 +742,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   if (self.showAccessoryView) {
     size = [self sizeForAccessoryViewWithMaxSize:self.contentRect.size];
   }
-  CGFloat xOffset =
-      CGRectGetMaxX(self.contentRect) - size.width - UIEdgeInsetsHorizontal(_accessoryPadding);
+  CGFloat xOffset = CGRectGetMaxX(self.contentRect) - size.width - _accessoryPadding.right;
   return MDCChipBuildFrame(_accessoryPadding, size, xOffset, CGRectGetHeight(self.frame),
                            self.pixelScale);
 }

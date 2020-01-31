@@ -26,10 +26,10 @@
  details on replacement APIs.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("No replacement exists. Please comment on"
-                 " https://github.com/material-components/material-components-ios/issues/7172"
-                 " in order to indicate interest in a replacement API.")
-    @interface MDCFeatureHighlightFontThemer : NSObject
+@interface MDCFeatureHighlightFontThemer : NSObject
+@end
+
+@interface MDCFeatureHighlightFontThemer (ToBeDeprecated)
 
 /**
  Applies a font scheme to theme to a MDCFeatureHighlightView.
@@ -42,9 +42,6 @@ __deprecated_msg("No replacement exists. Please comment on"
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyFontScheme:(nonnull id<MDCFontScheme>)fontScheme
-    toFeatureHighlightView:(nonnull MDCFeatureHighlightView *)featureHighlightView
-    __deprecated_msg("No replacement exists. Please comment on"
-                     " https://github.com/material-components/material-components-ios/issues/7172"
-                     " in order to indicate interest in a replacement API.");
+    toFeatureHighlightView:(nonnull MDCFeatureHighlightView *)featureHighlightView;
 
 @end

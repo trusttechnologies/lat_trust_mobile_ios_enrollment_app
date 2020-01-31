@@ -108,7 +108,7 @@ extension AppDelegate {
 
         // MARK: - Notification
             
-        notifications.registerForRemoteNotifications()
+//        notifications.registerForRemoteNotifications()
         
         notifications.firebaseConfig(application: UIApplication.shared)
         

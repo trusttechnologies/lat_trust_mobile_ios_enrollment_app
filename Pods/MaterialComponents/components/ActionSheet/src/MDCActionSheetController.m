@@ -23,7 +23,6 @@
 static NSString *const kReuseIdentifier = @"BaseCell";
 static const CGFloat kActionImageAlpha = (CGFloat)0.6;
 static const CGFloat kActionTextAlpha = (CGFloat)0.87;
-static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 @interface MDCActionSheetAction ()
 
@@ -69,9 +68,6 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
                                         UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) MDCActionSheetHeaderView *header;
-
-/** The view that divides the header from the table. */
-@property(nonatomic, strong, nonnull) UIView *headerDividerView;
 
 /**
  Determines if a @c MDCActionSheetItemTableViewCell should add leading padding or not.
@@ -135,12 +131,7 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
     _actionTextColor = [UIColor.blackColor colorWithAlphaComponent:kActionTextAlpha];
     _actionTintColor = [UIColor.blackColor colorWithAlphaComponent:kActionImageAlpha];
     _imageRenderingMode = UIImageRenderingModeAlwaysTemplate;
-    _headerDividerView = [[UIView alloc] init];
-    _headerDividerView.backgroundColor =
-        [UIColor.blackColor colorWithAlphaComponent:kDividerDefaultAlpha];
     _mdc_overrideBaseElevation = -1;
-    _elevation = MDCShadowElevationModalBottomSheet;
-    _enableRippleBehavior = YES;
   }
 
   return self;
@@ -152,9 +143,6 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (void)addAction:(MDCActionSheetAction *)action {
   [_actions addObject:action];
-  if (self.alwaysAlignTitleLeadingEdges && action.image) {
-    self.addLeadingPaddingToCell = YES;
-  }
   [self updateTable];
 }
 
@@ -175,11 +163,10 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   }
   [self.view addSubview:self.tableView];
   [self.view addSubview:self.header];
-  [self.view addSubview:self.headerDividerView];
 }
 
-- (void)viewDidLayoutSubviews {
-  [super viewDidLayoutSubviews];
+- (void)viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
 
   if (self.tableView.contentSize.height > (CGRectGetHeight(self.view.bounds) / 2)) {
     self.mdc_bottomSheetPresentationController.preferredSheetHeight = [self openingSheetHeight];
@@ -188,10 +175,7 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   }
   CGSize size = [self.header sizeThatFits:CGRectStandardize(self.view.bounds).size];
   self.header.frame = CGRectMake(0, 0, self.view.bounds.size.width, size.height);
-  CGFloat dividerHeight = self.showsHeaderDivider ? 1 : 0;
-  self.headerDividerView.frame =
-      CGRectMake(0, size.height, CGRectGetWidth(self.view.bounds), dividerHeight);
-  UIEdgeInsets insets = UIEdgeInsetsMake(size.height + dividerHeight, 0, 0, 0);
+  UIEdgeInsets insets = UIEdgeInsetsMake(self.header.frame.size.height, 0, 0, 0);
   if (@available(iOS 11.0, *)) {
     insets.bottom = self.tableView.adjustedContentInset.bottom;
   }
@@ -325,26 +309,14 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   cell.backgroundColor = self.backgroundColor;
   cell.actionFont = self.actionFont;
   cell.accessibilityIdentifier = action.accessibilityIdentifier;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
   cell.inkColor = self.inkColor;
-  cell.enableRippleBehavior = self.enableRippleBehavior;
-#pragma clang diagnostic pop
   cell.rippleColor = self.rippleColor;
+  cell.enableRippleBehavior = self.enableRippleBehavior;
   cell.tintColor = action.tintColor ?: self.actionTintColor;
   cell.imageRenderingMode = self.imageRenderingMode;
   cell.addLeadingPadding = self.addLeadingPaddingToCell;
   cell.actionTextColor = action.titleColor ?: self.actionTextColor;
-  cell.contentEdgeInsets = self.contentEdgeInsets;
   return cell;
-}
-
-- (void)setContentEdgeInsets:(UIEdgeInsets)contentEdgeInsets {
-  if (UIEdgeInsetsEqualToEdgeInsets(_contentEdgeInsets, contentEdgeInsets)) {
-    return;
-  }
-  _contentEdgeInsets = contentEdgeInsets;
-  [self.tableView reloadData];
 }
 
 - (void)setTitle:(NSString *)title {
@@ -367,15 +339,6 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
   [super traitCollectionDidChange:previousTraitCollection];
-
-#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
-  if (@available(iOS 13.0, *)) {
-    if ([self.traitCollection
-            hasDifferentColorAppearanceComparedToTraitCollection:previousTraitCollection]) {
-      [self.tableView reloadData];
-    }
-  }
-#endif
 
   if (self.traitCollectionDidChangeBlock) {
     self.traitCollectionDidChangeBlock(self, previousTraitCollection);
@@ -419,19 +382,6 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (UIColor *)messageTextColor {
   return self.header.messageTextColor;
-}
-
-- (void)setHeaderDividerColor:(UIColor *)headerDividerColor {
-  self.headerDividerView.backgroundColor = headerDividerColor;
-}
-
-- (UIColor *)headerDividerColor {
-  return self.headerDividerView.backgroundColor;
-}
-
-- (void)setShowsHeaderDivider:(BOOL)showsHeaderDivider {
-  _showsHeaderDivider = showsHeaderDivider;
-  self.headerDividerView.hidden = !showsHeaderDivider;
 }
 
 #pragma mark - Dynamic Type
@@ -494,13 +444,9 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (void)setAlwaysAlignTitleLeadingEdges:(BOOL)alignTitles {
   _alwaysAlignTitleLeadingEdges = alignTitles;
-  if (alignTitles) {
-    // Check to make sure at least one action has an image. If not then all actions will align
-    // already and we don't need to add padding.
-    self.addLeadingPaddingToCell = [self anyActionHasAnImage];
-  } else {
-    self.addLeadingPaddingToCell = NO;
-  }
+  // Check to make sure at least one action has an image. If not then all actions will align already
+  // and we don't need to add padding.
+  self.addLeadingPaddingToCell = [self anyActionHasAnImage];
   [self.tableView reloadData];
 }
 
@@ -540,16 +486,8 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   [self.tableView reloadData];
 }
 
-- (void)setElevation:(MDCShadowElevation)elevation {
-  if (MDCCGFloatEqual(elevation, _elevation)) {
-    return;
-  }
-  _elevation = elevation;
-  [self.view mdc_elevationDidChange];
-}
-
 - (CGFloat)mdc_currentElevation {
-  return self.elevation;
+  return MDCShadowElevationModalBottomSheet;
 }
 
 @end

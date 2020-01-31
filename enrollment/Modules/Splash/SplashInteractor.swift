@@ -67,10 +67,11 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
     
     func requestLocationPermissions() {
         let status = CLLocationManager.authorizationStatus()
-        locationManager.delegate = self
+        locationManager.delegate = self // ...
         
         if status == .notDetermined {
-            locationManager.requestAlwaysAuthorization() //Request permission
+//            locationManager.requestAlwaysAuthorization() //Request permission
+            locationManager.requestWhenInUseAuthorization() //Request permission)
         }
         if status == .denied {
             self.interactorOutput?.onGetAllPermissionsAccepted()
@@ -81,15 +82,15 @@ class SplashInteractor: NSObject, SplashInteractorProtocol, CLLocationManagerDel
             print("Restricted Location Permissions");
         }
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async { //!
                 self.interactorOutput?.onGetAllPermissionsAccepted()
-            }
+//            }
         }
     }
     
     func cleanData() {
         userDataManager?.deleteAll(completion: nil)
-        oauth2Manager?.clearTokens()
+        oauth2Manager?.clearTokens() //
         
         let realm = try! Realm()
 

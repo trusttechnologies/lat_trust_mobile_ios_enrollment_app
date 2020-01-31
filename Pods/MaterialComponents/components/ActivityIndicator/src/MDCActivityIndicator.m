@@ -424,7 +424,7 @@ static const CGFloat kSingleCycleRotation =
 }
 
 - (void)setRadius:(CGFloat)radius {
-  _radius = MAX(radius, 5);
+  _radius = MIN(MAX(radius, 5), 72);
 
   [self updateStrokePath];
 }

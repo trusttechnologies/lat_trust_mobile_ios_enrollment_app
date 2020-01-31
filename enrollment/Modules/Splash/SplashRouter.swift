@@ -51,14 +51,12 @@ class SplashRouter: SplashRouterProtocol {
     }
     
     func goToSessionMenuScreen() {
-        let sessionMenuScreenVC = SessionMenuRouter.createModule()
+        DispatchQueue.main.async {
+            let sessionMenuScreenVC = SessionMenuRouter.createModule()
+            
+            self.viewController?.present(sessionMenuScreenVC, animated: true)
+        }
         
-        viewController?.present(sessionMenuScreenVC, animated: true)
 //        viewController?.navigationController?.setViewControllers([sessionMenuScreenVC], animated: true)
-    }
-    
-    func presentPermissionsAlert(alertController: UIAlertController) {
-        //viewController?.present(alertController, animated: true, completion: nil)
-        viewController?.navigationController?.setViewControllers([alertController], animated: true)
     }
 }

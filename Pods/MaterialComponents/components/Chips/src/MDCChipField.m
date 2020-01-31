@@ -569,19 +569,13 @@ static inline UIBezierPath *MDCPathForClearButtonImageFrame(CGRect frame) {
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-  BOOL shouldBeginEditing = YES;
-  if ([self.delegate respondsToSelector:@selector(chipFieldShouldBeginEditing:)]) {
-    shouldBeginEditing = [self.delegate chipFieldShouldBeginEditing:self];
+  if (textField == self.textField) {
+    [self deselectAllChips];
   }
-  if (shouldBeginEditing) {
-    if (textField == self.textField) {
-      [self deselectAllChips];
-    }
-    if ([self.delegate respondsToSelector:@selector(chipFieldDidBeginEditing:)]) {
-      [self.delegate chipFieldDidBeginEditing:self];
-    }
+  if ([self.delegate respondsToSelector:@selector(chipFieldDidBeginEditing:)]) {
+    [self.delegate chipFieldDidBeginEditing:self];
   }
-  return shouldBeginEditing;
+  return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
@@ -740,8 +734,7 @@ static inline UIBezierPath *MDCPathForClearButtonImageFrame(CGRect frame) {
 
 #pragma mark - MDCTextInputPositioningDelegate
 
-- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets
-    withSizeThatFitsWidthHint:(CGFloat)widthHint {
+- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets {
   CGRect lastChipFrame = self.chips.lastObject.frame;
   if (self.mdf_effectiveUserInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
     lastChipFrame = MDFRectFlippedHorizontally(lastChipFrame, CGRectGetWidth(self.bounds));

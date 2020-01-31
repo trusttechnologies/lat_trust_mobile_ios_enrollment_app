@@ -11,8 +11,8 @@
 
 target 'enrollment' do
   pod 'MaterialComponents/TextFields'
-  #pod 'MaterialComponents/Buttons', '~> 87.1.1'
-  #pod 'MaterialComponents/Buttons+ButtonThemer', '~> 87.1.1'
+  pod 'MaterialComponents/Buttons', '~> 87.1.1'
+  pod 'MaterialComponents/Buttons+ButtonThemer', '~> 87.1.1'
   pod 'MaterialComponents/Snackbar+TypographyThemer'
   pod 'MaterialComponents/BottomNavigation'
   pod 'MaterialComponents/BottomNavigation+TypographyThemer'

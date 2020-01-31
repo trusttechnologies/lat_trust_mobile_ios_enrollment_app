@@ -26,26 +26,16 @@
 - (UIEdgeInsets)safeAreaInsets;  // For pre-iOS 11 SDK targets.
 @end
 
-static inline UIStatusBarStyle StatusBarStyleOnBackgroundColor(UIColor *color) {
+static inline BOOL ShouldUseLightStatusBarOnBackgroundColor(UIColor *color) {
   if (CGColorGetAlpha(color.CGColor) < 1) {
-    return UIStatusBarStyleDefault;
+    return NO;
   }
 
   // We assume that the light iOS status text is white and not big enough to be considered "large"
   // text according to the W3CAG 2.0 spec.
-  if ([MDFTextAccessibility textColor:[UIColor whiteColor]
-              passesOnBackgroundColor:color
-                              options:MDFTextAccessibilityOptionsNone]) {
-    return UIStatusBarStyleLightContent;
-  }
-
-#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
-  if (@available(iOS 13.0, *)) {
-    return UIStatusBarStyleDarkContent;
-  }
-#endif
-
-  return UIStatusBarStyleDefault;
+  return [MDFTextAccessibility textColor:[UIColor whiteColor]
+                 passesOnBackgroundColor:color
+                                 options:MDFTextAccessibilityOptionsNone];
 }
 
 // KVO contexts
@@ -221,7 +211,8 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
   if (self.inferPreferredStatusBarStyle) {
     UIColor *backgroundColor =
         [MDCFlexibleHeaderView appearance].backgroundColor ?: _headerView.backgroundColor;
-    return StatusBarStyleOnBackgroundColor(backgroundColor);
+    return (ShouldUseLightStatusBarOnBackgroundColor(backgroundColor) ? UIStatusBarStyleLightContent
+                                                                      : UIStatusBarStyleDefault);
   } else {
     return _preferredStatusBarStyle;
   }

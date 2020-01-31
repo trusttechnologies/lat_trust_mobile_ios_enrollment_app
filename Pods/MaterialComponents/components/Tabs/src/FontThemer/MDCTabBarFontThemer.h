@@ -24,8 +24,10 @@
  details on replacement APIs.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("Please use the theming extension instead.") @interface MDCTabBarFontThemer
-    : NSObject
+@interface MDCTabBarFontThemer : NSObject
+@end
+
+@interface MDCTabBarFontThemer (ToBeDeprecated)
 
 /**
  Applies a font scheme to theme a MDCTabBar.
@@ -37,8 +39,6 @@ __deprecated_msg("Please use the theming extension instead.") @interface MDCTabB
  extension.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-+ (void)applyFontScheme:(nonnull id<MDCFontScheme>)fontScheme
-               toTabBar:(nonnull MDCTabBar *)tabBar
-    __deprecated_msg("Please use the theming extension instead.");
++ (void)applyFontScheme:(nonnull id<MDCFontScheme>)fontScheme toTabBar:(nonnull MDCTabBar *)tabBar;
 
 @end

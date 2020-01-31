@@ -14,3 +14,4 @@
 
 #import "MDCFilledTextFieldColorThemer.h"
 #import "MDCOutlinedTextFieldColorThemer.h"
+#import "MDCTextFieldColorThemer.h"

@@ -40,8 +40,6 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
   UIView *_highlightedView;
 }
 
-@synthesize adjustsFontForContentSizeCategory = _adjustsFontForContentSizeCategory;
-
 - (nonnull instancetype)initWithHighlightedView:(nonnull UIView *)highlightedView
                                     andShowView:(nonnull UIView *)displayedView
                                      completion:(nullable MDCFeatureHighlightCompletion)completion {
@@ -57,6 +55,8 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
 
     _displayedView.accessibilityTraits = UIAccessibilityTraitButton;
 
+    _viewAccessiblityHint = [[self class] dismissAccessibilityHint];
+
     super.transitioningDelegate = self;
     super.modalPresentationStyle = UIModalPresentationCustom;
   }
@@ -71,10 +71,6 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
       UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.featureHighlightView.mdc_adjustsFontForContentSizeCategory =
       _mdc_adjustsFontForContentSizeCategory;
-  if (@available(iOS 10.0, *)) {
-    self.featureHighlightView.adjustsFontForContentSizeCategory =
-        _adjustsFontForContentSizeCategory;
-  }
   self.featureHighlightView.mdc_legacyFontScaling = _mdc_legacyFontScaling;
 
   __weak MDCFeatureHighlightViewController *weakSelf = self;
@@ -135,13 +131,9 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
 
 - (void)viewWillLayoutSubviews {
   self.featureHighlightView.titleLabel.attributedText =
-      [self attributedStringForString:self.titleText
-                          lineSpacing:kMDCFeatureHighlightLineSpacing
-                                 font:_titleFont];
+      [self attributedStringForString:self.titleText lineSpacing:kMDCFeatureHighlightLineSpacing];
   self.featureHighlightView.bodyLabel.attributedText =
-      [self attributedStringForString:self.bodyText
-                          lineSpacing:kMDCFeatureHighlightLineSpacing
-                                 font:_bodyFont];
+      [self attributedStringForString:self.bodyText lineSpacing:kMDCFeatureHighlightLineSpacing];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
@@ -240,13 +232,6 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
   _bodyFont = bodyFont;
   if (self.isViewLoaded) {
     self.featureHighlightView.bodyFont = bodyFont;
-  }
-}
-
-- (void)setAdjustsFontForContentSizeCategory:(BOOL)adjustsFontForContentSizeCategory {
-  _adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory;
-  if (self.isViewLoaded) {
-    self.featureHighlightView.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory;
   }
 }
 
@@ -350,23 +335,25 @@ static const CGFloat kMDCFeatureHighlightPulseAnimationInterval = (CGFloat)1.5;
   return _viewAccessiblityHint;
 }
 
++ (NSString *)dismissAccessibilityHint {
+  NSString *key =
+      kMaterialFeatureHighlightStringTable[kStr_MaterialFeatureHighlightDismissAccessibilityHint];
+  NSString *localizedString = NSLocalizedStringFromTableInBundle(
+      key, kMaterialFeatureHighlightStringsTableName, [self bundle], @"Double-tap to dismiss.");
+  return localizedString;
+}
+
 #pragma mark - Private
 
 - (NSAttributedString *)attributedStringForString:(NSString *)string
-                                      lineSpacing:(CGFloat)lineSpacing
-                                             font:(UIFont *)font {
+                                      lineSpacing:(CGFloat)lineSpacing {
   if (!string) {
     return nil;
   }
   NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
   paragraphStyle.lineSpacing = lineSpacing;
 
-  NSMutableDictionary *attrs = [[NSMutableDictionary alloc]
-      initWithDictionary:@{NSParagraphStyleAttributeName : paragraphStyle}];
-
-  if (font) {
-    [attrs setObject:font forKey:NSFontAttributeName];
-  }
+  NSDictionary *attrs = @{NSParagraphStyleAttributeName : paragraphStyle};
 
   return [[NSAttributedString alloc] initWithString:string attributes:attrs];
 }

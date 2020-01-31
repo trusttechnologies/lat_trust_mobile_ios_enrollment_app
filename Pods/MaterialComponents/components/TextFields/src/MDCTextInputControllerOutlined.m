@@ -142,11 +142,8 @@ static UIRectCorner _roundedCornersDefault = UIRectCornerAllCorners;
  underlineLabelsOffset                                                // From super class.
  */
 // clang-format on
-- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets
-    withSizeThatFitsWidthHint:(CGFloat)widthHint {
-  defaultInsets.left = MDCTextInputOutlinedTextFieldFullPadding;
-  defaultInsets.right = MDCTextInputOutlinedTextFieldFullPadding;
-  UIEdgeInsets textInsets = [super textInsets:defaultInsets withSizeThatFitsWidthHint:widthHint];
+- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets {
+  UIEdgeInsets textInsets = [super textInsets:defaultInsets];
   CGFloat textVerticalOffset = self.textInput.placeholderLabel.font.lineHeight * (CGFloat)0.5;
 
   CGFloat scale = UIScreen.mainScreen.scale;
@@ -154,6 +151,9 @@ static UIRectCorner _roundedCornersDefault = UIRectCornerAllCorners;
       MDCCeil(self.textInput.placeholderLabel.font.lineHeight * scale) / scale;
   textInsets.top = [self borderHeight] - MDCTextInputOutlinedTextFieldFullPadding -
                    placeholderEstimatedHeight + textVerticalOffset;
+
+  textInsets.left = MDCTextInputOutlinedTextFieldFullPadding;
+  textInsets.right = MDCTextInputOutlinedTextFieldFullPadding;
 
   return textInsets;
 }
@@ -199,8 +199,7 @@ static UIRectCorner _roundedCornersDefault = UIRectCornerAllCorners;
   }
   self.textInput.borderPath = path;
 
-  UIColor *borderColor =
-      self.textInput.isEditing ? self.activeColor : (self.borderStrokeColor ?: self.normalColor);
+  UIColor *borderColor = self.textInput.isEditing ? self.activeColor : self.normalColor;
   if (!self.textInput.isEnabled) {
     borderColor = self.disabledColor;
   }

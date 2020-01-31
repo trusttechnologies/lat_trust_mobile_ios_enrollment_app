@@ -52,11 +52,11 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
             resource: .logout(parameters: parameters),
             onResponse: {
                 [weak self] in
-                
+
                 guard let self = self else {
                     return
                 }
-                
+
                 self.interactorOutput?.onLogoutPerformed() //Call onLogoutPerformed in MainScreenPresenter
             }
         )

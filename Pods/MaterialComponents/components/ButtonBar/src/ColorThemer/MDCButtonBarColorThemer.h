@@ -22,9 +22,10 @@
  `MDCButtonBar`'s `-applyPrimaryThemeWithScheme:`
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("ButtonBar is not intended to be themed as a standalone component."
-                 " Please theme it via the AppBar component's Theming extension instead.")
-    @interface MDCButtonBarColorThemer : NSObject
+@interface MDCButtonBarColorThemer : NSObject
+@end
+
+@interface MDCButtonBarColorThemer (ToBeDeprecated)
 
 /**
  Applies a color scheme's properties to an MDCButtonBar.
@@ -32,11 +33,12 @@ __deprecated_msg("ButtonBar is not intended to be themed as a standalone compone
  @param colorScheme The color scheme to apply to the component instance.
  @param buttonBar A component instance to which the color scheme should be applied.
 
+ @warning This API will eventually be deprecated. The replacement API is:
+ `MDCButtonBar`'s `-applyPrimaryThemeWithScheme:`
+ Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applySemanticColorScheme:(nonnull id<MDCColorScheming>)colorScheme
-                     toButtonBar:(nonnull MDCButtonBar *)buttonBar
-    __deprecated_msg("ButtonBar is not intended to be themed as a standalone component."
-                     " Please theme it via the AppBar component's Theming extension instead.");
+                     toButtonBar:(nonnull MDCButtonBar *)buttonBar;
 
 /**
  Applies a color scheme's properties to an MDCButtonBar.
@@ -49,8 +51,6 @@ __deprecated_msg("ButtonBar is not intended to be themed as a standalone compone
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
 + (void)applyColorScheme:(nonnull id<MDCColorScheme>)colorScheme
-             toButtonBar:(nonnull MDCButtonBar *)buttonBar
-    __deprecated_msg("ButtonBar is not intended to be themed as a standalone component."
-                     " Please theme it via the AppBar component's Theming extension instead.");
+             toButtonBar:(nonnull MDCButtonBar *)buttonBar;
 
 @end

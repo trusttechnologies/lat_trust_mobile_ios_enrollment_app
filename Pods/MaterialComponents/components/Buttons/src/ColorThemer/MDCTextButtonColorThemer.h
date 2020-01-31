@@ -24,9 +24,10 @@
  `MDCButton`'s `-applyTextThemeWithScheme:`
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-__deprecated_msg("Please use [MDCButton applyTextThemeWithScheme:] instead. (Note: Color theming "
-                 "is no longer available as an independent API.)")
-    @interface MDCTextButtonColorThemer : NSObject
+@interface MDCTextButtonColorThemer : NSObject
+@end
+
+@interface MDCTextButtonColorThemer (ToBeDeprecated)
 
 /**
  Applies a color scheme's properties to an MDCButton using the text button style.

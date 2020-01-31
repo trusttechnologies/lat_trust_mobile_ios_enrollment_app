@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import CoreLocation
+import UserNotifications
 
 // MARK: - PermissionsManagerProtocol
 protocol PermissionsManagerProtocol: AnyObject {
@@ -23,28 +24,38 @@ protocol PermissionsManagerOutputProtocol: AnyObject {
 
 class PermissionsManager: PermissionsManagerProtocol {
     
+    var isPushNotificationEnabled: Bool {
+      guard let settings = UIApplication.shared.currentUserNotificationSettings
+        else {
+          return false
+      }
+
+        return UIApplication.shared.isRegisteredForRemoteNotifications
+        && !settings.types.isEmpty
+    }
+    
     weak var managerOutput: PermissionsManagerOutputProtocol?
 
     func checkBothPermissions() {
         let status = CLLocationManager.authorizationStatus()
-    
-            if status == .authorizedAlways || status == .authorizedWhenInUse { //Si fue autorizado pregunto por notification
-                
-                if !UIApplication.shared.isRegisteredForRemoteNotifications { //Permiso notificacion aceptado?, no aceptado ->
-                    DispatchQueue.main.async {
-                        self.managerOutput?.permissionsFail()
+        if status == .authorizedAlways || status == .authorizedWhenInUse { //Si fue autorizado pregunto por notification
+            let notificationStatus = UIApplication.shared.isRegisteredForRemoteNotifications
+            if !isPushNotificationEnabled { //Permiso notificacion aceptado?, no aceptado ->
+                UNUserNotificationCenter.current().getNotificationSettings(){ (settings) in
+                    if settings.authorizationStatus == .authorized{
+                        self.managerOutput?.permissionsSuccess()
+                    } else {
+                         self.managerOutput?.permissionsFail()
                     }
-                } else {  //Si fue autorizado muestra main
-                    //mostrar perfil usuario normalmente...
-                    managerOutput?.permissionsSuccess()
                 }
+            } else {  //Go main screen
+                //Show user profile
+                managerOutput?.permissionsSuccess()
             }
-            else { //Si no fue autorizado muestro alerta con la opcion de "aceptar y se cierra"
-                self.managerOutput?.permissionsFail()
-
-//                managerOutput?.callAlert(alertController: alertController)
-            }
-        
+        }
+        else { //If user not accept permissions, show alert and close when user interact
+            self.managerOutput?.permissionsFail()
+        }
     }
     
 }

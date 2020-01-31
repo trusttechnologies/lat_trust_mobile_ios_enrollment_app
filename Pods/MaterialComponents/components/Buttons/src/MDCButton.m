@@ -146,10 +146,9 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (void)commonMDCButtonInit {
-  // TODO(b/142861610): Default to `NO`, then remove once all internal usage is migrated.
-  _enableTitleFontForState = YES;
   _disabledAlpha = MDCButtonDisabledAlpha;
   _enabledAlpha = self.alpha;
+  _shouldRaiseOnTouch = YES;
   _uppercaseTitle = YES;
   _userElevations = [NSMutableDictionary dictionary];
   _nontransformedTitles = [NSMutableDictionary dictionary];
@@ -258,6 +257,12 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   if (!self.layer.shapeGenerator) {
     self.layer.shadowPath = [self boundingPath].CGPath;
   }
+  if ([self respondsToSelector:@selector(cornerRadius)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    self.layer.cornerRadius = [self cornerRadius];
+#pragma clang diagnostic pop
+  }
 
   // Center unbounded ink view frame taking into account possible insets using contentRectForBounds.
   if (_inkView.inkStyle == MDCInkStyleUnbounded && _inkView.usesLegacyInkRipple) {
@@ -322,10 +327,6 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
     superSize.width = MIN(self.maximumSize.width, superSize.width);
   }
   return superSize;
-}
-
-- (CGSize)intrinsicContentSize {
-  return [self sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
@@ -847,7 +848,15 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (UIBezierPath *)boundingPath {
-  return [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius];
+  CGFloat cornerRadius = self.layer.cornerRadius;
+
+  if ([self respondsToSelector:@selector(cornerRadius)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    cornerRadius = [self cornerRadius];
+#pragma clang diagnostic pop
+  }
+  return [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:cornerRadius];
 }
 
 - (UIEdgeInsets)defaultContentEdgeInsets {
@@ -914,10 +923,6 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 }
 
 - (void)updateTitleFont {
-  if (!self.enableTitleFontForState) {
-    return;
-  }
-
   self.titleLabel.font = [self titleFontForState:self.state];
 
   [self setNeedsLayout];
@@ -984,7 +989,35 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   [self sizeToFit];
 }
 
+- (BOOL)mdc_legacyFontScaling {
+  return self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
+}
+
+- (void)mdc_setLegacyFontScaling:(BOOL)mdc_legacyFontScaling {
+  self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = mdc_legacyFontScaling;
+}
+
 #pragma mark - Deprecations
+
+- (void)setCustomTitleColor:(UIColor *)customTitleColor {
+  [self setTitleColor:customTitleColor forState:UIControlStateNormal];
+}
+
+- (UIColor *)customTitleColor {
+  return [self titleColorForState:UIControlStateNormal];
+}
+
+- (BOOL)shouldCapitalizeTitle {
+  return [self isUppercaseTitle];
+}
+
+- (void)setShouldCapitalizeTitle:(BOOL)shouldCapitalizeTitle {
+  [self setUppercaseTitle:shouldCapitalizeTitle];
+}
+
+- (UIColor *)underlyingColor {
+  return [self underlyingColorHint];
+}
 
 - (void)setUnderlyingColor:(UIColor *)underlyingColor {
   [self setUnderlyingColorHint:underlyingColor];

@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Pin Modal View Controller-->
         <scene sceneID="8gL-70-iNr">
@@ -17,30 +22,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-Pu-vWC" userLabel="{pinModalView}">
-                                <rect key="frame" x="16" y="390" width="382" height="116.5"/>
+                                <rect key="frame" x="16" y="339.5" width="382" height="217"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-YD-Otj" userLabel="{pinStackView}">
-                                        <rect key="frame" x="16" y="16" width="350" height="84.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-YD-Otj" userLabel="{pinStackView}">
+                                        <rect key="frame" x="16" y="16" width="350" height="185"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbr-pE-sUC" userLabel="{pinLabelText}">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese PIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbr-pE-sUC" userLabel="{pinLabelText}">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="19"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6S-NZ-e7d">
+                                                <rect key="frame" x="0.0" y="43" width="350" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-0H-VMv" userLabel="{pinTextField}">
-                                                <rect key="frame" x="0.0" y="20.5" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="97" width="350" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbY-TB-P2E" userLabel="{sendPinButton}">
-                                                <rect key="frame" x="0.0" y="54.5" width="350" height="30"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="icM-Qz-OCw">
+                                                <rect key="frame" x="0.0" y="155" width="350" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clm-M6-etW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
+                                                        <state key="normal" title="Salir"/>
+                                                        <string key="userLabel" base64-UTF8="YES">
+e2NhbmNlbBBCdXR0b259A
+</string>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbY-TB-P2E" userLabel="{sendPinButton}">
+                                                        <rect key="frame" x="187" y="0.0" width="163" height="30"/>
+                                                        <state key="normal" title="Aceptar"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="O2R-YD-Otj" secondAttribute="bottom" constant="16" id="Atn-IA-Y0S"/>
                                     <constraint firstItem="O2R-YD-Otj" firstAttribute="top" secondItem="5E7-Pu-vWC" secondAttribute="top" constant="16" id="cSC-GE-uZ2"/>
@@ -48,6 +69,26 @@
                                     <constraint firstItem="O2R-YD-Otj" firstAttribute="leading" secondItem="5E7-Pu-vWC" secondAttribute="leading" constant="16" id="r4e-hi-73Z"/>
                                     <constraint firstItem="O2R-YD-Otj" firstAttribute="centerX" secondItem="5E7-Pu-vWC" secondAttribute="centerX" id="z50-V1-qUE"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="4" height="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.10482662671232877" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,7 +100,10 @@
                         <viewLayoutGuide key="safeArea" id="D0L-o4-4ch"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="clm-M6-etW" id="pwf-O2-DGt"/>
                         <outlet property="checkPinButton" destination="AbY-TB-P2E" id="4Zc-WI-obt"/>
+                        <outlet property="insertedPin" destination="6Lc-0H-VMv" id="GaE-Tr-n4d"/>
+                        <outlet property="showActualEnvironmentButtonTest" destination="v6S-NZ-e7d" id="zbu-k4-gwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpQ-fU-vfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,6 @@
 #import <UIKit/UIKit.h>
 
 #import "MDCTextInput.h"
-#import "MaterialElevation.h"
 
 @class MDCIntrinsicHeightTextView;
 
@@ -26,8 +25,7 @@
   Material Design themed mutiline text field (multiline text input).
   https://www.google.com/design/spec/components/text-fields.html#text-fields-multi-line-text-field
  */
-@interface MDCMultilineTextField
-    : UIView <MDCTextInput, MDCMultilineTextInput, MDCElevatable, MDCElevationOverriding>
+@interface MDCMultilineTextField : UIView <MDCTextInput, MDCMultilineTextInput>
 
 /** A mirror of the same property that already exists on UITextField, UITextView, and UILabel. */
 @property(nonatomic, assign) BOOL adjustsFontForContentSizeCategory;
@@ -55,14 +53,11 @@
 
 /**
  The text string of the placeholder label.
- Bringing convenience API found in UITextField to all MDCTextInputs. Maps to the .text of the
+ Bringing convenience api found in UITextField to all MDCTextInputs. Maps to the .text of the
  placeholder label.
 
  Note: Inherited from MDCTextInput protocol. Added here to declare Interface Builder support
  (IBInspectable).
- Note: The [Design guidance](https://material.io/components/text-fields/#anatomy) changed and treats
- placeholder as distinct from `label text`. The placeholder-related properties of this class most
- closely align with the "label text" as described in the guidance.
  */
 @property(nonatomic, nullable, copy) IBInspectable NSString *placeholder;
 

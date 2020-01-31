@@ -23,6 +23,7 @@ class VideoViewController: UIViewController {
     var urlRightButton: String?
     var data: NotificationInfo?
     var flagAudio: Bool = false
+    var player: AVPlayer?
     
     var viewState: LoadingStatus = .loaded {
         didSet {
@@ -49,8 +50,10 @@ class VideoViewController: UIViewController {
      */
     @IBOutlet weak var dialogView: UIView!{
         didSet{
-            dialogView.layer.borderWidth = 1.0
-            dialogView.layer.borderColor = UIColor.black.cgColor
+            dialogView.layer.cornerRadius = 5
+            dialogView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            dialogView.layer.shadowRadius = 13
+            dialogView.layer.shadowOpacity = 0.25
         }
     }
     
@@ -111,14 +114,30 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.clipsToBounds = true
-            let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
-            let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (500.0 / 320.0),constant: 0)
-            self.videoView.addConstraint(widthConstraint)
+            videoView.layer.cornerRadius = 5
+            videoView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (512.0 / 309.0),constant: 0)//618x1024
+            //let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (512.0 / 309.0),constant: 0)
+            //self.videoView.addConstraint(widthConstraint)
             self.videoView.addConstraint(aspectRatioConstraint)
         }
     }
     
-    @IBOutlet weak var buttonsStack: UIStackView!
+    @IBOutlet weak var buttonsStack: UIStackView!{
+        didSet{
+            buttonsStack.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+    }
+    
+    
+    @IBOutlet weak var buttonsMargin: UIView!{
+        didSet{
+            buttonsMargin.layer.cornerRadius = 5
+            buttonsMargin.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+    }
+    
+    
     /**
      Left button, in case that the notification has two buttons
      */
@@ -163,7 +182,8 @@ class VideoViewController: UIViewController {
     }
     
     @objc func onCloseButtonPressed(sender: UIButton) {
-        flagAudio = false
+        player?.pause()
+        player?.replaceCurrentItem(with: nil)
         presenter?.onCloseButtonPressed()
     }
     
@@ -196,95 +216,102 @@ extension VideoViewController: VideoViewProtocol{
         //
         
         if(verifyUrl(urlString: data?.videoNotification?.videoUrl)){
-            
-            remainSecLabel.isHidden = true
-            activityIndicator.isHidden = false
-            setViewState(state: .loading)
-            
-            let videoURL = URL(string: data?.videoNotification?.videoUrl ?? "")
-            let player = AVPlayer(url: videoURL!)
-            let playerLayer = AVPlayerLayer(player: player)
-            let controller = AVPlayerViewController()
-            let minPlayTime = (data?.videoNotification?.minPlayTime as! NSString).floatValue ?? 0.00
-            
-            controller.player = player
-            playerLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (515.0/320.0) * (UIScreen.main.bounds.width))
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            videoView.layer.addSublayer(playerLayer)
-            player.play()
-            
-            let interval = CMTime(seconds: 0.05,
-                                  preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-            player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using:
-                { (progressTime) in
                     
-                    let seconds = CMTimeGetSeconds(progressTime)
-                    let remaining = round(Double(minPlayTime) - seconds)
-                    if(player.status == .readyToPlay ){
-                        player.play()
-                        self.setViewState(state: .loaded)
-                    }
-                    player.isMuted = self.flagAudio
-                    if(player.isMuted){
-                        let bundle = Bundle(for: VideoViewController.self)
-                        let origImage = UIImage(named: "audio_disabled_icon", in: bundle, compatibleWith: nil)
-                        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-                        self.audioButton.setImage(tintedImage, for: .normal)
-                        self.audioButton.tintColor = .white
-                    }else{
-                        let bundle = Bundle(for: VideoViewController.self)
-                        let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
-                        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-                        self.audioButton.setImage(tintedImage, for: .normal)
-                        self.audioButton.tintColor = .white
-                    }
-                    //lets move the slider thumb
-                    if(seconds.isLess(than: Double(minPlayTime))){
-                        self.remainSecLabel.text = "Quedan \(remaining) segundos"
-                        self.remainSecLabel.isHidden = false
-                        self.closeButton.isEnabled = false
-                    }else{
-                        self.remainSecLabel.isHidden = true
-                        self.closeButton.isEnabled = true
-                        self.closeView.fadeOut()
-                        
-                    }
-            })
-            
-        }else{
-            print("ERROR: URL DEL VIDEO NO VALIDA")
-            
-        }
-    }
+                    remainSecLabel.isHidden = true
+                    activityIndicator.isHidden = false
+                    setViewState(state: .loading)
+                    
+                    let videoURL = URL(string: data?.videoNotification?.videoUrl ?? "")
+                    player = AVPlayer(url: videoURL!)
+                    let playerLayer = AVPlayerLayer(player: player)
+                    let controller = AVPlayerViewController()
+                    let minPlayTime = (data?.videoNotification?.minPlayTime as! NSString).floatValue
+                    
+                    controller.player = player
+                    playerLayer.frame = videoView.frame
+                    playerLayer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                    playerLayer.cornerRadius = 5
+                    playerLayer.masksToBounds = true
+            if UIScreen.main.bounds.height >= 736{
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill}
+            else{
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+            }
+                    videoView.layer.addSublayer(playerLayer)
+                
+                    
+                    player?.play()
+                    
+                    let interval = CMTime(seconds: 0.05,
+                                          preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+                    player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using:
+                        { (progressTime) in
+                            
+                            let seconds = CMTimeGetSeconds(progressTime)
+                            let remaining = Int(round(Double(minPlayTime) - seconds))
+                            if(self.player?.status == .readyToPlay ){
+                                self.player?.play()
+                                self.setViewState(state: .loaded)
+                            }
+                            self.player?.isMuted = self.flagAudio
+                            if(self.player!.isMuted){
+                                let bundle = Bundle(for: VideoViewController.self)
+                                let origImage = UIImage(named: "audio_disabled_icon", in: bundle, compatibleWith: nil)
+                                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+                                self.audioButton.setImage(tintedImage, for: .normal)
+                                self.audioButton.tintColor = .white
+                            }else{
+                                let bundle = Bundle(for: VideoViewController.self)
+                                let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
+                                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+                                self.audioButton.setImage(tintedImage, for: .normal)
+                                self.audioButton.tintColor = .white
+                            }
+                            //lets move the slider thumb
+                            if(seconds.isLess(than: Double(minPlayTime))){
+                                self.remainSecLabel.text = "Quedan \(remaining) segundos"
+                                self.remainSecLabel.isHidden = false
+                                self.closeButton.isEnabled = false
+                            }else{
+                                self.remainSecLabel.isHidden = true
+                                self.closeButton.isEnabled = true
+                                self.closeView.fadeOut()
+                                
+                            }
+                    })
+                    
+                }else{
+                    print("ERROR: URL DEL VIDEO NO VALIDA")
+                    
+                }
+            }
 
-    
-    func setActionButtons(buttons: [Button]) {
-        let buttonCounter = buttons.count
-        
-        if buttonCounter == 0{
-            buttonsStack.isHidden = true
-            buttonL.isHidden = true
-            buttonR.isHidden = true
-        }
-        if(buttonCounter == 1){
             
-            buttonL.isHidden = true
-            buttonR.setTitle(buttons[0].text , for: .normal)
-            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
-            urlRightButton = buttons[0].action
+            func setActionButtons(buttons: [Button]) {
+                let buttonCounter = buttons.count
+                
+                if buttonCounter == 0{
+                    buttonsStack.isHidden = true
+                    buttonL.isHidden = true
+                    buttonR.isHidden = true
+                }
+                if(buttonCounter == 1){
+                    
+                    buttonL.isHidden = true
+                    buttonR.setTitle(buttons[0].text , for: .normal)
+                    buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+                    urlRightButton = buttons[0].action
+                }
+                
+                if(buttonCounter == 2){
+                    
+                    buttonL.setTitle(buttons[1].text , for: .normal)
+                    buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
+                    urlLeftButton = buttons[1].action
+                    buttonR.setTitle(buttons[0].text , for: .normal)
+                    buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+                    urlRightButton = buttons[0].action
+                    
+                }
+            }
         }
-        
-        if(buttonCounter == 2){
-            
-            buttonL.setTitle(buttons[1].text , for: .normal)
-            buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
-            urlLeftButton = buttons[1].action
-            buttonR.setTitle(buttons[0].text , for: .normal)
-            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
-            urlRightButton = buttons[0].action
-            
-        }
-    }
-    
-    
-}

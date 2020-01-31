@@ -49,29 +49,53 @@ extension API {
         SessionManager.default.adapter = retrier
         SessionManager.default.retrier = retrier
         
-        SessionManager.default.request(resource).responseJSON {
-            (response: DataResponse<Any>) in
-            
+        SessionManager.default.request(resource).responseString {
+            (response: DataResponse<String>) in
             print("API.callAsJSON() Response as JSON: \(response)")
-            
+
             if let onResponse = onResponse {
                 onResponse()
             }
-            
+
             switch (response.result) {
             case .success(_):
                 guard let onSuccess = onSuccess else {
                     return
                 }
-                
+
                 onSuccess()
             case .failure(_):
                 guard let onFailure = onFailure else {
                     return
                 }
-                
+
                 onFailure()
             }
         }
+        
+//        SessionManager.default.request(resource).responseJSON {
+//            (response: DataResponse<Any>) in
+//
+//            print("API.callAsJSON() Response as JSON: \(response)")
+//
+//            if let onResponse = onResponse {
+//                onResponse()
+//            }
+//
+//            switch (response.result) {
+//            case .success(_):
+//                guard let onSuccess = onSuccess else {
+//                    return
+//                }
+//
+//                onSuccess()
+//            case .failure(_):
+//                guard let onFailure = onFailure else {
+//                    return
+//                }
+//
+//                onFailure()
+//            }
+//        }
     }
 }

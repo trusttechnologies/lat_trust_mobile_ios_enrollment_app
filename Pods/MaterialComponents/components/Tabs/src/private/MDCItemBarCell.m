@@ -375,29 +375,21 @@ static const NSTimeInterval kSelectionAnimationDuration = 0.3;
     [labelComponents addObject:_badgeValue];
   }
 
-  NSOperatingSystemVersion iOS10Version = {10, 0, 0};
-  NSProcessInfo *processInfo = [NSProcessInfo processInfo];
-  BOOL isBelowiOS10 = ![processInfo isOperatingSystemAtLeastVersion:iOS10Version];
+  // Describe as "tab, X of Y"
+  NSString *tabLabel =
+      [[self class] localizedStringWithKey:kMDCItemBarStringKeyAccessibilityTabElementLabel];
+  if (tabLabel) {
+    [labelComponents addObject:tabLabel];
+  }
 
-  // On iOS 10+, MDCTabBar will receive the UIAccessibilityTraitTabBar, so this logic is
-  // unnecessary.
-  if (isBelowiOS10) {
-    // Describe as "tab, X of Y"
-    NSString *tabLabel =
-        [[self class] localizedStringWithKey:kMDCItemBarStringKeyAccessibilityTabElementLabel];
-    if (tabLabel) {
-      [labelComponents addObject:tabLabel];
-    }
-
-    NSString *positionFormat =
-        [[self class] localizedStringWithKey:kMDCItemBarStringKeyAccessibilityTabPositionFormat];
-    if (positionFormat) {
-      if (_itemIndex != NSNotFound && _itemCount > 0) {
-        int position = (int)(_itemIndex + 1);
-        NSString *localizedPosition =
-            [NSString localizedStringWithFormat:positionFormat, position, (int)_itemCount];
-        [labelComponents addObject:localizedPosition];
-      }
+  NSString *positionFormat =
+      [[self class] localizedStringWithKey:kMDCItemBarStringKeyAccessibilityTabPositionFormat];
+  if (positionFormat) {
+    if (_itemIndex != NSNotFound && _itemCount > 0) {
+      int position = (int)(_itemIndex + 1);
+      NSString *localizedPosition =
+          [NSString localizedStringWithFormat:positionFormat, position, (int)_itemCount];
+      [labelComponents addObject:localizedPosition];
     }
   }
 

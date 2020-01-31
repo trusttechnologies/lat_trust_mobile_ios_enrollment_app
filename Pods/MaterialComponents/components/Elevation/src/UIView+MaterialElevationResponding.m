@@ -47,7 +47,7 @@
       totalElevation += elevatableCurrent.mdc_currentElevation;
     }
     id<MDCElevationOverriding> elevatableCurrentOverride =
-        [current objectConformingToOverrideInResponderChain];
+        [current objectConfromingToOverrideInResponderChain];
     if (elevatableCurrentOverride != nil &&
         elevatableCurrentOverride.mdc_overrideBaseElevation >= 0) {
       totalElevation += elevatableCurrentOverride.mdc_overrideBaseElevation;
@@ -71,7 +71,7 @@
 
  @returns the conforming @c UIView then @c UIViewController, otherwise @c nil.
  */
-- (id<MDCElevationOverriding>)objectConformingToOverrideInResponderChain {
+- (id<MDCElevationOverriding>)objectConfromingToOverrideInResponderChain {
   if ([self conformsToProtocol:@protocol(MDCElevationOverriding)]) {
     return (id<MDCElevationOverriding>)self;
   }

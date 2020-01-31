@@ -43,7 +43,6 @@
     _contentViewController = contentViewController;
     _transitionController = [[MDCBottomSheetTransitionController alloc] init];
     _transitionController.dismissOnBackgroundTap = YES;
-    _transitionController.dismissOnDraggingDownSheet = YES;
     super.transitioningDelegate = _transitionController;
     super.modalPresentationStyle = UIModalPresentationCustom;
     _shapeGenerators = [NSMutableDictionary dictionary];
@@ -78,8 +77,6 @@
 
   self.mdc_bottomSheetPresentationController.dismissOnBackgroundTap =
       _transitionController.dismissOnBackgroundTap;
-  self.mdc_bottomSheetPresentationController.dismissOnDraggingDownSheet =
-      _transitionController.dismissOnDraggingDownSheet;
 
   [self.contentViewController.view layoutIfNeeded];
 }
@@ -147,16 +144,6 @@
 - (void)setDismissOnBackgroundTap:(BOOL)dismissOnBackgroundTap {
   _transitionController.dismissOnBackgroundTap = dismissOnBackgroundTap;
   self.mdc_bottomSheetPresentationController.dismissOnBackgroundTap = dismissOnBackgroundTap;
-}
-
-- (BOOL)dismissOnDraggingDownSheet {
-  return _transitionController.dismissOnDraggingDownSheet;
-}
-
-- (void)setDismissOnDraggingDownSheet:(BOOL)dismissOnDraggingDownSheet {
-  _transitionController.dismissOnDraggingDownSheet = dismissOnDraggingDownSheet;
-  self.mdc_bottomSheetPresentationController.dismissOnDraggingDownSheet =
-      dismissOnDraggingDownSheet;
 }
 
 - (void)bottomSheetWillChangeState:(MDCBottomSheetPresentationController *)bottomSheet

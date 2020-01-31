@@ -265,24 +265,6 @@ static const CGFloat MDCDialogMessageOpacity = (CGFloat)0.54;
   _messageLabel.textColor = messageColor;
 }
 
-- (void)setAccessoryView:(UIView *)accessoryView {
-  if (_accessoryView == accessoryView) {
-    return;
-  }
-
-  if (_accessoryView.superview == self.contentScrollView) {
-    [_accessoryView removeFromSuperview];
-  }
-
-  _accessoryView = accessoryView;
-
-  if (_accessoryView) {
-    [self.contentScrollView addSubview:_accessoryView];
-  }
-
-  [self setNeedsLayout];
-}
-
 - (void)setButtonFont:(UIFont *)font {
   _buttonFont = font;
 
@@ -421,33 +403,23 @@ static const CGFloat MDCDialogMessageOpacity = (CGFloat)0.54;
     // https://github.com/material-components/material-components-ios/issues/5198 is resolved.
     titleIconSize = self.titleIconImageView.image.size;
   }
-  BOOL hasTitleIcon = (0.0 < titleIconSize.height);
 
   CGSize titleSize = [self.titleLabel sizeThatFits:boundsSize];
-  BOOL hasTitle = (0.0 < titleSize.height);
   CGSize messageSize = [self.messageLabel sizeThatFits:boundsSize];
-  BOOL hasMessage = (0.0 < messageSize.height);
-  CGSize accessoryViewSize = [self.accessoryView systemLayoutSizeFittingSize:boundsSize];
-  BOOL hasAccessory = (0.0 < accessoryViewSize.height);
 
-  CGFloat contentWidth = MAX(MAX(titleSize.width, messageSize.width), accessoryViewSize.width);
+  CGFloat contentWidth = MAX(titleSize.width, messageSize.width);
   contentWidth += MDCDialogContentInsets.left + MDCDialogContentInsets.right;
 
   CGFloat contentInternalVerticalPadding = 0.0;
-  if ((hasTitle || hasTitleIcon) && hasMessage) {
+  if ((0.0 < titleSize.height || 0.0 < titleIconSize.height) && 0.0 < messageSize.height) {
     contentInternalVerticalPadding = MDCDialogContentVerticalPadding;
   }
-  CGFloat contentTitleIconVerticalPadding = 0.0;
-  if (hasTitle && hasTitleIcon) {
+  CGFloat contentTitleIconVerticalPadding = 0;
+  if (0.0 < titleSize.height && 0.0 < titleIconSize.height) {
     contentTitleIconVerticalPadding = MDCDialogTitleIconVerticalPadding;
   }
-  CGFloat contentAccessoryVerticalPadding = 0.0;
-  if ((hasTitle || hasTitleIcon || hasMessage) && hasAccessory) {
-    contentAccessoryVerticalPadding = MDCDialogContentVerticalPadding;
-  }
   CGFloat contentHeight = titleIconSize.height + contentTitleIconVerticalPadding +
-                          titleSize.height + contentInternalVerticalPadding + messageSize.height +
-                          contentAccessoryVerticalPadding + accessoryViewSize.height;
+                          titleSize.height + contentInternalVerticalPadding + messageSize.height;
   contentHeight += MDCDialogContentInsets.top + MDCDialogContentInsets.bottom;
 
   CGSize contentSize;
@@ -520,7 +492,6 @@ static const CGFloat MDCDialogMessageOpacity = (CGFloat)0.54;
   boundsSize.width = boundsSize.width - MDCDialogContentInsets.left - MDCDialogContentInsets.right;
   CGSize titleSize = [self.titleLabel sizeThatFits:boundsSize];
   titleSize.width = boundsSize.width;
-  BOOL hasTitle = (0.0 < titleSize.height);
 
   CGSize titleIconSize = CGSizeZero;
   if (self.titleIconImageView != nil) {
@@ -528,32 +499,18 @@ static const CGFloat MDCDialogMessageOpacity = (CGFloat)0.54;
     // https://github.com/material-components/material-components-ios/issues/5198 is resolved.
     titleIconSize = self.titleIconImageView.image.size;
   }
-  BOOL hasTitleIcon = (0.0 < titleIconSize.height);
 
   CGSize messageSize = [self.messageLabel sizeThatFits:boundsSize];
   messageSize.width = boundsSize.width;
-  BOOL hasMessage = (0.0 < messageSize.height);
-
-  CGSize accessoryViewSize =
-      [self.accessoryView systemLayoutSizeFittingSize:boundsSize
-                        withHorizontalFittingPriority:UILayoutPriorityRequired
-                              verticalFittingPriority:UILayoutPriorityFittingSizeLevel];
-  accessoryViewSize.width = boundsSize.width;
-  BOOL hasAccessory = (0.0 < accessoryViewSize.height);
-
   boundsSize.width = boundsSize.width + MDCDialogContentInsets.left + MDCDialogContentInsets.right;
 
   CGFloat contentInternalVerticalPadding = 0.0;
-  if ((hasTitle || hasTitleIcon) && hasMessage) {
+  if ((0.0 < titleSize.height || 0.0 < titleIconSize.height) && 0.0 < messageSize.height) {
     contentInternalVerticalPadding = MDCDialogContentVerticalPadding;
   }
-  CGFloat contentTitleIconVerticalPadding = 0.0;
-  if (hasTitle && hasTitleIcon) {
+  CGFloat contentTitleIconVerticalPadding = 0;
+  if (0.0 < titleSize.height && 0.0 < titleIconSize.height) {
     contentTitleIconVerticalPadding = MDCDialogTitleIconVerticalPadding;
-  }
-  CGFloat contentAccessoryVerticalPadding = 0.0;
-  if ((hasTitle || hasTitleIcon || hasMessage) && hasAccessory) {
-    contentAccessoryVerticalPadding = MDCDialogContentVerticalPadding;
   }
 
   CGFloat titleTop =
@@ -563,13 +520,9 @@ static const CGFloat MDCDialogMessageOpacity = (CGFloat)0.54;
   CGRect messageFrame = CGRectMake(MDCDialogContentInsets.left,
                                    CGRectGetMaxY(titleFrame) + contentInternalVerticalPadding,
                                    messageSize.width, messageSize.height);
-  CGRect accessoryViewFrame = CGRectMake(
-      MDCDialogContentInsets.left, CGRectGetMaxY(messageFrame) + contentAccessoryVerticalPadding,
-      accessoryViewSize.width, accessoryViewSize.height);
 
   self.titleLabel.frame = titleFrame;
   self.messageLabel.frame = messageFrame;
-  self.accessoryView.frame = accessoryViewFrame;
 
   if (self.titleIconImageView != nil) {
     // match the titleIcon alignment to the title alignment

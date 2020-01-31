@@ -88,29 +88,18 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uo5-qT-BA2" userLabel="Bottom Stack">
                                                 <rect key="frame" x="0.0" y="746" width="372.66666666666669" height="96"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k1L-W1-XlQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="261" height="96"/>
-                                                        <subviews>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnc-xa-Yme">
-                                                                <rect key="frame" x="0.0" y="0.0" width="149.33333333333334" height="96"/>
-                                                            </view>
-                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddn-Uh-LKG" customClass="MDCButton">
-                                                                <rect key="frame" x="159.33333333333334" y="0.0" width="101.66666666666666" height="96"/>
-                                                                <state key="normal" title="Button"/>
-                                                            </button>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="261" id="PCO-NA-jxG"/>
-                                                        </constraints>
-                                                    </stackView>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnc-xa-Yme">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="96"/>
+                                                    </view>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddn-Uh-LKG" customClass="MDCButton">
+                                                        <rect key="frame" x="60" y="0.0" width="256.66666666666669" height="96"/>
+                                                        <state key="normal" title="Button"/>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4C-KE-DxL" customClass="MDCButton">
-                                                        <rect key="frame" x="271" y="0.0" width="101.66666666666669" height="96"/>
+                                                        <rect key="frame" x="326.66666666666663" y="0.0" width="46" height="96"/>
                                                         <state key="normal" title="Button"/>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="Ddn-Uh-LKG" firstAttribute="width" secondItem="A4C-KE-DxL" secondAttribute="width" id="vKL-Ue-FhJ"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

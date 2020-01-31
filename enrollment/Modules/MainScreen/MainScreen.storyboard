@@ -16,7 +16,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="Pe9-wZ-Y0H">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="DA3-75-Euo" customClass="MainScreenViewController" customModule="enrollment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="DA3-75-Euo" customClass="MainScreenViewController" customModule="Enrollment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aHu-OL-Sez">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,45 +146,61 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOa-cv-KZY" userLabel="{modalBackground}">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXR-au-8ka" userLabel="{modalView}">
-                                        <rect key="frame" x="32" y="231.5" width="350" height="398"/>
+                                        <rect key="frame" x="32" y="248.5" width="350" height="398"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-Ba-A0M" userLabel="{permissionInfoStackView}">
-                                                <rect key="frame" x="56" y="40" width="238" height="246"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-mg-zRH">
+                                                <rect key="frame" x="40" y="40" width="270" height="342"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="permissionsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-ci-mrl" userLabel="{permissionsIcon}">
-                                                        <rect key="frame" x="84" y="0.0" width="70" height="140"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para que puedas acceder debes aceptar todos los permisos. Esto asegura el correcto uso de la aplicación." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-Yc-x7N" userLabel="{permissionsText}">
-                                                        <rect key="frame" x="15" y="180" width="208" height="66"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-Ba-A0M" userLabel="{permissionInfoStackView}">
+                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="206"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="permissionsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-ci-mrl" userLabel="{permissionsIcon}">
+                                                                <rect key="frame" x="100" y="0.0" width="70" height="116.5"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para que puedas acceder debes aceptar todos los permisos. Esto asegura el correcto uso de la aplicación." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-Yc-x7N" userLabel="{permissionsText}">
+                                                                <rect key="frame" x="8.5" y="156.5" width="253" height="49.5"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="left" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-Gf-hT7">
+                                                        <rect key="frame" x="0.0" y="286" width="270" height="56"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL2-Xo-xYg" userLabel="{cancelButton}" customClass="MDCButton">
+                                                                <rect key="frame" x="0.0" y="0.0" width="131" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="WgP-OT-WQx"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Cancelar">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxB-68-d98" userLabel="{acceptButton}" customClass="MDCButton">
+                                                                <rect key="frame" x="139" y="0.0" width="131" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="idE-ty-sca"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Aceptar">
+                                                                    <color key="titleColor" red="0.6705882352941176" green="0.85098039215686272" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxB-68-d98" userLabel="{acceptButton}" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="326" width="318" height="56"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="idE-ty-sca"/>
-                                                </constraints>
-                                                <state key="normal" title="Aceptar">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="FxB-68-d98" secondAttribute="bottom" constant="16" id="2GB-nk-2jV"/>
                                             <constraint firstAttribute="width" secondItem="NXR-au-8ka" secondAttribute="height" multiplier="217:158" constant="-196.04430379746827" id="Bf6-Op-IMU"/>
-                                            <constraint firstItem="CnS-Ba-A0M" firstAttribute="leading" secondItem="NXR-au-8ka" secondAttribute="leading" constant="56" id="QSX-6E-qT0"/>
-                                            <constraint firstItem="CnS-Ba-A0M" firstAttribute="top" secondItem="NXR-au-8ka" secondAttribute="top" constant="40" id="dcm-ia-ClP"/>
-                                            <constraint firstItem="FxB-68-d98" firstAttribute="leading" secondItem="NXR-au-8ka" secondAttribute="leading" constant="16" id="hyv-Za-g8s"/>
-                                            <constraint firstAttribute="trailing" secondItem="FxB-68-d98" secondAttribute="trailing" constant="16" id="pz2-Bf-hhs"/>
-                                            <constraint firstAttribute="trailing" secondItem="CnS-Ba-A0M" secondAttribute="trailing" constant="56" id="vYb-c9-8dg"/>
-                                            <constraint firstItem="FxB-68-d98" firstAttribute="top" secondItem="CnS-Ba-A0M" secondAttribute="bottom" constant="40" id="y9k-T9-xCc"/>
+                                            <constraint firstAttribute="trailing" secondItem="hsv-mg-zRH" secondAttribute="trailing" constant="40" id="Dnc-x6-78J"/>
+                                            <constraint firstAttribute="bottom" secondItem="hsv-mg-zRH" secondAttribute="bottom" constant="16" id="DyT-j8-j7V"/>
+                                            <constraint firstItem="hsv-mg-zRH" firstAttribute="leading" secondItem="NXR-au-8ka" secondAttribute="leading" constant="40" id="Fsd-fu-Cx6"/>
+                                            <constraint firstItem="hsv-mg-zRH" firstAttribute="top" secondItem="NXR-au-8ka" secondAttribute="top" constant="40" id="m3w-84-ijz"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -206,6 +222,7 @@
                         <constraints>
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" id="1nz-aB-zbr"/>
                             <constraint firstItem="k0J-VM-UcK" firstAttribute="bottom" secondItem="fmt-E4-os1" secondAttribute="bottom" constant="16" id="5sd-kV-GcA"/>
+                            <constraint firstAttribute="bottom" secondItem="oOa-cv-KZY" secondAttribute="bottom" id="8Ku-Tn-1gX"/>
                             <constraint firstItem="k0J-VM-UcK" firstAttribute="trailing" secondItem="feX-3a-mev" secondAttribute="trailing" constant="16" id="8qv-oE-WaA"/>
                             <constraint firstItem="oOa-cv-KZY" firstAttribute="centerX" secondItem="aHu-OL-Sez" secondAttribute="centerX" id="8rg-D6-9vP"/>
                             <constraint firstItem="yPI-mZ-hUs" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" constant="16" id="CW0-L4-Zli"/>
@@ -215,7 +232,6 @@
                             <constraint firstItem="fmt-E4-os1" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" constant="87" id="Wjv-VA-Jq2"/>
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="top" secondItem="k0J-VM-UcK" secondAttribute="top" constant="-44" id="Xi8-wK-TD5"/>
                             <constraint firstItem="k0J-VM-UcK" firstAttribute="trailing" secondItem="yPI-mZ-hUs" secondAttribute="trailing" constant="16" id="YGD-sf-VHM"/>
-                            <constraint firstItem="k0J-VM-UcK" firstAttribute="bottom" secondItem="oOa-cv-KZY" secondAttribute="bottom" id="boW-OX-OtL"/>
                             <constraint firstItem="oOa-cv-KZY" firstAttribute="top" secondItem="aHu-OL-Sez" secondAttribute="top" id="bvT-aA-aQu"/>
                             <constraint firstItem="oOa-cv-KZY" firstAttribute="leading" secondItem="k0J-VM-UcK" secondAttribute="leading" id="h24-cF-yNQ"/>
                             <constraint firstItem="feX-3a-mev" firstAttribute="top" secondItem="V1O-ye-Fqk" secondAttribute="bottom" constant="16" id="jYL-ew-9l8"/>
@@ -223,9 +239,15 @@
                             <constraint firstItem="V1O-ye-Fqk" firstAttribute="trailing" secondItem="k0J-VM-UcK" secondAttribute="trailing" id="zzH-QZ-hgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k0J-VM-UcK"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="oOa-cv-KZY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="acceptMessageButton" destination="FxB-68-d98" id="ZVm-Qo-ExY"/>
+                        <outlet property="cancelMessageButton" destination="VL2-Xo-xYg" id="a1Z-Pd-jaS"/>
                         <outlet property="logoutButton" destination="yPI-mZ-hUs" id="hUa-hy-02a"/>
                         <outlet property="nameLabel" destination="L89-Om-zHl" id="PuH-un-God"/>
                         <outlet property="permissionsBackground" destination="oOa-cv-KZY" id="4q7-tU-IIr"/>

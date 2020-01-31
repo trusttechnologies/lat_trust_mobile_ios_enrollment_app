@@ -14,11 +14,13 @@
 
 #import "MDCCardCollectionCell+MaterialTheming.h"
 
+#import "MaterialCards+ColorThemer.h"
+#import "MaterialCards+ShapeThemer.h"
+
 static const MDCShadowElevation kNormalElevation = 1;
 static const MDCShadowElevation kHighlightedElevation = 1;
 static const MDCShadowElevation kSelectedElevation = 1;
 static const CGFloat kBorderWidth = 1;
-static const CGFloat kStrokeVariantBorderOpacity = (CGFloat)0.37;
 
 @implementation MDCCardCollectionCell (MaterialTheming)
 
@@ -46,17 +48,11 @@ static const CGFloat kStrokeVariantBorderOpacity = (CGFloat)0.37;
 }
 
 - (void)applyThemeWithColorScheme:(id<MDCColorScheming>)colorScheme {
-  self.backgroundColor = colorScheme.surfaceColor;
-  [self setImageTintColor:colorScheme.primaryColor forState:MDCCardCellStateNormal];
+  [MDCCardsColorThemer applySemanticColorScheme:colorScheme toCardCell:self];
 }
 
 - (void)applyThemeWithShapeScheme:(id<MDCShapeScheming>)shapeScheme {
-  MDCRectangleShapeGenerator *rectangleShape = [[MDCRectangleShapeGenerator alloc] init];
-  rectangleShape.topLeftCorner = shapeScheme.mediumComponentShape.topLeftCorner;
-  rectangleShape.topRightCorner = shapeScheme.mediumComponentShape.topRightCorner;
-  rectangleShape.bottomLeftCorner = shapeScheme.mediumComponentShape.bottomLeftCorner;
-  rectangleShape.bottomRightCorner = shapeScheme.mediumComponentShape.bottomRightCorner;
-  self.shapeGenerator = rectangleShape;
+  [MDCCardsShapeThemer applyShapeScheme:shapeScheme toCardCell:self];
 }
 
 #pragma mark - Outlined Card
@@ -84,16 +80,7 @@ static const CGFloat kStrokeVariantBorderOpacity = (CGFloat)0.37;
 }
 
 - (void)applyOutlinedThemeWithColorScheme:(id<MDCColorScheming>)colorScheme {
-  NSUInteger maximumStateValue = UIControlStateNormal | UIControlStateSelected |
-                                 UIControlStateHighlighted | UIControlStateDisabled;
-  for (NSUInteger state = 0; state <= maximumStateValue; ++state) {
-    [self setBorderColor:nil forState:state];
-  }
-
-  self.backgroundColor = colorScheme.surfaceColor;
-  UIColor *borderColor =
-      [colorScheme.onSurfaceColor colorWithAlphaComponent:kStrokeVariantBorderOpacity];
-  [self setBorderColor:borderColor forState:MDCCardCellStateNormal];
+  [MDCCardsColorThemer applyOutlinedVariantWithColorScheme:colorScheme toCardCell:self];
 }
 
 @end

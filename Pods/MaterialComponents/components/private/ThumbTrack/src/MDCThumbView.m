@@ -51,6 +51,11 @@
   [self setNeedsLayout];
 }
 
+- (void)setHasShadow:(BOOL)hasShadow {
+  _hasShadow = hasShadow;
+  self.elevation = hasShadow ? MDCShadowElevationCardResting : MDCShadowElevationNone;
+}
+
 - (MDCShadowElevation)elevation {
   return [self shadowLayer].elevation;
 }

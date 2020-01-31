@@ -26,28 +26,10 @@
 /** Refreshes the geometry and style of the component. */
 - (void)updateLayout;
 
-/**
- Refreshes the layout and style of the placeholder label. Called within updateLayout.
-
- Note: The [Design guidance](https://material.io/components/text-fields/#anatomy) changed and treats
- placeholder as distinct from `label text`. The placeholder-related properties of this class most
- closely align with the "label text" as described in the guidance.
- */
+/** Refreshes the layout and style of the placeholder label. Called within updateLayout. */
 - (void)updatePlaceholder;
 
-/**
- Refreshes the layout and style of the border view. Called within updateLayout.
-
- Note: The [Design guidance](https://material.io/components/text-fields/#anatomy) changed and treats
- placeholder as distinct from `label text`. The placeholder-related properties of this class most
- closely align with the "label text" as described in the guidance.
- */
+/** Refreshes the layout and style of the border view. Called within updateLayout. */
 - (BOOL)isPlaceholderUp;
-
-/** Calculates the actual number of lines for the label provded. */
-+ (NSUInteger)calculatedNumberOfLinesForLeadingLabel:(UILabel *)label
-                                  givenTrailingLabel:(UILabel *)trailingLabel
-                                              insets:(UIEdgeInsets)insets
-                                           widthHint:(CGFloat)widthHint;
 
 @end

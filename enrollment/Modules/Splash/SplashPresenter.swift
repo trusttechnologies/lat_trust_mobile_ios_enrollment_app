@@ -18,9 +18,13 @@ class SplashPresenter: SplashPresenterProtocol {
     var interactor: SplashInteractorProtocol?
     
     func onViewDidAppear() {
-        DispatchQueue.main.async {
-            self.interactor?.requestNotificationPermissions()
-        }
+        interactor?.requestNotificationPermissions()
+
+//        DispatchQueue.global().async {
+//            self.interactor?.requestNotificationPermissions()
+//        }
+//        DispatchQueue.main.async {
+//        }
     }
 }
 
@@ -28,9 +32,9 @@ class SplashPresenter: SplashPresenterProtocol {
 extension SplashPresenter: SplashInteractorOutputProtocol {
     // MARK: - Splash login
     func onUserHasLoggedInSuccess() {
-          if let context = router?.viewController {
-              interactor?.authorize(from: context)
-          }
+        if let context = router?.viewController {
+            interactor?.authorize(from: context)
+        }
     }
     
     func onUserHasLoggedInFailure() {
@@ -47,10 +51,6 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
     
     func onDataCleaned() {
         router?.goToSessionMenuScreen()//die
-    }
-    
-    func callAlert(alertController: UIAlertController) {
-        self.router?.presentPermissionsAlert(alertController: alertController)
     }
     
     func returnViewDidAppear() {

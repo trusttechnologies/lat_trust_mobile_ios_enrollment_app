@@ -22,34 +22,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwy-wD-Cot">
-                                <rect key="frame" x="16" y="299.5" width="382" height="297"/>
+                                <rect key="frame" x="16" y="297.5" width="382" height="301.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LYj-Eb-jpT">
-                                        <rect key="frame" x="16" y="16" width="350" height="265"/>
+                                        <rect key="frame" x="16" y="16" width="350" height="269.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seleccione" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECn-PT-AsU">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="19"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-DA-Jeh">
-                                                <rect key="frame" x="0.0" y="19" width="350" height="216"/>
+                                                <rect key="frame" x="0.0" y="23.5" width="350" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxN-hy-98g">
-                                                <rect key="frame" x="0.0" y="235" width="350" height="30"/>
+                                                <rect key="frame" x="0.0" y="239.5" width="350" height="30"/>
                                                 <state key="normal" title="Aceptar"/>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="LYj-Eb-jpT" firstAttribute="leading" secondItem="Wwy-wD-Cot" secondAttribute="leading" constant="16" id="7Yb-Je-Hze"/>
                                     <constraint firstAttribute="trailing" secondItem="LYj-Eb-jpT" secondAttribute="trailing" constant="16" id="U5n-Ae-yiR"/>
                                     <constraint firstAttribute="bottom" secondItem="LYj-Eb-jpT" secondAttribute="bottom" constant="16" id="hk2-hg-DVl"/>
                                     <constraint firstItem="LYj-Eb-jpT" firstAttribute="top" secondItem="Wwy-wD-Cot" secondAttribute="top" constant="16" id="vUq-X0-bb1"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="4" height="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.10292701198630137" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

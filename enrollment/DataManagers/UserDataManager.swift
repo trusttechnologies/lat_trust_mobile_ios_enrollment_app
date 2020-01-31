@@ -23,6 +23,7 @@ class UserDataManager: UserDataManagerProtocol {
     }
     
     func getUser() -> User? {
+        print(RealmRepo<User>.getAll())
         return RealmRepo<User>.getFirst()
     }
     

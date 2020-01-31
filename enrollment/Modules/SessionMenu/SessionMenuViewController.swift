@@ -38,7 +38,7 @@ class SessionMenuViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicatorBackground: UIView!
     
     var presenter: SessionMenuPresenterProtocol?
@@ -48,7 +48,7 @@ class SessionMenuViewController: UIViewController {
 extension SessionMenuViewController: SessionMenuViewProtocol {
     func startActivityIndicator() {
         let secondsToDelay = 0.4
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation            
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) { //Delay animation
             let animation = Animation.named(self.filename)
             self.animationView.animation = animation
             self.animationView.contentMode = .scaleAspectFit
@@ -81,8 +81,9 @@ extension SessionMenuViewController: SessionMenuViewProtocol {
     }
     
     func stopActivityIndicator() {
+        self.animationView.stop()
         loadingBackground.hide()
-        activityIndicator.stopAnimating()
+//        activityIndicator.stopAnimating()
         activityIndicatorBackground.hide()
     }
 }
@@ -94,10 +95,6 @@ extension SessionMenuViewController {
     }
     
     @objc func onChangeEnvironmentButton(sender: UIButton) {
-        //OPEN SELECT AND PUT WEA
-
-        
-        print("Pressed")
         presenter?.changeEnvironment(environment: "test")
 //        presenter?.changeEnvironment()
     }

@@ -40,22 +40,22 @@ extension PushNotifications{
         if topMostViewController is DialogViewController {
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(dialogVC, animated: true)
+                presentedViewController?.present(dialogVC, animated: false)
             })
         }
         else if topMostViewController is VideoViewController{
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(dialogVC, animated: true)
+                presentedViewController?.present(dialogVC, animated: false)
             })
         }else if topMostViewController is DialogLegacyViewController{
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(dialogVC, animated: true)
+                presentedViewController?.present(dialogVC, animated: false)
             })
         }
         else{
-            topMostViewController.present(dialogVC, animated: true)
+            topMostViewController.present(dialogVC, animated: false)
         }
         
         window?.makeKeyAndVisible()
@@ -91,22 +91,22 @@ extension PushNotifications{
         if topMostViewController is DialogViewController {
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(videoVC, animated: true)
+                presentedViewController?.present(videoVC, animated: false)
             })
         }
         else if topMostViewController is VideoViewController{
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(videoVC, animated: true)
+                presentedViewController?.present(videoVC, animated: false)
             })
         }else if topMostViewController is DialogLegacyViewController{
             topMostViewController.dismiss(animated: true, completion: {
                 let presentedViewController = window?.rootViewController?.presentedViewController
-                presentedViewController?.present(videoVC, animated: true)
+                presentedViewController?.present(videoVC, animated: false)
             })
         }
         else{
-            topMostViewController.present(videoVC, animated: true)
+            topMostViewController.present(videoVC, animated: false)
         }
         
         window?.makeKeyAndVisible()

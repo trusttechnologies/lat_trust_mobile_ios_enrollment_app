@@ -58,9 +58,6 @@ static CGFloat GetDefaultRippleRadius(CGRect rect) {
   self.opacity = 1;
   self.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
   if (!animated) {
-    if (completion) {
-      completion();
-    }
     [self.rippleLayerDelegate rippleLayerTouchDownAnimationDidEnd:self];
   } else {
     _startAnimationActive = YES;

@@ -230,9 +230,6 @@ static NSString *const kAllMessagesCategory = @"$$___ALL_MESSAGES___$$";
   snackbarView.accessibilityViewIsModal =
       self.manager.shouldEnableAccessibilityViewIsModal && ![self isSnackbarTransient:snackbarView];
   [self.delegate willPresentSnackbarWithMessageView:snackbarView];
-  if (message.snackbarMessageWillPresentBlock) {
-    message.snackbarMessageWillPresentBlock(message, snackbarView);
-  }
   self.currentSnackbar = snackbarView;
   self.overlayView.accessibilityViewIsModal = snackbarView.accessibilityViewIsModal;
   self.overlayView.hidden = NO;
@@ -244,7 +241,7 @@ static NSString *const kAllMessagesCategory = @"$$___ALL_MESSAGES___$$";
       showSnackbarView:snackbarView
               animated:YES
             completion:^{
-              if (snackbarView.accessibilityViewIsModal || message.focusOnShow ||
+              if (snackbarView.accessibilityViewIsModal ||
                   ![self isSnackbarTransient:snackbarView]) {
                 UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification,
                                                 snackbarView);
@@ -557,7 +554,6 @@ static NSString *const kAllMessagesCategory = @"$$___ALL_MESSAGES___$$";
     _uppercaseButtonTitle = YES;
     _disabledButtonAlpha = (CGFloat)0.12;
     _messageElevation = MDCShadowElevationSnackbar;
-    _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
     _mdc_overrideBaseElevation = -1;
   }
   return self;
