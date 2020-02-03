@@ -39,14 +39,6 @@ extension AppDelegate: TrustDeviceInfoDelegate {
         
         setInitialVC()
         
-        //Save 4 a new version
-//        notifications.clientId = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
-//        notifications.clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
-//        notifications.accessGroup = "P896AB2AMC.trustID.appLib"
-//        notifications.serviceName = "defaultServiceName"
-        
-//        notifications.initTrustNotifications()
-        
         return true
     }
     
@@ -60,7 +52,7 @@ extension AppDelegate: TrustDeviceInfoDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
+        //UNUserNotificationCenter.current().delegate = notifications
         notifications.clearBadgeNumber()
         
         guard let mainVC = application.topMostViewController() as? MainScreenViewController else { return }
@@ -108,7 +100,7 @@ extension AppDelegate {
 
         // MARK: - Notification
             
-//        notifications.registerForRemoteNotifications()
+        //notifications.registerForRemoteNotifications()
         
         notifications.firebaseConfig(application: UIApplication.shared)
         
