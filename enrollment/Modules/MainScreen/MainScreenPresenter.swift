@@ -27,7 +27,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     }
     
     func openEnrollmentSettings() {
-//        interactor?.openSettings()
+        interactor?.openSettings()
     }
 }
 

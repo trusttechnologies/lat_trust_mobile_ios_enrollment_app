@@ -743,7 +743,7 @@ PODS:
   - Sentry (4.3.1):
     - Sentry/Core (= 4.3.1)
   - Sentry/Core (4.3.1)
-  - TrustDeviceInfo (1.2.0):
+  - TrustDeviceInfo (1.2.1):
     - Alamofire (~> 4.8.2)
     - DeviceKit
   - TrustNotification (0.6.11):
@@ -855,7 +855,7 @@ SPEC CHECKSUMS:
   Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
   RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
-  TrustDeviceInfo: 3977701ed17ed92680975d315567345c112dd996
+  TrustDeviceInfo: dd0bccc29cb30ece34a6ca67b8016db362809595
   TrustNotification: b8fdc5521a6724a8e2a6327acea70f7bb0577acb
 
 PODFILE CHECKSUM: 146959d8ac701f4e1880d94b2e4f3ceb40599583

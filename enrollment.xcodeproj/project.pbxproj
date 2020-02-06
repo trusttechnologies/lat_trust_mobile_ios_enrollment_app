@@ -11,6 +11,7 @@
 		FE0601DC23DB344700760561 /* PinModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0601DB23DB344700760561 /* PinModalViewController.swift */; };
 		FE0601E023DB4AEB00760561 /* EnvironmentModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0601DF23DB4AEB00760561 /* EnvironmentModal.storyboard */; };
 		FE0601E223DB4AF300760561 /* EnvironmentModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0601E123DB4AF300760561 /* EnvironmentModalViewController.swift */; };
+		FE08527723E8970400B9A3FB /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE08527623E8970400B9A3FB /* MainScreen.storyboard */; };
 		FE13B6992373169400E53594 /* ParseNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B6982373169400E53594 /* ParseNotification.swift */; };
 		FE13B69B237316B100E53594 /* DialogNotificationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */; };
 		FE1BF3B0230C4D0D004EEFEB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */; };
@@ -54,7 +55,6 @@
 		FE6595DE231826B3006CAD1F /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6595DD231826B3006CAD1F /* SplashInteractor.swift */; };
 		FE76404D231D6D570085299D /* enrollmentLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = FE76404C231D6D570085299D /* enrollmentLoading.json */; };
 		FE76404F231DCEC60085299D /* AuditDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE76404E231DCEC60085299D /* AuditDataManager.swift */; };
-		FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */; };
 		FE7796B8230DDD2D00FFFEAC /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */; };
 		FE7796BA230DDD3E00FFFEAC /* MainScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */; };
 		FE7796BC230DDD5300FFFEAC /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */; };
@@ -104,6 +104,7 @@
 		FE0601DB23DB344700760561 /* PinModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinModalViewController.swift; sourceTree = "<group>"; };
 		FE0601DF23DB4AEB00760561 /* EnvironmentModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnvironmentModal.storyboard; sourceTree = "<group>"; };
 		FE0601E123DB4AF300760561 /* EnvironmentModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModalViewController.swift; sourceTree = "<group>"; };
+		FE08527623E8970400B9A3FB /* MainScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		FE13B6982373169400E53594 /* ParseNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNotification.swift; sourceTree = "<group>"; };
 		FE13B69A237316B100E53594 /* DialogNotificationStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogNotificationStructs.swift; sourceTree = "<group>"; };
 		FE1BF3AF230C4D0D004EEFEB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		FE76404C231D6D570085299D /* enrollmentLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enrollmentLoading.json; sourceTree = "<group>"; };
 		FE76404E231DCEC60085299D /* AuditDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDataManager.swift; sourceTree = "<group>"; };
 		FE764050231EAF130085299D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		FE7796B9230DDD3E00FFFEAC /* MainScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInteractor.swift; sourceTree = "<group>"; };
 		FE7796BB230DDD5300FFFEAC /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 				FE7796BD230DDD6500FFFEAC /* MainScreenProtocols.swift */,
 				FE7796BF230DDD7600FFFEAC /* MainScreenRouter.swift */,
 				FE7796B7230DDD2D00FFFEAC /* MainScreenViewController.swift */,
-				FE7796B5230DDD1B00FFFEAC /* MainScreen.storyboard */,
+				FE08527623E8970400B9A3FB /* MainScreen.storyboard */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -534,7 +534,6 @@
 				FE76404D231D6D570085299D /* enrollmentLoading.json in Resources */,
 				FE9E9E23234661390091F139 /* Assets.xcassets in Resources */,
 				FE1BF3D2230C5224004EEFEB /* Splash.storyboard in Resources */,
-				FE7796B6230DDD1B00FFFEAC /* MainScreen.storyboard in Resources */,
 				FE1BF3C1230C4D1A004EEFEB /* Roboto-Regular.ttf in Resources */,
 				FE1BF3C2230C4D1A004EEFEB /* Roboto-Light.ttf in Resources */,
 				FE1BF3BF230C4D1A004EEFEB /* Roboto-BoldItalic.ttf in Resources */,
@@ -550,6 +549,7 @@
 				FE99D24923DB330F00819A36 /* PinModal.storyboard in Resources */,
 				FE0601E023DB4AEB00760561 /* EnvironmentModal.storyboard in Resources */,
 				FE1BF3C0230C4D1A004EEFEB /* Roboto-Medium.ttf in Resources */,
+				FE08527723E8970400B9A3FB /* MainScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -710,7 +710,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -723,7 +723,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = "Service Notification Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -732,7 +732,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trust.enrollment.ios.Service-Notification-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -865,7 +865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -874,7 +874,7 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
 				PRODUCT_NAME = Enrollment;
 				SWIFT_VERSION = 5.0;
@@ -891,7 +891,7 @@
 				CODE_SIGN_ENTITLEMENTS = enrollment/enrollment.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = P896AB2AMC;
 				INFOPLIST_FILE = enrollment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -900,7 +900,7 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trust.enrollment.ios;
 				PRODUCT_NAME = Enrollment;
 				SWIFT_VERSION = 5.0;
