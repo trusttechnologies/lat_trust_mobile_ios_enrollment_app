@@ -12,7 +12,7 @@ import FirebaseCore
 import FirebaseMessaging
 import TrustDeviceInfo
 
-extension PushNotifications{
+extension PushNotificationsInit{
     public func registerCustomNotificationCategory(title1: String, title2: String, title3: String, title4: String, title5: String, title6: String) {
         //Buttons
         let firstAction = UNNotificationAction(identifier: "url", title:  title1, options: [.foreground])
@@ -23,7 +23,7 @@ extension PushNotifications{
         let auxmail = UNNotificationAction(identifier: "mail2", title:  title5, options: [.foreground])
         let auxcall = UNNotificationAction(identifier: "call2", title:  title6, options: [.foreground])
         
-        //Notification
+        //Notification Categories
         let firstCategory =  UNNotificationCategory(
             identifier: "url",
             actions: [firstAction],

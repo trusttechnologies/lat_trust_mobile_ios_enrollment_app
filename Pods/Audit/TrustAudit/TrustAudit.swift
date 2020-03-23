@@ -63,6 +63,11 @@ public class TrustAudit {
     }
 }
 
+public enum Environment: String {
+    case prod
+    case test
+}
+
 // MARK: - Public Methods
 extension TrustAudit {
     public func set(serviceName: String, accessGroup: String) {
@@ -70,8 +75,8 @@ extension TrustAudit {
         UserDefaults.standard.set(accessGroup, forKey: "accessGroup")
     }
     
-    public func set(currentEnvironment: String) {
-        UserDefaults.standard.set(currentEnvironment, forKey: "currentEnvironment")
+    public func set(currentEnvironment: Environment) {
+        UserDefaults.standard.set(currentEnvironment.rawValue, forKey: "currentEnvironment")
     }
     
     public func getCurrentEnvironment() -> String {

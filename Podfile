@@ -10,6 +10,7 @@
   
 
 target 'enrollment' do
+  pod 'MaterialComponents'
   pod 'MaterialComponents/TextFields'
   pod 'MaterialComponents/Buttons', '~> 87.1.1'
   pod 'MaterialComponents/Buttons+ButtonThemer', '~> 87.1.1'
@@ -28,6 +29,7 @@ target 'enrollment' do
   pod 'lottie-ios'
   
   pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '4.3.1'
+  pod 'Alamofire', '~> 4.8.1'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|

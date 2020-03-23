@@ -18,12 +18,12 @@ class SessionMenuInteractor: SessionMenuInteractorProtocol {
     
     func changeEnvironment(environment: String) {
         if environment == "test" {
-            Identify.shared.set(currentEnvironment: "test")
-            TrustAudit.shared.set(currentEnvironment: "test")
+            Identify.shared.set(currentEnvironment: .test)
+            TrustAudit.shared.set(currentEnvironment: .test)
         }
         if environment == "prod" {
-            Identify.shared.set(currentEnvironment: "prod")
-            TrustAudit.shared.set(currentEnvironment: "prod")
+            Identify.shared.set(currentEnvironment: .prod)
+            TrustAudit.shared.set(currentEnvironment: .prod)
         }
     }
     

@@ -15,35 +15,23 @@ import AudioToolbox
 
 /// This is a class created for handling video notifications in Project
 
-
 class VideoViewController: UIViewController {
     
     var presenter: VideoPresenterProtocol?
+    
     var urlLeftButton: String?
     var urlRightButton: String?
     var data: NotificationInfo?
-    var flagAudio: Bool = false
-    var player: AVPlayer?
+    var flagAudio: audioState = .enabled
+    var videoManager: VideoManager = VideoManager()
+    var videoURL: URL?
     
-    var viewState: LoadingStatus = .loaded {
-        didSet {
-            switch viewState {
-            case .loaded:
-                activityIndicator.stopAnimating()
-            case .loading:
-                activityIndicator.startAnimating()
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
     
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     /**
      Notification area
@@ -60,14 +48,23 @@ class VideoViewController: UIViewController {
     /**
      Button on the left, for activate o deactivate the video audio
      */
+    
+    func setAudioImage(){
+        let enabledImage = setImageForButtons(bundle: VideoViewController.self, imageName: "audio_enabled_icon")
+        let disabledImage = setImageForButtons(bundle: VideoViewController.self, imageName: "audio_disabled_icon")
+        
+        switch flagAudio {
+        case .enabled:
+            audioButton.setImage(enabledImage, for: .normal)
+        case .disabled:
+            audioButton.setImage(disabledImage, for: .normal)
+        }
+        audioButton.tintColor = .white
+    }
+    
     @IBOutlet weak var audioButton: UIButton!{
         didSet{
-            
-            let bundle = Bundle(for: VideoViewController.self)
-            let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
-            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-            audioButton.setImage(tintedImage, for: .normal)
-            audioButton.tintColor = .white
+            setAudioImage()
             audioButton.addTarget(
                 self,
                 action: #selector(onAudioButtonPressed(sender:)),
@@ -75,7 +72,7 @@ class VideoViewController: UIViewController {
         }
     }
     
-
+    
     /**
      Contains the close button and the remaining seconds label
      */
@@ -85,13 +82,25 @@ class VideoViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var replayButton: UIButton!{
+        didSet{
+            let buttonImage = setImageForButtons(bundle: VideoViewController.self, imageName: "reloadIcon")
+            replayButton.setImage(buttonImage, for: .normal)
+            replayButton.tintColor = .white
+            replayButton.isEnabled = false
+            replayButton.isHidden = true
+            replayButton.addTarget(
+                self,
+                action: #selector(onReplayButtonPressed(sender:)),
+                for: .touchUpInside)
+        }
+    }
     /**
      Close button, inactive for the first x seconds,  where x is defined by the notification sender
      */
     @IBOutlet weak var closeButton: UIButton!{
         didSet{
             let bundle = Bundle(for: VideoViewController.self)
-            //let iconTest = UIImage(systemName: "stop")
             let buttonImage = UIImage(named: "close_icon", in: bundle, compatibleWith: nil)
             closeButton.setImage(buttonImage, for: .normal)
             closeButton.isEnabled = false
@@ -111,15 +120,11 @@ class VideoViewController: UIViewController {
      Is the video playing area
      */
     
-    @IBOutlet weak var videoView: UIView!{
+    @IBOutlet weak var videoView: VideoView!{
         didSet{
             videoView.clipsToBounds = true
             videoView.layer.cornerRadius = 5
             videoView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (512.0 / 309.0),constant: 0)//618x1024
-            //let widthConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (512.0 / 309.0),constant: 0)
-            //self.videoView.addConstraint(widthConstraint)
-            self.videoView.addConstraint(aspectRatioConstraint)
         }
     }
     
@@ -178,12 +183,25 @@ class VideoViewController: UIViewController {
     }
     
     @objc func onAudioButtonPressed(sender: UIButton) {
-        flagAudio = !flagAudio
+        switch flagAudio {
+        case .enabled:
+            flagAudio = .disabled
+        default:
+            flagAudio = .enabled
+        }
+        setAudioImage()
+    }
+    
+    @objc func onReplayButtonPressed(sender: UIButton) {
+        videoManager.player?.seek(to: CMTime.zero)
+        videoManager.player?.play()
+        replayButton.isHidden = true
+        replayButton.isEnabled = false
     }
     
     @objc func onCloseButtonPressed(sender: UIButton) {
-        player?.pause()
-        player?.replaceCurrentItem(with: nil)
+        videoManager.player?.pause()
+        videoManager.player?.replaceCurrentItem(with: nil)
         presenter?.onCloseButtonPressed()
     }
     
@@ -202,116 +220,95 @@ extension VideoViewController: VideoViewProtocol{
     }
     
     func fillVideo() {
-        setViewState(state: .loading)
         setVideo()
         setActionButtons(buttons: data?.videoNotification?.buttons ?? [])
-        setViewState(state: .loaded)
     }
     
-    func setViewState(state: LoadingStatus) {
-        viewState = state
+    @objc func playerDidFinishPlaying(){
+        replayButton.isHidden = false
+        replayButton.isEnabled = true
     }
     
     func setVideo() {
-        //
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+        replayButton.isHidden = true
+        remainSecLabel.isHidden = true
+        remainSecLabel.adjustsFontForContentSizeCategory = true
         
-        if(verifyUrl(urlString: data?.videoNotification?.videoUrl)){
-                    
-                    remainSecLabel.isHidden = true
-                    activityIndicator.isHidden = false
-                    setViewState(state: .loading)
-                    
-                    let videoURL = URL(string: data?.videoNotification?.videoUrl ?? "")
-                    player = AVPlayer(url: videoURL!)
-                    let playerLayer = AVPlayerLayer(player: player)
-                    let controller = AVPlayerViewController()
-                    let minPlayTime = (data?.videoNotification?.minPlayTime as! NSString).floatValue
-                    
-                    controller.player = player
-                    playerLayer.frame = videoView.frame
-                    playerLayer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-                    playerLayer.cornerRadius = 5
-                    playerLayer.masksToBounds = true
-            if UIScreen.main.bounds.height >= 736{
-                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill}
-            else{
-                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-            }
-                    videoView.layer.addSublayer(playerLayer)
-                
-                    
-                    player?.play()
-                    
-                    let interval = CMTime(seconds: 0.05,
-                                          preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                    player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using:
-                        { (progressTime) in
-                            
-                            let seconds = CMTimeGetSeconds(progressTime)
-                            let remaining = Int(round(Double(minPlayTime) - seconds))
-                            if(self.player?.status == .readyToPlay ){
-                                self.player?.play()
-                                self.setViewState(state: .loaded)
-                            }
-                            self.player?.isMuted = self.flagAudio
-                            if(self.player!.isMuted){
-                                let bundle = Bundle(for: VideoViewController.self)
-                                let origImage = UIImage(named: "audio_disabled_icon", in: bundle, compatibleWith: nil)
-                                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-                                self.audioButton.setImage(tintedImage, for: .normal)
-                                self.audioButton.tintColor = .white
-                            }else{
-                                let bundle = Bundle(for: VideoViewController.self)
-                                let origImage = UIImage(named: "audio_enabled_icon", in: bundle, compatibleWith: nil)
-                                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-                                self.audioButton.setImage(tintedImage, for: .normal)
-                                self.audioButton.tintColor = .white
-                            }
-                            //lets move the slider thumb
-                            if(seconds.isLess(than: Double(minPlayTime))){
-                                self.remainSecLabel.text = "Quedan \(remaining) segundos"
-                                self.remainSecLabel.isHidden = false
-                                self.closeButton.isEnabled = false
-                            }else{
-                                self.remainSecLabel.isHidden = true
-                                self.closeButton.isEnabled = true
-                                self.closeView.fadeOut()
-                                
-                            }
-                    })
-                    
-                }else{
-                    print("ERROR: URL DEL VIDEO NO VALIDA")
-                    
-                }
-            }
-
-            
-            func setActionButtons(buttons: [Button]) {
-                let buttonCounter = buttons.count
-                
-                if buttonCounter == 0{
-                    buttonsStack.isHidden = true
-                    buttonL.isHidden = true
-                    buttonR.isHidden = true
-                }
-                if(buttonCounter == 1){
-                    
-                    buttonL.isHidden = true
-                    buttonR.setTitle(buttons[0].text , for: .normal)
-                    buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
-                    urlRightButton = buttons[0].action
-                }
-                
-                if(buttonCounter == 2){
-                    
-                    buttonL.setTitle(buttons[1].text , for: .normal)
-                    buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
-                    urlLeftButton = buttons[1].action
-                    buttonR.setTitle(buttons[0].text , for: .normal)
-                    buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
-                    urlRightButton = buttons[0].action
-                    
-                }
-            }
+        
+        videoURL = URL(string: data?.videoNotification?.videoUrl ?? "")
+//        let resolution = resolutionForLocalVideo(url: videoURL!)
+//        print(resolution)
+//        let aspectRatioConstraint = NSLayoutConstraint(item: self.videoView,attribute: .height,relatedBy: .equal,toItem: self.videoView,attribute: .width, multiplier: (resolution!.height / resolution!.width),constant: 0)//618x1024
+//        self.videoView.addConstraint(aspectRatioConstraint)
+        
+        //videoManager.player = AVPlayer(url: videoURL!)
+        //let playerLayer = AVPlayerLayer(player: videoManager.player)
+        let minPlayTime = (data?.videoNotification?.minPlayTime as! NSString).floatValue
+        
+        
+        videoView.playerLayer.frame = videoView.bounds
+        videoView.playerLayer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        videoView.playerLayer.cornerRadius = 5
+        
+        if UIScreen.main.bounds.height >= 736{
+            videoView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill}
+        else{
+            videoView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         }
+        //videoView.layer.addSublayer(playerLayer)
+        //player?.play()
+        
+        let interval = CMTime(seconds: 0.05,
+                              preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        videoManager.player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using:
+            { (progressTime) in
+                
+                let seconds = CMTimeGetSeconds(progressTime)
+                let remaining = Int(round(Double(minPlayTime) - seconds))
+//                if(self.player?.status == .readyToPlay ){
+//                    self.player?.play()
+//                    //self.setViewState(state: .loaded)
+//                }
+                //lets move the slider thumb
+                if(seconds.isLess(than: Double(minPlayTime))){
+                    self.remainSecLabel.text = "Quedan \(remaining) segundos"
+                    self.remainSecLabel.isHidden = false
+                    self.closeButton.isEnabled = false
+                }else{
+                    self.remainSecLabel.isHidden = true
+                    self.closeButton.isEnabled = true
+                    self.closeView.fadeOut()
+                }
+        })
+    }
+    
+    
+    func setActionButtons(buttons: [Button]) {
+        let buttonCounter = buttons.count
+        
+        if buttonCounter == 0{
+            buttonsStack.isHidden = true
+            buttonL.isHidden = true
+            buttonR.isHidden = true
+        }
+        if(buttonCounter == 1){
+            
+            buttonL.isHidden = true
+            buttonR.setTitle(buttons[0].text , for: .normal)
+            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+            urlRightButton = buttons[0].action
+        }
+        
+        if(buttonCounter == 2){
+            
+            buttonL.setTitle(buttons[1].text , for: .normal)
+            buttonL.setupButtonWithType(color: buttons[1].color, type: .whiteButton, mdcType: .text)
+            urlLeftButton = buttons[1].action
+            buttonR.setTitle(buttons[0].text , for: .normal)
+            buttonR.setupButtonWithType(color: buttons[0].color, type: .whiteButton, mdcType: .text)
+            urlRightButton = buttons[0].action
+            
+        }
+    }
+}

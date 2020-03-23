@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MaterialComponents
+import AVFoundation
 
 // MARK: Load image from URL
 extension UIImageView {
@@ -56,14 +57,33 @@ extension UIImageView {
  */
 func verifyUrl (urlString: String?) -> Bool {
     //Check for nil
-    if let urlString = urlString {
-        // create NSURL instance
-        if let url = NSURL(string: urlString) {
-            // check if your application can open the NSURL instance
-            return UIApplication.shared.canOpenURL(url as URL)
+//    if let urlString = urlString {
+//        // create NSURL instance
+//        if let url = NSURL(string: urlString) {
+//            // check if your application can open the NSURL instance
+//            return UIApplication.shared.canOpenURL(url as URL)
+//        }
+//    }
+//    return false
+    if let url = NSURL(string: urlString!),
+        let data = NSData(contentsOf: url as URL),
+        let image = UIImage(data: data as Data){
+        return true
+    }else{
+        return false
+    }
+}
+
+extension String {
+    var isValidURL: Bool {
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+            // it is a link, if the match covers the whole string
+            return match.range.length == self.utf16.count
+        } else {
+            return false
         }
     }
-    return false
 }
 
 /**
@@ -80,43 +100,6 @@ func verifyUrl (urlString: String?) -> Bool {
  ````
  */
 
-func parseLegacyDialog(content: [AnyHashable: Any]) -> DialogLegacy {
-    
-    //take the notification content and convert it to data
-    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
-        else {
-            print("Parsing notification error: Review your JSON structure")
-            return DialogLegacy(type: "", typeDialog: "", body: "", title: "", isPay: "", buttonText: "", urlAction: "", cancelable: "")
-    }
-    
-    //decode the notification with the structure of a generic notification
-    let jsonDecoder = JSONDecoder()
-    guard let notDialog = try? jsonDecoder.decode(DialogLegacy.self, from: jsonData) else {
-        print("Parsing notification error: Review your JSON structure")
-        return DialogLegacy(type: "", typeDialog: "", body: "", title: "", isPay: "", buttonText: "", urlAction: "", cancelable: "") }
-    
-    return notDialog
-}
-
-func parseLegacyVideo(content: [AnyHashable: Any]) -> VideoNotification {
-    
-    //take the notification content and convert it to data
-    guard let jsonData = try? JSONSerialization.data(withJSONObject: content["data"], options: .prettyPrinted)
-        else {
-            print("Parsing notification error: Review your JSON structure")
-            return VideoNotification(videoUrl: "", minPlayTime: "0.0", isPersistent: false, buttons: [])
-    }
-    
-    //decode the notification with the structure of a generic notification
-    let jsonDecoder = JSONDecoder()
-    guard let notDialog = try? jsonDecoder.decode(VideoLegacy.self, from: jsonData) else {
-        print("Parsing notification error: Review your JSON structure")
-        return VideoNotification(videoUrl: "", minPlayTime: "0.0", isPersistent: false, buttons: []) }
-    
-    let button = Button(type: "action", text: notDialog.buttonText, color: "#F25E60", action: notDialog.urlAction)
-    
-    return VideoNotification(videoUrl: notDialog.urlVideo, minPlayTime: notDialog.playTime, isPersistent: false, buttons: [button])
-}
 
 func parseStringNotification(content: [AnyHashable: Any]) -> GenericStringNotification {
     
@@ -246,6 +229,7 @@ extension MDCButton {
         
         let colorSchema = MDCSemanticColorScheme()
         let buttonScheme = MDCButtonScheme()
+        let containerScheme = MDCContainerScheme()
         
         switch type {
         case .whiteButton:
@@ -265,19 +249,21 @@ extension MDCButton {
         self.clipsToBounds = true
         
         switch mdcType {
-        case .text:
-            MDCTextButtonThemer.applyScheme(buttonScheme, to: self)
+            case .text:
+                self.applyTextTheme(withScheme: containerScheme)
+            case .outlined:
+                self.applyOutlinedTheme(withScheme: containerScheme)
+                self.setBorderWidth(2.0, for:.normal)
+                self.setBorderColor(.systemGray, for: .normal)
+            case .contained:
+                self.applyContainedTheme(withScheme: containerScheme)
+            }
             
-        case .outlined:
-            MDCOutlinedButtonThemer.applyScheme(buttonScheme, to: self)
-            
-        case .contained:
-            MDCContainedButtonThemer.applyScheme(buttonScheme, to: self)
+            self.isUppercaseTitle = true
+            self.layer.cornerRadius = 8
         }
-        self.isUppercaseTitle = true
-    }
 }
-
+    
 extension UIView {
     /**
      Set animation fade in applycable to a visual object
@@ -358,4 +344,15 @@ class ShadowedView: UIView {
     self.shadowLayer.elevation = .cardResting
   }
 
+}
+ func resolutionForLocalVideo(url: URL) -> CGSize? {
+    guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
+   let size = track.naturalSize.applying(track.preferredTransform)
+    return CGSize(width: abs(size.width), height: abs(size.height))
+}
+
+func setImageForButtons(bundle: AnyClass, imageName: String) -> UIImage?{
+    let bundle = Bundle(for: bundle)
+    let buttonImage = UIImage(named: imageName, in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+    return buttonImage
 }

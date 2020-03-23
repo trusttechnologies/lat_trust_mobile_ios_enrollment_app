@@ -198,8 +198,11 @@ struct VideoNotification: Codable {
      */
     var minPlayTime: String
     
-    var isPersistent: Bool = true
+    var isPersistent: Bool? = true
     
+    var isSound: Bool? = true
+    
+    var isPlaying: Bool?  = false
     /**
      This variable may or may not contains an array of buttons, the maximun number of button can be two, if this number is bigger, the dialog will show only two.
      */
@@ -258,59 +261,3 @@ struct Button: Codable {
     var color: String
     var action: String
 }
-
-
-struct VideoLegacy: Codable{
-    var type: String
-    var typeDialog: String
-    var urlVideo: String
-    var urlAction: String
-    var buttonText: String
-    var playTime: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case typeDialog = "type_dialog"
-        case urlVideo = "url_video"
-        case urlAction = "url_action"
-        case buttonText = "button_text"
-        case playTime = "play_time"
-    }
-}
-
-struct DialogLegacy: Codable {
-    var type: String
-    var typeDialog: String
-    var body: String
-    var title: String
-    var isPay: String
-    var buttonText: String
-    var urlAction: String
-    var cancelable: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case typeDialog = "type_dialog"
-        case body
-        case title
-        case isPay = "is_pay"
-        case buttonText = "button_text"
-        case urlAction = "url_action"
-        case cancelable
-    }
-}
-
-struct NotificationLegacy: Codable{
-    var type: String
-    var title: String
-    var body: String
-    var img: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case body
-        case title
-        case img
-    }
-}
-

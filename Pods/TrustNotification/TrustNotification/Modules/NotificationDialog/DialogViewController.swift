@@ -23,20 +23,20 @@ class DialogViewController: UIViewController {
     var urlRightButton: String?
     var data: NotificationInfo?
     
-    var viewState: LoadingStatus = .loaded {
-        didSet {
-            switch viewState {
-            case .loaded:
-                activityIndicator.stopAnimating()
-                closeButton.isHidden = false
-                persistenceButton.isHidden = false
-            case .loading:
-                activityIndicator.startAnimating()
-                closeButton.isHidden = true
-                persistenceButton.isHidden = true
-            }
-        }
-    }
+//    var viewState: LoadingStatus = .loaded {
+//        didSet {
+//            switch viewState {
+//            case .loaded:
+//               // activityIndicator.stopAnimating()
+//                closeButton.isHidden = false
+//                persistenceButton.isHidden = false
+//            case .loading:
+//                activityIndicator.startAnimating()
+//                closeButton.isHidden = true
+//                persistenceButton.isHidden = true
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,22 +152,23 @@ class DialogViewController: UIViewController {
 }
 
 extension DialogViewController: DialogViewProtocol{
+    
     func fillDialog() {
         if(data != nil){
-            setViewState(state: .loading)
+            //setViewState(state: .loading)
             dialogView.frame = CGRect(x:0, y: 0, width: 0.9 * screenArea.frame.width, height: 0.2 * screenArea.frame.height)
             presenter?.verifyImageURL(imageUrl: data?.dialogNotification?.imageUrl ?? "")
             setCloseButton(cancelable: data?.dialogNotification?.isCancelable ?? true)
             setPersistenceButton(persistence: data?.dialogNotification?.isPersistent ?? false)
             setBody(text: data?.dialogNotification?.textBody ?? "")
             setActionButtons(buttons: data?.dialogNotification?.buttons ?? [])
-            setViewState(state: .loaded)
+            //setViewState(state: .loaded)
         }
     }
 
-    func setViewState(state: LoadingStatus) {
-        viewState = state
-    }
+//    func setViewState(state: LoadingStatus) {
+//        viewState = state
+//    }
     func setBackground(color: backgroundColor){
         switch color {
         case .SOLID:

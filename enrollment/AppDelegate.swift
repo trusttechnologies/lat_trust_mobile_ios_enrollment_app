@@ -16,15 +16,16 @@ import Sentry
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
-    let notifications = PushNotifications(clientId: "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb", clientSecret: "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd", serviceName: "defaultServiceName", accesGroup: "P896AB2AMC.trustID.appLib")
+    let serviceName = "defaultServiceName"
+    let accessGroup = "P896AB2AMC.trustID.appLib"
+    let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
+    let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
+    let notifications = PushNotificationsInit()
 }
 extension AppDelegate: TrustDeviceInfoDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        UNUserNotificationCenter.current().delegate = notifications
-        
+            
         // MARK: - Sentry
         initializeSentry()
         
@@ -36,6 +37,13 @@ extension AppDelegate: TrustDeviceInfoDelegate {
 
         // MARK: - Identify
         setTrustIdentify()
+        
+        notifications.clientId = clientID
+        notifications.clientSecret = clientSecret
+        notifications.accessGroup = accessGroup
+        notifications.serviceName = serviceName
+        
+        notifications.initTrustNotifications()
         
         setInitialVC()
         
@@ -52,7 +60,6 @@ extension AppDelegate: TrustDeviceInfoDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        //UNUserNotificationCenter.current().delegate = notifications
         notifications.clearBadgeNumber()
         
         guard let mainVC = application.topMostViewController() as? MainScreenViewController else { return }
@@ -67,25 +74,15 @@ extension AppDelegate: TrustDeviceInfoDelegate {
 // MARK: - Set TrustID and Audit Access data
 extension AppDelegate {
     func setTrustAudit() {
-        let serviceName = "defaultServiceName"
-        let accessGroup = "P896AB2AMC.trustID.appLib"
-        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
-        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
-        
         TrustAudit.shared.set(serviceName: serviceName, accessGroup: accessGroup)
-        TrustAudit.shared.set(currentEnvironment: "prod")
+        TrustAudit.shared.set(currentEnvironment: .prod)
         TrustAudit.shared.createAuditClientCredentials(clientID: clientID, clientSecret: clientSecret)
     }
     
     func setTrustIdentify() {
-        let serviceName = "defaultServiceName"
-        let accessGroup = "P896AB2AMC.trustID.appLib"
-        let clientID = "adcc11078bee4ba2d7880a48c4bed02758a5f5328276b08fa14493306f1e9efb"
-        let clientSecret = "1f647aab37f4a7d7a0da408015437e7a963daca43da06a7789608c319c2930bd"
-        
         Identify.shared.trustDeviceInfoDelegate = self
         Identify.shared.set(serviceName: serviceName, accessGroup: accessGroup)
-        Identify.shared.set(currentEnvironment: "prod")
+        Identify.shared.set(currentEnvironment: .prod)
         Identify.shared.createClientCredentials(clientID: clientID, clientSecret: clientSecret)
         Identify.shared.enable()
     }
@@ -98,12 +95,11 @@ extension AppDelegate {
         // First SetAppState in first open
         Identify.shared.setAppState(dni: "", bundleID: "com.trust.enrollment.ios")
 
-        // MARK: - Notification
-            
-        //notifications.registerForRemoteNotifications()
-        
+        // MARK: - Notifications
+        notifications.registerForRemoteNotifications()
+                
         notifications.firebaseConfig(application: UIApplication.shared)
-        
+                
         notifications.registerCustomNotificationCategory(title1: "Ir", title2: "Mail", title3: "Llamar", title4: "Ir", title5: "Mail", title6: "Llamar")
     }
     

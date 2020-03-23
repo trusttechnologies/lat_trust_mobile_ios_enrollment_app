@@ -12,7 +12,6 @@ protocol DialogViewProtocol: UIViewController {
     var data: NotificationInfo? {get set}
     
     func fillDialog()
-    func setViewState(state: LoadingStatus)
     func setBackground(color: backgroundColor)
     func setCloseButton(cancelable: Bool)
     func setPersistenceButton(persistence: Bool)

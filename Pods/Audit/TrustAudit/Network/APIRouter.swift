@@ -43,13 +43,13 @@ enum APIRouter: URLRequestConvertible {
         
         switch self {
         case .clientCredentials:
-            if UserDefaults.standard.string(forKey: "currentEnvironment") == "prod" {
+            if TrustAudit.currentEnvironment == "prod" {
                 baseURLAsString = API.clientCredentialsBaseURL
             } else {
                 baseURLAsString = API.clientCredentialsBaseURLTest
             }
         case .createAudit:
-            if UserDefaults.standard.string(forKey: "currentEnvironment") == "prod" {
+            if TrustAudit.currentEnvironment == "prod" {
                 baseURLAsString = API.baseURL
             } else {
                 baseURLAsString = API.baseURLTest

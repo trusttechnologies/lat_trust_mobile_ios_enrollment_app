@@ -9,7 +9,7 @@
 import Alamofire
 
 protocol CallbackDataManagerProtocol: AnyObject {
-    func receptionConfirmation(data: NotificationInfo, action: String)
+    func receptionConfirmation(data: NotificationInfo, action: String, state: String, errorMessage: String?)
     func callback(data: NotificationInfo, action: String)
 
 }
@@ -25,14 +25,14 @@ class CallbackDataManager: CallbackDataManagerProtocol {
     
     var managerOutput: CallbackDataManagerOuputProtocol?
     
-    func receptionConfirmation(data: NotificationInfo, action: String) {
+    func receptionConfirmation(data: NotificationInfo, action: String, state: String, errorMessage: String?) {
         let parameters = CallbackParameters(
             messageID: data.messageID,
-            action: (data.type ?? "dialog_legacy") + "_success",
+            action: (data.type ?? "") + state,
             status: "2",
             trustID: data.trustID,
-            errorMessage: "",
-            type: data.type ?? "dialog_legacy",
+            errorMessage: errorMessage ?? "",
+            type: data.type ?? "",
             actionButton: ""
         )
         

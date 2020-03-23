@@ -65,10 +65,10 @@ extension EnvironmentModalViewController {
     @objc func onAcceptEnvironment(sender: UIButton) {
         print(selectedEnvironment)
         if selectedEnvironment == "Production" {
-            Identify.shared.set(currentEnvironment: "prod")
+            Identify.shared.set(currentEnvironment: .prod)
         }
         if selectedEnvironment == "Test" {
-            Identify.shared.set(currentEnvironment: "test")
+            Identify.shared.set(currentEnvironment: .test)
         }
         self.dismiss(animated: true)
     }

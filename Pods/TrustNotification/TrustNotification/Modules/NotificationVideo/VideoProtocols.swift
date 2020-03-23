@@ -12,7 +12,7 @@ protocol VideoViewProtocol: UIViewController {
     var data: NotificationInfo? {get set}
     
     func fillVideo()
-    func setViewState(state: LoadingStatus)
+    //func setViewState(state: LoadingStatus)
     func setBackground(color: backgroundColor)
     func setVideo()
     func setActionButtons(buttons: [Button])
